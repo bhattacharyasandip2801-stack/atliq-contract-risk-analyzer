@@ -37,7 +37,7 @@ export function MobileBar() {
   const signOut = useSignOut();
   if (!user) return null;
   return (
-    <div className="no-print flex items-center justify-between gap-2 border-b border-rule bg-card px-4 py-2 lg:hidden">
+    <div role="region" aria-label="Demo user" className="no-print flex items-center justify-between gap-2 border-b border-rule bg-card px-4 py-2 lg:hidden">
       <DemoStartButton variant="compact" />
       <div className="flex items-center gap-2 text-xs">
         <span className="text-muted">Signed in as <b className="text-ink">{user.name}</b></span>

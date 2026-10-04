@@ -123,3 +123,15 @@ export function searchKnowledge(query: string, opts: SearchOpts = {}): Hit[] {
   return out;
 }
 export function passageById(id: number): Passage | undefined { return index().passages[id]; }
+
+export interface LibraryItem { file: string; kind: Kind; title: string; date: string; passages: number }
+const KIND_ORDER: Kind[] = ["Signed contract", "Incoming draft", "Meeting note", "Negotiation notes", "Karandeep's checklist", "Entity sheet", "Tracker"];
+/** One row per source file for the browsable library. Dates come only from the file name. */
+export function library(): LibraryItem[] {
+  const counts = new Map<string, number>();
+  for (const p of index().passages) counts.set(p.file, (counts.get(p.file) ?? 0) + 1);
+  return Object.keys(SRC).map((file) => ({ file, kind: kindOf(file), title: titleOf(file), date: /^(\d{4}-\d{2}-\d{2})_/.exec(file.split("/").pop()!)?.[1] ?? "", passages: counts.get(file) ?? 0 }))
+    .sort((a, b) => KIND_ORDER.indexOf(a.kind) - KIND_ORDER.indexOf(b.kind) || b.date.localeCompare(a.date) || a.title.localeCompare(b.title));
+}
+/** Full text of one source file, only for files that exist in the dataset. */
+export function documentText(file: string): string | undefined { return Object.prototype.hasOwnProperty.call(SRC, file) ? SRC[file] : undefined; }

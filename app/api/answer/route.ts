@@ -6,6 +6,7 @@ import { aiStatus, answerFromPassages } from "@/lib/answer";
 export async function GET() {
   const user = await getUser();
   if (!user) return NextResponse.json({ error: "Sign in first." }, { status: 401 });
+  if (user.role !== "reviewer") return NextResponse.json({ error: "Not available in the seller view." }, { status: 403 });
   const s = aiStatus();
   return NextResponse.json({ enabled: s.enabled, provider: s.provider ?? null, model: s.model ?? null, missing: s.missing });
 }
