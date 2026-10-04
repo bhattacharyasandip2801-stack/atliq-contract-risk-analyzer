@@ -13,7 +13,7 @@ export default async function EvaluationPage() {
   return (
     <div>
       <AuditOnMount action="run evaluation" target="evaluation" />
-      <h1 className="text-3xl font-bold">Evaluation</h1>
+      <h1 className="text-2xl font-bold">Evaluation</h1>
       <p className="mt-3 rounded-lg border border-medium/40 bg-medium-bg p-4 text-sm text-medium">{r.labelsNote}</p>
       <dl className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
         {[["Run at", new Date(r.generated).toLocaleString()], ["Model", "None (stored briefs)"], ["Tokens used", "0"], ["Result", `${pass} passed, ${fail} failed`]].map(([k, v]) => <div key={k} className="card rounded-lg border border-rule bg-card p-3"><dt className="text-xs uppercase tracking-wide text-muted">{k}</dt><dd className="text-sm font-semibold">{v}</dd></div>)}

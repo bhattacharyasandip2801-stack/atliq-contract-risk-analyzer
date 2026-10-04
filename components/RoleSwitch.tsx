@@ -16,11 +16,11 @@ export default function RoleSwitch() {
     router.refresh();
     setBusy(false);
   }
-  const base = "px-3 py-1.5 text-sm font-medium transition-colors";
+  const base = "flex-1 px-2 py-1.5 text-xs font-medium transition-colors";
   return (
-    <div className="inline-flex overflow-hidden rounded-md border border-rule bg-card" role="group" aria-label="View as">
-      <button onClick={() => set("reviewer")} aria-pressed={role === "reviewer"} className={`${base} ${role === "reviewer" ? "bg-accent text-white" : "hover:bg-accent-bg"}`}>Karandeep view</button>
-      <button onClick={() => set("seller")} aria-pressed={role === "seller"} className={`${base} border-l border-rule ${role === "seller" ? "bg-accent text-white" : "hover:bg-accent-bg"}`}>Seller view</button>
+    <div className="flex w-full overflow-hidden rounded-md border border-white/20 bg-white/5" role="group" aria-label="View as">
+      <button onClick={() => set("reviewer")} aria-pressed={role === "reviewer"} className={`${base} ${role === "reviewer" ? "bg-white text-nav" : "text-white/80 hover:bg-white/10"}`}>Reviewer</button>
+      <button onClick={() => set("seller")} aria-pressed={role === "seller"} className={`${base} border-l border-white/20 ${role === "seller" ? "bg-white text-nav" : "text-white/80 hover:bg-white/10"}`}>Seller</button>
     </div>
   );
 }

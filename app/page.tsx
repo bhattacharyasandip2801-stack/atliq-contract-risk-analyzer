@@ -3,6 +3,7 @@ import { sortedBriefs, highestSeverity, countBy, deadlineIso } from "@/lib/data"
 import { getRole } from "@/lib/role";
 import { SeverityBadge } from "@/components/Badges";
 import DecisionProgress from "@/components/DecisionProgress";
+import { ExportLink } from "@/components/Small";
 
 export const dynamic = "force-dynamic";
 
@@ -39,25 +40,22 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
 
   return (
     <div>
-      <section className="card overflow-hidden rounded-xl bg-accent px-6 py-7 text-white">
-        <p className="text-xs font-semibold uppercase tracking-widest text-white/70">AtliQ contract review</p>
-        <h1 className="mt-1 text-3xl font-bold text-white sm:text-4xl">Know what you are signing, before you sign it</h1>
-        <p className="mt-3 max-w-3xl text-white/85">
-          Each incoming draft gets a ranked brief. Every finding quotes the contract, names the rule or the earlier signed clause it relies on, and ends in a decision that is recorded.
-          {!reviewer && " You are in the seller view: you see flag types, missing documents and what to ask Karandeep."}
-        </p>
-        <div className="mt-4 flex flex-wrap gap-2 text-xs">
-          {["Quotes re-checked against the source on every load", "Nothing sent, signed or negotiated by the tool", "Synthetic capstone data"].map((t) => (
-            <span key={t} className="rounded-full bg-white/15 px-3 py-1">{t}</span>
-          ))}
+      <header className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-bold">Contract queue</h1>
+          <p className="mt-1 max-w-2xl text-sm text-muted">
+            Incoming drafts, ranked. Every finding quotes the contract, names the rule or signed clause behind it, and ends in a recorded decision.
+            {!reviewer && " You are in the seller view: you see flag types, missing documents and what to ask Karandeep."}
+          </p>
         </div>
-      </section>
+        {reviewer && <ExportLink href="/api/register/export">Export restrictive terms (CSV)</ExportLink>}
+      </header>
 
-      <dl className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-5">
+      <dl className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-5">
         {tiles.map((t) => (
           <div key={t.k} className={`card rounded-lg border border-rule border-t-4 bg-card p-3 ${t.tone}`}>
             <dt className="text-xs uppercase tracking-wide text-muted">{t.k}</dt>
-            <dd className="mt-1 font-serif text-2xl font-bold leading-tight">{t.v}</dd>
+            <dd className="mt-1 text-2xl font-bold leading-tight">{t.v}</dd>
             <dd className="mt-0.5 text-xs text-muted">{t.sub}</dd>
           </div>
         ))}
@@ -66,7 +64,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
       {reviewer && (
         <section className="card mt-5 rounded-lg border border-rule bg-card p-4" aria-label="Findings by severity">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 className="text-lg font-bold">Where the risk sits</h2>
+            <h2 className="text-base font-semibold">Findings by severity</h2>
             <span className="text-xs text-muted">{totals.high + totals.medium + totals.low} findings across {all.length} drafts</span>
           </div>
           <div className="mt-3 flex h-4 overflow-hidden rounded-full bg-low-bg" role="img" aria-label={`${totals.high} High, ${totals.medium} Medium, ${totals.low} Low`}>
@@ -83,7 +81,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
       )}
 
       <section className="mt-6" aria-label="Needs attention first">
-        <h2 className="text-xl font-bold">Needs attention first</h2>
+        <h2 className="text-base font-semibold">Action required</h2>
         <p className="text-sm text-muted">The first three drafts with a High finding, in deadline order.</p>
         <ul className="mt-3 grid gap-3 md:grid-cols-3">
           {urgent.map((b) => {
@@ -91,7 +89,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
             return (
               <li key={b.slug} className="card flex flex-col rounded-lg border border-rule border-l-4 border-l-high bg-card p-4">
                 <div className="flex items-start justify-between gap-2">
-                  <Link className="font-serif text-lg font-bold text-accent underline" href={`/brief/${b.slug}`}>{b.counterparty}</Link>
+                  <Link className="text-base font-semibold text-accent hover:underline" href={`/brief/${b.slug}`}>{b.counterparty}</Link>
                   <SeverityBadge s="High" />
                 </div>
                 <div className="text-xs text-muted">{b.doc_type.replace(/\s*\(.*$/, "")} · due {fmt(deadlineIso(b.slug))}</div>
@@ -109,7 +107,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
       <section className="mt-8" aria-label="All drafts">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h2 className="text-xl font-bold">All drafts</h2>
+            <h2 className="text-base font-semibold">All drafts</h2>
             <p className="text-sm text-muted">Ordered by the deadline written in the tracker and meeting notes.</p>
           </div>
           <nav className="flex flex-wrap gap-1.5" aria-label="Filter by highest severity">
@@ -127,7 +125,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
 
         <div className="mt-3 hidden overflow-hidden rounded-lg border border-rule bg-card md:block">
           <table className="w-full text-left text-sm">
-            <thead className="bg-paper text-xs uppercase tracking-wide text-muted">
+            <thead className="bg-paper text-xs font-semibold text-muted">
               <tr><th className="p-3">Counterparty and document</th><th className="p-3">AtliQ entity</th><th className="p-3">Deadline</th><th className="p-3">Highest</th><th className="p-3">{reviewer ? "Decisions" : "Status"}</th><th className="p-3"><span className="sr-only">Open</span></th></tr>
             </thead>
             <tbody>
@@ -136,7 +134,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
                 return (
                   <tr key={b.slug} className="border-t border-rule align-top hover:bg-accent-bg/40">
                     <td className={`border-l-4 p-3 ${h === "High" ? "border-l-high" : h === "Medium" ? "border-l-medium" : "border-l-ok"}`}>
-                      <Link className="font-semibold text-accent underline" href={`/brief/${b.slug}`}>{b.counterparty}</Link>
+                      <Link className="font-semibold text-accent hover:underline" href={`/brief/${b.slug}`}>{b.counterparty}</Link>
                       <div className="text-xs text-muted">{b.doc_type.replace(/\s*\(.*$/, "")} · {b.tracker_id}{reviewer && b.value ? ` · ${b.value.replace(/\s*\(.*$/, "")}` : ""}</div>
                       {reviewer && <div className="mt-1 line-clamp-2 max-w-md text-xs text-ink/80" title={b.headline}>{b.headline}</div>}
                     </td>
@@ -167,7 +165,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
             const c = countBy(b); const h = highestSeverity(b);
             return (
               <li key={b.slug} className={`card rounded-lg border border-rule border-l-4 bg-card p-3 ${h === "High" ? "border-l-high" : h === "Medium" ? "border-l-medium" : "border-l-ok"}`}>
-                <Link className="font-semibold text-accent underline" href={`/brief/${b.slug}`}>{b.counterparty}</Link>
+                <Link className="font-semibold text-accent hover:underline" href={`/brief/${b.slug}`}>{b.counterparty}</Link>
                 <div className="text-xs text-muted">{b.doc_type.replace(/\s*\(.*$/, "")} · {b.tracker_id}</div>
                 {reviewer && <div className="mt-1 text-xs">{b.headline}</div>}
                 <div className="mt-2 flex flex-wrap items-center gap-2"><SeverityBadge s={h} />{reviewer && <span className="text-xs text-muted">{c.high} High · {c.medium} Medium</span>}</div>

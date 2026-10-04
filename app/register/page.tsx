@@ -26,7 +26,7 @@ export default async function RegisterPage({ searchParams }: { searchParams: Pro
   return (
     <div>
       <AuditOnMount action="view register" target="register" />
-      <h1 className="text-3xl font-bold">Obligation register</h1>
+      <h1 className="text-2xl font-bold">Obligation register</h1>
       <p role="status" className="mt-3 rounded-lg border border-medium/40 bg-medium-bg p-4 text-sm text-medium"><span className="font-semibold">This register covers 17 of about 30 signed contracts.</span> {REGISTER.meta.note}</p>
       <div className="mt-4 flex flex-wrap items-center gap-3">
         <form className="flex flex-wrap items-end gap-2" action="/register">
@@ -58,7 +58,7 @@ export default async function RegisterPage({ searchParams }: { searchParams: Pro
         ))}
       </ul>
       {REGISTER.not_checked.length > 0 && (
-        <section className="card mt-6 rounded-lg border border-medium/40 bg-card p-5"><h2 className="text-xl font-bold">NOT CHECKED in the register</h2>
+        <section className="card mt-6 rounded-lg border border-medium/40 bg-card p-5"><h2 className="text-lg font-semibold">NOT CHECKED in the register</h2>
           <ul className="mt-2 grid gap-2 text-sm">{REGISTER.not_checked.map((n, i) => <li key={i}><span className="font-medium">{String((n as Record<string, unknown>).clause_ref ?? n.item ?? "Item")}</span> ({srcName(String((n as Record<string, unknown>).file ?? ""))}). <span className="text-muted">{String(n.reason ?? "")}</span></li>)}</ul></section>
       )}
     </div>

@@ -16,14 +16,14 @@ function Quote({ file, quote, label, signed }: { file: string; quote: string; la
 
 function FindingCard({ slug, f }: { slug: string; f: Finding }) {
   return (
-    <article id={f.id} className="card rounded-lg border border-rule bg-card p-4">
+    <article id={f.id} className={`card rounded-lg border border-rule border-l-4 bg-card p-4 ${f.severity === "High" ? "border-l-high" : "border-l-medium"}`}>
       <header className="flex flex-wrap items-center gap-2">
         <SeverityBadge s={f.severity} />
         <Chip tone="accent">{TYPE_LABEL[f.type] ?? f.type}</Chip>
         <Chip>{f.rule}</Chip>
         <span className="text-xs text-muted">{f.clause_ref}</span>
       </header>
-      <h3 className="mt-2 text-xl font-bold leading-snug">{f.title}</h3>
+      <h3 className="mt-2 text-lg font-semibold leading-snug">{f.title}</h3>
       <p className="mt-2 text-[0.95rem] leading-relaxed">{f.explanation}</p>
       <div className={`mt-3 grid gap-4 ${f.register_refs && f.register_refs.length ? "md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]" : ""}`}>
         <Quote file={f.file} quote={f.quote} label={`In this draft, ${f.clause_ref}`} />
@@ -68,9 +68,9 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
           <SeverityBadge s={brief.highest_severity} />
           <Chip>{brief.tracker_id}</Chip><Chip tone="accent">{brief.atliq_entity_in_draft}</Chip><Chip>{brief.client_country}</Chip>
         </div>
-        <h1 className="mt-2 text-3xl font-bold leading-tight">{brief.counterparty}</h1>
+        <h1 className="mt-2 text-2xl font-bold leading-tight">{brief.counterparty}</h1>
         <p className="text-muted">{brief.doc_type}</p>
-        <p className="mt-3 max-w-3xl font-serif text-lg leading-snug">{brief.headline}</p>
+        <p className="mt-3 max-w-3xl text-base leading-relaxed">{brief.headline}</p>
         <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-3">
           <div><dt className="text-xs uppercase tracking-wide text-muted">Deadline</dt><dd>{brief.deadline ?? "None in the notes"}</dd></div>
           <div><dt className="text-xs uppercase tracking-wide text-muted">Value</dt><dd>{brief.value}</dd></div>
@@ -84,7 +84,7 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
 
       {brief.exposure.length > 0 && (
         <section className="card rounded-lg border border-rule bg-card p-5">
-          <h2 className="text-xl font-bold">Exposure</h2>
+          <h2 className="text-lg font-semibold">Exposure</h2>
           <p className="text-sm text-muted">Calculated from the numbers in each clause. No cap is shown unless the clause states one.</p>
           <div className="mt-3 overflow-x-auto">
             <table className="w-full min-w-[560px] text-left text-sm">
@@ -98,19 +98,19 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
       )}
 
       {highs.length > 0 && (
-        <section aria-labelledby="high"><h2 id="high" className="mb-3 text-2xl font-bold">High severity <span className="text-base font-normal text-muted">({highs.length}): each needs a recorded decision</span></h2>
+        <section aria-labelledby="high"><h2 id="high" className="mb-3 text-lg font-semibold">High severity <span className="text-base font-normal text-muted">({highs.length}): each needs a recorded decision</span></h2>
           <div className="grid grid-cols-[minmax(0,1fr)] gap-4">{highs.map((f) => <FindingCard key={f.id} slug={brief.slug} f={f} />)}</div></section>
       )}
       {meds.length > 0 && (
-        <section aria-labelledby="med"><h2 id="med" className="mb-3 text-2xl font-bold">Medium severity <span className="text-base font-normal text-muted">({meds.length})</span></h2>
+        <section aria-labelledby="med"><h2 id="med" className="mb-3 text-lg font-semibold">Medium severity <span className="text-base font-normal text-muted">({meds.length})</span></h2>
           <div className="grid grid-cols-[minmax(0,1fr)] gap-4">{meds.map((f) => <FindingCard key={f.id} slug={brief.slug} f={f} />)}</div></section>
       )}
       {brief.findings.length === 0 && (
-        <section className="card rounded-lg border border-ok/30 bg-ok-bg p-5"><h2 className="text-xl font-bold text-ok">No High or Medium findings</h2><p className="mt-1 text-sm">The checks below were run and passed. Minor points are listed under “Worth knowing”.</p></section>
+        <section className="card rounded-lg border border-ok/30 bg-ok-bg p-5"><h2 className="text-lg font-semibold text-ok">No High or Medium findings</h2><p className="mt-1 text-sm">The checks below were run and passed. Minor points are listed under “Worth knowing”.</p></section>
       )}
 
-      <section className="card rounded-lg border border-rule bg-card p-5">
-        <h2 className="text-xl font-bold">Documents this deal needs</h2>
+      <section id="docs" className="card rounded-lg border border-rule bg-card p-5">
+        <h2 className="text-lg font-semibold">Documents this deal needs</h2>
         {brief.bundle.needed.length === 0 ? <p className="mt-2 text-sm text-muted">No other document is referred to in this draft.</p> : (
           <ul className="mt-3 grid gap-3">
             {brief.bundle.needed.map((d, i) => (
@@ -124,8 +124,8 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
         )}
       </section>
 
-      <section className="card rounded-lg border border-rule bg-card p-5">
-        <h2 className="text-xl font-bold">Data type</h2>
+      <section id="data" className="card rounded-lg border border-rule bg-card p-5">
+        <h2 className="text-lg font-semibold">Data type</h2>
         <p className="mt-1"><Chip tone={brief.data_class.question ? "warn" : "accent"}>{brief.data_class.class}</Chip></p>
         <p className="mt-2 text-sm leading-relaxed">{brief.data_class.basis}</p>
         {brief.data_class.question && <p className="mt-3 rounded border border-medium/30 bg-medium-bg p-3 text-sm"><span className="font-semibold">Question for a person: </span>{brief.data_class.question}</p>}
@@ -133,7 +133,7 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
       </section>
 
       <section className="card rounded-lg border border-medium/40 bg-card p-5" aria-labelledby="nc">
-        <h2 id="nc" className="text-xl font-bold">NOT CHECKED</h2>
+        <h2 id="nc" className="text-lg font-semibold">NOT CHECKED</h2>
         <p className="text-sm text-muted">Things the tool could not test. These are never counted as a pass.</p>
         {brief.not_checked.length === 0 ? <p className="mt-2 text-sm">Nothing was left untested.</p> : (
           <ul className="mt-3 grid gap-2">{brief.not_checked.map((n, i) => <li key={i} className="text-sm"><span className="font-medium">{n.item}.</span> <span className="text-muted">{n.reason}</span></li>)}</ul>
@@ -141,7 +141,7 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
       </section>
 
       {brief.low.length > 0 && (
-        <details className="card rounded-lg border border-rule bg-card p-5"><summary className="text-xl font-bold">Worth knowing ({brief.low.length})</summary>
+        <details className="card rounded-lg border border-rule bg-card p-5"><summary className="text-lg font-semibold">Worth knowing ({brief.low.length})</summary>
           <ul className="mt-3 grid gap-4">{brief.low.map((l, i) => (
             <li key={i}><div className="flex flex-wrap items-center gap-2"><SeverityBadge s="Low" /><span className="font-medium">{l.title}</span><span className="text-xs text-muted">{l.clause_ref}</span></div>
               <p className="mt-1 text-sm text-muted">{l.note}</p><blockquote className="quote mt-1 text-sm">“{l.quote}”<span className="block text-xs text-muted not-italic">Source: {srcName(l.file)}</span></blockquote></li>
@@ -150,7 +150,7 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
       )}
 
       {brief.checks_passed.length > 0 && (
-        <details className="card rounded-lg border border-rule bg-card p-5"><summary className="text-xl font-bold">Checks that passed ({brief.checks_passed.length})</summary>
+        <details className="card rounded-lg border border-rule bg-card p-5"><summary className="text-lg font-semibold">Checks that passed ({brief.checks_passed.length})</summary>
           <ul className="mt-3 grid gap-4">{brief.checks_passed.map((c, i) => (
             <li key={i}><div className="flex flex-wrap items-center gap-2"><Chip tone="ok">Passed</Chip><Chip>{c.rule}</Chip></div><p className="mt-1 text-sm">{c.note}</p>
               <blockquote className="quote mt-1 text-sm">“{c.quote}”<span className="block text-xs text-muted not-italic">Source: {srcName(c.file)}</span></blockquote></li>

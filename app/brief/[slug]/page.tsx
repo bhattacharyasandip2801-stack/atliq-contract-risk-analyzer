@@ -17,16 +17,43 @@ export default async function BriefPage({ params }: { params: Promise<{ slug: st
   if (!served) notFound();
   const role = await getRole();
   const { brief, quotesChecked, dropped } = served;
+  const highIds = brief.findings.filter((f) => f.severity === "High").map((f) => f.id);
+  const c = { high: highIds.length, medium: brief.findings.filter((f) => f.severity === "Medium").length, low: brief.low.length };
+  const jumps: [string, string][] = role === "seller"
+    ? [["#top", "Summary"]]
+    : [["#top", "Summary"], ...(c.high ? [["#high", `High findings (${c.high})`] as [string, string]] : []), ...(c.medium ? [["#med", `Medium findings (${c.medium})`] as [string, string]] : []), ["#docs", "Documents needed"], ["#data", "Data type"], ["#nc", "Not checked"]];
   return (
-    <div>
+    <div id="top">
       <AuditOnMount action={role === "seller" ? "view brief (seller)" : "view brief"} target={slug} />
-      <div className="no-print mb-4 flex flex-wrap items-center gap-3">
-        <Link href="/" className="text-sm text-accent underline">← Queue</Link>
-        {role === "reviewer" && <DecisionProgress big slug={brief.slug} ids={brief.findings.filter((f) => f.severity === "High").map((f) => f.id)} />}
-        <div className="ml-auto"><PrintButton slug={slug} /></div>
+      <nav aria-label="Breadcrumb" className="no-print mb-4 text-sm text-muted">
+        <Link href="/" className="text-accent hover:underline">Contract queue</Link> <span aria-hidden="true">/</span> <span className="text-ink">{brief.counterparty}</span>
+      </nav>
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_260px]">
+        <div className="min-w-0">
+          {role === "seller" ? <BriefSeller s={sellerView(brief)} /> : <BriefReviewer brief={brief} quotesChecked={quotesChecked} dropped={dropped} />}
+          <div className="mt-6"><AskBox slug={slug} /></div>
+        </div>
+        <aside className="no-print order-first lg:order-none">
+          <div className="card sticky top-4 grid gap-4 border border-rule bg-card p-4">
+            <div>
+              <div className="text-xs font-semibold text-muted">Status</div>
+              {role === "reviewer" ? (
+                <div className="mt-1.5 grid gap-1 text-sm">
+                  <div className="flex justify-between"><span><i className="mr-1.5 inline-block h-2 w-2 rounded-full bg-high" />High</span><b>{c.high}</b></div>
+                  <div className="flex justify-between"><span><i className="mr-1.5 inline-block h-2 w-2 rounded-full bg-medium" />Medium</span><b>{c.medium}</b></div>
+                  <div className="flex justify-between"><span><i className="mr-1.5 inline-block h-2 w-2 rounded-full bg-low" />Low</span><b>{c.low}</b></div>
+                  <div className="mt-1.5 border-t border-rule pt-1.5"><DecisionProgress big slug={brief.slug} ids={highIds} /></div>
+                </div>
+              ) : <p className="mt-1 text-sm text-muted">Brief ready. Counts are visible to the reviewer.</p>}
+            </div>
+            <div>
+              <div className="text-xs font-semibold text-muted">On this page</div>
+              <ul className="mt-1.5 grid gap-0.5 text-sm">{jumps.map(([h, t]) => <li key={h}><a className="block rounded px-2 py-1 text-ink hover:bg-accent-bg" href={h}>{t}</a></li>)}</ul>
+            </div>
+            <PrintButton slug={slug} />
+          </div>
+        </aside>
       </div>
-      {role === "seller" ? <BriefSeller s={sellerView(brief)} /> : <BriefReviewer brief={brief} quotesChecked={quotesChecked} dropped={dropped} />}
-      <div className="mt-6"><AskBox slug={slug} /></div>
     </div>
   );
 }

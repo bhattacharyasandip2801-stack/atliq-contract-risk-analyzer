@@ -4,7 +4,7 @@ export default function AuditPage() {
   const rows = [...useAudit()].reverse();
   return (
     <div>
-      <h1 className="text-3xl font-bold">Audit log</h1>
+      <h1 className="text-2xl font-bold">Audit log</h1>
       <p className="mt-2 max-w-3xl text-muted">Every brief view, export, print, decision, refused request and role switch is recorded with the role used. The prototype uses a role switch instead of sign-in; production would sign users in. The log is kept in this browser only.</p>
       {rows.length === 0 ? <p className="card mt-6 rounded-lg border border-rule bg-card p-6 text-sm">Nothing logged yet.</p> : (
         <div className="mt-6 overflow-x-auto rounded-lg border border-rule bg-card">

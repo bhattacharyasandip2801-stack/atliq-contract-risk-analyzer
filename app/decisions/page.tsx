@@ -11,7 +11,7 @@ export default function DecisionsPage() {
   const sorted = [...decisions].sort((a, b) => b.at.localeCompare(a.at));
   return (
     <div>
-      <h1 className="text-3xl font-bold">Decisions and exceptions</h1>
+      <h1 className="text-2xl font-bold">Decisions and exceptions</h1>
       <p className="mt-2 max-w-3xl text-muted">Every decision on a High finding is kept here with who decided, when and why. An override needs a reason. This prototype keeps the log in this browser only.</p>
       {sorted.length === 0 ? (
         <p className="card mt-6 rounded-lg border border-rule bg-card p-6 text-sm">No decisions recorded yet. Open a brief from the <Link className="text-accent underline" href="/">queue</Link> and record one on a finding.</p>
