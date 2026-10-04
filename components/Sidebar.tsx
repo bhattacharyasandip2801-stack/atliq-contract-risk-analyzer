@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRole } from "./RoleProvider";
 import RoleSwitch from "./RoleSwitch";
+import { DemoStartButton } from "./UserDemo";
 
 const I = (d: string) => (
   <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>
@@ -42,6 +43,7 @@ export default function Sidebar() {
         ))}
       </nav>
       <div className="hidden border-t border-white/10 p-3 lg:block">
+        <div className="mb-3"><DemoStartButton /></div>
         <div className="mb-1.5 text-xs text-white/60">Viewing as</div>
         <RoleSwitch />
         <p className="mt-3 text-[11px] leading-snug text-white/50">Prototype on synthetic data. Not legal advice. Decisions stay in this browser.</p>

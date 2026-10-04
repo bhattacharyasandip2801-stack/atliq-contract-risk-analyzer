@@ -54,6 +54,7 @@ npm run lint
 | **Decisions** | Every decision with who, when and why. An override needs a reason. |
 | **Evaluation** | The metrics from PRD Section 11 against their thresholds, with expected and found for each case. |
 | **Audit log** | Every view, export, print, decision, refused request and role switch, with the role used. |
+| **User demo** (sidebar, or top strip on a phone) | A 9-step guided tour for new users: queue, a brief, a clash with a signed contract, recording a decision, the register, the evaluation, the decision log, the seller view and a close. The tour switches the view for you and ends in the reviewer view. Press Esc or the close button to leave it. |
 | **Role switch** (top right) | Karandeep view or seller view. The seller sees flag types, severity, missing documents and "Ask Karandeep", with other clients' commercial terms and clause quotes hidden. The switch is not sign-in; production would sign users in. |
 
 ## How the stored data was built

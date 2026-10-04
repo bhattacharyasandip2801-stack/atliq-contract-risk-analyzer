@@ -4,6 +4,7 @@ import { getRole } from "@/lib/role";
 import { RoleProvider } from "@/components/RoleProvider";
 import RoleSwitch from "@/components/RoleSwitch";
 import Sidebar from "@/components/Sidebar";
+import { DemoPanel, DemoStartButton } from "@/components/UserDemo";
 
 export const metadata: Metadata = {
   title: { default: "AtliQ Contract Risk Analyzer (prototype)", template: "%s · AtliQ Contract Risk Analyzer" },
@@ -19,8 +20,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           <Sidebar />
           <div className="lg:pl-60">
             <div className="no-print flex items-center justify-between gap-3 border-b border-rule bg-card px-4 py-2 lg:hidden">
-              <span className="text-xs text-muted">Viewing as</span>
-              <div className="w-48"><RoleSwitch /></div>
+              <DemoStartButton variant="compact" />
+              <div className="flex items-center gap-2"><span className="text-xs text-muted">Viewing as</span><div className="w-44"><RoleSwitch light /></div></div>
             </div>
             <div role="note" aria-label="Prototype notice" className="no-print border-b border-rule bg-accent-bg px-4 py-1.5 text-xs text-accent">
               Prototype on synthetic data. Briefs are pre-generated from the capstone dataset; every quote is re-checked against its source file each time a page loads.
@@ -30,6 +31,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               Capstone 2, AI Product Management cohort. Author: Sandip Gopal Bhattacharya.
             </footer>
           </div>
+          <DemoPanel />
         </RoleProvider>
       </body>
     </html>

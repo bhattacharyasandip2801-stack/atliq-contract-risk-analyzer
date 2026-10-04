@@ -4,6 +4,7 @@ import { getRole } from "@/lib/role";
 import { SeverityBadge } from "@/components/Badges";
 import DecisionProgress from "@/components/DecisionProgress";
 import { ExportLink } from "@/components/Small";
+import { DemoStartButton } from "@/components/UserDemo";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = { title: "Contract queue" };
@@ -54,7 +55,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
             {!reviewer && " You are in the seller view: you see flag types, missing documents and what to ask Karandeep."}
           </p>
         </div>
-        {reviewer && <ExportLink href="/api/register/export">Export restrictive terms (CSV)</ExportLink>}
+        <div className="flex flex-wrap items-center gap-2"><DemoStartButton variant="inline" />{reviewer && <ExportLink href="/api/register/export">Export restrictive terms (CSV)</ExportLink>}</div>
       </header>
 
       <dl className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-5">
