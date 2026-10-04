@@ -23,12 +23,12 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               <DemoStartButton variant="compact" />
               <div className="flex items-center gap-2"><span className="text-xs text-muted">Viewing as</span><div className="w-44"><RoleSwitch light /></div></div>
             </div>
-            <div role="note" aria-label="Prototype notice" className="no-print border-b border-rule bg-accent-bg px-4 py-1.5 text-xs text-accent">
-              Prototype on synthetic data. Briefs are pre-generated from the capstone dataset; every quote is re-checked against its source file each time a page loads.
-            </div>
             <main className="mx-auto min-w-0 max-w-6xl px-4 py-6 lg:px-8">{children}</main>
-            <footer className="no-print mx-auto max-w-6xl px-4 pb-10 pt-2 text-xs text-muted lg:px-8">
-              Capstone 2, AI Product Management cohort. Author: Sandip Gopal Bhattacharya.
+            <footer className="mx-auto max-w-6xl px-4 pb-10 pt-2 text-xs text-muted lg:px-8">
+              <p className="border-t border-rule pt-4">
+                <span className="font-semibold">Disclaimer.</span> Prototype on synthetic data. Briefs are pre-generated from the capstone dataset; every quote is re-checked against its source file each time a page loads. Not legal advice.
+              </p>
+              <p className="mt-2">Capstone 2, AI Product Management cohort. Author: Sandip Gopal Bhattacharya.</p>
             </footer>
           </div>
           <DemoPanel />
