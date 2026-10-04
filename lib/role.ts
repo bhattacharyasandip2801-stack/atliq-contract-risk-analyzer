@@ -1,7 +1,10 @@
 import { cookies } from "next/headers";
 import type { Role } from "./types";
-export const ROLE_COOKIE = "atliq_role";
+import { USER_COOKIE, userById, type DemoUser } from "./users";
+export async function getUser(): Promise<DemoUser | null> {
+  return userById((await cookies()).get(USER_COOKIE)?.value);
+}
+/** Fails closed: with no valid sign-in the role is the limited one. */
 export async function getRole(): Promise<Role> {
-  const c = await cookies();
-  return c.get(ROLE_COOKIE)?.value === "seller" ? "seller" : "reviewer";
+  return (await getUser())?.role ?? "seller";
 }

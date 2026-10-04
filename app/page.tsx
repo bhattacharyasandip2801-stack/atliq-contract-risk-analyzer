@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { sortedBriefs, highestSeverity, countBy, deadlineIso } from "@/lib/data";
-import { getRole } from "@/lib/role";
+import { briefsFor, highestSeverity, countBy, deadlineIso } from "@/lib/data";
+import { getUser } from "@/lib/role";
 import { SeverityBadge } from "@/components/Badges";
 import DecisionProgress from "@/components/DecisionProgress";
 import { ExportLink } from "@/components/Small";
@@ -19,12 +19,13 @@ const BAR: Record<string, string> = { High: "bg-high", Medium: "bg-medium", Low:
 const FILTERS = ["All", "High", "Medium", "Low"] as const;
 
 export default async function QueuePage({ searchParams }: { searchParams: Promise<{ sev?: string }> }) {
-  const role = await getRole();
+  const user = (await getUser())!;
+  const role = user.role;
   const reviewer = role === "reviewer";
   const { sev: sevParam } = await searchParams;
   const sev = FILTERS.find((f) => f === sevParam) ?? "All";
 
-  const all = sortedBriefs();
+  const all = briefsFor(user);
   const totals = all.reduce((t, b) => { const c = countBy(b); return { high: t.high + c.high, medium: t.medium + c.medium, low: t.low + c.low }; }, { high: 0, medium: 0, low: 0 });
   const sumAll = Math.max(1, totals.high + totals.medium + totals.low);
   const clean = all.filter((b) => ["Low", "None"].includes(highestSeverity(b))).length;
@@ -37,7 +38,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
   const urgent = all.filter((b) => highestSeverity(b) === "High").slice(0, 3);
 
   const tiles: { k: string; v: string; sub: string; tone: string }[] = [
-    { k: "Drafts to review", v: String(all.length), sub: "from the capstone dataset", tone: "border-t-accent" },
+    { k: "Drafts to review", v: String(all.length), sub: reviewer ? "from the capstone dataset" : "that you requested", tone: "border-t-accent" },
     { k: "High findings", v: reviewer ? String(totals.high) : "Ask Karandeep", sub: reviewer ? `across ${byLevel("High")} drafts` : "hidden in seller view", tone: "border-t-high" },
     { k: "Medium findings", v: reviewer ? String(totals.medium) : "Ask Karandeep", sub: reviewer ? "inside bounds, outside the checklist" : "hidden in seller view", tone: "border-t-medium" },
     { k: "Drafts with no High", v: String(noHigh), sub: `${byLevel("Medium")} Medium, ${clean} Low or none`, tone: "border-t-ok" },
@@ -51,7 +52,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
           <h1 className="text-2xl font-bold">Contract queue</h1>
           <p className="mt-1 max-w-2xl text-sm text-muted">
             Incoming drafts, ranked. Every finding quotes the contract, names the rule or signed clause behind it, and ends in a recorded decision.
-            {!reviewer && " You are in the seller view: you see flag types, missing documents and what to ask Karandeep."}
+            {!reviewer && ` You are signed in as ${user.name}: you see the ${all.length === 1 ? "draft" : all.length + " drafts"} you requested, with flag types, missing documents and what to ask Karandeep.`}
           </p>
         </div>
         {reviewer && <ExportLink href="/api/register/export">Export restrictive terms (CSV)</ExportLink>}

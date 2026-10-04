@@ -1,23 +1,23 @@
 "use client";
 import { useEffect, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
-import { useRole, roleName } from "./RoleProvider";
+import { useActor, useUser } from "./RoleProvider";
 import { logAudit } from "@/lib/store";
-import type { Role } from "@/lib/types";
+import { actorLabel, userById } from "@/lib/users";
 
-interface Step { href: string; role: Role; title: string; body: string; tip?: string }
+interface Step { href: string; person: "karandeep" | "jay"; title: string; body: string; tip?: string }
 
 // Every statement below is taken from the stored briefs and the README, so the tour never claims more than the prototype does.
 const STEPS: Step[] = [
-  { href: "/", role: "reviewer", title: "Start at the contract queue", body: "These are the 15 incoming drafts from the capstone dataset, ordered by the deadline in the tracker and meeting notes. The coloured edge and badge show the highest severity in each draft.", tip: "Use the filter chips to show only High, Medium or Low drafts." },
-  { href: "/brief/harrington_health_msa#top", role: "reviewer", title: "Open a brief", body: "This is Harrington Health's master services agreement. The Exposure table shows the arithmetic: $4,200 for every calendar day a delivery slips, with no cap. Each finding below it quotes the contract.", tip: "The summary panel on the right lists the sections and your decision progress." },
-  { href: "/brief/gulf_crown_hotels_msa#F-01", role: "reviewer", title: "See a clash with a signed contract", body: "On the left is the Gulf Crown draft clause. On the right are the clauses AtliQ already signed with Al Noor. Every quote is re-checked against its source file each time the page loads.", tip: "A finding whose quote fails the check is withheld, not shown." },
-  { href: "/brief/gulf_crown_hotels_msa#F-01", role: "reviewer", title: "Record a decision", body: "Under each High finding choose Accept, Negotiate, Reject or Override. An override needs a reason. The tool never signs, sends or negotiates for you.", tip: "Try it now. Your choice is kept in this browser only." },
-  { href: "/register", role: "reviewer", title: "Check the obligation register", body: "Restrictive covenants, exclusivity and price-match terms taken from 17 signed contracts. The banner is honest: the register covers 17 of about 30 signed contracts.", tip: "Export counsel's list as a CSV." },
-  { href: "/evaluation", role: "reviewer", title: "Read the evaluation", body: "Each bar is a labelled check from the PRD. The labels are pending review by Karandeep and counsel, and the briefs came from the same documents, so a pass shows coverage, not accuracy on unseen contracts.", tip: "Citation accuracy is the one check that needs no one's judgement." },
-  { href: "/decisions", role: "reviewer", title: "Review the decision log", body: "Every decision appears here with who decided, when and why. The audit log records views, exports, prints, decisions and refused requests.", tip: "If you recorded a decision in step 4, it is listed here." },
-  { href: "/brief/lakeshore_grocers_msa", role: "seller", title: "See what a seller sees", body: "The demo has switched you to the seller view. A seller sees flag types, missing documents and what to ask Karandeep. Other clients' rates, terms and clause quotes are hidden.", tip: "Compare this page with the same brief in the reviewer view." },
-  { href: "/", role: "reviewer", title: "That is the tour", body: "You are back in the reviewer view. The briefs are pre-generated from the dataset and have not been reviewed by Karandeep or counsel. This tool gives no legal advice; for a legal conclusion, ask counsel.", tip: "Select Finish to close the tour." },
+  { href: "/", person: "karandeep", title: "Start at the contract queue", body: "These are the 15 incoming drafts from the capstone dataset, ordered by the deadline in the tracker and meeting notes. The coloured edge and badge show the highest severity in each draft.", tip: "The tour signs you in as Karandeep, then as Jay for the seller step, and back to Karandeep at the end." },
+  { href: "/brief/harrington_health_msa#top", person: "karandeep", title: "Open a brief", body: "This is Harrington Health's master services agreement. The Exposure table shows the arithmetic: $4,200 for every calendar day a delivery slips, with no cap. Each finding below it quotes the contract.", tip: "The summary panel on the right lists the sections and your decision progress." },
+  { href: "/brief/gulf_crown_hotels_msa#F-01", person: "karandeep", title: "See a clash with a signed contract", body: "On the left is the Gulf Crown draft clause. On the right are the clauses AtliQ already signed with Al Noor. Every quote is re-checked against its source file each time the page loads.", tip: "A finding whose quote fails the check is withheld, not shown." },
+  { href: "/brief/gulf_crown_hotels_msa#F-01", person: "karandeep", title: "Record a decision", body: "Under each High finding choose Accept, Negotiate, Reject or Override. An override needs a reason. The tool never signs, sends or negotiates for you.", tip: "Try it now. Your choice is kept in this browser only." },
+  { href: "/register", person: "karandeep", title: "Check the obligation register", body: "Restrictive covenants, exclusivity and price-match terms taken from 17 signed contracts. The banner is honest: the register covers 17 of about 30 signed contracts.", tip: "Export counsel's list as a CSV." },
+  { href: "/evaluation", person: "karandeep", title: "Read the evaluation", body: "Each bar is a labelled check from the PRD. The labels are pending review by Karandeep and counsel, and the briefs came from the same documents, so a pass shows coverage, not accuracy on unseen contracts.", tip: "Citation accuracy is the one check that needs no one's judgement." },
+  { href: "/decisions", person: "karandeep", title: "Review the decision log", body: "Every decision appears here with who decided, when and why. The audit log records views, exports, prints, decisions and refused requests.", tip: "If you recorded a decision in step 4, it is listed here." },
+  { href: "/brief/lakeshore_grocers_msa", person: "jay", title: "See what a seller sees", body: "The demo has signed you in as Jay, a seller. Jay sees only the four drafts he requested, in the limited view: flag types, missing documents and what to ask Karandeep. Other clients' rates, terms and clause quotes are hidden.", tip: "Compare this page with the same brief as Karandeep." },
+  { href: "/", person: "karandeep", title: "That is the tour", body: "You are signed in as Karandeep again. The briefs are pre-generated from the dataset and have not been reviewed by Karandeep or counsel. This tool gives no legal advice; for a legal conclusion, ask counsel.", tip: "Select Finish to close the tour." },
 ];
 
 const KEY = "atliq.demo.step";
@@ -31,24 +31,26 @@ const useStep = () => Number(useSyncExternalStore(subscribe, snap, () => "-1"));
 
 function useDemo() {
   const router = useRouter();
-  const role = useRole();
+  const current = useUser();
+  const actor = useActor();
   async function go(i: number) {
     const s = STEPS[i];
-    if (s.role !== role) {
-      await fetch("/api/role", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ role: s.role }) });
-      logAudit(roleName(s.role), "role switch", s.role === "seller" ? "Seller view (user demo)" : "Karandeep view (user demo)");
+    const switching = current?.id !== s.person;
+    if (switching) {
+      await fetch("/api/signin", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ user: s.person }) });
+      logAudit(actorLabel(userById(s.person)!), "sign in", "user demo");
     }
     put(i);
     router.push(s.href);
-    if (s.role !== role) router.refresh();
+    if (switching) router.refresh();
   }
   function exit() { put(-1); }
-  return { go, exit, role };
+  return { go, exit, actor };
 }
 
 export function DemoStartButton({ variant = "sidebar" }: { variant?: "sidebar" | "inline" | "compact" }) {
-  const { go, role } = useDemo();
-  const start = () => { logAudit(roleName(role), "user demo started", "user demo"); void go(0); };
+  const { go, actor } = useDemo();
+  const start = () => { logAudit(actor, "user demo started", "user demo"); void go(0); };
   const cls = {
     sidebar: "flex w-full items-center gap-2.5 rounded-md border border-white/25 px-3 py-2 text-sm font-medium text-white hover:bg-nav-hover",
     inline: "no-print rounded border border-accent px-3 py-1.5 text-sm font-medium text-accent hover:bg-accent-bg",

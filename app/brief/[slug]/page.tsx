@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getBrief } from "@/lib/data";
-import { getRole } from "@/lib/role";
+import { canSee, getBrief } from "@/lib/data";
+import { getUser } from "@/lib/role";
 import { sellerView } from "@/lib/seller";
 import BriefReviewer from "@/components/BriefReviewer";
 import BriefSeller from "@/components/BriefSeller";
@@ -13,15 +13,19 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const user = await getUser();
   const served = getBrief(slug);
-  return { title: served ? `${served.brief.counterparty}: ${served.brief.doc_type.replace(/\s*\(.*$/, "")}` : "Not found" };
+  if (!user || !served || !canSee(user, slug)) return { title: "Not found" };
+  return { title: `${served.brief.counterparty}: ${served.brief.doc_type.replace(/\s*\(.*$/, "")}` };
 }
 
 export default async function BriefPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const served = getBrief(slug);
   if (!served) notFound();
-  const role = await getRole();
+  const user = (await getUser())!;
+  if (!canSee(user, slug)) notFound();
+  const role = user.role;
   const { brief, quotesChecked, dropped } = served;
   const highIds = brief.findings.filter((f) => f.severity === "High").map((f) => f.id);
   const c = { high: highIds.length, medium: brief.findings.filter((f) => f.severity === "Medium").length, low: brief.low.length };

@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRole } from "./RoleProvider";
-import RoleSwitch from "./RoleSwitch";
+import { SignedInCard } from "./SignedIn";
 import { DemoStartButton } from "./UserDemo";
 
 const I = (d: string) => (
@@ -44,8 +44,7 @@ export default function Sidebar() {
       </nav>
       <div className="hidden border-t border-white/10 p-3 lg:block">
         <div className="mb-3"><DemoStartButton /></div>
-        <div className="mb-1.5 text-xs text-white/60">Viewing as</div>
-        <RoleSwitch />
+        <SignedInCard />
         <p className="mt-3 text-[11px] leading-snug text-white/50">Prototype on synthetic data. Not legal advice. Decisions stay in this browser.</p>
       </div>
     </aside>

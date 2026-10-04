@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useRole, roleName } from "./RoleProvider";
+import { useActor, useUser } from "./RoleProvider";
 import { clearDecision, saveDecision, useDecisions, type Decision } from "@/lib/store";
 
 const CHOICES: { v: Decision["choice"]; t: string }[] = [
@@ -8,12 +8,13 @@ const CHOICES: { v: Decision["choice"]; t: string }[] = [
 ];
 
 export default function DecisionPanel({ slug, findingId, title, required }: { slug: string; findingId: string; title: string; required: boolean }) {
-  const role = useRole();
+  const actor = useActor();
+  const user = useUser();
   const key = `${slug}:${findingId}`;
   const existing = useDecisions().find((d) => d.key === key);
   const [choice, setChoice] = useState<Decision["choice"] | null>(null);
   const [reason, setReason] = useState("");
-  const [person, setPerson] = useState("Karandeep");
+  const [person, setPerson] = useState(user?.name ?? "Karandeep");
   const [err, setErr] = useState("");
 
   if (existing) {
@@ -21,14 +22,14 @@ export default function DecisionPanel({ slug, findingId, title, required }: { sl
       <div className="no-print mt-3 flex flex-wrap items-center gap-3 rounded border border-ok/30 bg-ok-bg px-3 py-2 text-sm" aria-live="polite">
         <span className="font-semibold text-ok">Decision recorded: {existing.choice}</span>
         <span className="text-muted">by {existing.person} on {new Date(existing.at).toLocaleString()}{existing.reason ? ` (${existing.reason})` : ""}</span>
-        <button className="ml-auto text-xs underline" onClick={() => clearDecision(key, roleName(role))}>Undo</button>
+        <button className="ml-auto text-xs underline" onClick={() => clearDecision(key, actor)}>Undo</button>
       </div>
     );
   }
   function save() {
     if (!choice) return;
     if (choice === "override" && reason.trim().length < 5) { setErr("An override needs a reason (at least a short sentence)."); return; }
-    saveDecision({ key, slug, findingId, choice, reason: reason.trim(), person: person.trim() || "Karandeep", role: roleName(role), title });
+    saveDecision({ key, slug, findingId, choice, reason: reason.trim(), person: person.trim() || "Karandeep", role: actor, title });
     setChoice(null); setReason(""); setErr("");
   }
   return (

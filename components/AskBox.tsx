@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
-import { useRole, roleName } from "./RoleProvider";
+import { useActor } from "./RoleProvider";
 import { logAudit } from "@/lib/store";
 
 const REFUSE = /\b(sign|send|email|negotiate|redline|counter[- ]?offer|approve|execute|accept the contract|legal advice|is (this|it) legal|enforceable|lawsuit|sue)\b/i;
 export default function AskBox({ slug }: { slug: string }) {
-  const role = useRole();
+  const actor = useActor();
   const [q, setQ] = useState("");
   const [a, setA] = useState<string | null>(null);
   function go(e: React.FormEvent) {
@@ -15,7 +15,7 @@ export default function AskBox({ slug }: { slug: string }) {
     setA(refused
       ? "I can't sign, send or negotiate a contract, and I can't give legal advice or say whether a clause is legal or enforceable. I can show what the draft says, what it collides with and what it could cost. For a legal conclusion, ask counsel."
       : "This prototype answers only from the stored brief above, with no free-text questions. Use the findings, the NOT CHECKED list and the data-type question on this page. For anything else, ask Karandeep or counsel.");
-    logAudit(roleName(role), refused ? "request refused" : "question not supported", slug, q.slice(0, 120));
+    logAudit(actor, refused ? "request refused" : "question not supported", slug, q.slice(0, 120));
   }
   return (
     <section className="no-print card rounded-lg border border-rule bg-card p-4">

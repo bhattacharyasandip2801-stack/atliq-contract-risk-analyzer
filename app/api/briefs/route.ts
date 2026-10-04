@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
-import { sortedBriefs, highestSeverity, countBy, deadlineIso } from "@/lib/data";
-import { getRole } from "@/lib/role";
+import { briefsFor, highestSeverity, countBy, deadlineIso } from "@/lib/data";
+import { getUser } from "@/lib/role";
 export async function GET(req: Request) {
-  const role = new URL(req.url).searchParams.get("role") ?? (await getRole());
-  const seller = role === "seller";
-  return NextResponse.json(sortedBriefs().map((b) => ({ slug: b.slug, counterparty: b.counterparty, doc_type: b.doc_type, deadline: deadlineIso(b.slug), highest_severity: highestSeverity(b), ...(seller ? {} : { counts: countBy(b) }) })));
+  const user = await getUser();
+  if (!user) return NextResponse.json({ error: "Sign in first." }, { status: 401 });
+  const seller = user.role === "seller" || new URL(req.url).searchParams.get("role") === "seller";
+  return NextResponse.json(briefsFor(user).map((b) => ({ slug: b.slug, counterparty: b.counterparty, doc_type: b.doc_type, deadline: deadlineIso(b.slug), highest_severity: highestSeverity(b), ...(seller ? {} : { counts: countBy(b) }) })));
 }

@@ -2,6 +2,8 @@
 
 A working prototype for AtliQ's contract reviewer (Karandeep) and its sellers. For each of the 15 incoming contract drafts in the capstone dataset it shows a **ranked brief** in which every finding quotes the contract, says which rule or earlier signed clause it relies on, and ends with a recorded decision. It also holds an **obligation register** built from the 17 signed contracts, an **evaluation screen**, a **decision log** and an **audit log**.
 
+**To open the prototype:** choose a person on the sign-in page. Choose **Karandeep** to see everything. No password is needed.
+
 Built for Codebasics AI PM Cohort, Capstone 2. Author: Sandip Gopal Bhattacharya. All data is the capstone's synthetic dataset. Nothing here is legal advice.
 
 ## Read this first: what is live and what is stored
@@ -53,9 +55,9 @@ npm run lint
 | **Register** (`/register`) | Obligations from the 17 signed contracts, with the banner "17 of about 30 signed contracts", the Al Noor waiver attached to the clause it modifies, and a CSV export of every restrictive covenant, exclusivity and most-favoured-customer term for counsel. |
 | **Decisions** | Every decision with who, when and why. An override needs a reason. |
 | **Evaluation** | The metrics from PRD Section 11 against their thresholds, with expected and found for each case. |
-| **Audit log** | Every view, export, print, decision, refused request and role switch, with the role used. |
-| **User demo** (sidebar, or top strip on a phone) | A 9-step guided tour for new users: queue, a brief, a clash with a signed contract, recording a decision, the register, the evaluation, the decision log, the seller view and a close. The tour switches the view for you and ends in the reviewer view. Press Esc or the close button to leave it. |
-| **Role switch** (top right) | Karandeep view or seller view. The seller sees flag types, severity, missing documents and "Ask Karandeep", with other clients' commercial terms and clause quotes hidden. The switch is not sign-in; production would sign users in. |
+| **Audit log** | Every view, export, print, decision, refused request, sign-in and sign-out, with the person who did it. |
+| **User demo** (sidebar, or top strip on a phone) | A 9-step guided tour for new users: queue, a brief, a clash with a signed contract, recording a decision, the register, the evaluation, the decision log, the seller view and a close. The tour signs you in as Karandeep, then as Jay for the seller step, then back as Karandeep. Press Esc or the close button to leave it. |
+| **Sign-in** (first page) | A demo sign-in with five people from the PRD and the tracker: Karandeep (full access) and the sellers Dhaval, Jay, Bhavin and Pranav. Each seller sees only the drafts they requested in the tracker's `requested_by` column, in the limited view: flag types, severity, missing documents and "Ask Karandeep", with other clients' commercial terms and clause quotes hidden. There is no password, and the cookie is not signed, so this is **not security**. Production would use company single sign-on. |
 
 ## How the stored data was built
 
@@ -90,10 +92,20 @@ No contract was changed. The four meeting-note files were copied from the projec
 - The register covers 17 of about 30 signed contracts. "Absent" means absent from those 17 files.
 - Missing files are shown as NOT CHECKED: Gulf Crown's Arabic text, Rheinwerk Annexes 1 and 3, Harrington Exhibits A to C, Northwind Schedules 2 and 3, the Seaside SOW, Sunrise SOW-1.
 - The Harrington briefs mention a sample extract of apparently real patient data. That comes from the 27 Sep huddle note, is shown as "reported, not confirmed", and no such data is in this repository.
-- Role switch is a cookie, not authentication. Decisions and the audit log live in one browser.
+- Sign-in is a demo: pick a person, no password, and the cookie is not signed, so anyone could set it by hand. It shows role-based access (PRD FR-17); it does not secure anything. Decisions and the audit log live in one browser.
 - The tracker value of the Kriti agreement ($10,100) is not reconciled with its INR fee because the sources give no exchange rate.
 
 ## Examiner API (read-only, JSON)
+
+The API uses the same sign-in. `GET /api/health` is open. For the others, sign in first, for example:
+
+```bash
+curl -c jar.txt -X POST https://<your-site>/api/signin -H 'content-type: application/json' -d '{"user":"karandeep"}'
+curl -b jar.txt https://<your-site>/api/briefs
+```
+
+Without a sign-in the API answers 401. A seller gets only their own drafts, in the redacted view, and 403 on the register and evaluation.
+
 
 | Endpoint | Returns |
 |---|---|
@@ -114,7 +126,7 @@ The running app makes no model calls, so it costs nothing to run on Vercel's fre
 
 ```
 app/            screens and API routes (Next.js App Router)
-components/     brief views, decision panel, ask box, role switch
+components/     brief views, decision panel, ask box, sign-in
 lib/            data loading, quote validation, seller redaction, evaluation, browser store
 data/           register.json, briefs/, generated bundles, dataset/ (the capstone files)
 scripts/        validate-quotes.mjs, build-data.mjs

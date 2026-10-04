@@ -56,3 +56,12 @@ export function countBy(b: Brief) {
   return { high: b.findings.filter((f) => f.severity === "High").length, medium: b.findings.filter((f) => f.severity === "Medium").length, low: b.low.length };
 }
 export { checkQuote };
+
+import type { DemoUser } from "./users";
+export function requestedBy(trackerId: string) { return TRACKER.find((r) => r.contract_id === trackerId)?.requested_by ?? null; }
+/** Karandeep (reviewer) sees every draft; a seller sees only the drafts they requested in the tracker. */
+export function briefsFor(user: DemoUser): Brief[] {
+  const all = sortedBriefs();
+  return user.role === "reviewer" ? all : all.filter((b) => requestedBy(b.tracker_id) === user.name);
+}
+export function canSee(user: DemoUser, slug: string) { return briefsFor(user).some((b) => b.slug === slug); }
