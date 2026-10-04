@@ -6,11 +6,21 @@ const srcName = (f: string) => f.split("/").pop()!.replace(/\.md$/, "");
 
 function Quote({ file, quote, label, signed }: { file: string; quote: string; label: string; signed?: boolean }) {
   return (
-    <figure className="min-w-0">
-      <figcaption className="mb-1 text-xs font-medium uppercase tracking-wide text-muted">{label}</figcaption>
+    <figure className={`min-w-0 rounded-lg border bg-card p-3 ${signed ? "border-accent/30" : "border-medium/40"}`}>
+      <figcaption className={`mb-2 inline-block rounded px-2 py-0.5 text-xs font-semibold ${signed ? "bg-accent-bg text-accent" : "bg-medium-bg text-medium"}`}>{label}</figcaption>
       <blockquote className={`quote ${signed ? "quote-signed" : ""}`}>“{quote}”</blockquote>
-      <div className="mt-1 break-words text-xs text-muted">Source: {srcName(file)} <span className="text-ok">· matches the file</span></div>
+      <div className="mt-1.5 break-words text-xs text-muted">Source: {srcName(file)} <span className="text-ok">· matches the file</span></div>
     </figure>
+  );
+}
+
+function ClashDivider() {
+  return (
+    <div className="flex items-center justify-center self-center md:flex-col" aria-hidden="true">
+      <span className="h-px w-8 bg-rule md:h-8 md:w-px" />
+      <span className="mx-2 rounded-full border border-high/30 bg-high-bg px-2 py-0.5 text-xs font-bold text-high md:mx-0 md:my-2">clashes with</span>
+      <span className="h-px w-8 bg-rule md:h-8 md:w-px" />
+    </div>
   );
 }
 
@@ -25,10 +35,11 @@ function FindingCard({ slug, f }: { slug: string; f: Finding }) {
       </header>
       <h3 className="mt-2 text-lg font-semibold leading-snug">{f.title}</h3>
       <p className="mt-2 text-[0.95rem] leading-relaxed">{f.explanation}</p>
-      <div className={`mt-3 grid gap-4 ${f.register_refs && f.register_refs.length ? "md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]" : ""}`}>
-        <Quote file={f.file} quote={f.quote} label={`In this draft, ${f.clause_ref}`} />
-        {f.register_refs && f.register_refs.length > 0 && (
-          <div className="grid min-w-0 gap-3">
+      {f.register_refs && f.register_refs.length ? (
+        <div className="mt-3 grid grid-cols-[minmax(0,1fr)] items-start gap-2 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
+          <Quote file={f.file} quote={f.quote} label={`This draft, ${f.clause_ref}`} />
+          <ClashDivider />
+          <div className="grid min-w-0 content-start gap-3">
             {f.register_refs.slice(0, 3).map((r, i) => <Quote key={r.entry_id + i} file={r.file} quote={r.quote} label={`Already signed, ${r.clause_ref}`} signed />)}
             {f.register_refs.length > 3 && (
               <details className="text-sm"><summary className="text-accent underline">{f.register_refs.length - 3} more register quotes</summary>
@@ -36,8 +47,10 @@ function FindingCard({ slug, f }: { slug: string; f: Finding }) {
               </details>
             )}
           </div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className="mt-3"><Quote file={f.file} quote={f.quote} label={`In this draft, ${f.clause_ref}`} /></div>
+      )}
       {f.extra_quotes && f.extra_quotes.length > 0 && (
         <details className="mt-3 text-sm"><summary className="text-accent underline">Supporting quotes ({f.extra_quotes.length})</summary>
           <div className="mt-2 grid gap-3 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">{f.extra_quotes.map((q, i) => <Quote key={i} file={q.file} quote={q.quote} label={q.clause_ref ?? "Supporting"} />)}</div>

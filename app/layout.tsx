@@ -6,7 +6,7 @@ import RoleSwitch from "@/components/RoleSwitch";
 import Sidebar from "@/components/Sidebar";
 
 export const metadata: Metadata = {
-  title: "AtliQ Contract Risk Analyzer (prototype)",
+  title: { default: "AtliQ Contract Risk Analyzer (prototype)", template: "%s · AtliQ Contract Risk Analyzer" },
   description: "Capstone prototype: a ranked, cited brief for each incoming contract draft, built only from the capstone's synthetic dataset.",
 };
 

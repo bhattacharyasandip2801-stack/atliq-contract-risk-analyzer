@@ -4,6 +4,9 @@ import { getRole } from "@/lib/role";
 import { SeverityBadge } from "@/components/Badges";
 import DecisionProgress from "@/components/DecisionProgress";
 import { ExportLink } from "@/components/Small";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = { title: "Contract queue" };
 
 export const dynamic = "force-dynamic";
 
@@ -28,6 +31,9 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
   const byLevel = (l: string) => all.filter((b) => highestSeverity(b) === l).length;
   const noHigh = all.length - byLevel("High");
   const briefs = sev === "All" ? all : all.filter((b) => (sev === "Low" ? ["Low", "None"].includes(highestSeverity(b)) : highestSeverity(b) === sev));
+  const deadlineGroups = [...new Set(all.map((b) => deadlineIso(b.slug) ?? "none"))].map((k) => ({
+    key: k, label: k === "none" ? "No date" : fmt(k).replace(/ 2026$/, ""), items: all.filter((b) => (deadlineIso(b.slug) ?? "none") === k),
+  }));
   const urgent = all.filter((b) => highestSeverity(b) === "High").slice(0, 3);
 
   const tiles: { k: string; v: string; sub: string; tone: string }[] = [
@@ -79,6 +85,26 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
           </div>
         </section>
       )}
+
+
+      <section className="card mt-5 rounded-lg border border-rule bg-card p-4" aria-label="Deadlines">
+        <h2 className="text-base font-semibold">Deadlines</h2>
+        <p className="text-xs text-muted">From the tracker notes and meeting notes. Dates are not adjusted to today.</p>
+        <ol className="mt-3 grid gap-2">
+          {deadlineGroups.map((g) => (
+            <li key={g.key} className="grid grid-cols-[4.5rem_minmax(0,1fr)] items-start gap-x-3 border-t border-rule pt-2 first:border-0 first:pt-0">
+              <span className="text-sm font-semibold">{g.label}</span>
+              <span className="flex flex-wrap gap-1.5">
+                {g.items.map((b) => (
+                  <Link key={b.slug} href={`/brief/${b.slug}`} className="inline-flex items-center gap-1.5 rounded-full border border-rule px-2.5 py-0.5 text-xs hover:bg-accent-bg">
+                    <i className={`h-2 w-2 rounded-full ${BAR[highestSeverity(b)] ?? "bg-low"}`} />{b.counterparty.replace(/,? (Inc\.?|LLC|LLP|GmbH|Pvt Ltd|Private Limited|FZ-LLC).*$/i, "")}{g.items.filter((x) => x.counterparty === b.counterparty).length > 1 && <span className="text-muted"> ({/Associate/.test(b.doc_type) ? "BAA" : /Master/.test(b.doc_type) ? "MSA" : "other"})</span>}
+                  </Link>
+                ))}
+              </span>
+            </li>
+          ))}
+        </ol>
+      </section>
 
       <section className="mt-6" aria-label="Needs attention first">
         <h2 className="text-base font-semibold">Action required</h2>

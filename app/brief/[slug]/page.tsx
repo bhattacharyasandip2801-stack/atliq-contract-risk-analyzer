@@ -11,6 +11,12 @@ import { AuditOnMount, PrintButton } from "@/components/Small";
 
 export const dynamic = "force-dynamic";
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const served = getBrief(slug);
+  return { title: served ? `${served.brief.counterparty}: ${served.brief.doc_type.replace(/\s*\(.*$/, "")}` : "Not found" };
+}
+
 export default async function BriefPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const served = getBrief(slug);

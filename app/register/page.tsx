@@ -4,6 +4,8 @@ import { getRole } from "@/lib/role";
 import { Chip, EXC_LABEL, EXC_TONE } from "@/components/Badges";
 import { ExportLink, AuditOnMount } from "@/components/Small";
 
+import type { Metadata } from "next";
+export const metadata: Metadata = { title: "Obligation register" };
 export const dynamic = "force-dynamic";
 const srcName = (f: string) => f.split("/").pop()!.replace(/\.md$/, "");
 const COUNSEL_TYPES = ["restrictive_covenant", "exclusivity", "mfn"];
