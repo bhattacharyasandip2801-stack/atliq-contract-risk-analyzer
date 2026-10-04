@@ -4,6 +4,7 @@ import { useActor } from "./RoleProvider";
 import { logAudit } from "@/lib/store";
 import { Chip } from "./Badges";
 import { GLOSSARY, GLOSSARY_NOTE } from "@/lib/glossary";
+import { TOPICS } from "@/lib/topics";
 
 interface Hit { file: string; kind: string; title: string; section: string; passage: string; score: number }
 interface Lib { file: string; kind: string; title: string; date: string; passages: number }
@@ -110,6 +111,14 @@ export default function KnowledgeSearch({ stats, library }: { stats: { files: nu
 
       {!hits && !doc && (
         <div className="mt-5 grid gap-5">
+          <section aria-label="Browse by topic" className="card rounded-lg border border-rule bg-card p-4">
+            <h2 className="text-base font-semibold">Browse by topic</h2>
+            <p className="mt-1 text-xs text-muted">Each tile searches the {stats.files} documents for that subject and shows the exact passages.</p>
+            <ul className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              {TOPICS.map((t) => <li key={t.title}><button onClick={() => { setQ(t.query); search(t.query); }} className="h-full w-full rounded-lg border border-rule bg-paper p-3 text-left hover:border-accent hover:bg-accent-bg"><span className="block text-sm font-semibold">{t.title}</span><span className="mt-0.5 block text-xs text-muted">{t.hint}</span></button></li>)}
+            </ul>
+          </section>
+
           <section aria-label="Try a question" className="card rounded-lg border border-rule bg-card p-4">
             <h2 className="text-base font-semibold">Try a question</h2>
             <div className="mt-2 flex flex-wrap gap-2">{IDEAS.map((i) => <button key={i} onClick={() => { setQ(i); search(i); }} className="rounded-full border border-rule bg-card px-3 py-1 text-xs hover:bg-accent-bg">{i}</button>)}</div>
