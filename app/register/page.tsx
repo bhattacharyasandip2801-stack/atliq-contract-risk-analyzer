@@ -29,8 +29,8 @@ export default async function RegisterPage({ searchParams }: { searchParams: Pro
       <h1 className="text-2xl font-bold">Obligation register</h1>
       <p role="status" className="mt-3 rounded-lg border border-medium/40 bg-medium-bg p-4 text-sm text-medium"><span className="font-semibold">This register covers 17 of about 30 signed contracts.</span> {REGISTER.meta.note}</p>
       <div className="mt-4 flex flex-wrap items-center gap-3">
-        <form className="flex flex-wrap items-end gap-2" action="/register">
-          <label className="text-xs text-muted">Show<select name="type" defaultValue={sp.type ?? "counsel"} className="mt-1 block rounded border border-rule bg-card p-2 text-sm text-ink">
+        <form className="flex min-w-0 max-w-full flex-wrap items-end gap-2" action="/register">
+          <label className="min-w-0 max-w-full text-xs text-muted">Show<select name="type" defaultValue={sp.type ?? "counsel"} className="mt-1 block w-full max-w-full rounded border border-rule bg-card p-2 text-sm text-ink">
             <option value="counsel">Counsel&apos;s list: restrictive covenants, exclusivity, MFN ({counselCount})</option>
             {types.map((t) => <option key={t} value={t}>{TYPE_NAME[t] ?? t}</option>)}
           </select></label>
@@ -40,7 +40,7 @@ export default async function RegisterPage({ searchParams }: { searchParams: Pro
         <div className="ml-auto"><ExportLink href="/api/register/export">Export counsel&apos;s list (CSV)</ExportLink></div>
       </div>
       <p className="mt-2 text-sm text-muted">{rows.length} entries shown. The Al Noor waiver letter of 10 Feb 2026 is attached to the Al Noor §12 entry rather than listed on its own.</p>
-      <ul className="mt-4 grid gap-3">
+      <ul className="mt-4 grid grid-cols-[minmax(0,1fr)] gap-3">
         {rows.map((e) => (
           <li key={e.id} className="card rounded-lg border border-rule bg-card p-4">
             <div className="flex flex-wrap items-center gap-2"><Chip tone="accent">{TYPE_NAME[e.type] ?? e.type}</Chip><Chip>{e.id}</Chip>{e.exception_label && <Chip tone={EXC_TONE[e.exception_label] ?? "plain"}>{EXC_LABEL[e.exception_label] ?? e.exception_label}</Chip>}</div>

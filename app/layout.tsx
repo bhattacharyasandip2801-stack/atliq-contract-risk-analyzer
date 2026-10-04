@@ -22,7 +22,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               <span className="text-xs text-muted">Viewing as</span>
               <div className="w-48"><RoleSwitch /></div>
             </div>
-            <div className="no-print border-b border-rule bg-accent-bg px-4 py-1.5 text-xs text-accent">
+            <div role="note" aria-label="Prototype notice" className="no-print border-b border-rule bg-accent-bg px-4 py-1.5 text-xs text-accent">
               Prototype on synthetic data. Briefs are pre-generated from the capstone dataset; every quote is re-checked against its source file each time a page loads.
             </div>
             <main className="mx-auto min-w-0 max-w-6xl px-4 py-6 lg:px-8">{children}</main>

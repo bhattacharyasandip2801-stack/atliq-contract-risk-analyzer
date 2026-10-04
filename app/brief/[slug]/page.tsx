@@ -26,14 +26,14 @@ export default async function BriefPage({ params }: { params: Promise<{ slug: st
     <div id="top">
       <AuditOnMount action={role === "seller" ? "view brief (seller)" : "view brief"} target={slug} />
       <nav aria-label="Breadcrumb" className="no-print mb-4 text-sm text-muted">
-        <Link href="/" className="text-accent hover:underline">Contract queue</Link> <span aria-hidden="true">/</span> <span className="text-ink">{brief.counterparty}</span>
+        <Link href="/" className="text-accent underline">Contract queue</Link> <span aria-hidden="true">/</span> <span className="text-ink">{brief.counterparty}</span>
       </nav>
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_260px]">
         <div className="min-w-0">
           {role === "seller" ? <BriefSeller s={sellerView(brief)} /> : <BriefReviewer brief={brief} quotesChecked={quotesChecked} dropped={dropped} />}
           <div className="mt-6"><AskBox slug={slug} /></div>
         </div>
-        <aside className="no-print order-first lg:order-none">
+        <aside aria-label="Brief summary" className="no-print order-first lg:order-none">
           <div className="card sticky top-4 grid gap-4 border border-rule bg-card p-4">
             <div>
               <div className="text-xs font-semibold text-muted">Status</div>

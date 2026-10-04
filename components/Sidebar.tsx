@@ -28,7 +28,7 @@ export default function Sidebar() {
   const items = ITEMS.filter((i) => !i.reviewerOnly || role === "reviewer");
   const active = (href: string) => (href === "/" ? path === "/" || path.startsWith("/brief") : path.startsWith(href));
   return (
-    <aside className="no-print bg-nav text-white lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-60 lg:flex-col">
+    <aside aria-label="Sidebar" className="no-print bg-nav text-white lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-60 lg:flex-col">
       <div className="flex items-center gap-2.5 px-4 py-4">
         <span className="grid h-8 w-8 place-items-center rounded-md bg-accent text-sm font-bold" aria-hidden="true">Q</span>
         <div className="leading-tight"><div className="text-sm font-semibold">AtliQ</div><div className="text-xs text-white/60">Contract Risk Analyzer</div></div>
