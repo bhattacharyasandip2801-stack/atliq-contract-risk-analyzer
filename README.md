@@ -1,6 +1,6 @@
 # AtliQ Contract Risk Analyzer (capstone prototype)
 
-A working prototype for AtliQ's contract reviewer (Karandeep) and its sellers. For each of the 15 incoming contract drafts in the capstone dataset it shows a **ranked brief** in which every finding quotes the contract, says which rule or earlier signed clause it relies on, and ends with a recorded decision. It also holds an **obligation register** built from the 17 signed contracts, an **evaluation screen**, a **decision log** and an **audit log**.
+A working prototype for AtliQ's contract reviewer (Karandeep) and its sellers. For each of the 15 incoming contract drafts in the capstone dataset it shows a **ranked brief** in which every finding quotes the contract, says which rule or earlier signed clause it relies on, and ends with a recorded decision. It also holds an **obligation register** built from the 17 signed contracts, a **knowledge base** with cited search over every dataset file, Karandeep's **playbook**, a **check-a-new-draft** screen that runs live rules on pasted text, an **evaluation screen**, a **decision log** and an **audit log**.
 
 **To open the prototype:** choose a person on the sign-in page. Choose **Karandeep** to see everything. No password is needed.
 
@@ -16,7 +16,10 @@ Built for Codebasics AI PM Cohort, Capstone 2. Author: Sandip Gopal Bhattacharya
 | Redaction (seller view) | **Live, in code**, on the server. The seller view is rebuilt from redaction-safe fields only. |
 | Decision and audit logs | Live, but kept in the **browser's local storage** only. |
 | Evaluation screen | Live, in code, over the stored briefs and register. No model is called, so it shows 0 tokens. |
-| Analysis of a **new** contract | **Not built.** It needs a paid AI API key, which this project does not have. The PRD (Appendix B) describes the design. Uploading a new contract is out of scope for this prototype. |
+| Check a **new** draft (paste or upload) | **Live, in code, no AI.** Fixed rules from Karandeep's checklist and the entity sheet read the pasted text on the server and quote it back exactly. The text is not stored. It always lists what it could not check. Real patient or personal data stops the check. |
+| Knowledge base search | **Live, in code, no AI.** BM25 keyword search over 821 passages from the 40 dataset files. Every passage is copied word for word and re-checked against its file. Reviewer only. |
+| Optional AI answer over the knowledge base | **Off by default.** Needs three settings in Vercel (see below). It writes a short answer only from passages the search found, and every quote it cites is checked word for word. An invented quote, advice wording or a malformed reply is withheld. **The live call to a real provider has not been tested**; the code path was tested against stand-in servers using the Anthropic, Gemini and OpenAI request formats. |
+| Analysis of a **full brief for a new contract** | **Not built.** Writing a full ranked brief with cross-document checks needs a paid AI API key, which this project does not have. The PRD (Appendix B) describes the design. The paste-a-draft rule check above is the live part. |
 
 ## Run it locally
 
@@ -30,6 +33,19 @@ npm run build && npm start
 ```
 
 No environment variables are needed. There is no database and no API key.
+
+### Optional: switch on the AI answer layer
+
+The knowledge base works without this. To add the optional **Write a short answer** button, set these in Vercel (Project, Settings, Environment Variables), or in a local `.env.local` file that is never committed. Never put a key in the code or in a chat.
+
+| Name | Value |
+|---|---|
+| `KB_AI_PROVIDER` | `gemini`, `anthropic` or `openai` |
+| `KB_AI_KEY` | your key from that provider (a free tier is enough for a demo) |
+| `KB_AI_MODEL` | a model name from the provider's own list. No default is built in, so the code never guesses one |
+| `KB_AI_BASE_URL` | optional, for a proxy or a test server |
+
+About 6 passages (about 2,500 tokens) go to the model per question. The answer is limited to 10 questions an hour per person and 100 a day, as a best-effort brake per server instance. The live call has not been tested against a real provider from this workspace. After you set the three variables, open the Knowledge base, search, press **Write a short answer**, and confirm that it shows quotes. If it shows an error, the cited passages still work.
 
 Useful scripts:
 
@@ -52,11 +68,14 @@ npm run lint
 |---|---|
 | **Queue** (`/`) | The 15 drafts with counterparty, document, AtliQ entity, deadline from the tracker and meeting notes, highest severity and how many High findings have a decision. |
 | **Brief** (`/brief/<slug>`) | Header and plain-English headline; exposure table; High and Medium findings with the draft quote beside the signed clause it collides with; earlier similar clauses labelled deliberate, waved through or unlabelled; documents the deal needs (signed, draft only, missing, referenced but absent); data type (asks a question when the contract is silent); NOT CHECKED list; checks that passed; decision buttons; a box that refuses to sign, send, negotiate or give legal advice; print to A4 PDF. |
+| **Check a new draft** (`/intake`) | Paste text, upload a .txt or .md file, or pick a draft from the dataset. Returns findings with exact quotes from your text, the delay-damages amount per day when you give a contract value, the entity and country fit, what AtliQ has already signed that may be touched (Karandeep's view only), a data-type question, NOT CHECKED, and the list of checks that ran. Sellers see flags and questions without other clients' terms. |
+| **Knowledge base** (`/knowledge`) | Ask a question in plain words or pick a suggested one. Shows the exact passages with source, filtered by kind of document. Karandeep's view only. |
+| **Playbook** (`/playbook`) | Karandeep's nine checklist rules and which drafts hit each, the exceptions on record labelled deliberate or waved through, the 16 past negotiations as written, and the entity rules. Karandeep's view only. |
 | **Register** (`/register`) | Obligations from the 17 signed contracts, with the banner "17 of about 30 signed contracts", the Al Noor waiver attached to the clause it modifies, and a CSV export of every restrictive covenant, exclusivity and most-favoured-customer term for counsel. |
 | **Decisions** | Every decision with who, when and why. An override needs a reason. |
 | **Evaluation** | The metrics from PRD Section 11 against their thresholds, with expected and found for each case. |
 | **Audit log** | Every view, export, print, decision, refused request, sign-in and sign-out, with the person who did it. |
-| **User demo** (sidebar, or top strip on a phone) | A 9-step guided tour for new users: queue, a brief, a clash with a signed contract, recording a decision, the register, the evaluation, the decision log, the seller view and a close. The tour signs you in as Karandeep, then as Jay for the seller step, then back as Karandeep. Press Esc or the close button to leave it. |
+| **User demo** (sidebar, or top strip on a phone) | A 12-step guided tour for new users: queue, a brief, a clash with a signed contract, recording a decision, the register, checking a new draft, the knowledge base, the playbook, the evaluation, the decision log, the seller view and a close. The tour signs you in as Karandeep, then as Jay for the seller step, then back as Karandeep. Press Esc or the close button to leave it. |
 | **Sign-in** (first page) | A demo sign-in with five people from the PRD and the tracker: Karandeep (full access) and the sellers Dhaval, Jay, Bhavin and Pranav. Each seller sees only the drafts they requested in the tracker's `requested_by` column, in the limited view: flag types, severity, missing documents and "Ask Karandeep", with other clients' commercial terms and clause quotes hidden. There is no password, and the cookie is not signed, so this is **not security**. Production would use company single sign-on. |
 
 ## How the stored data was built
@@ -76,7 +95,8 @@ No contract was changed. The four meeting-note files were copied from the projec
 - The briefs were written from the same documents the labels refer to. So a pass shows that the prototype displays, verifies and covers the labelled items. It is **not** a measure of accuracy on contracts the tool has not seen, and there is no train/test split because nothing is trained.
 - Quote accuracy is the one check that does not depend on anyone's judgement: it is a string match against the file.
 - The alarm rate (share of High findings that are valid) can only come from Karandeep's review, so it is not computed.
-- Latency is not measured, because briefs are stored.
+- Latency is not measured for briefs, because they are stored. The paste-a-draft check runs in well under a second on the dataset drafts.
+- The **live rule check** has 19 labelled cases. The rules were tuned on the same 15 drafts, so a pass shows coverage of those cases, not accuracy on contracts the tool has not seen. Its limits: it matches wording only (so it can miss a clause worded differently and can flag a clause that only looks similar), it reads plain text only (a PDF, Word file or scan is NOT CHECKED), and it cannot compare documents against each other, for example the Harrington BAA against the MSA.
 
 ## Findings that differ from what people assumed
 

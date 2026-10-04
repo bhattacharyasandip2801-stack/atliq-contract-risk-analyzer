@@ -14,9 +14,15 @@ const ICON = {
   decisions: I("M5 12l4 4 10-10"),
   eval: I("M5 20V10M12 20V4M19 20v-7"),
   audit: I("M12 8v5l3 2M21 12a9 9 0 11-18 0 9 9 0 0118 0z"),
+  intake: I("M12 5v14M5 12h14"),
+  kb: I("M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-5-5"),
+  playbook: I("M5 4h11a3 3 0 013 3v13H8a3 3 0 01-3-3zM5 17a3 3 0 013-3h11"),
 };
 const ITEMS: { href: string; label: string; icon: keyof typeof ICON; reviewerOnly?: boolean }[] = [
   { href: "/", label: "Contract queue", icon: "queue" },
+  { href: "/intake", label: "Check a new draft", icon: "intake" },
+  { href: "/knowledge", label: "Knowledge base", icon: "kb", reviewerOnly: true },
+  { href: "/playbook", label: "Playbook", icon: "playbook", reviewerOnly: true },
   { href: "/register", label: "Obligation register", icon: "register", reviewerOnly: true },
   { href: "/decisions", label: "Decisions", icon: "decisions", reviewerOnly: true },
   { href: "/evaluation", label: "Evaluation", icon: "eval", reviewerOnly: true },

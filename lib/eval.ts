@@ -1,6 +1,8 @@
 import { allBriefs, REGISTER } from "./data";
 import { auditQuotes, norm } from "./validate";
 import { sellerView } from "./seller";
+import sources from "@/data/sources.json";
+import { runIntake, type Geography } from "./intake";
 import type { Brief, Finding } from "./types";
 
 export interface Check { label: string; pass: boolean; expected: string; found: string }
@@ -205,6 +207,40 @@ export function runEvaluation(): { dimensions: Dimension[]; labelsNote: string; 
       rows.push({ label: `Seller view: ${b.counterparty} (${b.doc_type.split(" (")[0]})`, expected: "no other client's name, quote or rate", pass: leaks.length === 0, found: leaks.length ? "leaks: " + [...new Set(leaks)].join(", ") : "no leak" });
     }
     dims.push(dim("Confidentiality handling", "no leak in test", rows));
+  }
+
+  // 14b Live rule check (paste-a-draft) run over the dataset drafts
+  {
+    const SRC = sources as Record<string, string>;
+    const geoOf = (b: Brief): Geography => /contractor|subcontractor|vendor|partnership|freelanc/i.test(b.doc_type) ? "n/a" : /^USA|United States/i.test(b.client_country) ? "US" : /^India/i.test(b.client_country) ? "India" : /Saudi|Dubai|UAE|Oman|Middle/i.test(b.client_country) ? "Middle East" : /German|Europe|UK/i.test(b.client_country) ? "Europe" : "";
+    const run = (slug: string, value?: number) => { const b = B(slug); return runIntake({ text: SRC[b.draft_file], geography: geoOf(b), value: value ?? null, currency: "$" }, { reviewer: true }); };
+    const high = (r: ReturnType<typeof run>, re: RegExp) => r.findings.find((f) => f.severity === "High" && re.test(f.title));
+    const rows: Check[] = [];
+    const add = (label: string, expected: string, f: { id: string; severity: string; title: string } | undefined | boolean, found?: string) => rows.push({ label, expected, pass: typeof f === "boolean" ? f : !!f, found: found ?? (typeof f === "object" && f ? `${f.id} ${f.severity}: ${f.title}` : "not found") });
+    const h = run("harrington_health_msa", 210000);
+    add("Harrington MSA: uncapped delay damages", "High finding", high(h, /delay damages/i));
+    add("Harrington MSA: $4,200 a day computed", "$4,200 a day", h.exposure.some((e) => e.result.startsWith("$4,200 a day")), h.exposure[0]?.result ?? "no exposure line");
+    add("Harrington MSA: unlimited liability", "High finding", high(h, /unlimited liability/i));
+    add("Harrington MSA: indemnity covers the client's negligence", "High finding", high(h, /negligence/i));
+    const g = run("gulf_crown_hotels_msa");
+    add("Gulf Crown: Al Noor restriction flagged as possible conflict", "High possible conflict with register entry", g.findings.find((f) => f.severity === "High" && f.type === "possible_conflict" && /Al Noor/.test(f.title) && (f.register ?? []).some((r) => /Al Noor/i.test(r.contract))));
+    add("Gulf Crown: warranty that no restriction binds AtliQ", "High finding", high(g, /warrant/i));
+    add("Gulf Crown: Arabic text prevails, not provided", "NOT CHECKED item", g.notChecked.some((n) => /language/i.test(n.item)), g.notChecked.map((n) => n.item).join("; ").slice(0, 100));
+    add("TravelHub: Inc named for a Middle East client", "High finding", high(run("travelhub_services_agreement"), /Inc \(US only\)/));
+    add("TravelHub: contracting entity differs from invoicing entity", "High finding", high(run("travelhub_services_agreement"), /invoices come from/i));
+    add("Datavane: CloudSpan exclusivity flagged as possible conflict", "High possible conflict with register entry", run("datavane_strategic_partnership_agreement").findings.find((f) => f.severity === "High" && f.type === "possible_conflict" && (f.register ?? []).some((r) => /CloudSpan/i.test(r.contract))));
+    add("BlueOrchid: Al Noor reach flagged as possible conflict", "High possible conflict", high(run("blueorchid_hotels_pilot_agreement"), /Al Noor/));
+    add("FinServe NDA: titled mutual, one side defined", "High fairness finding", high(run("finserve_capital_mutual_nda"), /mutual/i));
+    add("Kriti Data Labs (AtliQ's own paper): uncapped delay damages", "High finding", high(run("kriti_data_labs_subcontractor_agreement"), /delay damages/i));
+    add("Marcus Reed (AtliQ's own paper): payment above 45 days", "High finding", high(run("marcus_reed_contractor_agreement"), /payment in \d+ days/i));
+    add("Rheinwerk: referenced Annexes 1 and 3 reported as not checked", "NOT CHECKED item", run("rheinwerk_analytics_services_agreement").notChecked.some((n) => /Annex 1/.test(n.item)));
+    const lm = run("loopmart_mutual_nda"), sn = run("sunrise_foods_sow2"), rw = run("rheinwerk_analytics_services_agreement");
+    add("LoopMart NDA (clean control): no High finding", "0 High", lm.findings.every((f) => f.severity !== "High"), `${lm.findings.filter((f) => f.severity === "High").length} High`);
+    add("Sunrise SOW-2 (only looks risky): no High finding", "0 High", sn.findings.every((f) => f.severity !== "High"), `${sn.findings.filter((f) => f.severity === "High").length} High`);
+    add("Rheinwerk penalty (0.5% a week, cap 5%): no delay-damages flag", "no flag", !rw.findings.some((f) => /delay damages/i.test(f.title)));
+    const rd = runIntake({ text: "Sample patient extract. Name: John Smith. DOB 04/12/1961. SSN 123-45-6789. Diagnosis E11.9 type 2 diabetes. " + "x".repeat(200), geography: "US" }, { reviewer: true });
+    add("Real patient data in the text: stops, no analysis", "stop state", !!rd.stop && rd.findings.length === 0, rd.stop ? "stopped" : "not stopped");
+    dims.push(dim("Live rule check on the 15 drafts (paste-a-draft)", "all labelled cases found; no High on LoopMart or Sunrise SOW-2", rows, true, "The paste-a-draft check is rules only, with no AI model. It covers entity and law, delay damages, liability, indemnity, payment, termination, IP, promises already made, mutual NDAs, data type and missing attachments. It does not read cross-document mismatches (for example the Harrington BAA against the MSA); those come from the stored briefs. The rules were tuned on these same 15 drafts, so a pass shows coverage of the labelled cases, not accuracy on contracts the tool has not seen."));
   }
 
   // 15 Latency
