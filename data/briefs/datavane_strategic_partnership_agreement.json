@@ -1,0 +1,357 @@
+{
+  "slug": "datavane_strategic_partnership_agreement",
+  "draft_file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+  "tracker_id": "C-035",
+  "counterparty": "Datavane, Inc.",
+  "doc_type": "Strategic Partnership Agreement (implementation and referral partner)",
+  "atliq_entity_in_draft": "AtliQ Technologies Pvt Ltd",
+  "client_country": "USA (Datavane is a Delaware corporation based in San Francisco; the partner Territory is India, GCC and Europe)",
+  "tracker_status": "In review",
+  "deadline": "15 Oct 2026 (tracker note)",
+  "value": "No value stated (tracker blank; revenue share and referral fee only)",
+  "headline": "Datavane is a lakehouse platform, so signing would make AtliQ an implementation and referral partner for a competing platform in India and the GCC while the signed CloudSpan exclusivity (which also binds AtliQ's Affiliates) still runs, and the draft adds a 24-month restraint, an uncapped one-way indemnity and a termination right only Datavane has.",
+  "highest_severity": "High",
+  "exposure": [
+    {
+      "label": "Restraint after termination (non-solicit / no other-platform work for Datavane Accounts)",
+      "clause_ref": "§5.3 and §12.3",
+      "calculation": "Term of 3 years + 24 months after termination for any reason = up to 5 years from the Effective Date before any renewal; Datavane may end the Agreement on 15 days' notice (§7.2) and the 24 months still run",
+      "result": "Up to 5 years of restraint; minimum 24 months after any termination",
+      "cap": "uncapped: Partner's liability under Section 5 is expressly not limited (§12.3)",
+      "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+      "quote": "NOTHING IN THIS AGREEMENT SHALL LIMIT PARTNER'S LIABILITY UNDER SECTION 5, SECTION 9 OR SECTION 11.1."
+    },
+    {
+      "label": "AtliQ indemnity v. Datavane's own liability cap",
+      "clause_ref": "§11.1 and §12.2",
+      "calculation": "AtliQ: no limit. Datavane: USD 10,000 in total, including its own IP indemnity",
+      "result": "AtliQ uncapped v. Datavane USD 10,000",
+      "cap": "AtliQ: uncapped (read from clause). Datavane: USD 10,000 aggregate (§12.2)",
+      "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+      "quote": "Partner's obligations under this Section 11.1 shall not be subject to any limitation or cap."
+    },
+    {
+      "label": "Share of Joint Deal Revenue, illustration per USD 100 of Partner Services fees invoiced to a Datavane Account",
+      "clause_ref": "§1.7 and §6.1",
+      "calculation": "20% x USD 100 = USD 20 to AtliQ; 80% x USD 100 = USD 80 to Datavane",
+      "result": "AtliQ keeps USD 20 of each USD 100 of its own services fees in a Joint Deal",
+      "cap": "No cap; the split applies irrespective of whether subscription or services fees are larger",
+      "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+      "quote": "Joint Deal Revenue shall be shared between the Parties in the proportion of eighty percent (80%) to Datavane and twenty percent (20%) to Partner, irrespective of whether Platform subscription fees or Partner Services fees are the larger component of such Joint Deal."
+    },
+    {
+      "label": "CloudSpan exclusivity: stated remedy for breach",
+      "clause_ref": "CloudSpan §7.1 and §13.2",
+      "calculation": "Not calculable: the CloudSpan text names no payment or penalty for a breach of §7.1",
+      "result": "Unquantified. Ordinary liability cap is the greater of 12 months of Referral Fees and USD 100,000 per contract year; whether it applies to an exclusivity breach is for counsel",
+      "cap": "read from CloudSpan §13.2: greater of (a) Referral Fees paid or payable in the preceding 12 months and (b) USD 100,000",
+      "file": "signed_contracts/2025-09-01_cloudspan_strategic_partnership_agreement.md",
+      "quote": "Each Party's aggregate liability under this Agreement in any contract year shall not exceed the greater of (a) the total Referral Fees paid or payable in the preceding twelve (12) months and (b) USD 100,000."
+    }
+  ],
+  "findings": [
+    {
+      "id": "F-01",
+      "severity": "High",
+      "type": "conflict",
+      "title": "Datavane is a competing platform under the signed CloudSpan exclusivity, in India and the GCC",
+      "clause_ref": "§2.1, §1.10 and §6.4",
+      "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+      "quote": "Datavane appoints Partner, and Partner accepts appointment, as a non-exclusive \"Datavane Premier Implementation Partner\" for the Territory.",
+      "explanation": "CloudSpan clause 7.1 says that during its Term AtliQ Technologies Pvt Ltd and its Affiliates shall not act as an implementation, reseller or referral partner for any Competing Platform in India or the GCC, and defines that as any cloud data-warehouse, lakehouse or unified analytics platform offered as a service. Datavane describes itself as exactly that (a lakehouse and unified analytics platform on subscription), and this draft appoints AtliQ as its implementation partner and pays a referral fee for the Territory, which covers India, all six GCC states and Europe (§1.10). The overlap is India and the GCC, which includes the 'Middle East' pipeline Bhavin mentions; Europe is outside CloudSpan's clause 7. CloudSpan runs to 31 Aug 2028 unless either side gives 90 days' notice, so the two would overlap for at least that period. The carve-out in CloudSpan 7.3(b) does not help because AtliQ would hold a partner appointment with Datavane. Possible conflict, for counsel.",
+      "rule": "R-13",
+      "register_refs": [
+        {
+          "entry_id": "REG-A32",
+          "file": "signed_contracts/2025-09-01_cloudspan_strategic_partnership_agreement.md",
+          "clause_ref": "§7.1",
+          "quote": "during the Term Partner and its Affiliates shall not act as an implementation, reseller or referral partner for any Competing Platform in India or the GCC."
+        },
+        {
+          "entry_id": "REG-A32",
+          "file": "signed_contracts/2025-09-01_cloudspan_strategic_partnership_agreement.md",
+          "clause_ref": "§7.2",
+          "quote": "Competing Platform\" means any cloud data-warehouse, lakehouse or unified analytics platform offered as a service."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "CloudSpan Strategic Partnership Agreement",
+          "label": "deliberate",
+          "note": "negotiation_notes.md: CloudSpan first asked for India, the GCC or Europe; Karandeep: 'We can't do Europe — Europe is where we're growing.' Agreed India + GCC only, with mutual 90-day termination for convenience."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": true,
+      "seller_text": "Possible clash with an existing partner commitment on competing platforms in some of the same regions; ask Karandeep."
+    },
+    {
+      "id": "F-02",
+      "severity": "High",
+      "type": "possible_conflict",
+      "title": "24-month ban on any other-platform work for any 'Datavane Account', which can include AtliQ's existing clients and AtliQ Inc",
+      "clause_ref": "§5.3 with §1.4, §1.5 and §5.2",
+      "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+      "quote": "During the Term and for a period of twenty-four (24) months following expiration or termination of this Agreement for any reason, Partner shall not, and shall cause its Affiliates not to, directly or indirectly solicit, market to, or provide any implementation, migration, managed or consulting services to any Datavane Account in connection with any cloud data warehouse, lakehouse, data platform or analytics platform other than the Datavane Platform.",
+      "explanation": "A 'Prospect' is anyone AtliQ engages in 'any discussion regarding the Platform', including an existing AtliQ client (§1.4), and every Prospect becomes a Datavane Account (§1.5, §5.2). So a client AtliQ merely discusses Datavane with could not be served on any other data platform during the Term and for 24 months after, even if Datavane ends the deal on 15 days' notice (§7.2). The restraint names Affiliates (§5.3, §2.4); on the fact sheet AtliQ Inc is 100% owned by the Pvt Ltd, so it appears to be an Affiliate, although only the Pvt Ltd signs. Liability under Section 5 is expressly uncapped (§12.3) and Datavane can end the deal at once for a breach (§7.4) and seek an injunction (§13.3). The same list would also bar CloudSpan work for a Datavane Account. The scope is wide and unclear, so this is a possible conflict, for counsel.",
+      "rule": "R-14",
+      "register_refs": [
+        {
+          "entry_id": "REG-A31",
+          "file": "signed_contracts/2025-09-01_cloudspan_strategic_partnership_agreement.md",
+          "clause_ref": "§1.1",
+          "quote": "any entity that directly or indirectly controls, is controlled by, or is under common control with that Party"
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "CloudSpan Strategic Partnership Agreement",
+          "label": "deliberate",
+          "note": "AtliQ's only other platform exclusivity runs 'during the Term' with no post-term tail (clause 14.4(b) ends it on termination), and Karandeep cut its territory to India and the GCC."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "Long restraint on serving clients on other platforms that reaches related companies; ask Karandeep."
+    },
+    {
+      "id": "F-03",
+      "severity": "High",
+      "type": "clause_risk",
+      "title": "Uncapped one-way indemnity for anything 'relating to' AtliQ's services, against a USD 10,000 cap for Datavane",
+      "clause_ref": "§11.1 and §12.2",
+      "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+      "quote": "Partner shall defend, indemnify and hold harmless Datavane, its Affiliates and their respective directors, officers, employees and agents from and against any and all Losses arising out of or relating to (a) the Partner Services;",
+      "explanation": "AtliQ covers any and all Losses 'arising out of or relating to' its services, claims by a Datavane Account about any Joint Deal, and acts of its staff or subcontractors, with no limit (§11.1, §12.3). The text does not carve out Losses caused by Datavane's own platform or negligence, so it can be read as covering them; Datavane's indemnity is only for US patent or copyright claims about the Platform, and its total liability is USD 10,000 (§12.2). Karandeep's checklist is indemnity mutual, 'we don't cover their mistakes', and liability at 1x fees, not unlimited. No fee amount is stated in the draft, so the size of the exposure cannot be set against any fee.",
+      "rule": "R-03",
+      "register_refs": [
+        {
+          "entry_id": "REG-A36",
+          "file": "signed_contracts/2025-09-01_cloudspan_strategic_partnership_agreement.md",
+          "clause_ref": "§13.2",
+          "quote": "Each Party's aggregate liability under this Agreement in any contract year shall not exceed the greater of (a) the total Referral Fees paid or payable in the preceding twelve (12) months and (b) USD 100,000."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "CloudSpan Strategic Partnership Agreement",
+          "label": "unlabelled",
+          "note": "CloudSpan's liability cap is mutual and its indemnities are limited to IP claims on each side's own materials; the register has no negotiation evidence for it either way."
+        },
+        {
+          "contract": "PayTrack Technologies MSA",
+          "label": "deliberate",
+          "note": "negotiation_notes.md: Karandeep refused to cover the other side's own negligence ('we can't insure against PayTrack's own negligence') and obtained a mutual indemnity."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "Indemnity is one-way and uncapped for AtliQ, with a very low cap for the other side; ask Karandeep."
+    },
+    {
+      "id": "F-04",
+      "severity": "Medium",
+      "type": "fairness",
+      "title": "Datavane can end the deal on 15 days' notice; AtliQ cannot end it for convenience for three years",
+      "clause_ref": "§7.2 and §7.3",
+      "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+      "quote": "Partner acknowledges the investment made by Datavane in enabling Partner and agrees that Partner may not terminate this Agreement for convenience during the initial term.",
+      "explanation": "Datavane may terminate for any reason on 15 days' written notice (§7.2); AtliQ has no convenience right for the three-year initial term (§7.3), and the agreement then renews for one-year periods unless Datavane gives notice (§7.1). On expiry or termination no revenue share is payable on any deal not fully paid by the customer (§7.5(c)), while the 24-month restraint in §5.3 survives. The CloudSpan agreement has mutual 90-day termination for convenience, which Karandeep specifically asked for.",
+      "rule": "R-08",
+      "register_refs": [
+        {
+          "entry_id": "REG-A33",
+          "file": "signed_contracts/2025-09-01_cloudspan_strategic_partnership_agreement.md",
+          "clause_ref": "§14.2",
+          "quote": "Either Party may terminate this Agreement for convenience by giving not less than ninety (90) days' written notice to the other."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "CloudSpan Strategic Partnership Agreement",
+          "label": "deliberate",
+          "note": "negotiation_notes.md: Karandeep asked for mutual 90-day termination for convenience; agreed."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "Termination rights are very unequal; ask Karandeep."
+    },
+    {
+      "id": "F-05",
+      "severity": "Medium",
+      "type": "clause_risk",
+      "title": "AtliQ keeps 20% of its own services fees, paid up to about five months after the customer pays",
+      "clause_ref": "§6.1 to §6.3",
+      "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+      "quote": "Datavane shall pay Partner's share of Joint Deal Revenue within sixty (60) days after the end of the calendar quarter in which Datavane receives payment from the relevant Datavane Account.",
+      "explanation": "Joint Deal Revenue includes AtliQ's own implementation fees (§1.7); Datavane invoices the customer and keeps 80% (§6.1, §6.2). AtliQ is paid only after Datavane is paid, within 60 days after the end of that calendar quarter: a customer paying on the first day of a quarter would mean about 90 + 60 = 150 days before AtliQ's share arrives. Checklist: payment 30 days, 45 max. At CloudSpan AtliQ is paid a 12% referral fee on a quarterly statement within 30 days of invoice and contracts directly with the customer for implementation. Whether the economics work is a commercial decision; the draft states no fee amount.",
+      "rule": "R-05",
+      "register_refs": [
+        {
+          "entry_id": "REG-A34",
+          "file": "signed_contracts/2025-09-01_cloudspan_strategic_partnership_agreement.md",
+          "clause_ref": "§4.4",
+          "quote": "CloudSpan shall pay each undisputed invoice within thirty (30) days of receipt."
+        }
+      ],
+      "exception_history": [],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "Revenue split and payment timing are outside AtliQ's usual range; ask Karandeep."
+    },
+    {
+      "id": "F-06",
+      "severity": "Medium",
+      "type": "entity_law",
+      "title": "Delaware law, San Francisco courts only, and an injunction right that only Datavane has",
+      "clause_ref": "§13.1 to §13.3",
+      "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+      "quote": "Any action or proceeding arising out of or relating to this Agreement shall be brought exclusively in the state or federal courts located in the City and County of San Francisco, California, and each Party irrevocably submits to the personal jurisdiction of such courts and waives any objection based on inconvenient forum.",
+      "explanation": "The checklist position for the Pvt Ltd is Indian law. This draft is Delaware law with exclusive San Francisco courts, and only Datavane may seek an injunction (§13.3) for Sections 5, 8 or 9. AtliQ has accepted a non-Indian law for a partner before (Singapore law and SIAC arbitration at CloudSpan, recorded as accepted).",
+      "rule": "R-06",
+      "register_refs": [
+        {
+          "entry_id": "REG-A39",
+          "file": "signed_contracts/2025-09-01_cloudspan_strategic_partnership_agreement.md",
+          "clause_ref": "§15.1",
+          "quote": "This Agreement is governed by the laws of the Republic of Singapore."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "CloudSpan Strategic Partnership Agreement",
+          "label": "deliberate",
+          "note": "negotiation_notes.md: 'Singapore law / SIAC ok.' No reasoning recorded beyond acceptance."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "Governing law and courts are US; AtliQ's usual position is Indian law; ask Karandeep."
+    },
+    {
+      "id": "F-07",
+      "severity": "Medium",
+      "type": "bundle",
+      "title": "The Global Partner Program Guide and Code of Conduct are part of the deal but not in the file, and Datavane can change them alone",
+      "clause_ref": "§14.3 and §14.7",
+      "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+      "quote": "Datavane may update the Global Partner Program Guide, certification requirements and Partner Portal terms from time to time upon notice to Partner, and such updates shall form part of this Agreement.",
+      "explanation": "The entire agreement is this document plus the Global Partner Program Guide (§14.7), and AtliQ must follow the Partner Code of Conduct (§3.4) and Datavane's 'published implementation methodology' (§2.2(c)). None of these is in the file, and §14.3 lets Datavane change the Guide and certification requirements on notice with no AtliQ consent. What the full terms say cannot be tested.",
+      "rule": "R-17",
+      "register_refs": [],
+      "exception_history": [],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "The Partner Program Guide and Code of Conduct are referred to but not attached; please send them."
+    }
+  ],
+  "bundle": {
+    "needed": [
+      {
+        "document": "Global Partner Program Guide",
+        "status": "referenced_absent",
+        "note": "Forms part of the entire agreement and can be updated by Datavane on notice.",
+        "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+        "quote": "This Agreement, together with the Global Partner Program Guide, constitutes the entire agreement between the Parties and supersedes all prior discussions and agreements relating to its subject matter."
+      },
+      {
+        "document": "Datavane Partner Code of Conduct",
+        "status": "referenced_absent",
+        "note": "AtliQ must comply; a breach of §3.4 lets Datavane terminate immediately (§7.4).",
+        "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+        "quote": "Partner shall comply with Datavane's Partner Code of Conduct, applicable anti-corruption laws"
+      },
+      {
+        "document": "Datavane published implementation methodology and annual joint business plan",
+        "status": "referenced_absent",
+        "note": "Referred to in the scope of activities; not in the file.",
+        "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+        "quote": "deliver Partner Services to Datavane Accounts in accordance with Datavane's published implementation methodology"
+      }
+    ]
+  },
+  "data_class": {
+    "class": "none stated",
+    "basis": "The agreement is about partner appointment, referrals and revenue share. It does not say whether AtliQ staff will handle customers' data when delivering Partner Services, and has no data protection clause beyond confidentiality of Datavane Account information.",
+    "question": "When AtliQ delivers Partner Services in a Joint Deal, whose paper governs access to the customer's data, and could any of it be personal data?",
+    "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+    "quote": "All information relating to Datavane Accounts, including contact details, requirements, usage data and pricing, shall be Datavane's Confidential Information."
+  },
+  "checks_passed": [
+    {
+      "rule": "R-11",
+      "note": "R-11 is written for clients. The text names the Pvt Ltd as Partner, and the Territory is India, the GCC and Europe, which the entity fact sheet assigns to the Pvt Ltd; the United States, which is AtliQ Inc's market, is not in the Territory. The US counterparty does not by itself call for AtliQ Inc.",
+      "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+      "quote": "the Republic of India; the member states of the Gulf Cooperation Council (United Arab Emirates, Kingdom of Saudi Arabia, State of Qatar, State of Kuwait, Kingdom of Bahrain and Sultanate of Oman); and Europe"
+    },
+    {
+      "rule": "R-09",
+      "note": "Confidentiality is mutual in form: each party's information, each bound, with three-year tail. Datavane Account information is protected for as long as confidential and is defined as Datavane's, which is one-sided in effect (see F-02).",
+      "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+      "quote": "Each Party shall hold the other's Confidential Information in confidence, use it only for the purposes of this Agreement, and disclose it only to personnel and advisers with a need to know"
+    }
+  ],
+  "not_checked": [
+    {
+      "item": "Whether AtliQ already has 6 Datavane Certified Engineers and 1 Certified Architect (§3.1)",
+      "reason": "Not in any file. The only certification count on record is 4 CloudSpan-certified engineers."
+    },
+    {
+      "item": "Which Datavane Accounts AtliQ has already discussed the platform with, and which existing clients would become Datavane Accounts",
+      "reason": "No list of AtliQ's prospect or client conversations is in the files."
+    },
+    {
+      "item": "Whether CloudSpan work in hand or planned overlaps a Datavane registration",
+      "reason": "No CloudSpan referral or implementation records are in the files."
+    },
+    {
+      "item": "Global Partner Program Guide, Code of Conduct, implementation methodology, joint business plan",
+      "reason": "Referred to but not in the file (R-17)."
+    },
+    {
+      "item": "Whether a non-signatory (AtliQ Inc) can be bound by 'all obligations of Partner hereunder shall bind Partner's Affiliates'",
+      "reason": "A legal question for counsel; the text only says the words."
+    }
+  ],
+  "low": [
+    {
+      "title": "Perpetual licence to accelerators submitted to the Datavane Marketplace",
+      "clause_ref": "§8.4",
+      "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+      "quote": "Partner hereby grants Datavane a perpetual, irrevocable, royalty-free licence to use any feedback, connectors, templates or implementation accelerators that Partner submits to the Datavane Partner Marketplace.",
+      "note": "Applies only to items AtliQ submits; AtliQ keeps ownership. Worth knowing before anything reusable is submitted."
+    },
+    {
+      "title": "AtliQ cannot assign, even on a change of control; Datavane can",
+      "clause_ref": "§14.2",
+      "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+      "quote": "Partner may not assign this Agreement, by operation of law, change of control or otherwise, without Datavane's prior written consent. Datavane may assign this Agreement without consent.",
+      "note": "CloudSpan allows assignment to an Affiliate or successor on notice."
+    },
+    {
+      "title": "Minimum of 12 qualified Prospect registrations a year (commercially reasonable efforts) and monthly reporting",
+      "clause_ref": "§3.2 and §3.5",
+      "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+      "quote": "Partner shall use commercially reasonable efforts to register not fewer than twelve (12) qualified Prospects in each contract year.",
+      "note": "Each registration widens who counts as a Datavane Account (see F-02)."
+    },
+    {
+      "title": "Datavane may audit AtliQ's Joint Deal records on 15 days' notice",
+      "clause_ref": "§6.7",
+      "file": "incoming/2026-09-24_datavane_strategic_partnership_agreement_draft.md",
+      "quote": "Datavane may, upon fifteen (15) days' notice, audit Partner's records relating to Joint Deals and Partner Services.",
+      "note": "One-way audit right; no audit right for AtliQ over Datavane's revenue records."
+    }
+  ],
+  "seller_view": {
+    "flag_types": ["conflict", "possible_conflict", "clause_risk", "fairness", "entity_law", "bundle"],
+    "missing_documents": ["Global Partner Program Guide", "Partner Code of Conduct", "Implementation methodology and joint business plan"],
+    "ask_karandeep": [
+      "Possible clash with an existing partner commitment on competing platforms; confirm before sending any reply.",
+      "How long a restraint on other-platform work is acceptable, and does it reach AtliQ Inc?",
+      "Is a one-way termination right acceptable for a three-year partnership?"
+    ]
+  },
+  "provenance": "Pre-generated from the capstone dataset in a build session. Quotes validated by exact string match."
+}

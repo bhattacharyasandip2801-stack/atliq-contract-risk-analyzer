@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-paper: #f6f4ef;
+  --color-card: #fffdf8;
+  --color-ink: #1c1b19;
+  --color-muted: #66615a;
+  --color-rule: #ddd8cc;
+  --color-high: #b42318;
+  --color-high-bg: #fdecea;
+  --color-medium: #a35a00;
+  --color-medium-bg: #fdf1dc;
+  --color-low: #475467;
+  --color-low-bg: #eceff3;
+  --color-ok: #1a6b3c;
+  --color-ok-bg: #e3f3e9;
+  --color-accent: #1d4e4a;
+  --color-accent-bg: #e1eeec;
+  --font-serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+html { background: var(--color-paper); }
+body { color: var(--color-ink); font-family: var(--font-sans); background: var(--color-paper); }
+h1, h2, h3 { font-family: var(--font-serif); letter-spacing: -0.01em; }
+.quote { border-left: 3px solid var(--color-rule); padding: 2px 0 2px 12px; font-family: var(--font-serif); font-size: 0.95rem; line-height: 1.55; color: #2b2925; }
+.quote-signed { border-left-color: var(--color-accent); }
+a { text-underline-offset: 3px; }
+details > summary { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+@media print {
+  @page { size: A4; margin: 14mm; }
+  html, body { background: #fff !important; }
+  .no-print { display: none !important; }
+  details:not([open]) > *:not(summary) { display: block; }
+  .card { break-inside: avoid; box-shadow: none !important; }
+  body { font-size: 11px; }
+}

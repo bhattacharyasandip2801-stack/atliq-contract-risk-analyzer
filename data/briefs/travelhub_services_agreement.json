@@ -1,0 +1,271 @@
+{
+ "slug": "travelhub_services_agreement",
+ "draft_file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+ "tracker_id": "C-024",
+ "counterparty": "TravelHub FZ-LLC",
+ "doc_type": "Software Development and Services Agreement (client paper, unmarked)",
+ "atliq_entity_in_draft": "AtliQ Inc (Delaware)",
+ "client_country": "United Arab Emirates (Dubai Internet City)",
+ "tracker_status": "In review",
+ "deadline": null,
+ "value": "$52,000 (tracker; draft §6.1)",
+ "headline": "The draft names AtliQ Inc (US only, per the entity sheet) for a Dubai customer while the invoice clause names the Indian company; separately, the UAE/Saudi hotel-ranking module needs a counsel look against the Al Noor GCC hospitality restriction.",
+ "highest_severity": "High",
+ "exposure": [
+  {
+   "label": "Overall liability cap",
+   "clause_ref": "§12.2",
+   "calculation": "Cap = total fees paid in the 12 months before the claim; fixed fee is USD 52,000 (§6.1), first instalment USD 10,400 on signing (Schedule B)",
+   "result": "At most USD 52,000; less if fewer fees have been paid when a claim arises",
+   "cap": "read from clause: fees paid in preceding 12 months; carve-outs for breach of confidentiality and wilful misconduct",
+   "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+   "quote": "Each Party's total liability arising out of this Agreement shall not exceed the total fees paid under this Agreement in the twelve (12) months preceding the claim, except for breach of confidentiality or wilful misconduct."
+  },
+  {
+   "label": "Delay penalty",
+   "clause_ref": "§5.1",
+   "calculation": "No delay-penalty clause in the draft; timeline is 'commercially reasonable efforts'",
+   "result": "USD 0 stated",
+   "cap": "not applicable (no LD clause found)",
+   "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+   "quote": "AtliQ shall use commercially reasonable efforts to meet the indicative timeline in Schedule A."
+  },
+  {
+   "label": "Al Noor restriction window (if it applies)",
+   "clause_ref": "Al Noor MSA §1.14, §6.1",
+   "calculation": "Term ends 14 Mar 2028 + 18 months = 14 Sep 2029 if the Al Noor MSA runs to its stated end",
+   "result": "The 18-week TravelHub timeline (Schedule A) would fall inside this window",
+   "cap": "No amount stated in Al Noor §12",
+   "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+   "quote": "\"Restricted Period\" means the Term and the period of eighteen (18) months following the expiry or termination of this Agreement."
+  }
+ ],
+ "findings": [
+  {
+   "id": "F-01",
+   "severity": "High",
+   "type": "entity_law",
+   "title": "Draft names AtliQ Inc, a US-only entity, for a Dubai customer",
+   "clause_ref": "§1.2",
+   "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+   "quote": "AtliQ Inc, a Delaware corporation, with its principal office at 101 College Road East, Suite 210, Princeton, NJ 08540, USA",
+   "explanation": "The AtliQ entity sheet says AtliQ Inc serves 'Clients in the United States only' and AtliQ Technologies Pvt Ltd serves the Middle East. TravelHub FZ-LLC is licensed in Dubai Internet City. The tracker note says Nadia (TravelHub) wrote 'we put your US company since you're US-listed on LinkedIn', so the choice came from a LinkedIn listing, not from AtliQ's entity rule. The entity named in a contract decides who invoices, which tax regime applies and which bank account is paid.",
+   "rule": "R-11",
+   "register_refs": [],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "The draft names the US company; the client is in the UAE. Ask Karandeep which AtliQ entity should contract."
+  },
+  {
+   "id": "F-02",
+   "severity": "High",
+   "type": "possible_conflict",
+   "title": "Hotel-ranking module for UAE and Saudi hotels: possible conflict with the Al Noor restriction, for counsel",
+   "clause_ref": "§4.1(b), §4.2, §3.1",
+   "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+   "quote": "a ranking and recommendation service that scores, ranks and surfaces Partner Hotels in the United Arab Emirates and the Kingdom of Saudi Arabia to TravelHub users at the point of search and itinerary building",
+   "explanation": "Al Noor §12.1 bars AtliQ Technologies Pvt Ltd and its Affiliates from providing data analytics, AI or revenue-management services to any 'Hospitality Business' in the GCC, and that definition includes a business that provides distribution services to hotels. TravelHub lists and books hotel inventory under commission agreements (§3.1) and the module ranks those hotels, partly on 'partner commission tier'. Whether TravelHub counts as a Hospitality Business, and whether this module is a service to hotels or only to TravelHub, is not answerable from the text. Naming AtliQ Inc does not remove the question: Al Noor §1.2 and §12.3 reach any entity AtliQ controls, and AtliQ Inc is 100% owned by the Pvt Ltd. The Seaside waiver excludes other Hospitality Businesses and Affiliates. Possible conflict, for counsel.",
+   "rule": "R-14",
+   "register_refs": [
+    {
+     "entry_id": "REG-A18",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§12.1",
+     "quote": "the Supplier undertakes that neither it nor any of its Affiliates shall, during the Restricted Period, directly or indirectly, provide data analytics, artificial intelligence or revenue-management services to any Hospitality Business in the GCC."
+    },
+    {
+     "entry_id": "REG-A18",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§1.11 (Hospitality Business)",
+     "quote": "\"Hospitality Business\" means any person, firm or entity that owns, operates, manages or franchises hotels, resorts or serviced apartments, or that provides distribution, revenue-management or guest-analytics services to any such person, firm or entity."
+    },
+    {
+     "entry_id": "REG-A17",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§1.2 (Affiliate)",
+     "quote": "\"Affiliate\" means, in relation to a Party, any entity that directly or indirectly controls, is controlled by, or is under common control with that Party, where \"control\" means the ownership of more than fifty percent (50%) of the voting securities of an entity or the power to direct its management and policies, whether by contract or otherwise."
+    },
+    {
+     "entry_id": "REG-A18",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§12.3 (Affiliates must comply)",
+     "quote": "The Supplier shall procure that each of its Affiliates complies with this Clause 12 as if it were a party to this Agreement, and any breach by an Affiliate shall be deemed a breach by the Supplier."
+    },
+    {
+     "entry_id": "REG-A18",
+     "file": "signed_contracts/2026-02-10_al_noor_waiver_letter.md",
+     "clause_ref": "Waiver letter para 3",
+     "quote": "This consent is strictly limited to the Seaside SOW. It does not extend to (a) any other services provided to Seaside, including any extension, renewal, change order or follow-on statement of work, unless separately consented to in writing by the Client; (b) any other Hospitality Business, whether in the Sultanate of Oman or elsewhere in the GCC; or (c) any Affiliate of the Supplier."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Al Noor Hospitality MSA §12",
+     "label": "deliberate",
+     "note": "Negotiated down from worldwide/3 years to GCC/term + 18 months (negotiation_notes.md). The Affiliates wording was not discussed."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "Possible clash with an existing client commitment on Gulf hotel-related work; ask Karandeep."
+  },
+  {
+   "id": "F-03",
+   "severity": "Medium",
+   "type": "consistency",
+   "title": "Contract is with AtliQ Inc but invoices are raised by AtliQ Technologies Pvt Ltd",
+   "clause_ref": "§7.1",
+   "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+   "quote": "Invoices under this Agreement shall be raised by AtliQ Technologies Pvt Ltd, GSTIN 27AAKCA4821F1Z3, on or after Acceptance of each milestone as set out in Schedule B.",
+   "explanation": "The draft's own parties clause names AtliQ Inc; the invoicing clause names the Indian company with its GSTIN. The entity sheet says mismatches between contracting and invoicing entity caused payment delays twice in 2025. Whichever entity is chosen under F-01, the two clauses must name the same one.",
+   "rule": "R-12",
+   "register_refs": [],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Contracting entity and invoicing entity differ in the draft; ask Karandeep."
+  },
+  {
+   "id": "F-04",
+   "severity": "Medium",
+   "type": "entity_law",
+   "title": "Dubai law and onshore Dubai Courts",
+   "clause_ref": "§15.1-15.2",
+   "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+   "quote": "This Agreement shall be governed by and construed in accordance with the laws of the Emirate of Dubai and the applicable federal laws of the United Arab Emirates.",
+   "explanation": "Karandeep's position is India for the Pvt Ltd and US for the Inc; Dubai law fits neither. §15.2 gives the onshore Dubai Courts exclusive jurisdiction. The one earlier Dubai deal (Al Noor) used DIFC law and courts, not onshore Dubai.",
+   "rule": "R-06",
+   "register_refs": [
+    {
+     "entry_id": "REG-A26",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§21.1",
+     "quote": "This Agreement and any non-contractual obligations arising out of it shall be governed by the laws of the Dubai International Financial Centre."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Al Noor Hospitality MSA §21",
+     "label": "deliberate",
+     "note": "DIFC law accepted as 'group standard for all technology vendors' (negotiation_notes.md)."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Draft uses Dubai law and courts; ask Karandeep."
+  }
+ ],
+ "bundle": {
+  "needed": []
+ },
+ "data_class": {
+  "class": "personal data",
+  "basis": "Customer Data includes booking history, search behaviour and user profiles of app users; §14.1 applies UAE and Saudi data protection law. Nothing on health data.",
+  "question": "Will Pune engineers access TravelHub user data, and from which AtliQ entity? §14.2 bars moving Customer Data outside TravelHub's cloud without written approval.",
+  "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+  "quote": "AtliQ shall not transfer Customer Data outside the TravelHub cloud environment without prior written approval."
+ },
+ "checks_passed": [
+  {
+   "rule": "R-01",
+   "note": "No delay penalty in the draft.",
+   "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+   "quote": "AtliQ shall use commercially reasonable efforts to meet the indicative timeline in Schedule A."
+  },
+  {
+   "rule": "R-03",
+   "note": "Cap is fees paid in the prior 12 months (at most USD 52,000, about 1x fees); only confidentiality and wilful misconduct sit outside it.",
+   "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+   "quote": "Each Party's total liability arising out of this Agreement shall not exceed the total fees paid under this Agreement in the twelve (12) months preceding the claim, except for breach of confidentiality or wilful misconduct."
+  },
+  {
+   "rule": "R-04",
+   "note": "Narrow, own-side indemnities only: AtliQ for IP infringement, TravelHub for Customer Data and unlawful use.",
+   "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+   "quote": "TravelHub shall defend and indemnify AtliQ against third-party claims arising from Customer Data or TravelHub's use of the Deliverables in breach of applicable law."
+  },
+  {
+   "rule": "R-05",
+   "note": "30 days from invoice date.",
+   "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+   "quote": "TravelHub shall pay each undisputed invoice within thirty (30) days of the invoice date by wire transfer to the bank account specified on the invoice."
+  },
+  {
+   "rule": "R-07",
+   "note": "TravelHub owns what is built for it, including trained models; AtliQ keeps Background Technology and licenses it as part of the app.",
+   "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+   "quote": "AtliQ retains ownership of its Background Technology and grants TravelHub a perpetual, non-exclusive, royalty-free licence to use any Background Technology incorporated in the Deliverables as part of the TravelHub App."
+  },
+  {
+   "rule": "R-08",
+   "note": "TravelHub pays for work performed on termination for convenience.",
+   "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+   "quote": "TravelHub may terminate for convenience with thirty (30) days' written notice and shall pay for all work performed up to the termination date."
+  },
+  {
+   "rule": "R-17",
+   "note": "Schedules A and B that the draft refers to are both included.",
+   "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+   "quote": "The total fixed fee for the Services is USD 52,000 (fifty-two thousand US dollars), payable in instalments as set out in Schedule B."
+  }
+ ],
+ "not_checked": [
+  {
+   "item": "Whether TravelHub is a 'Hospitality Business' and whether the ranking module is within Al Noor §12.1",
+   "reason": "Depends on how Al Noor's definition and clause would be read; for counsel. The notes say counsel asked whether the Affiliate definition catches AtliQ Inc."
+  },
+  {
+   "item": "Other signed contracts that might restrict this work",
+   "reason": "Register covers 17 of about 30 signed contracts."
+  },
+  {
+   "item": "UAE and Saudi law points (data protection, onshore Dubai courts)",
+   "reason": "No source for those laws on file."
+  }
+ ],
+ "low": [
+  {
+   "title": "Payment instalments 2-4 depend on Acceptance, and Schedule A sets a measurable test",
+   "clause_ref": "Schedule A",
+   "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+   "quote": "Acceptance criteria: offline ranking uplift (NDCG@10) of at least 10% over TravelHub's current rule-based sort; p95 API latency under 250 ms.",
+   "note": "Looks like a risk but is an acceptance threshold, not a penalty; worth knowing that USD 41,600 of the fee waits on acceptance."
+  },
+  {
+   "title": "Deemed acceptance after 10 business days",
+   "clause_ref": "§5.2",
+   "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+   "quote": "If TravelHub fails to respond within such period, the Deliverable shall be deemed accepted.",
+   "note": "In AtliQ's favour."
+  },
+  {
+   "title": "Mutual non-solicitation for 12 months",
+   "clause_ref": "§16.1",
+   "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+   "quote": "During the term and for twelve (12) months thereafter, neither Party shall solicit for employment any employee of the other Party directly involved in the Services.",
+   "note": "Mutual and staff-only; no non-compete or exclusivity on AtliQ in the draft."
+  },
+  {
+   "title": "Notices go to AtliQ's 'President'",
+   "clause_ref": "§16.5",
+   "file": "incoming/2026-09-15_travelhub_services_agreement_draft.md",
+   "quote": "notices to AtliQ shall be sent to its President.",
+   "note": "President is the AtliQ Inc title in the entity sheet; changes with the entity chosen."
+  }
+ ],
+ "seller_view": {
+  "flag_types": [
+   "entity_law",
+   "consistency",
+   "possible_conflict"
+  ],
+  "missing_documents": [],
+  "ask_karandeep": [
+   "Which AtliQ entity should sign for a Dubai customer, and make the invoicing clause match.",
+   "Counsel check on an existing client restriction before the hotel-ranking work is accepted.",
+   "Decide the governing-law position."
+  ]
+ },
+ "provenance": "Pre-generated from the capstone dataset in a build session. Quotes validated by exact string match."
+}

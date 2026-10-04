@@ -1,0 +1,446 @@
+{
+ "slug": "marcus_reed_contractor_agreement",
+ "draft_file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+ "tracker_id": "C-040",
+ "counterparty": "Marcus Reed (individual, Chicago, Illinois)",
+ "doc_type": "Independent Contractor Agreement (India freelancer template v3.0)",
+ "atliq_entity_in_draft": "AtliQ Technologies Pvt Ltd",
+ "client_country": "USA (contractor in Chicago; project is for Lakeshore Grocers Inc., Chicago)",
+ "tracker_status": "Draft",
+ "deadline": "Jay wants to send by Thu 1 Oct 2026 (tracker C-040 note)",
+ "value": "Not stated in tracker; about USD 60,320 = USD 58 x 40 hours x 26 weeks (computed estimate: schedule says approx. 40 hours a week for 6 months)",
+ "headline": "This is the India freelancer template with only the name and rate changed: a Pune company, Indian tax and courts, USD fees paid in rupees at AtliQ's chosen rate, plus exclusivity, a worldwide 12-month non-compete, 24-hour termination and 60-day payment at AtliQ's discretion, all of which a US individual would be signing and all of which sit outside Karandeep's stated fairness position.",
+ "highest_severity": "High",
+ "exposure": [
+  {
+   "label": "Contract value at the stated hours",
+   "clause_ref": "Engagement Schedule",
+   "calculation": "USD 58 x 40 hours = USD 2,320 per week; x 26 weeks (6 months, assumed 26 weeks)",
+   "result": "about USD 60,320 over the term",
+   "cap": "no hours cap stated; schedule says 'Approx. 40 hours per week'",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "USD 58 per hour (paid in INR per Clause 4.4)"
+  },
+  {
+   "label": "Fees waiting on AtliQ's timesheet approval and 60-day clock",
+   "clause_ref": "§4.2-4.3",
+   "calculation": "USD 58 x 40 hours x 4 weeks = USD 9,280 per 4-week month of work",
+   "result": "each month's USD 9,280 is paid no earlier than 60 days after approval; approval has no deadline",
+   "cap": "no limit on how long approval can take: 'at his discretion'",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "The Company's project manager shall review and approve timesheets at his discretion."
+  },
+  {
+   "label": "Contractor's liability to AtliQ versus AtliQ's liability to him",
+   "clause_ref": "§10.1-10.2",
+   "calculation": "AtliQ side: 3 months x USD 9,280 = USD 27,840 (4-week months assumed)",
+   "result": "AtliQ's liability to Marcus capped at about USD 27,840; Marcus's indemnity to AtliQ has no cap in the text",
+   "cap": "read from clause: fees payable for the preceding three (3) months (AtliQ only); contractor side uncapped",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "The Company's liability to the Contractor shall not exceed the fees payable for the preceding three (3) months."
+  }
+ ],
+ "findings": [
+  {
+   "id": "F-01",
+   "severity": "High",
+   "type": "fairness",
+   "title": "Worldwide 12-month non-compete and ban on taking work from his AtliQ clients, imposed on an individual",
+   "clause_ref": "§8.1-8.2",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "For a period of twelve (12) months after termination or expiry of this Agreement, the Contractor shall not, anywhere in the world, directly or indirectly, provide any software or data services to any person",
+   "explanation": "After the contract ends Marcus could not provide software or data services to anyone, anywhere, in competition with AtliQ for twelve months (§8.1), and could not even accept work from any AtliQ client he served, which here means Lakeshore Grocers (§8.2). He is a US individual who would otherwise live off software and data work. Karandeep's note says a freelancer 'shouldn't get our paper and feel the way I felt reading Brightwater's', and he rejected a worldwide three-year reach on AtliQ itself at Al Noor. The signed freelancer paper, Rohan Iyer's, had only a six-month restriction on soliciting AtliQ clients. Whether Indian law and Pune courts can give a post-contract restriction effect over a Chicago resident is a question for counsel.",
+   "rule": "R-20",
+   "register_refs": [
+    {
+     "entry_id": "REG-B03",
+     "file": "signed_contracts/2025-04-28_rohan_iyer_contractor_agreement.md",
+     "clause_ref": "§10.1",
+     "quote": "10.1 Non-solicitation. During the Term and for six (6) months thereafter, the Contractor shall not directly solicit any AtliQ client to whom he was introduced through AtliQ for the purpose of providing the same Services to that client independently of AtliQ."
+    }
+   ],
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+     "clause_ref": "§8.2",
+     "quote": "the Contractor shall not solicit or accept work from any client of the Company for whom he performed Services, or solicit any employee of the Company."
+    },
+    {
+     "file": "karandeep_contract_checklist.md",
+     "clause_ref": "Karandeep note (Sep 2026)",
+     "quote": "a six-person agency or a freelancer shouldn't get our paper and feel the way I felt reading Brightwater's"
+    },
+    {
+     "file": "negotiation_notes.md",
+     "clause_ref": "Al Noor",
+     "quote": "Worldwide for three years would stop us working in hospitality altogether."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Rohan Iyer contractor agreement",
+     "label": "unlabelled",
+     "note": "Same freelancer template family, but the signed version has no non-compete; only a six-month client non-solicit (REG-B03). Nothing in the notes explains why this draft is harsher."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Possible one-sided restriction on the contractor after the contract ends; ask Karandeep."
+  },
+  {
+   "id": "F-02",
+   "severity": "High",
+   "type": "fairness",
+   "title": "Exclusivity: Marcus may not work for anyone else, paid or unpaid, during the term",
+   "clause_ref": "§3.1",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "During the term of this Agreement, the Contractor shall devote his professional working time exclusively to the Company and shall not, directly or indirectly, provide services to, or be engaged or employed by, any other person, firm or company, whether paid or unpaid, without the Company's prior written consent.",
+   "explanation": "The schedule describes about 40 hours a week for six months, and the clause bars any other engagement, even unpaid, without AtliQ's written consent. The signed Rohan Iyer paper let the contractor work for others so long as it did not affect the Services (§4.2). Exclusivity on a freelancer who is paid by the hour only for approved hours (see F-04) puts all the income risk on him.",
+   "rule": "R-20",
+   "register_refs": [
+    {
+     "entry_id": "REG-B04",
+     "file": "signed_contracts/2025-04-28_rohan_iyer_contractor_agreement.md",
+     "clause_ref": "§4.2",
+     "quote": "4.2 The Contractor may provide services to other persons during the Term, provided this does not affect performance of the Services or breach Clause 6."
+    }
+   ],
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+     "clause_ref": "Engagement Schedule",
+     "quote": "Approx. 40 hours per week"
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Rohan Iyer contractor agreement",
+     "label": "unlabelled",
+     "note": "No exclusivity in the signed version (REG-B04); no recorded reason for adding it here."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Possible one-sided exclusivity on the contractor; ask Karandeep."
+  },
+  {
+   "id": "F-03",
+   "severity": "High",
+   "type": "fairness",
+   "title": "AtliQ can end the contract on 24 hours' notice; Marcus must give 60 days",
+   "clause_ref": "§9.1-9.3",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "The Company may terminate this Agreement at any time by giving twenty-four (24) hours' written notice (including by email) to the Contractor.",
+   "explanation": "AtliQ may leave on 24 hours' notice by email; Marcus may leave only on 60 days' notice (§9.2). AtliQ may also end it immediately for 'unsatisfactory performance' (§9.3), a term the draft does not define and gives no chance to fix. On exit AtliQ pays only for approved hours (§9.4), and approval is at the project manager's discretion (F-04). The Rohan Iyer paper gave both sides 15 days and a 7-day fix period.",
+   "rule": "R-20",
+   "register_refs": [
+    {
+     "entry_id": "REG-B09",
+     "file": "signed_contracts/2025-04-28_rohan_iyer_contractor_agreement.md",
+     "clause_ref": "§9.1",
+     "quote": "9.1 Either party may terminate this Agreement for convenience by giving fifteen (15) days' written notice."
+    }
+   ],
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+     "clause_ref": "§9.2",
+     "quote": "The Contractor may terminate this Agreement by giving sixty (60) days' written notice to the Company."
+    },
+    {
+     "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+     "clause_ref": "§9.3",
+     "quote": "The Company may terminate immediately for breach, misconduct or unsatisfactory performance."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Rohan Iyer contractor agreement",
+     "label": "unlabelled",
+     "note": "Equal 15-day notice in the signed version (REG-B09)."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Possible unequal notice periods for ending the contract; ask Karandeep."
+  },
+  {
+   "id": "F-04",
+   "severity": "High",
+   "type": "fairness",
+   "title": "Payment 60 days after a timesheet approval that AtliQ's manager gives 'at his discretion'",
+   "clause_ref": "§4.2-4.3",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "Payment shall be made within sixty (60) days after the date of timesheet approval.",
+   "explanation": "Two things stack: approval has no deadline and is at the project manager's discretion (§4.2), and the 60-day clock only starts at approval (§4.3). Karandeep's checklist is 30 days, 45 at most, and the signed Rohan Iyer paper pays within 30 days of invoice. Each month of Marcus's work (USD 58 x 40 x 4 = USD 9,280) could be unpaid for more than two months, with no cap on the approval delay. This is AtliQ's own paper, and the PixelCraft case shows the same 60-day clause was already corrected once for a small vendor.",
+   "rule": "R-20",
+   "register_refs": [
+    {
+     "entry_id": "REG-B05",
+     "file": "signed_contracts/2025-04-28_rohan_iyer_contractor_agreement.md",
+     "clause_ref": "§3.2",
+     "quote": "3.2 The Contractor shall submit a monthly invoice, supported by a timesheet approved by the AtliQ project lead. AtliQ shall pay each undisputed invoice within thirty (30) days of receipt."
+    }
+   ],
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+     "clause_ref": "§4.2",
+     "quote": "The Company's project manager shall review and approve timesheets at his discretion."
+    },
+    {
+     "file": "karandeep_contract_checklist.md",
+     "clause_ref": "checklist",
+     "quote": "payment → 30 days, 45 max"
+    },
+    {
+     "file": "negotiation_notes.md",
+     "clause_ref": "PixelCraft",
+     "quote": "He's right. They're six people. I don't want our paper to be the thing I hate receiving."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "PixelCraft Studio vendor agreement (Oct 2025)",
+     "label": "deliberate",
+     "note": "negotiation_notes.md: PixelCraft pushed back on a 1% per day delay penalty, 60-day payment and unlimited vendor liability in AtliQ's template; Karandeep said 'He's right' and cut them to 30-day payment and a cap at fees for both sides, in PixelCraft's copy only. Jay's note: 'not sure the template file was ever updated'. This draft repeats the 60-day pattern."
+    },
+    {
+     "contract": "Rohan Iyer contractor agreement",
+     "label": "unlabelled",
+     "note": "30-day payment in the signed version (REG-B05)."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Possible payment terms outside AtliQ's usual range; ask Karandeep."
+  },
+  {
+   "id": "F-05",
+   "severity": "Medium",
+   "type": "entity_law",
+   "title": "Pune company, Indian tax rules, Indian law and Pune courts for a US individual on a US-client project",
+   "clause_ref": "§4.5, §11.1-11.2, §12.5, Engagement Schedule",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "The Company shall deduct tax at source (TDS) under Section 194J of the Income-tax Act, 1961 at the applicable rate and issue Form 16A.",
+   "explanation": "The draft is the India template: AtliQ Technologies Pvt Ltd as the Company, tax deducted under the Indian Income-tax Act (and at a higher rate if he has no PAN), optional GST, an Indian bank account in the schedule, Indian law and the courts at Pune, and Maharashtra stamp duty on Marcus. The project is for Lakeshore Grocers, whose draft MSA names AtliQ Inc as the vendor, and the entity sheet says AtliQ Inc serves US clients and Pvt Ltd serves clients outside the US. The tracker leaves the entity for C-040 blank. Whether the Pune entity should engage a Chicago freelancer for a US-client project, and how Indian tax mechanics apply to him, is a decision and a question for counsel. The draft's own checklist position (India law for Pvt Ltd) is met on its face.",
+   "rule": "R-11",
+   "register_refs": [],
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+     "clause_ref": "Parties",
+     "quote": "AtliQ Technologies Pvt Ltd, a company incorporated under the Companies Act, 2013, CIN U72900MH2019PTC321456"
+    },
+    {
+     "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+     "clause_ref": "§11.2",
+     "quote": "The courts at Pune, Maharashtra shall have exclusive jurisdiction."
+    },
+    {
+     "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+     "clause_ref": "§4.5",
+     "quote": "in the absence of a valid PAN, TDS shall be deducted at the higher rate under Section 206AA."
+    },
+    {
+     "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+     "clause_ref": "Parties",
+     "quote": "AtliQ Inc, a Delaware corporation having its principal office at 101 College Road East, Suite 210, Princeton, New Jersey 08540 (\"Vendor\")"
+    },
+    {
+     "file": "atliq_entities.md",
+     "clause_ref": "entity sheet",
+     "quote": "Clients in the United States only"
+    },
+    {
+     "file": "contract_tracker.csv",
+     "clause_ref": "C-040",
+     "quote": "India freelancer template - only name and rate changed"
+    }
+   ],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Possible mismatch between the contracting entity and the contractor's location; ask Karandeep."
+  },
+  {
+   "id": "F-06",
+   "severity": "Medium",
+   "type": "fairness",
+   "title": "USD rate, paid in rupees at an exchange rate AtliQ sets, bank charges on Marcus",
+   "clause_ref": "§4.4",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "All fees are stated in United States Dollars but shall be paid in Indian Rupees by bank transfer, converted at an exchange rate determined by the Company at its discretion on the date of payment. Bank charges shall be borne by the Contractor.",
+   "explanation": "The rate is USD 58 but he is paid in rupees into an Indian account at a rate AtliQ chooses on the day, so the dollar amount he receives is not fixed by the contract. AtliQ's US freelancer template (the Ortiz draft) pays by ACH in USD. The signed Rohan Iyer paper paid INR on an INR rate, so this problem did not arise there.",
+   "rule": "R-20",
+   "register_refs": [],
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+     "clause_ref": "Engagement Schedule",
+     "quote": "Bank details (Indian account)"
+    },
+    {
+     "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+     "clause_ref": "§3.2",
+     "quote": "by ACH transfer in U.S. Dollars"
+    }
+   ],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Possible currency terms that leave the contractor's final pay open; ask Karandeep."
+  },
+  {
+   "id": "F-07",
+   "severity": "Medium",
+   "type": "fairness",
+   "title": "One-way indemnity and liability cap: Marcus uncapped, AtliQ capped at three months' fees",
+   "clause_ref": "§10.1-10.2",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "The Company's liability to the Contractor shall not exceed the fees payable for the preceding three (3) months.",
+   "explanation": "Only Marcus indemnifies (for breach of the IP or confidentiality clauses or willful misconduct, §10.1), and no cap is stated on that. Only AtliQ's liability is capped, at three months' fees (about USD 27,840 on 3 x USD 9,280). The signed Rohan Iyer paper had a mutual 12-month cap, and PixelCraft's was capped at fees for both sides. Exposure is bounded for AtliQ and open-ended for the individual.",
+   "rule": "R-20",
+   "register_refs": [
+    {
+     "entry_id": "REG-B06",
+     "file": "signed_contracts/2025-04-28_rohan_iyer_contractor_agreement.md",
+     "clause_ref": "§8.1",
+     "quote": "8.1 Each party's aggregate liability under this Agreement shall not exceed the total fees paid or payable to the Contractor in the twelve (12) months preceding the claim, except for breach of Clause 6 or fraud."
+    }
+   ],
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+     "clause_ref": "§10.1",
+     "quote": "The Contractor shall indemnify the Company against losses arising from the Contractor's breach of Clauses 6 or 7 or his wilful misconduct."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "PixelCraft Studio vendor agreement (Oct 2025)",
+     "label": "deliberate",
+     "note": "negotiation_notes.md: PixelCraft pushed back on a 1% per day delay penalty, 60-day payment and unlimited vendor liability in AtliQ's template; Karandeep said 'He's right' and cut them to 30-day payment and a cap at fees for both sides, in PixelCraft's copy only. Jay's note: 'not sure the template file was ever updated'. This draft repeats the 60-day pattern."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Possible one-sided liability terms; ask Karandeep."
+  }
+ ],
+ "bundle": {
+  "needed": [
+   {
+    "document": "Lakeshore Grocers MSA / SOW-1 (the client contract this engagement serves)",
+    "status": "draft_only",
+    "note": "Client draft received 19 Sep, tracker C-026 in review; Marcus's schedule already names Lakeshore as the client. The flow-down points below depend on its final text.",
+    "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+    "quote": "12.1 Vendor shall comply with Lakeshore's Information Security Requirements (Exhibit C) and applicable privacy laws, including the Illinois Personal Information Protection Act."
+   },
+   {
+    "document": "Engagement-specific data-handling terms for Marcus (Lakeshore security requirements)",
+    "status": "referenced_absent",
+    "note": "Marcus's draft refers only to 'Company-approved environments'; Lakeshore's draft sets its own security requirements and a 72-hour incident notice that the Marcus draft does not carry.",
+    "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+    "quote": "The Contractor shall use his own equipment unless otherwise agreed, and shall access client systems only through Company-approved environments."
+   }
+  ]
+ },
+ "data_class": {
+  "class": "unknown",
+  "basis": "The Engagement Schedule has Marcus building pipelines for point-of-sale, loyalty and inventory data. The agreement does not say whether that data includes customers' personal information; Lakeshore's draft contemplates 'Lakeshore Data containing personal information'.",
+  "question": "Does the loyalty or point-of-sale data Marcus will touch contain customer personal information, and will he work only in Lakeshore-approved environments?",
+  "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+  "quote": "ingestion pipelines for point-of-sale, loyalty and inventory data"
+ },
+ "checks_passed": [
+  {
+   "rule": "R-07",
+   "note": "AtliQ is the buyer: all Work Product vests in AtliQ on creation with a back-up assignment, which lets AtliQ pass ownership to Lakeshore (draft MSA §7.1). This is the reverse of Rohan Iyer's signed paper (REG-B01, REG-B02: freelancer kept ownership, AtliQ got a licence; waved_through), so the earlier exception is not repeated here.",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "All work product, code, pipelines, documentation, reports and other materials created by the Contractor in the course of the Services (\"Work Product\") shall vest in the Company upon creation."
+  },
+  {
+   "rule": "R-08",
+   "note": "On termination AtliQ pays for approved hours up to the termination date. This meets the 'they pay for work done' form of the checklist, subject to the approval problem in F-04.",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "On termination, the Company shall pay for approved hours up to the termination date in accordance with Clause 4."
+  },
+  {
+   "rule": "R-06",
+   "note": "Indian law for the Pvt Ltd matches the checklist rule on its face; the mismatch with a US individual is reported in F-05.",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "This Agreement is governed by the laws of India."
+  }
+ ],
+ "not_checked": [
+  {
+   "item": "Final Lakeshore MSA and Exhibit C security requirements",
+   "reason": "Lakeshore paper is an unsigned client draft; the flow-down comparison may change."
+  },
+  {
+   "item": "Whether Indian or Illinois law would give the post-term restrictions or the Indian stamp-duty and tax clauses effect over a Chicago resident",
+   "reason": "Legal question outside the text; possible conflict, for counsel."
+  },
+  {
+   "item": "Tax treatment of paying a US resident under Indian TDS rules",
+   "reason": "Not assessable from the document; PAN and GSTIN fields are blank placeholders."
+  },
+  {
+   "item": "Which AtliQ entity should engage him",
+   "reason": "Tracker C-040 leaves the entity blank; this is a decision, not something the text answers."
+  }
+ ],
+ "low": [
+  {
+   "title": "Confidentiality survives 5 years, longer than the client's own 3",
+   "clause_ref": "§7.4",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "7.4 This Clause 7 survives termination for five (5) years.",
+   "note": "Rohan Iyer's signed paper used 3 years and Lakeshore's draft MSA §6.3 uses 3 years after termination. Longer than the upstream duty; low impact."
+  },
+  {
+   "title": "No expenses unless pre-approved in advance, yet on-site work 'as required'",
+   "clause_ref": "§4.7",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "4.7 No expenses shall be reimbursed unless approved in writing in advance by the Company.",
+   "note": "The schedule says on-site at the client office as required; Rohan Iyer's paper reimbursed pre-approved client-visit travel (§3.4)."
+  },
+  {
+   "title": "Stamp duty on the contractor",
+   "clause_ref": "§12.5",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "12.5 Stamp duty on this Agreement, if any, shall be borne by the Contractor as per the Maharashtra Stamp Act, 1958.",
+   "note": "India-template clause that has no meaning for a US resident signing in Chicago; falls under F-05."
+  },
+  {
+   "title": "No carve-out or licence for his own pre-existing tools",
+   "clause_ref": "§6.2",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "6.2 The Contractor hereby assigns to the Company all present and future right, title and interest in the Work Product",
+   "note": "Work Product is only what is created in the Services, so his old tools are not caught, but if he builds them into deliverables AtliQ has no licence to pass to Lakeshore. The Ortiz template has a Contractor Tools licence; this one does not."
+  },
+  {
+   "title": "No incident-notice duty to match the client's",
+   "clause_ref": "§5.2",
+   "file": "incoming/2026-09-27_marcus_reed_contractor_agreement_draft.md",
+   "quote": "5.2 The Contractor shall use his own equipment unless otherwise agreed, and shall access client systems only through Company-approved environments.",
+   "note": "Lakeshore's draft MSA §12.2 requires notice of unauthorized access to Lakeshore Data within 72 hours; nothing in this draft asks Marcus to report anything."
+  }
+ ],
+ "seller_view": {
+  "flag_types": [
+   "fairness",
+   "entity_law"
+  ],
+  "missing_documents": [
+   "Confirmed contracting entity for this engagement",
+   "Client data-handling requirements"
+  ],
+  "ask_karandeep": [
+   "Which AtliQ entity should contract with a Chicago freelancer for a US-client project?",
+   "Should the India freelancer template's exclusivity, non-compete, 24-hour termination and 60-day payment apply to a US individual?"
+  ]
+ },
+ "provenance": "Pre-generated from the capstone dataset in a build session. Quotes validated by exact string match."
+}

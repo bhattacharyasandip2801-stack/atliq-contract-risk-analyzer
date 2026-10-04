@@ -1,0 +1,183 @@
+{
+ "slug": "daniel_ortiz_nda",
+ "draft_file": "incoming/2026-09-27_daniel_ortiz_nda_draft.md",
+ "tracker_id": "C-048",
+ "counterparty": "Daniel Ortiz (individual, Austin, Texas)",
+ "doc_type": "Mutual NDA (US template)",
+ "atliq_entity_in_draft": "AtliQ Inc",
+ "client_country": "USA (contractor in Austin, Texas; related client Harrington Health Systems, Inc.)",
+ "tracker_status": "Draft",
+ "deadline": "None stated in tracker; the companion contractor agreement starts 5 Oct 2026 (Engagement Schedule)",
+ "value": "None (NDA; no fees)",
+ "headline": "As an NDA this is genuinely mutual and clean (no non-compete, no-hire or residuals clause), but it says nothing about patient data and cannot stand in for the HIPAA flow-down Harrington's BAA requires.",
+ "highest_severity": "Medium",
+ "exposure": [],
+ "findings": [
+  {
+   "id": "F-01",
+   "severity": "Medium",
+   "type": "data_class",
+   "title": "NDA is silent on patient data and is not a BAA flow-down",
+   "clause_ref": "§1.1, §2.1",
+   "file": "incoming/2026-09-27_daniel_ortiz_nda_draft.md",
+   "quote": "1.1 The Parties wish to exchange information in connection with a proposed and ongoing engagement of Mr. Ortiz as an independent contractor providing data engineering services to AtliQ (the \"Purpose\").",
+   "explanation": "The Purpose names data engineering services but not Harrington, patient data, PHI or HIPAA. Nothing in the NDA says what data Ortiz will receive. The signed Harrington NDA (§2.3) excludes PHI altogether until a BAA is signed, and the Harrington BAA draft (§4.3) requires each Subcontractor to agree in writing, before any access to PHI, to the same restrictions AtliQ accepts. A general confidentiality promise is not that. The missing flow-down is reported as the main finding in the contractor-agreement brief; this NDA adds no protection for it.",
+   "rule": "R-16",
+   "register_refs": [
+    {
+     "entry_id": "REG-B69",
+     "file": "signed_contracts/2026-08-20_harrington_health_mutual_nda.md",
+     "clause_ref": "§2.3",
+     "quote": "Protected Health Information, as defined at 45 C.F.R. § 160.103, is excluded from this Agreement and shall be disclosed only after execution of a Business Associate Agreement between the Parties."
+    }
+   ],
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+     "clause_ref": "§4.3",
+     "quote": "4.3 Flow-Down. In accordance with 45 C.F.R. §§ 164.502(e)(1)(ii) and 164.308(b)(2), Business Associate shall ensure that each Subcontractor agrees in writing, prior to any access to PHI, to the same restrictions, conditions and requirements that apply to Business Associate under this BAA."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Harrington Mutual NDA",
+     "label": "waved_through",
+     "note": "Signed the day after it arrived with 'Nothing discussed'; PHI is excluded from it until a BAA exists."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The NDA does not itself cover client data-protection duties; ask Karandeep."
+  },
+  {
+   "id": "F-02",
+   "severity": "Medium",
+   "type": "bundle",
+   "title": "NDA confidentiality clock does not match the contractor agreement or the BAA",
+   "clause_ref": "§5.1",
+   "file": "incoming/2026-09-27_daniel_ortiz_nda_draft.md",
+   "quote": "5.1 This Agreement applies to information disclosed during the two (2) years following the Effective Date. The obligations in Sections 3 and 4 continue for three (3) years after the end of that period.",
+   "explanation": "The NDA protects information disclosed in the two years after signing and runs for three more years (about five years from signing at most). The contractor agreement says its confidentiality clause survives three years after termination (§7.4), and says the NDA applies as well (§7.3). The Harrington BAA's duties run until all PHI has been returned or destroyed and certified (§11.1). The three documents give three different end dates for the same information.",
+   "rule": "R-18",
+   "register_refs": [],
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+     "clause_ref": "§7.4",
+     "quote": "7.4 This Section 7 survives termination for three (3) years."
+    },
+    {
+     "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+     "clause_ref": "§7.3",
+     "quote": "The Parties have entered into, or will enter into, a Mutual Nondisclosure Agreement, which shall also apply."
+    },
+    {
+     "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+     "clause_ref": "§11.1",
+     "quote": "regardless of the expiration or termination of the Master Services Agreement."
+    }
+   ],
+   "exception_history": [],
+   "decision_needed": false,
+   "redact_in_seller_view": false,
+   "seller_text": "Possible mismatch between the confidentiality periods in the two documents; ask Karandeep."
+  }
+ ],
+ "bundle": {
+  "needed": [
+   {
+    "document": "Independent Contractor Agreement with Ortiz",
+    "status": "draft_only",
+    "note": "Companion draft (tracker C-047).",
+    "file": "incoming/2026-09-27_daniel_ortiz_nda_draft.md",
+    "quote": "Ownership of work product created in the engagement is governed by the Parties' Independent Contractor Agreement."
+   },
+   {
+    "document": "Subcontractor BAA / flow-down for Daniel Ortiz",
+    "status": "missing",
+    "note": "Not drafted per the 27 Sep huddle note.",
+    "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+    "quote": "no subcontractor BAA had been drafted for Daniel Ortiz"
+   },
+   {
+    "document": "Harrington Business Associate Agreement",
+    "status": "draft_only",
+    "note": "Unsigned client draft; tracker C-046.",
+    "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+    "quote": "4.3 Flow-Down."
+   }
+  ]
+ },
+ "data_class": {
+  "class": "unknown",
+  "basis": "The NDA does not describe the data Ortiz will receive. The related Engagement Schedule has him working on Harrington's electronic health record, patient accounting and scheduling data, but neither document says whether that is PHI or de-identified.",
+  "question": "Will Ortiz receive PHI, de-identified data, or no patient data? Until that is answered and a flow-down is signed, this NDA should not be treated as the data-protection document for him.",
+  "file": "incoming/2026-09-27_daniel_ortiz_nda_draft.md",
+  "quote": "Confidential Information remains the property of the Disclosing Party, and no license is granted except as expressly stated."
+ },
+ "checks_passed": [
+  {
+   "rule": "R-09",
+   "note": "Genuinely mutual: Confidential Information is defined by 'one Party' to 'the other', both sides' information is named (including Ortiz's rates and proprietary tools), and every duty is on 'the Receiving Party'. The full text was read: it has no non-compete, no-hire, non-solicit or residuals clause.",
+   "file": "incoming/2026-09-27_daniel_ortiz_nda_draft.md",
+   "quote": "\"Confidential Information\" means any non-public information disclosed by one Party (the \"Disclosing Party\") to the other (the \"Receiving Party\") in connection with the Purpose"
+  },
+  {
+   "rule": "R-09",
+   "note": "Remedies are mutual: either side may seek an injunction.",
+   "file": "incoming/2026-09-27_daniel_ortiz_nda_draft.md",
+   "quote": "Each Party may seek injunctive relief for any actual or threatened breach of this Agreement, in addition to any other remedy."
+  },
+  {
+   "rule": "R-06",
+   "note": "Texas law, US courts, for AtliQ Inc and a Texas individual.",
+   "file": "incoming/2026-09-27_daniel_ortiz_nda_draft.md",
+   "quote": "This Agreement is governed by the laws of the State of Texas."
+  },
+  {
+   "rule": "R-11",
+   "note": "AtliQ Inc for a US individual and a US client; matches tracker C-048.",
+   "file": "incoming/2026-09-27_daniel_ortiz_nda_draft.md",
+   "quote": "**AtliQ Inc**, a Delaware corporation with its principal place of business at 101 College Road East, Suite 210, Princeton, New Jersey 08540"
+  }
+ ],
+ "not_checked": [
+  {
+   "item": "Which data Ortiz will receive",
+   "reason": "The NDA does not say; see the data question."
+  },
+  {
+   "item": "Harrington BAA final wording",
+   "reason": "Client draft, unsigned."
+  }
+ ],
+ "low": [
+  {
+   "title": "Only AtliQ may share with Affiliates; 'Affiliates' is undefined",
+   "clause_ref": "§3.1(b)",
+   "file": "incoming/2026-09-27_daniel_ortiz_nda_draft.md",
+   "quote": "except, in AtliQ's case, to its Affiliates, employees and professional advisers with a need to know",
+   "note": "A freelancer has no Affiliates, so the asymmetry is small, but the term is undefined here as in the signed Harrington NDA (REG-B71). Whether it reaches the Pune entity is unclear."
+  },
+  {
+   "title": "Court wording differs from the contractor agreement",
+   "clause_ref": "§8.1",
+   "file": "incoming/2026-09-27_daniel_ortiz_nda_draft.md",
+   "quote": "The Parties submit to the jurisdiction of the state and federal courts located in Travis County, Texas.",
+   "note": "The contractor agreement §10.1 says 'exclusive jurisdiction'; the NDA does not. Same courts, so minor."
+  }
+ ],
+ "seller_view": {
+  "flag_types": [
+   "data_class",
+   "bundle"
+  ],
+  "missing_documents": [
+   "Data-protection flow-down for this engagement"
+  ],
+  "ask_karandeep": [
+   "Does Ortiz receive patient data, and is a separate flow-down being signed with him?"
+  ]
+ },
+ "provenance": "Pre-generated from the capstone dataset in a build session. Quotes validated by exact string match."
+}

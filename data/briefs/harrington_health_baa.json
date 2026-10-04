@@ -1,0 +1,609 @@
+{
+ "slug": "harrington_health_baa",
+ "draft_file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+ "tracker_id": "C-046",
+ "counterparty": "Harrington Health Systems, Inc.",
+ "doc_type": "Business Associate Agreement (Exhibit D to the MSA; client paper)",
+ "atliq_entity_in_draft": "AtliQ Inc",
+ "client_country": "United States (Texas)",
+ "tracker_status": "In review",
+ "deadline": "1 Oct 2026 (Rebecca; must be signed together with the MSA; tracker C-046, 27 Sep huddle)",
+ "value": "No separate value; tied to the MSA ($210,000, tracker C-023)",
+ "headline": "The BAA is unsigned, bans any offshore access and any non-US subcontractor, makes AtliQ's privacy-event liability unlimited and asks for $5M cyber insurance against $1M held, while AtliQ's Pune team and a freelancer have no data-protection paperwork for Harrington.",
+ "highest_severity": "High",
+ "exposure": [
+  {
+   "label": "Privacy-event indemnity and regulatory costs",
+   "clause_ref": "§8.1-8.2",
+   "calculation": "no figure in the text; checklist 1x fees = 1 x $210,000 (MSA §1.14)",
+   "result": "checklist ceiling $210,000; draft ceiling none",
+   "cap": "uncapped; applies 'notwithstanding any limitation of liability in the Master Services Agreement'",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "The obligations of Business Associate under this Article 8 are not subject to any limitation or exclusion of liability, and shall apply notwithstanding any limitation of liability in the Master Services Agreement."
+  },
+  {
+   "label": "Cyber insurance gap",
+   "clause_ref": "§8.3",
+   "calculation": "$5,000,000 required - $1,000,000 held (27 Sep huddle)",
+   "result": "$4,000,000 short, for the term plus 3 years",
+   "cap": "n/a (insurance requirement)",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "cyber liability and network security and privacy insurance with limits of not less than Five Million U.S. Dollars ($5,000,000) per claim and in the aggregate"
+  },
+  {
+   "label": "Incident-notice window",
+   "clause_ref": "§5.1",
+   "calculation": "24 hours to Harrington vs 2 business days from Pune to AtliQ Inc (intercompany BAA §5.1)",
+   "result": "up to 2 business days of internal delay against a 24-hour clock",
+   "cap": "n/a",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "within twenty-four (24) hours of discovery."
+  },
+  {
+   "label": "Delay damages in the MSA that this BAA must be signed with (same bundle)",
+   "clause_ref": "MSA §11.2",
+   "calculation": "2% x $210,000 (Total Contract Value)",
+   "result": "$4,200 per calendar day ($29,400 per week)",
+   "cap": "uncapped (no cap in MSA Article 11); cumulative with actual damages (MSA §11.3)",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "Contractor shall pay Client, as liquidated damages, an amount equal to two percent (2%) of the Total Contract Value for each calendar day from the Delivery Date until the date the applicable Deliverable is accepted."
+  },
+  {
+   "label": "Audit on short notice, at any time",
+   "clause_ref": "§7.2",
+   "calculation": "48 hours' notice (MSA §12.5 says 10 days, once a year)",
+   "result": "no limit on frequency in the BAA",
+   "cap": "n/a",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "upon forty-eight (48) hours' notice, at any time during the term of this BAA and for so long as Business Associate retains any PHI."
+  }
+ ],
+ "findings": [
+  {
+   "id": "F-01",
+   "severity": "High",
+   "type": "bundle",
+   "title": "The BAA is a draft, must be signed with the MSA, and nothing covers patient data until it is",
+   "clause_ref": "§12.10, effective date",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "This BAA may be executed in counterparts and by electronic signature, and shall be executed concurrently with the Master Services Agreement.",
+   "explanation": "The BAA is Exhibit D to the MSA, effective on the MSA's Effective Date, and must be executed at the same time as the MSA. It reached AtliQ on 16 Sep and is unsigned; Harrington wants both signed by 1 Oct (tracker C-046; 27 Sep huddle). The signed NDA says PHI is excluded and may be disclosed only after a BAA is signed (NDA §2.3). The 28 Sep note records that no BAA with Harrington had been signed. Signing the MSA and BAA together means AtliQ accepts every term below in the same step.",
+   "rule": "R-16",
+   "register_refs": [
+    {
+     "entry_id": "REG-B69",
+     "file": "signed_contracts/2026-08-20_harrington_health_mutual_nda.md",
+     "clause_ref": "§2.3",
+     "quote": "2.3 Protected Health Information. Protected Health Information, as defined at 45 C.F.R. § 160.103, is excluded from this Agreement and shall be disclosed only after execution of a Business Associate Agreement between the Parties. Harrington shall not disclose, and AtliQ shall not request, Protected Health Information under this Agreement."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Harrington Mutual NDA (Aug 2026)",
+     "label": "waved_through",
+     "note": "Signed the day after it was needed, 'Nothing discussed' (negotiation_notes.md)."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "A data-protection agreement must be signed together with the main contract before protected data is shared; ask Karandeep.",
+   "extra_quotes": [
+    {
+     "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+     "quote": "As of 2026-09-28 no Business Associate Agreement had been signed with Harrington; the sample extract remained with the two Pune engineers; no subcontractor BAA had been drafted for Daniel Ortiz; the insurance gap was not raised with Harrington."
+    }
+   ]
+  },
+  {
+   "id": "F-02",
+   "severity": "High",
+   "type": "data_class",
+   "title": "Reported: a sample extract that looks like real patient data was forwarded to Pune",
+   "clause_ref": "§4.1 (location of PHI)",
+   "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+   "quote": "Pranav opened it here and forwarded to Sneha and Vikram in Pune to start profiling. \"It's real data I think — names, DOBs, some diagnosis codes.\"",
+   "explanation": "Reported in the 27 Sep huddle; not confirmed. Harrington's data engineering manager is said to have emailed a 'sample extract' on 12 Sep, and Pranav forwarded it to two engineers in Pune. If it is real patient data, it arrived before any BAA existed (NDA §2.3) and is held outside the United States, which BAA §4.1 forbids once the BAA is signed. The 28 Sep note says it remained with the two Pune engineers. Logged here as a possible stop-and-escalate item (R-21), not as proven.",
+   "rule": "R-21",
+   "register_refs": [
+    {
+     "entry_id": "REG-B69",
+     "file": "signed_contracts/2026-08-20_harrington_health_mutual_nda.md",
+     "clause_ref": "§2.3",
+     "quote": "2.3 Protected Health Information. Protected Health Information, as defined at 45 C.F.R. § 160.103, is excluded from this Agreement and shall be disclosed only after execution of a Business Associate Agreement between the Parties. Harrington shall not disclose, and AtliQ shall not request, Protected Health Information under this Agreement."
+    }
+   ],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "Possible issue with data already shared; ask Karandeep.",
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+     "quote": "Business Associate shall not, and shall ensure that no Subcontractor shall, access, view, create, receive, maintain, transmit, store or process PHI from or at any location outside the United States, whether directly or by remote access."
+    },
+    {
+     "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+     "quote": "As of 2026-09-28 no Business Associate Agreement had been signed with Harrington; the sample extract remained with the two Pune engineers; no subcontractor BAA had been drafted for Daniel Ortiz; the insurance gap was not raised with Harrington."
+    }
+   ]
+  },
+  {
+   "id": "F-03",
+   "severity": "High",
+   "type": "conflict",
+   "title": "No PHI offshore, and every subcontractor must be a US entity with US staff; AtliQ's delivery team is in Pune",
+   "clause_ref": "§4.1-4.2, §1.5",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "Business Associate shall not engage any Subcontractor in connection with the Services without Covered Entity's prior written approval of such Subcontractor. Each approved Subcontractor shall be organized under the laws of a State of the United States, and all of its personnel performing Services shall be located in the United States.",
+   "explanation": "BAA §1.5 counts 'any Affiliate of Business Associate' as a Subcontractor, so AtliQ Technologies Pvt Ltd (India) is one. Under §4.2 it could not be an approved subcontractor at all: it is not a US entity and its people are not in the US. §4.1 separately bans PHI from or at any location outside the US 'whether directly or by remote access'. AtliQ's entity sheet says delivery teams for both entities sit in Pune. MSA §12.4 would allow offshore staff on de-identified data, but §4.2 is not limited to PHI. The CareBridge BAA did allow offshore access to de-identified data (§3.2); this one does not say so.",
+   "rule": "R-16",
+   "register_refs": [
+    {
+     "entry_id": "REG-B32",
+     "file": "signed_contracts/2025-10-06_carebridge_clinics_baa.md",
+     "clause_ref": "§3.1 and §3.2",
+     "quote": "3.2 Personnel of Business Associate or of any Subcontractor located outside the United States may access De-identified Data only, and only within the Covered Entity Environment or a secure environment approved in writing by Covered Entity. No PHI shall be accessed, stored or processed outside the United States."
+    },
+    {
+     "entry_id": "REG-B33",
+     "file": "signed_contracts/2025-10-06_carebridge_clinics_baa.md",
+     "clause_ref": "§6.1 and §6.2",
+     "quote": "6.1 Business Associate shall ensure, in accordance with 45 C.F.R. §§ 164.502(e)(1)(ii) and 164.308(b)(2), that any Subcontractor that creates, receives, maintains or transmits PHI on behalf of Business Associate agrees in a written business associate agreement to the same restrictions, conditions and requirements that apply to Business Associate under this BAA, including Section 3."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "CareBridge BAA (Oct 2025)",
+     "label": "deliberate",
+     "note": "'Only de-identified data offshore'; counsel-reviewed; intercompany BAA set up for it (negotiation_notes.md)."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The data-protection terms limit where work can be done and by whom; ask Karandeep.",
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+     "quote": "\"Subcontractor\" means any person or entity, including any Affiliate of Business Associate, to whom Business Associate delegates a function, activity or service under the Master Services Agreement, other than in the capacity of a member of Business Associate's workforce."
+    }
+   ]
+  },
+  {
+   "id": "F-04",
+   "severity": "High",
+   "type": "bundle",
+   "title": "No subcontractor BAA or approval for Daniel Ortiz, due to start 5 Oct",
+   "clause_ref": "§4.2-4.3",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "Business Associate shall ensure that each Subcontractor agrees in writing, prior to any access to PHI, to the same restrictions, conditions and requirements that apply to Business Associate under this BAA.",
+   "explanation": "Dhaval is engaging Daniel Ortiz, a freelancer in Austin, to build ingestion pipelines from Harrington's electronic health record, patient accounting and scheduling systems, starting 5 Oct 2026. He needs Harrington's prior written approval (§4.2) and a written agreement on the same terms before any access (§4.3). Harrington can ask for a copy. His drafts contain no PHI, HIPAA or BAA terms; no subcontractor BAA had been drafted by 28 Sep, and §5.1 of his contract has him use his own computer while BAA §9.3 says PHI comes only through Client-controlled environments. 'US-based, so the offshore thing is solved' addresses location only. Whether an individual counts as 'organized under the laws of a State' (§4.2) is unclear.",
+   "rule": "R-16",
+   "register_refs": [
+    {
+     "entry_id": "REG-B33",
+     "file": "signed_contracts/2025-10-06_carebridge_clinics_baa.md",
+     "clause_ref": "§6.1 and §6.2",
+     "quote": "6.1 Business Associate shall ensure, in accordance with 45 C.F.R. §§ 164.502(e)(1)(ii) and 164.308(b)(2), that any Subcontractor that creates, receives, maintains or transmits PHI on behalf of Business Associate agrees in a written business associate agreement to the same restrictions, conditions and requirements that apply to Business Associate under this BAA, including Section 3."
+    }
+   ],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Individual contractors who touch protected data need their own data-protection agreement and client approval; ask Karandeep.",
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+     "quote": "The Contractor shall furnish, at the Contractor's own expense, the computer equipment, software, internet connectivity and other tools the Contractor considers necessary to perform the Services, and shall be responsible for maintaining them."
+    },
+    {
+     "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+     "quote": "Dhaval: the BAA says nobody outside the US touches patient data, so he's bringing in Daniel Ortiz, freelance data engineer in Austin."
+    }
+   ]
+  },
+  {
+   "id": "F-05",
+   "severity": "High",
+   "type": "bundle",
+   "title": "The existing intercompany BAA covers CareBridge only, so the Pune flow-down for Harrington does not exist",
+   "clause_ref": "§4.3, §1.5",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "Business Associate shall provide a copy of each such agreement to Covered Entity upon request.",
+   "explanation": "BAA §4.3 requires a written flow-down agreement with each Subcontractor before PHI access, and Affiliates count as Subcontractors (§1.5). The only AtliQ Inc to Pvt Ltd BAA is limited to the CareBridge Engagement and allows de-identified data only. Karandeep chose per-engagement coverage for CareBridge. In the huddle 'should do, same kind of work' was said and 'Nobody checked'. Even a new Harrington intercompany BAA could not make Pune an approved Subcontractor under §4.2 (see F-03).",
+   "rule": "R-16",
+   "register_refs": [
+    {
+     "entry_id": "REG-B25",
+     "file": "signed_contracts/2025-10-06_atliq_intercompany_subcontractor_baa.md",
+     "clause_ref": "§2.1 and Schedule 1",
+     "quote": "2.1 This Agreement applies to the Engagement Services. Any services Subcontractor performs for Business Associate other than the Engagement Services are governed by the Intercompany Agreement."
+    },
+    {
+     "entry_id": "REG-B26",
+     "file": "signed_contracts/2025-10-06_atliq_intercompany_subcontractor_baa.md",
+     "clause_ref": "§3.1 and §3.2",
+     "quote": "3.1 Subcontractor and its personnel shall access De-identified Data only. Subcontractor shall not access, receive, store, view or process PHI."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Intercompany BAA (Oct 2025)",
+     "label": "deliberate",
+     "note": "Karandeep: 'Per engagement, keep it simple.' (negotiation_notes.md)."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "The internal agreement for the offshore team covers a different client only; ask Karandeep.",
+   "extra_quotes": [
+    {
+     "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+     "quote": "Pranav asked if the CareBridge setup (the intercompany thing) covers this too — Karandeep: \"should do, same kind of work.\" Nobody checked."
+    }
+   ]
+  },
+  {
+   "id": "F-06",
+   "severity": "High",
+   "type": "clause_risk",
+   "title": "Indemnity and liability for privacy events are one-way and expressly unlimited",
+   "clause_ref": "§8.1-8.2",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "The obligations of Business Associate under this Article 8 are not subject to any limitation or exclusion of liability, and shall apply notwithstanding any limitation of liability in the Master Services Agreement.",
+   "explanation": "AtliQ must cover all Losses from any Privacy Event (which includes suspected events, and events involving any Subcontractor or Affiliate), BAA breach or HIPAA/Texas-law violation, including regulatory fines, notification, call-centre, credit monitoring and forensics. There is no cap and it overrides any cap negotiated in the MSA, so even a successful change to MSA §10.3 would not limit this. Harrington gives no indemnity in the BAA, and nothing carves out Harrington's own part in an event. The CareBridge BAA, by contrast, capped BAA liability at 2x fees (§9.1); the checklist is 1x fees.",
+   "rule": "R-03",
+   "register_refs": [
+    {
+     "entry_id": "REG-B35",
+     "file": "signed_contracts/2025-10-06_carebridge_clinics_baa.md",
+     "clause_ref": "§9.1",
+     "quote": "9.1 Each Party's liability arising out of or relating to this BAA, including any Breach, is subject to the limitations and exclusions of liability in the Master Services Agreement, under which aggregate liability for claims relating to a Breach or a violation of this BAA shall not exceed two (2) times the Fees paid or payable under the Master Services Agreement in the twelve (12) months preceding the event giving rise to the claim."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "CareBridge BAA (Oct 2025)",
+     "label": "unlabelled",
+     "note": "2x fees cap, counsel-reviewed; no recorded decision on that term."
+    },
+    {
+     "contract": "Kessler Mobility (Jan 2026, not signed)",
+     "label": "deliberate",
+     "note": "Karandeep refused unlimited liability on a ~EUR 120k deal (negotiation_notes.md)."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The data-protection terms put no limit on the supplier's liability; ask Karandeep."
+  },
+  {
+   "id": "F-07",
+   "severity": "Medium",
+   "type": "consistency",
+   "title": "24-hour notice to Harrington vs 2 business days from Pune to AtliQ Inc",
+   "clause_ref": "§5.1",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "Business Associate shall notify Covered Entity's Privacy Officer by telephone and in writing of any Privacy Event within twenty-four (24) hours of discovery. A Privacy Event shall be deemed discovered on the first day on which it is known, or by exercising reasonable diligence would have been known, to any employee, officer, agent or Subcontractor of Business Associate.",
+   "explanation": "The 24 hours runs from when any Subcontractor knows or should have known, including suspected events (§1.6(d)). AtliQ's intercompany BAA gives Pune 2 business days to report to AtliQ Inc (§5.1), and the CareBridge BAA gave AtliQ Inc 5 business days. Used for Harrington, the internal period can be longer than the whole 24 hours. MSA §12.3 repeats 24 hours.",
+   "rule": "R-18",
+   "register_refs": [
+    {
+     "entry_id": "REG-B27",
+     "file": "signed_contracts/2025-10-06_atliq_intercompany_subcontractor_baa.md",
+     "clause_ref": "§5.1 and §3.4",
+     "quote": "5.1 Subcontractor shall report to Business Associate any use or disclosure not provided for by this Agreement, any Security Incident and any actual or suspected Breach within two (2) business days after discovery, so as to allow Business Associate to meet its reporting obligations under the Upstream BAA."
+    },
+    {
+     "entry_id": "REG-B31",
+     "file": "signed_contracts/2025-10-06_carebridge_clinics_baa.md",
+     "clause_ref": "§5.1 and §5.3",
+     "quote": "5.1 Breaches and Non-Permitted Uses. Business Associate shall report to Covered Entity any use or disclosure of PHI not provided for by this BAA, including any Breach of Unsecured PHI, without unreasonable delay and in no case later than five (5) business days after discovery."
+    }
+   ],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "Incident-notice periods across the supplier's documents may not line up; ask Karandeep."
+  },
+  {
+   "id": "F-08",
+   "severity": "Medium",
+   "type": "clause_risk",
+   "title": "Cyber insurance of $5M required, plus 3-year tail and additional-insured status; AtliQ holds $1M",
+   "clause_ref": "§8.3",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "Business Associate shall maintain, throughout the term of this BAA and for three (3) years thereafter, cyber liability and network security and privacy insurance with limits of not less than Five Million U.S. Dollars ($5,000,000) per claim and in the aggregate, covering notification costs, regulatory defense and penalties, and third-party claims arising from Privacy Events, and shall name Covered Entity as an additional insured.",
+   "explanation": "Required $5,000,000; held $1,000,000 per the 27 Sep huddle; gap $5,000,000 - $1,000,000 = $4,000,000. The requirement runs for the BAA term and 3 years after, and BAA §11.1 keeps the BAA alive until all PHI is returned or destroyed. It also names Harrington as additional insured on the cyber policy, while MSA §13.2 asks for additional-insured status on the CGL and umbrella policies only. The huddle footnote says the gap had not been raised with Harrington.",
+   "rule": "R-19",
+   "register_refs": [
+    {
+     "entry_id": "REG-B45",
+     "file": "signed_contracts/2025-11-28_brightwater_insurance_msa.md",
+     "clause_ref": "§17.1",
+     "quote": "17.1 The Supplier shall maintain professional indemnity insurance of not less than USD 2,000,000 and cyber liability insurance of not less than USD 1,000,000."
+    }
+   ],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The draft asks for higher insurance than the supplier may hold; ask Karandeep.",
+   "extra_quotes": [
+    {
+     "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+     "quote": "Karandeep: \"Our cyber policy is $1M btw, Harrington BAA wants 5.\""
+    }
+   ]
+  },
+  {
+   "id": "F-09",
+   "severity": "Medium",
+   "type": "consistency",
+   "title": "BAA bars AtliQ from de-identifying PHI, while the MSA's offshore route relies on de-identified data",
+   "clause_ref": "§2.4",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "Business Associate shall not de-identify PHI, or use de-identified information derived from PHI for any purpose other than the Services, without Covered Entity's prior written approval.",
+   "explanation": "MSA §12.4 lets offshore staff see de-identified data in Client-controlled environments. The BAA stops AtliQ creating that data without Harrington's written approval. In CareBridge, AtliQ was allowed to de-identify for the Services (BAA §2.4) and that is how Pune worked. Nothing in the files shows who would supply de-identified data to Pune here.",
+   "rule": "R-18",
+   "register_refs": [
+    {
+     "entry_id": "REG-B34",
+     "file": "signed_contracts/2025-10-06_carebridge_clinics_baa.md",
+     "clause_ref": "§2.4",
+     "quote": "2.4 De-identification. Business Associate may de-identify PHI in accordance with 45 C.F.R. § 164.514(b) solely for the purpose of performing the Services. De-identified Data may be used only for the Services and not for any other client, product or purpose."
+    }
+   ],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The draft limits how the supplier can prepare data for its offshore team; ask Karandeep.",
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+     "quote": "Any Contractor Personnel located outside the United States shall access only de-identified data within Client-controlled environments."
+    }
+   ]
+  },
+  {
+   "id": "F-10",
+   "severity": "Medium",
+   "type": "clause_risk",
+   "title": "Harrington sets the cure period and can end the BAA and the whole MSA at once",
+   "clause_ref": "§11.2",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "If Covered Entity determines that Business Associate has violated a material term of this BAA, Covered Entity may, at its option, (a) provide Business Associate an opportunity to cure within a period specified by Covered Entity, and terminate this BAA and the Master Services Agreement if Business Associate does not cure; or (b) immediately terminate this BAA and the Master Services Agreement if cure is not possible.",
+   "explanation": "Only Harrington can terminate, Harrington decides what counts as a violation and how long the cure period is, and a BAA breach ends the MSA too. On MSA termination AtliQ is paid only for accepted Deliverables (MSA §5.3). The CareBridge BAA gave each side written notice and 30 days to cure (§10.2).",
+   "rule": "R-08",
+   "register_refs": [],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The termination terms for a data-protection breach favour the client only; ask Karandeep.",
+   "extra_quotes": [
+    {
+     "file": "signed_contracts/2025-10-06_carebridge_clinics_baa.md",
+     "quote": "If either Party determines that the other has materially breached this BAA, it shall give written notice and a thirty (30) day period to cure."
+    }
+   ]
+  },
+  {
+   "id": "F-11",
+   "severity": "Medium",
+   "type": "bundle",
+   "title": "Security requirements exhibit that the BAA incorporates is not in the files",
+   "clause_ref": "§3.2, §9.3",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "Business Associate shall comply with the Client Information Security Requirements set forth in Exhibit B to the Master Services Agreement, including encryption of PHI at rest and in transit, multi-factor authentication, and logging and monitoring of all access to PHI.",
+   "explanation": "Exhibit B also decides how Harrington gives AtliQ PHI (§9.3). It was not provided, so the obligations AtliQ would take on cannot be read.",
+   "rule": "R-17",
+   "register_refs": [],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Some documents the contract refers to were not provided; ask Karandeep."
+  }
+ ],
+ "bundle": {
+  "needed": [
+   {
+    "document": "Master Professional Services Agreement (this MSA draft, Contract No. HHS-IT-2026-0193)",
+    "status": "draft_only",
+    "note": "Harrington's paper; AtliQ has not marked it up. Tracker C-023 shows 'In review', needed by 1 Oct (Rebecca) and says Harrington's lawyers call the template non-negotiable.",
+    "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+    "quote": "Client's paper — AtliQ has not yet marked up."
+   },
+   {
+    "document": "Business Associate Agreement (Exhibit D)",
+    "status": "draft_only",
+    "note": "Arrived 16 Sep as a draft. The MSA makes it Exhibit D and the BAA says it must be executed at the same time as the MSA (BAA §12.10). Nothing is signed. Tracker C-046: 'must be signed together with the MSA'.",
+    "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+    "quote": "Client's paper — to be signed together with the MSA."
+   },
+   {
+    "document": "Mutual NDA (HHS-NDA-2026-0412)",
+    "status": "signed",
+    "note": "Signed 20 Aug 2026. It excludes PHI and says PHI may be disclosed only after a BAA is signed (§2.3). It does not replace the BAA.",
+    "file": "signed_contracts/2026-08-20_harrington_health_mutual_nda.md",
+    "quote": "Protected Health Information, as defined at 45 C.F.R. § 160.103, is excluded from this Agreement and shall be disclosed only after execution of a Business Associate Agreement between the Parties."
+   },
+   {
+    "document": "Subcontractor BAA for Daniel Ortiz (US freelance data engineer)",
+    "status": "missing",
+    "note": "Dhaval is bringing Daniel Ortiz in to build the EHR ingestion pipelines. His contractor agreement and NDA are drafts and neither mentions PHI, HIPAA or a business associate agreement. The huddle footnote records that none had been drafted as of 28 Sep.",
+    "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+    "quote": "no subcontractor BAA had been drafted for Daniel Ortiz"
+   },
+   {
+    "document": "Intercompany subcontractor BAA (AtliQ Inc to AtliQ Technologies Pvt Ltd) covering Harrington",
+    "status": "missing",
+    "note": "The only intercompany BAA on file is limited to the CareBridge Engagement and to de-identified data. Nothing on file extends it to Harrington. In the huddle 'should do, same kind of work' was said and 'Nobody checked'.",
+    "file": "signed_contracts/2025-10-06_atliq_intercompany_subcontractor_baa.md",
+    "quote": "\"Engagement\" means the CareBridge Engagement described in Schedule 1."
+   },
+   {
+    "document": "Harrington's prior written consent and approval of subcontractors (MSA §2.5, BAA §4.2)",
+    "status": "missing",
+    "note": "Both documents require Harrington's written consent/approval before any subcontractor is engaged. No consent or approval request is in the files.",
+    "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+    "quote": "Contractor shall not subcontract any portion of the Services without Client's prior written consent."
+   },
+   {
+    "document": "Daniel Ortiz Independent Contractor Agreement (with Engagement Schedule No. 1)",
+    "status": "draft_only",
+    "note": "Prepared by Dhaval on 27 Sep from the US contractor template; not yet sent. Schedule shows a start date of 5 Oct 2026.",
+    "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+    "quote": "AtliQ draft prepared by Dhaval on 2026-09-27 from the US contractor template. Not yet sent."
+   },
+   {
+    "document": "Daniel Ortiz Mutual NDA",
+    "status": "draft_only",
+    "note": "Prepared 27 Sep from the US mutual NDA template; not yet sent. Contains no PHI wording.",
+    "file": "incoming/2026-09-27_daniel_ortiz_nda_draft.md",
+    "quote": "AtliQ draft prepared by Dhaval on 2026-09-27 from the US mutual NDA template. Not yet sent."
+   },
+   {
+    "document": "Exhibit B - Client Information Security Requirements",
+    "status": "referenced_absent",
+    "note": "Listed in the MSA and incorporated into the BAA (BAA §3.2, §9.3) but not in the files. Its content cannot be checked.",
+    "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+    "quote": "Exhibit B — Client Information Security Requirements"
+   },
+   {
+    "document": "Exhibit A - full Initial SOW (acceptance criteria)",
+    "status": "referenced_absent",
+    "note": "Only a summary milestone table is in the MSA. MSA §3.1 tests Deliverables against 'the acceptance criteria in the applicable SOW', which are not in the files.",
+    "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+    "quote": "Exhibit A (Summary) — Initial SOW Milestones"
+   },
+   {
+    "document": "Exhibit C - Vendor Travel Policy",
+    "status": "referenced_absent",
+    "note": "Referenced in MSA §4.6 for expenses; not in the files.",
+    "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+    "quote": "Exhibit C — Vendor Travel Policy"
+   },
+   {
+    "document": "Intercompany services agreement (AtliQ Inc to AtliQ Technologies Pvt Ltd)",
+    "status": "referenced_absent",
+    "note": "The CareBridge intercompany BAA refers to it as the basis for Pune's delivery work. It is not in the files, so how Pune work for Harrington would be papered cannot be checked.",
+    "file": "signed_contracts/2025-10-06_atliq_intercompany_subcontractor_baa.md",
+    "quote": "Subcontractor provides software development and data engineering services to Business Associate under the intercompany services agreement between the Parties (the \"Intercompany Agreement\")."
+   }
+  ]
+ },
+ "data_class": {
+  "class": "PHI",
+  "basis": "The BAA exists because the services 'involve the creation, receipt, maintenance or transmission of Protected Health Information on behalf of Covered Entity' and defines PHI by 45 C.F.R. § 160.103. The text does not limit the work to de-identified data.",
+  "question": "Will Harrington supply identifiable PHI, de-identified data, or both, and who de-identifies it (BAA §2.4)? Is the 12 Sep extract identifiable?",
+  "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+  "quote": "under which Business Associate will perform services that involve the creation, receipt, maintenance or transmission of Protected Health Information on behalf of Covered Entity"
+ },
+ "checks_passed": [
+  {
+   "rule": "R-11",
+   "note": "Contracting entity is AtliQ Inc with a Texas health system: US entity, US client.",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "AtliQ Inc, a Delaware corporation with its principal place of business at 101 College Road East, Suite 210, Princeton, New Jersey 08540"
+  },
+  {
+   "rule": "R-06",
+   "note": "Texas and federal law for AtliQ Inc and a US client; as the checklist asks.",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "This BAA shall be governed by the laws of the State of Texas and applicable federal law, and venue shall lie as provided in the Master Services Agreement."
+  },
+  {
+   "rule": "R-18",
+   "note": "Order of precedence agrees across the two documents: the BAA controls for PHI (BAA §12.2; MSA §12.1 and §15.10). They disagree on de-identified data (see F-03, F-09).",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "In the event of any conflict between this BAA and the Master Services Agreement with respect to PHI, this BAA shall control."
+  }
+ ],
+ "not_checked": [
+  {
+   "item": "Exhibit B (Client Information Security Requirements)",
+   "reason": "Referenced in BAA §3.2 and §9.3 but not in the files."
+  },
+  {
+   "item": "Whether the 12 Sep sample extract is real patient data, who else has copies, and whether Sneha and Vikram had HIPAA training (BAA §3.3)",
+   "reason": "Only the 27 Sep huddle reports it; the extract was not in the files and was not opened."
+  },
+  {
+   "item": "Whether AtliQ's cyber policy has the notification, regulatory and third-party coverage and additional-insured wording BAA §8.3 lists",
+   "reason": "Only the $1M limit is on record; the policy itself is not in the files."
+  },
+  {
+   "item": "The intercompany services agreement between AtliQ Inc and AtliQ Technologies Pvt Ltd",
+   "reason": "Referenced in the CareBridge intercompany BAA; not in the files."
+  },
+  {
+   "item": "Whether the BAA meets the HIPAA regulations it cites (45 C.F.R. Parts 160, 162, 164) and Texas privacy law",
+   "reason": "Outside the files; for counsel."
+  }
+ ],
+ "low": [
+  {
+   "title": "Audit on 48 hours' notice, any time",
+   "clause_ref": "§7.2",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "upon forty-eight (48) hours' notice, at any time during the term of this BAA and for so long as Business Associate retains any PHI.",
+   "note": "MSA §12.5 says 10 days' notice and once a year. The BAA controls for PHI. It also reaches any Subcontractor's facilities."
+  },
+  {
+   "title": "Litigation support at no cost",
+   "clause_ref": "§7.4",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "Business Associate shall make itself and its workforce reasonably available to Covered Entity, at no cost, to testify in any litigation or administrative proceeding against Covered Entity relating to Business Associate's use or disclosure of PHI",
+   "note": "Unpaid staff time; no limit stated."
+  },
+  {
+   "title": "Harrington can amend the BAA by notice",
+   "clause_ref": "§12.1",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "Covered Entity may amend this BAA by written notice to the extent required to comply with HIPAA.",
+   "note": "Limited to what HIPAA requires, but Harrington decides what that is."
+  },
+  {
+   "title": "PHI and anything derived from it belongs to Harrington; no use to train other models",
+   "clause_ref": "§10.1, §10.3",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "Business Associate shall not use PHI, or any data derived from PHI, to train, tune or evaluate any machine learning or artificial intelligence model other than models developed exclusively for Covered Entity under the Master Services Agreement.",
+   "note": "Limits reuse of anything learned from Harrington data, relevant to AtliQ's reusable tools. The CareBridge BAA has a similar one-client rule (§2.4)."
+  },
+  {
+   "title": "AtliQ cannot notify regulators or individuals without Harrington's consent",
+   "clause_ref": "§5.4",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "shall not notify any Individual, regulator or media outlet of a Privacy Event without Covered Entity's prior written consent, except as Required By Law.",
+   "note": "Normal for this kind of agreement; worth knowing when incident steps are planned."
+  },
+  {
+   "title": "Return or destroy PHI within 30 days, including at subcontractors",
+   "clause_ref": "§11.3",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "Upon termination or expiration of the Master Services Agreement, Business Associate shall, within thirty (30) days, return or destroy all PHI, including PHI in the possession of Subcontractors, retain no copies, and certify destruction in writing.",
+   "note": "Same 30 days as the CareBridge BAA. The reported 12 Sep extract would fall under this if it is PHI."
+  }
+ ],
+ "seller_view": {
+  "flag_types": [
+   "conflict",
+   "bundle",
+   "data_class",
+   "clause_risk",
+   "consistency"
+  ],
+  "missing_documents": [
+   "Signed Business Associate Agreement",
+   "Subcontractor data-protection agreement for the freelance engineer",
+   "Internal agreement covering the offshore team for this client",
+   "Exhibit B Client Information Security Requirements"
+  ],
+  "ask_karandeep": [
+   "Where work can be done and by whom",
+   "Liability limits for privacy events",
+   "Cyber insurance level",
+   "Incident-notice periods",
+   "Patient data already received"
+  ]
+ },
+ "provenance": "Pre-generated from the capstone dataset in a build session. Quotes validated by exact string match."
+}

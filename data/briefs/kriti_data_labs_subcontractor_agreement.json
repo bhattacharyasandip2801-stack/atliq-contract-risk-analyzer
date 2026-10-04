@@ -1,0 +1,455 @@
+{
+  "slug": "kriti_data_labs_subcontractor_agreement",
+  "draft_file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+  "tracker_id": "C-037",
+  "counterparty": "Kriti Data Labs LLP",
+  "doc_type": "Subcontractor Services Agreement (AtliQ is the buyer; AtliQ Vendor Services Agreement Rev. 09/2026, Agreement No. ATQ-VSA-2026-011)",
+  "atliq_entity_in_draft": "AtliQ Technologies Pvt Ltd",
+  "client_country": "India (vendor); the work is for Rheinwerk Analytics GmbH, Germany",
+  "tracker_status": "Draft",
+  "deadline": "Planned start 5 Oct 2026 (draft Engagement Schedule and tracker note)",
+  "value": "INR 8,40,000 in the draft; tracker shows USD 10,100",
+  "headline": "This is AtliQ's own template turned on a 12-person vendor: 2% per day uncapped delay damages, payment up to 120 days after invoice and only once Rheinwerk has paid, unlimited vendor liability, an indemnity covering AtliQ's own negligence and a 7-day no-pay exit, none of the PixelCraft changes carried over; it also sends German technician data to a vendor with no data-protection terms and no Rheinwerk consent on file.",
+  "highest_severity": "High",
+  "exposure": [
+    {
+      "label": "Delay damages on the vendor, per calendar day",
+      "clause_ref": "§11.2",
+      "calculation": "2% x INR 8,40,000 (Total Fees) = INR 16,800 per calendar day; x 7 days = INR 1,17,600 per week",
+      "result": "INR 16,800 per day; INR 1,17,600 per week; reaches 100% of all fees after 50 days (840,000 / 16,800)",
+      "cap": "uncapped; also 'in addition to' actual damages (§11.3)",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "If Vendor fails to achieve any Delivery Date, Vendor shall pay AtliQ, as liquidated damages, an amount equal to two percent (2%) of the Total Fees for each calendar day from the Delivery Date until the date the applicable Deliverable is accepted."
+    },
+    {
+      "label": "Same delay at AtliQ's own recorded position, Deliverable 1",
+      "clause_ref": "compare §11.2 with checklist and PixelCraft",
+      "calculation": "0.5% x INR 1,40,000 (Deliverable 1 fee) = INR 700 per week; cap 5% x INR 1,40,000 = INR 7,000. Draft: 2% x INR 8,40,000 = INR 16,800 for ONE day of delay on that deliverable",
+      "result": "INR 16,800 for one day in the draft vs INR 700 for a full week under AtliQ's recorded position (24 times)",
+      "cap": "recorded position: 5% of that deliverable fee = INR 7,000; draft: uncapped",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "| 1 | Label taxonomy and pilot batch (5,000 sensor windows) | Start + 2 weeks | 1,40,000 |"
+    },
+    {
+      "label": "Wait for payment",
+      "clause_ref": "§4.3",
+      "calculation": "Outer limit 120 days after AtliQ receives the invoice, against the checklist maximum of 45 days: 120 - 45 = 75 days beyond; and no payment obligation at all until Rheinwerk has paid AtliQ",
+      "result": "Up to 120 days after invoice, plus the monthly-in-arrears invoicing (§4.2) and up to 15 days of testing (§3.1) before the invoice can even be raised",
+      "cap": "120-day outer limit stated in the clause; payment before that is conditional on a third party",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "AtliQ's obligation to pay any invoice is conditional upon AtliQ's receipt of payment from the End Client for the corresponding services. AtliQ shall pay each properly submitted, undisputed invoice within fifteen (15) days after AtliQ receives the corresponding payment from the End Client, and in any event not later than one hundred and twenty (120) days after AtliQ's receipt of the invoice."
+    },
+    {
+      "label": "Vendor's liability against its fees",
+      "clause_ref": "§10.2, §10.3",
+      "calculation": "Vendor: no limit on any loss, direct or indirect. AtliQ: capped at fees actually paid, under a total fee of INR 8,40,000",
+      "result": "Vendor liability uncapped on an INR 8,40,000 job; AtliQ's own cap is fees actually paid (which can be nil if AtliQ has not yet been paid by Rheinwerk and so has not paid Kriti)",
+      "cap": "vendor: uncapped; AtliQ: fees actually paid",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "NOTHING IN THIS AGREEMENT SHALL LIMIT OR EXCLUDE VENDOR'S LIABILITY FOR ANY LOSSES, WHETHER DIRECT OR INDIRECT, ARISING OUT OF OR RELATING TO THIS AGREEMENT, INCLUDING VENDOR'S INDEMNIFICATION OBLIGATIONS."
+    },
+    {
+      "label": "Unpaid work if AtliQ ends the agreement on 7 days' notice",
+      "clause_ref": "§5.3, §5.4",
+      "calculation": "Example: AtliQ ends the agreement after the pilot batch is accepted but before Batch 1 (INR 3,20,000, due Start + 6 weeks) is accepted: the work in progress on Batch 1 is unpaid",
+      "result": "Up to INR 3,20,000 of work done but unpaid for Batch 1, and all incomplete work must be handed over immediately",
+      "cap": "no cap on unpaid work-in-progress; clause expressly denies payment for it",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "| 2 | Batch 1 — failure-event labelling (40,000 windows) | Start + 6 weeks | 3,20,000 |"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F-01",
+      "severity": "High",
+      "type": "fairness",
+      "title": "Delay damages of 2% of total fees per day, uncapped, with no relief for AtliQ- or client-caused delay",
+      "clause_ref": "§11.1-11.3, §3.1-3.3",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "If Vendor fails to achieve any Delivery Date, Vendor shall pay AtliQ, as liquidated damages, an amount equal to two percent (2%) of the Total Fees for each calendar day from the Delivery Date until the date the applicable Deliverable is accepted.",
+      "explanation": "Each day late costs 2% x INR 8,40,000 = INR 16,800, calculated on the whole contract rather than the late deliverable, with no cap; after 50 days the vendor would owe 100% of all fees, on top of actual damages (§11.3). The clock runs 'until the date the Deliverable is accepted', and AtliQ alone decides acceptance, with 15 days to test and no deemed acceptance (§3.1, §3.3), so the vendor pays while AtliQ is testing. There is no exclusion for delay caused by AtliQ or Rheinwerk, although the vendor works in 'AtliQ-provisioned cloud workspaces'; the same gap in the Brightwater contract led to a USD 18,400 delay claim against AtliQ. This fails 'LDs -> cap it. never open ended', sits far above the recorded 0.5% per week / 5% cap, and is the PixelCraft 1% per day penalty that Karandeep deleted for a 6-person agency. AtliQ itself would face only 0.5% per week, capped at 5%, from Rheinwerk (draft §8.2), so the flow-down is also mismatched.",
+      "rule": "R-01",
+      "register_refs": [
+        {
+          "entry_id": "REG-A50",
+          "file": "signed_contracts/2025-03-10_acme_retail_group_msa.md",
+          "clause_ref": "§7.3",
+          "quote": "The aggregate liquidated damages in respect of any Milestone shall not exceed 5% (five percent) of the Milestone Fee of that Milestone."
+        },
+        {
+          "entry_id": "REG-B39",
+          "file": "signed_contracts/2025-11-28_brightwater_insurance_msa.md",
+          "clause_ref": "§5.2",
+          "quote": "The Supplier shall meet each Key Date. Time shall be of the essence in respect of the Key Dates."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "PixelCraft Studio vendor agreement (Oct 2025)",
+          "label": "deliberate",
+          "note": "Ishaan objected to the 1% per day delay penalty in this template; Karandeep: 'He's right. They're six people. I don't want our paper to be the thing I hate receiving.' Penalty deleted in PixelCraft's copy only; the template was probably never updated (negotiation_notes.md), and this draft shows it was not."
+        },
+        {
+          "contract": "Acme, Northwind, Trustline MSAs (2025-26)",
+          "label": "deliberate",
+          "note": "Karandeep countered open-ended LD with 0.5% of the affected milestone fee per week, cap 5%, no LD for client-caused delay; all accepted (negotiation_notes.md)."
+        },
+        {
+          "contract": "Brightwater services agreement (Nov 2025)",
+          "label": "waved_through",
+          "note": "Uncapped LD with no client-delay exclusion, signed from a phone; LD of USD 18,400 claimed after Brightwater gave warehouse access 19 days late (April post-mortem)."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "The delay-damages clause has no cap and no exception for delays AtliQ or the end client cause. Ask Karandeep."
+    },
+    {
+      "id": "F-02",
+      "severity": "High",
+      "type": "fairness",
+      "title": "Payment up to 120 days after invoice, and only once Rheinwerk has paid AtliQ (pay-when-paid)",
+      "clause_ref": "§4.2, §4.3",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "AtliQ's obligation to pay any invoice is conditional upon AtliQ's receipt of payment from the End Client for the corresponding services. AtliQ shall pay each properly submitted, undisputed invoice within fifteen (15) days after AtliQ receives the corresponding payment from the End Client, and in any event not later than one hundred and twenty (120) days after AtliQ's receipt of the invoice.",
+      "explanation": "The checklist says 30 days, 45 max; this is 120 days at the outer limit, which is 75 days beyond the maximum, and the obligation to pay does not even arise until Rheinwerk has paid AtliQ. The vendor invoices only monthly in arrears for accepted deliverables (§4.2), after up to 15 days of testing (§3.1), so the real wait is longer than 120 days from delivery. AtliQ is shifting its own client's payment risk onto a 12-person firm; this is the clause Kriti is pushing back on ('we're 12 people'). Karandeep's September note says a small agency should not get AtliQ's paper and feel the way he felt reading Brightwater's, and this is twice the 60 days PixelCraft objected to (cut to 30 days).",
+      "rule": "R-20",
+      "register_refs": [
+        {
+          "entry_id": "REG-B60",
+          "file": "signed_contracts/2026-08-15_trustline_nbfc_msa.md",
+          "clause_ref": "§4.2",
+          "quote": "The Company shall pay each undisputed invoice within forty-five (45) days of receipt of the invoice."
+        },
+        {
+          "entry_id": "REG-B05",
+          "file": "signed_contracts/2025-04-28_rohan_iyer_contractor_agreement.md",
+          "clause_ref": "§3.2",
+          "quote": "AtliQ shall pay each undisputed invoice within thirty (30) days of receipt."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "PixelCraft Studio vendor agreement (Oct 2025)",
+          "label": "deliberate",
+          "note": "Ishaan pushed back on a 60-day payment term; Karandeep set 30 days (negotiation_notes.md). Not carried into the template."
+        },
+        {
+          "contract": "Trustline NBFC MSA (Aug 2026)",
+          "label": "deliberate",
+          "note": "When AtliQ was the one waiting for payment, Karandeep refused 90 days and held 45 (negotiation_notes.md)."
+        },
+        {
+          "contract": "Rohan Iyer contractor agreement (Apr 2025)",
+          "label": "waved_through",
+          "note": "AtliQ's earlier freelancer paper paid in 30 days of receipt."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "AtliQ's own template pays vendors up to 120 days after invoice and only after the end client pays. Ask Karandeep."
+    },
+    {
+      "id": "F-03",
+      "severity": "High",
+      "type": "fairness",
+      "title": "Vendor's liability is unlimited while AtliQ's is capped at fees actually paid",
+      "clause_ref": "§10.1-10.3",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "NOTHING IN THIS AGREEMENT SHALL LIMIT OR EXCLUDE VENDOR'S LIABILITY FOR ANY LOSSES, WHETHER DIRECT OR INDIRECT, ARISING OUT OF OR RELATING TO THIS AGREEMENT, INCLUDING VENDOR'S INDEMNIFICATION OBLIGATIONS.",
+      "explanation": "A 12-person vendor on an INR 8,40,000 job would carry unlimited liability, including for indirect loss, while AtliQ's liability is limited to 'the fees actually paid' (§10.2) and AtliQ is excluded from indirect and consequential loss (§10.1). Because payment is conditional on Rheinwerk paying (§4.3), 'fees actually paid' can be nil. The checklist line is 'liability -> 1x fees. NOT unlimited', and Karandeep refused unlimited liability from Kessler on a EUR 120k deal; at PixelCraft he capped liability at fees for both sides. The cap is also not the same as AtliQ's own exposure to Rheinwerk, which is limited to total remuneration for ordinary negligence (Rheinwerk draft §9.2).",
+      "rule": "R-03",
+      "register_refs": [
+        {
+          "entry_id": "REG-B06",
+          "file": "signed_contracts/2025-04-28_rohan_iyer_contractor_agreement.md",
+          "clause_ref": "§8.1",
+          "quote": "Each party's aggregate liability under this Agreement shall not exceed the total fees paid or payable to the Contractor in the twelve (12) months preceding the claim"
+        },
+        {
+          "entry_id": "REG-B61",
+          "file": "signed_contracts/2026-08-15_trustline_nbfc_msa.md",
+          "clause_ref": "§12.2",
+          "quote": "The aggregate liability of either Party under this Agreement shall not exceed the total fees paid or payable under this Agreement."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "PixelCraft Studio vendor agreement (Oct 2025)",
+          "label": "deliberate",
+          "note": "Ishaan objected to unlimited vendor liability; Karandeep capped liability at fees for both sides (negotiation_notes.md)."
+        },
+        {
+          "contract": "Kessler Mobility (Jan 2026, not signed)",
+          "label": "deliberate",
+          "note": "Karandeep refused 'without limitation' liability: 'Unlimited liability on a EUR 120k deal means one bad incident ... and the company is gone.' Deal lost (negotiation_notes.md)."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "The vendor's liability has no limit while AtliQ's is capped. Ask Karandeep."
+    },
+    {
+      "id": "F-04",
+      "severity": "High",
+      "type": "fairness",
+      "title": "Vendor indemnifies AtliQ even for AtliQ's own negligence",
+      "clause_ref": "§9.1",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "(a) the Services or Deliverables, (b) any breach of this Agreement by Vendor, (c) any claim by the End Client relating to the Services or Deliverables, or (d) any act or omission of Vendor Personnel, in each case regardless of whether such Losses are caused in whole or in part by the negligence of any AtliQ Indemnitee.",
+      "explanation": "Kriti would cover every loss connected with the services, including claims by Rheinwerk, even where AtliQ's own negligence caused them, and with no cap (§10.3). This is the opposite of 'indemnity -> mutual. we don't cover their mistakes'; the draft asks of a small vendor exactly what Karandeep refused from PayTrack ('we can't insure against PayTrack's own negligence'). The wording closely follows the Harrington draft's indemnity (§9.1), with the roles reversed.",
+      "rule": "R-04",
+      "register_refs": [
+        {
+          "entry_id": "REG-A42",
+          "file": "signed_contracts/2025-01-22_paytrack_technologies_msa.md",
+          "clause_ref": "§10.2",
+          "quote": "Neither Party shall be required to indemnify the other to the extent any Losses are caused by the negligence, breach or wilful misconduct of the Indemnified Party."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "PayTrack MSA (Jan 2025)",
+          "label": "deliberate",
+          "note": "Karandeep rejected an indemnity covering PayTrack's own negligence and proposed a mutual indemnity; accepted (negotiation_notes.md)."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "The indemnity would make the vendor cover AtliQ's own mistakes. Ask Karandeep."
+    },
+    {
+      "id": "F-05",
+      "severity": "High",
+      "type": "data_class",
+      "title": "German plant and technician data goes to a vendor with no data-protection terms, its own platform, and no Rheinwerk consent on file",
+      "clause_ref": "Engagement Schedule; §6.1; Rheinwerk §13.1, §15.3",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "Source data comprises vibration, temperature and pressure sensor streams from End Client customer plants, together with maintenance work orders and technician logs (including technician names, shift identifiers and free-text notes). Vendor Personnel shall access data via AtliQ-provisioned cloud workspaces and Vendor's own labelling platform.",
+      "explanation": "The data includes technician names and free-text notes, so it contains personal data of Rheinwerk's side, and the vendor will also use its own labelling platform, so data leaves AtliQ's workspaces. The Kriti draft has no data-protection clause, no processing instructions and no security or breach terms; its confidentiality definition covers only information 'disclosed by or on behalf of AtliQ or the End Client'. Rheinwerk's draft allows subcontracting only with Rheinwerk's written consent (§15.3), requires its personnel to be AtliQ's own (§2.3) and requires a data processing agreement as Annex 3 (§13.1), which is not in the file. Kriti is scheduled to start 5 Oct, before the Rheinwerk contract is signed (needed by 15 Oct) and with no consent recorded.",
+      "rule": "R-16",
+      "register_refs": [
+        {
+          "entry_id": "REG-B08",
+          "file": "signed_contracts/2025-04-28_rohan_iyer_contractor_agreement.md",
+          "clause_ref": "§6.2",
+          "quote": "The Contractor shall comply with any confidentiality and data-security requirements of AtliQ's clients notified to him in writing, including restrictions on downloading client data to personal devices."
+        },
+        {
+          "entry_id": "REG-B28",
+          "file": "signed_contracts/2025-10-06_atliq_intercompany_subcontractor_baa.md",
+          "clause_ref": "§2.2",
+          "quote": "The restrictions, conditions and requirements of the Upstream BAA that apply to Business Associate apply equally to Subcontractor in performing the Engagement Services."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "CareBridge intercompany subcontractor BAA (Oct 2025)",
+          "label": "deliberate",
+          "note": "Karandeep had a subcontractor agreement set up so the client's data terms flowed down to Pune ('Per engagement, keep it simple'; negotiation_notes.md). That kind of flow-down is missing here."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": true,
+      "seller_text": "Client data would go to a subcontractor without the data terms and client approval the client's contract needs. Ask Karandeep."
+    },
+    {
+      "id": "F-06",
+      "severity": "Medium",
+      "type": "fairness",
+      "title": "AtliQ can end on 7 days' notice without paying for work in progress; the vendor has no matching right",
+      "clause_ref": "§5.2-5.4",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "AtliQ may terminate this Agreement, in whole or in part, for any reason or no reason, upon seven (7) days' written notice to Vendor. Upon such termination, AtliQ's sole obligation shall be to pay Fees for Deliverables accepted by AtliQ prior to the effective date of termination; AtliQ shall have no obligation to pay for work in progress, unaccepted Deliverables, demobilization costs or anticipated profits.",
+      "explanation": "Only AtliQ can end for convenience, and the vendor must hand over incomplete work immediately (§5.4) with no payment for work in progress. The checklist line is 'termination -> they pay for work done', which is what AtliQ asks of its own clients (for example Trustline pays a pro rata share of any milestone in progress). Cure periods are 15 days for both sides (§5.2), so only the convenience right is lopsided. Exposure is bounded by the fee schedule, e.g. Batch 1 is INR 3,20,000 of the INR 8,40,000.",
+      "rule": "R-08",
+      "register_refs": [
+        {
+          "entry_id": "REG-B68",
+          "file": "signed_contracts/2026-08-15_trustline_nbfc_msa.md",
+          "clause_ref": "§5.3",
+          "quote": "The Company may terminate this Agreement for convenience on thirty (30) days' notice, subject to payment for Services rendered up to the date of termination, including a pro rata portion of the Milestone Fee for any Milestone in progress."
+        },
+        {
+          "entry_id": "REG-B09",
+          "file": "signed_contracts/2025-04-28_rohan_iyer_contractor_agreement.md",
+          "clause_ref": "§9.1",
+          "quote": "Either party may terminate this Agreement for convenience by giving fifteen (15) days' written notice."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "Rohan Iyer contractor agreement (Apr 2025)",
+          "label": "unlabelled",
+          "note": "AtliQ's earlier individual-contractor paper let either side end on 15 days' notice."
+        }
+      ],
+      "decision_needed": false,
+      "redact_in_seller_view": false,
+      "seller_text": "The termination clause lets AtliQ walk away on short notice without paying for work in progress. Ask Karandeep."
+    },
+    {
+      "id": "F-07",
+      "severity": "Medium",
+      "type": "bundle",
+      "title": "Kriti keeps the annotation outputs and AtliQ gets only a non-transferable licence, while Rheinwerk's draft expects exclusive, transferable rights",
+      "clause_ref": "§7.2, §7.3, §1.2; Rheinwerk §6.5",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "Subject to payment of the applicable Fees, Vendor grants AtliQ a non-exclusive, non-transferable, perpetual licence to use the annotation outputs and Deliverables for the purposes of the End Client project, including delivery to the End Client.",
+      "explanation": "The definition of Deliverables (§1.2) includes labelled datasets and label files, but §7.2 says Kriti keeps 'annotation outputs' and §7.3 gives AtliQ only a licence for the End Client project. Rheinwerk's draft says that, apart from PipeKit, it acquires 'exclusive, perpetual, transferable and unrestricted' rights in all Work Results created specifically for it (§6.5). AtliQ cannot pass on rights it does not hold, so as drafted the two documents do not fit. Neither is signed, so this can be fixed before either is.",
+      "rule": "R-18",
+      "register_refs": [
+        {
+          "entry_id": "REG-B02",
+          "file": "signed_contracts/2025-04-28_rohan_iyer_contractor_agreement.md",
+          "clause_ref": "§5.3",
+          "quote": "The Contractor grants AtliQ a non-exclusive, perpetual, irrevocable, royalty-free, worldwide licence to use, copy, modify and deploy the Work Product for the purposes of AtliQ's business, including for delivery to AtliQ's clients."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "Rohan Iyer contractor agreement (Apr 2025)",
+          "label": "waved_through",
+          "note": "A freelancer kept IP in the work and AtliQ received only a licence; Dhaval said fine and Karandeep replied 'ok' from his phone (negotiation_notes.md). He worked on the Acme dashboards. The Kriti draft repeats the pattern with a narrower licence."
+        }
+      ],
+      "decision_needed": false,
+      "redact_in_seller_view": true,
+      "seller_text": "The vendor ownership clause may not fit what the end client's contract requires. Ask Karandeep."
+    }
+  ],
+  "bundle": {
+    "needed": [
+      {
+        "document": "Rheinwerk Analytics services agreement (RWA-2026-014)",
+        "status": "draft_only",
+        "note": "The End Client contract is still a client draft AtliQ has not marked up, due by 15 Oct (tracker C-028), while Kriti's planned start is 5 Oct. Kriti's payment is tied to Rheinwerk paying AtliQ.",
+        "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+        "quote": "(Client draft received 2026-09-23 via Bhavin's email. Client's paper — AtliQ has not yet marked up.)"
+      },
+      {
+        "document": "Rheinwerk's written consent to subcontract to Kriti",
+        "status": "missing",
+        "note": "Rheinwerk's draft allows subcontracting only with its prior written consent; no consent is on file.",
+        "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+        "quote": "Supplier may subcontract parts of the services only with Client's prior written consent."
+      },
+      {
+        "document": "Rheinwerk Annex 3 (Data Processing Agreement incl. SCCs) and Annex 1 (Statement of Work)",
+        "status": "referenced_absent",
+        "note": "Both are listed as part of the Rheinwerk agreement but are not in the draft on file, so the data terms Kriti would have to follow cannot be read.",
+        "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+        "quote": "The following Annexes form part of this Agreement: Annex 1 (Statement of Work), Annex 2 (Milestones and Remuneration), Annex 3 (Data Processing Agreement incl. SCCs)."
+      },
+      {
+        "document": "Data-protection / processing terms between AtliQ and Kriti",
+        "status": "missing",
+        "note": "The Kriti draft has no such clause; its confidentiality definition covers only information disclosed by AtliQ or the End Client.",
+        "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+        "quote": "\"Confidential Information\" means all non-public information disclosed by or on behalf of AtliQ or the End Client, including AtliQ Materials, business plans, technical information and pricing."
+      }
+    ]
+  },
+  "data_class": {
+    "class": "personal data",
+    "basis": "The Engagement Schedule says the source data includes technician names, shift identifiers and free-text notes from maintenance logs, alongside machine sensor data. No health data is mentioned.",
+    "question": "Does Rheinwerk know the data will be labelled by an outside vendor on that vendor's own platform, and has Rheinwerk (or AtliQ's counsel) confirmed that technician names and notes may go to Kriti, or can they be removed before the data is sent?",
+    "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+    "quote": "technician logs (including technician names, shift identifiers and free-text notes)"
+  },
+  "checks_passed": [
+    {
+      "rule": "R-06",
+      "note": "Indian law and Pune courts for AtliQ Technologies Pvt Ltd and an India vendor, as the checklist expects.",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "This Agreement shall be governed by and construed in accordance with the laws of India."
+    },
+    {
+      "rule": "R-11",
+      "note": "Contracting entity is AtliQ Technologies Pvt Ltd (CIN and GSTIN match the entity fact sheet) with an India vendor; AtliQ Inc is not used.",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "AtliQ Technologies Pvt Ltd, a private limited company incorporated under the Companies Act, 2013, CIN U72900MH2019PTC321456, GSTIN 27AAKCA4821F1Z3,"
+    },
+    {
+      "rule": "R-12",
+      "note": "The vendor must invoice with its own GSTIN and PAN and the agreement number, so the invoicing entity is the contracting entity.",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "Each invoice shall be a valid tax invoice under the CGST Act, 2017, state Vendor's GSTIN and PAN, and reference the Agreement No."
+    },
+    {
+      "rule": "R-20",
+      "note": "Exclusivity limb only: no exclusivity or non-compete is imposed on Kriti; it can work for others, which is the fair position for a small vendor. The other R-20 tests (payment, termination) fail, see F-02 and F-06.",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "This Agreement is non-exclusive. AtliQ may engage other vendors for similar services."
+    }
+  ],
+  "not_checked": [
+    {
+      "item": "Whether Kriti's labelling work is inside Rheinwerk's scope",
+      "reason": "Kriti's schedule says it produces training and validation datasets for Rheinwerk's predictive-maintenance models; Rheinwerk's §2.1 lists ingestion, lakehouse, job migration, orchestration and documentation, and its Annex 1 (the detailed scope) is not on file. Cannot be tested."
+    },
+    {
+      "item": "Fee in USD against the tracker",
+      "reason": "The draft states fees in INR (total INR 8,40,000) and the tracker shows USD 10,100; no exchange rate is given in the sources, so the two are not reconciled."
+    },
+    {
+      "item": "Whether Kriti's pushback relates to this exact text",
+      "reason": "The draft's header says it is 'not yet sent to vendor', while the tracker says Kriti is already pushing back on 120-day pay-when-paid; an earlier version may exist."
+    },
+    {
+      "item": "The PixelCraft agreement and the vendor template file",
+      "reason": "Not on file; PixelCraft's changes are known only from negotiation_notes.md, which says the template may never have been updated. This draft (Rev. 09/2026) shows none of those changes."
+    },
+    {
+      "item": "Rheinwerk's own approval of Kriti and Rheinwerk's Annex 3",
+      "reason": "Neither is on file; see bundle."
+    }
+  ],
+  "low": [
+    {
+      "title": "Several clauses are near-identical to the Harrington draft, with roles swapped",
+      "clause_ref": "§11.2 (Harrington MSA §11.2)",
+      "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+      "quote": "Accordingly, if Contractor fails to achieve any Delivery Date, Contractor shall pay Client, as liquidated damages, an amount equal to two percent (2%) of the Total Contract Value for each calendar day from the Delivery Date until the date the applicable Deliverable is accepted.",
+      "note": "The same 2% per day wording (here on the vendor), the 7-day no-pay termination for convenience (Harrington §5.3), the indemnity covering the other side's negligence (§9.1), the 'no deemed acceptance' and 'fees firm and fixed' clauses, and the one-way liability clause (§10.3) all come from the Harrington paper Jay used as the template. Harrington's own payment term is 90 days; this draft goes to 120 and adds pay-when-paid."
+    },
+    {
+      "title": "AtliQ may set off its delay damages against what it owes",
+      "clause_ref": "§4.5",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "AtliQ may set off against any amount owed to Vendor any amount owed by Vendor to AtliQ under this Agreement, including liquidated damages.",
+      "note": "With uncapped daily damages (F-01), set-off lets AtliQ hold back fees without a dispute process. Worth knowing for a vendor of this size."
+    },
+    {
+      "title": "Acceptance is open-ended and rests only with AtliQ",
+      "clause_ref": "§3.1-3.3",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "Acceptance shall not be deemed to occur by use, by delivery to the End Client, by payment, or by the passage of time.",
+      "note": "AtliQ has 15 days to test each deliverable, may repeat the cycle until it conforms, and acceptance never happens by silence. Combined with payment on acceptance and the delay clock running until acceptance, the vendor cannot control when it is paid or when damages stop."
+    },
+    {
+      "title": "Standard of performance set at 'the highest standards of the industry'",
+      "clause_ref": "§2.2",
+      "file": "incoming/2026-09-26_kriti_data_labs_subcontractor_agreement_draft.md",
+      "quote": "Vendor shall perform the Services in a diligent, professional and workmanlike manner, in accordance with the highest standards of the industry, and in compliance with AtliQ's annotation guidelines and quality requirements made available to Vendor, as updated from time to time.",
+      "note": "The guidelines can change at AtliQ's option, and the Engagement Schedule sets a 97% accuracy threshold on AtliQ-sampled QA. Worth knowing; not outside the checklist."
+    }
+  ],
+  "seller_view": {
+    "flag_types": [
+      "fairness",
+      "data_class",
+      "bundle"
+    ],
+    "missing_documents": [
+      "Rheinwerk written consent to subcontract",
+      "Rheinwerk Annex 3 (data processing agreement) and Annex 1",
+      "Data-protection terms between AtliQ and Kriti"
+    ],
+    "ask_karandeep": [
+      "Do we keep this template's 2% per day, 120-day pay-when-paid and unlimited vendor liability, or reset to fairer terms?",
+      "Has Rheinwerk approved Kriti and the data going to Kriti's platform?"
+    ]
+  },
+  "provenance": "Pre-generated from the capstone dataset in a build session. Quotes validated by exact string match."
+}

@@ -1,0 +1,121 @@
+{
+  "slug": "loopmart_mutual_nda",
+  "draft_file": "incoming/2026-09-27_loopmart_mutual_nda_draft.md",
+  "tracker_id": "C-038",
+  "counterparty": "LoopMart Retail Private Limited",
+  "doc_type": "Mutual NDA (LoopMart's standard form)",
+  "atliq_entity_in_draft": "AtliQ Technologies Private Limited (Pvt Ltd)",
+  "client_country": "India",
+  "tracker_status": "Not recorded (blank in tracker)",
+  "deadline": null,
+  "value": "No fee stated (NDA)",
+  "headline": "This is a genuinely mutual NDA: both sides' information is defined and both sides are bound, with no non-compete, no-hire, residuals or indemnity, Indian law, and a fixed 2-year term; only three minor points are worth knowing.",
+  "highest_severity": "Low",
+  "exposure": [
+    {
+      "label": "Length of confidentiality duty (applies equally to both sides)",
+      "clause_ref": "§7.1, §7.2",
+      "calculation": "2 years from the Effective Date (either side may end earlier on 30 days' notice) + 3 years after expiry or termination",
+      "result": "Up to 5 years from signature, then it ends",
+      "cap": "Fixed end date; no liability cap or indemnity clause in the draft, so no money figure is set by the NDA itself",
+      "file": "incoming/2026-09-27_loopmart_mutual_nda_draft.md",
+      "quote": "Each Party's obligations under Clauses 3 to 6 continue for three (3) years after expiry or termination of this Agreement."
+    }
+  ],
+  "findings": [],
+  "bundle": {
+    "needed": []
+  },
+  "data_class": {
+    "class": "unknown",
+    "basis": "The purpose is customer analytics and demand forecasting, and the examples of Confidential Information include 'sales and customer data'. Clause 5.1 covers personal data only 'where' it is included; the draft does not say whether identifiable customer records will be shared during discussions.",
+    "question": "Will LoopMart share customer-level (identifiable) data while the deal is being discussed, or only aggregate or masked samples? If identifiable, who at AtliQ will receive it?",
+    "file": "incoming/2026-09-27_loopmart_mutual_nda_draft.md",
+    "quote": "Where Confidential Information includes personal data, the Receiving Party shall process it only for the Purpose and in compliance with the Digital Personal Data Protection Act, 2023."
+  },
+  "checks_passed": [
+    {
+      "rule": "R-09",
+      "note": "Definition runs both ways: whichever party discloses is the Disclosing Party, so AtliQ's own architecture, source code and methodologies are protected as well as LoopMart's sales and customer data.",
+      "file": "incoming/2026-09-27_loopmart_mutual_nda_draft.md",
+      "quote": "\"Confidential Information\" means any non-public information disclosed by a Party (the \"Disclosing Party\") to the other Party (the \"Receiving Party\") in connection with the Purpose, in any form, that is marked confidential or would reasonably be understood to be confidential, including sales and customer data, supplier terms, pricing, product roadmaps, solution designs, source code and methodologies."
+    },
+    {
+      "rule": "R-09",
+      "note": "Both parties are bound as Receiving Party and each answers for the people it shares information with.",
+      "file": "incoming/2026-09-27_loopmart_mutual_nda_draft.md",
+      "quote": "Each Party is responsible for any breach of this Agreement by persons to whom it discloses Confidential Information."
+    },
+    {
+      "rule": "R-09",
+      "note": "Read in full: there is no non-compete, no no-hire or no-solicit clause, and no residuals clause. The nearest clause says the opposite: each side stays free to work with others.",
+      "file": "incoming/2026-09-27_loopmart_mutual_nda_draft.md",
+      "quote": "Neither Party is obliged to enter into any further agreement. Each Party remains free to work with third parties, provided it does not use or disclose the other Party's Confidential Information."
+    },
+    {
+      "rule": "R-04",
+      "note": "The draft has no indemnity clause and no clause setting an amount of liability for either side, so none of the one-sided or uncapped wording (R-03, R-04) is present; the only remedy clause is the same for both sides. The draft also contains nothing that restricts who AtliQ may work for, so it cannot collide with a register restraint (R-13).",
+      "file": "incoming/2026-09-27_loopmart_mutual_nda_draft.md",
+      "quote": "Each Party acknowledges that damages may not be an adequate remedy for breach, and the Disclosing Party may seek injunctive relief in addition to other remedies available at law."
+    },
+    {
+      "rule": "R-06",
+      "note": "Indian law for an India client and AtliQ Technologies Pvt Ltd, as the checklist expects. Courts are at Bengaluru (see Low).",
+      "file": "incoming/2026-09-27_loopmart_mutual_nda_draft.md",
+      "quote": "This Agreement is governed by the laws of India. The courts at Bengaluru shall have exclusive jurisdiction."
+    },
+    {
+      "rule": "R-11",
+      "note": "Contracting entity is AtliQ Technologies Pvt Ltd (CIN and GSTIN match the entity fact sheet) for an India company; AtliQ Inc is not involved.",
+      "file": "incoming/2026-09-27_loopmart_mutual_nda_draft.md",
+      "quote": "ATLIQ TECHNOLOGIES PRIVATE LIMITED, a company incorporated under the Companies Act, 2013 (CIN U72900MH2019PTC321456; GSTIN 27AAKCA4821F1Z3), having its registered office at 4th Floor, Baner Business Bay, Pune 411045, Maharashtra, India (\"AtliQ\"),"
+    },
+    {
+      "rule": "R-09",
+      "note": "Term is fixed and mutual, with a 30-day early exit for either side; no perpetual duty.",
+      "file": "incoming/2026-09-27_loopmart_mutual_nda_draft.md",
+      "quote": "This Agreement remains in force for two (2) years from the Effective Date. Either Party may terminate it earlier on thirty (30) days' written notice."
+    }
+  ],
+  "not_checked": [
+    {
+      "item": "A later LoopMart MSA or SOW against the Crestline most-favoured-customer promise (REG-A02)",
+      "reason": "This NDA sets no rates or commercial terms, so nothing here can be tested; if the deal proceeds, pricing to LoopMart would need that check."
+    },
+    {
+      "item": "Whether LoopMart will send identifiable customer data before an agreement exists",
+      "reason": "Not stated in the draft; see data_class question."
+    }
+  ],
+  "low": [
+    {
+      "title": "Exclusive courts are at LoopMart's city (Bengaluru), not Pune",
+      "clause_ref": "§10.3",
+      "file": "incoming/2026-09-27_loopmart_mutual_nda_draft.md",
+      "quote": "This Agreement is governed by the laws of India. The courts at Bengaluru shall have exclusive jurisdiction.",
+      "note": "Law fits the checklist; only the venue favours the other side. Earlier India NDAs on file used Mumbai arbitration (Al Noor) and New Delhi courts (Meridian), so this is within what AtliQ has signed before."
+    },
+    {
+      "title": "Protection for both sides ends 3 years after the NDA ends",
+      "clause_ref": "§7.2",
+      "file": "incoming/2026-09-27_loopmart_mutual_nda_draft.md",
+      "quote": "Each Party's obligations under Clauses 3 to 6 continue for three (3) years after expiry or termination of this Agreement.",
+      "note": "Same length as Meridian and Harrington (3 years); Al Noor ran 5. It also protects AtliQ's own source code and solution designs for only 3 years after the end, and the draft has no separate longer period for trade secrets."
+    },
+    {
+      "title": "Personal data: compliance duty but no breach-notice clock",
+      "clause_ref": "§5.1, §3.1(d)",
+      "file": "incoming/2026-09-27_loopmart_mutual_nda_draft.md",
+      "quote": "promptly notify the Disclosing Party of any unauthorised use or disclosure of which it becomes aware.",
+      "note": "The general duty is 'promptly' with no fixed hours, which is lighter than the Meridian (24 hours) and FinServe (6 hours) NDAs. Worth knowing in case LoopMart wants a number added."
+    }
+  ],
+  "seller_view": {
+    "flag_types": [],
+    "missing_documents": [],
+    "ask_karandeep": [
+      "Will LoopMart share identifiable customer data during discussions, or only masked samples?"
+    ]
+  },
+  "provenance": "Pre-generated from the capstone dataset in a build session. Quotes validated by exact string match."
+}

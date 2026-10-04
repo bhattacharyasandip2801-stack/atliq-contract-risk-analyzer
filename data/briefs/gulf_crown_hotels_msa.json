@@ -1,0 +1,504 @@
+{
+ "slug": "gulf_crown_hotels_msa",
+ "draft_file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+ "tracker_id": "C-025",
+ "counterparty": "Gulf Crown Hotels & Resorts Co.",
+ "doc_type": "Master Services Agreement (client paper, unmarked)",
+ "atliq_entity_in_draft": "AtliQ Technologies Pvt Ltd",
+ "client_country": "Saudi Arabia",
+ "tracker_status": "In review",
+ "deadline": "10 Oct 2026 (contract tracker note; 22 Sep queue meeting)",
+ "value": "$140,000 (tracker; Contract Value in draft §3.5)",
+ "headline": "All nine Gulf Crown hotels are in Saudi Arabia, a GCC state, and the platform is revenue management plus guest analytics, which is exactly what AtliQ's Al Noor contract (§12.1) bars in the GCC until about 14 Sep 2029; the Feb 2026 Seaside waiver does not reach it, and the draft also asks AtliQ to warrant it is bound by no such restriction.",
+ "highest_severity": "High",
+ "exposure": [
+  {
+   "label": "Delay penalty (LD) per week",
+   "clause_ref": "§12.2",
+   "calculation": "1% x USD 140,000 (Contract Value, §3.5), for each week or part of a week of delay",
+   "result": "USD 1,400 per week or part week, on any missed milestone",
+   "cap": "read from clause: §12.3 'shall not exceed ten percent (10%) of the Contract Value' = 10% x USD 140,000 = USD 14,000 in total (reached after 10 weeks of delay)",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "an amount equal to one percent (1%) of the Contract Value for each week or part thereof of delay."
+  },
+  {
+   "label": "Overall liability cap",
+   "clause_ref": "§10.2",
+   "calculation": "Cap = Contract Value = USD 140,000 (1x fees); fraud, wilful misconduct, confidentiality and data protection breaches sit outside the cap",
+   "result": "USD 140,000 for most claims; no stated limit for a confidentiality or data protection breach",
+   "cap": "uncapped for fraud, wilful misconduct, breach of Clause 7 (Confidentiality) or Clause 13 (Data Protection)",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "Save in respect of liability arising from fraud, wilful misconduct, breach of Clause 7 (Confidentiality) or Clause 13 (Data Protection), each Party's aggregate liability under this Agreement shall not exceed the Contract Value."
+  },
+  {
+   "label": "Al Noor restriction window (how long the clash lasts)",
+   "clause_ref": "Al Noor MSA §1.14, §6.1",
+   "calculation": "Term ends 14 Mar 2028 + 18 months = 14 Sep 2029 if the Al Noor MSA runs to its stated end; Gulf Crown work would run 40 weeks from the Effective Date (Schedule 3, M5), i.e. to about 17 Jul 2027 if signed on 10 Oct 2026",
+   "result": "All Gulf Crown delivery milestones would fall inside the restriction window; the Gulf Crown term itself is 36 months (§6.1)",
+   "cap": "No amount is stated in Al Noor §12. Al Noor's general liability cap (§14.2) is fees paid in the 12 months before the event; how much was paid in that window is not in the files",
+   "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+   "quote": "\"Restricted Period\" means the Term and the period of eighteen (18) months following the expiry or termination of this Agreement."
+  }
+ ],
+ "findings": [
+  {
+   "id": "F-01",
+   "severity": "High",
+   "type": "conflict",
+   "title": "Gulf Crown's Saudi hotels fall inside the Al Noor GCC hospitality restriction",
+   "clause_ref": "§4.1, §2.1, Schedule 2",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "The Service Provider shall design, develop, test, deploy and support a revenue management and guest analytics platform for the Company's nine (9) Properties located in the Kingdom of Saudi Arabia, as listed in Schedule 2.",
+   "explanation": "On the text, every element of Al Noor §12.1 is met: AtliQ Technologies Pvt Ltd is the same entity that signed with Al Noor; Gulf Crown owns and operates hotels (a 'Hospitality Business'); Saudi Arabia is named as a GCC state in Al Noor §1.9; the services are revenue-management and guest-analytics work; and §12.2 says it does not matter that the work is done from Pune. The restriction runs for the Al Noor Term (to 14 March 2028) plus 18 months, i.e. to 14 Sep 2029 if the Al Noor contract runs its full term, so the whole Gulf Crown delivery period (40 weeks, about to 17 Jul 2027 if signed on 10 Oct 2026) falls inside it. The only release is a written consent from Al Noor under §12.4, which is in Al Noor's sole discretion. The 10 Feb 2026 waiver does not help: it covers only demand-forecasting for Seaside Hotels LLC, Muscat, under the Seaside SOW, and expressly excludes any other Hospitality Business in Oman or elsewhere in the GCC and any Affiliate. This is a collision on the face of the text; what Al Noor could claim, and how its clause would be read, is for counsel.",
+   "rule": "R-13",
+   "register_refs": [
+    {
+     "entry_id": "REG-A18",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§12.1",
+     "quote": "the Supplier undertakes that neither it nor any of its Affiliates shall, during the Restricted Period, directly or indirectly, provide data analytics, artificial intelligence or revenue-management services to any Hospitality Business in the GCC."
+    },
+    {
+     "entry_id": "REG-A18",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§12.2",
+     "quote": "For the purposes of Clause 12.1, services are provided \"in the GCC\" if the Hospitality Business receiving them is headquartered in, or the services relate to properties or operations located in, any state of the GCC, irrespective of where the services are performed."
+    },
+    {
+     "entry_id": "REG-A18",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§1.9 (GCC)",
+     "quote": "\"GCC\" means the member states of the Gulf Cooperation Council, being the United Arab Emirates, the Kingdom of Saudi Arabia, the State of Qatar, the State of Kuwait, the Kingdom of Bahrain and the Sultanate of Oman."
+    },
+    {
+     "entry_id": "REG-A18",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§1.11 (Hospitality Business)",
+     "quote": "\"Hospitality Business\" means any person, firm or entity that owns, operates, manages or franchises hotels, resorts or serviced apartments, or that provides distribution, revenue-management or guest-analytics services to any such person, firm or entity."
+    },
+    {
+     "entry_id": "REG-A18",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§1.14 (Restricted Period)",
+     "quote": "\"Restricted Period\" means the Term and the period of eighteen (18) months following the expiry or termination of this Agreement."
+    },
+    {
+     "entry_id": "REG-A19",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§12.4 (only release route)",
+     "quote": "The Client may, in its sole discretion, waive the restriction in Clause 12.1 in respect of a specific engagement by written consent signed by an authorised signatory of the Client. Any such waiver shall be limited to its express terms."
+    },
+    {
+     "entry_id": "REG-A18",
+     "file": "signed_contracts/2026-02-10_al_noor_waiver_letter.md",
+     "clause_ref": "Waiver letter para 3 (what is excluded)",
+     "quote": "This consent is strictly limited to the Seaside SOW. It does not extend to (a) any other services provided to Seaside, including any extension, renewal, change order or follow-on statement of work, unless separately consented to in writing by the Client; (b) any other Hospitality Business, whether in the Sultanate of Oman or elsewhere in the GCC; or (c) any Affiliate of the Supplier."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Al Noor Hospitality MSA §12",
+     "label": "deliberate",
+     "note": "Karandeep negotiated it down from worldwide/3 years to GCC/term + 18 months. Bhavin said at the time 'we'll never do another hotel in the Gulf anyway' (negotiation_notes.md). That assumption was overtaken when AtliQ asked Al Noor for the Seaside consent in Feb 2026."
+    },
+    {
+     "contract": "Al Noor waiver letter, 10 Feb 2026",
+     "label": "deliberate",
+     "note": "Requested by Karandeep for one project only (Seaside Hotels, Muscat). The letter itself limits the consent to that one SOW."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "Possible clash with an existing client commitment on Gulf hospitality work; ask Karandeep. Do not give the client a firm answer yet."
+  },
+  {
+   "id": "F-02",
+   "severity": "High",
+   "type": "conflict",
+   "title": "Draft makes AtliQ warrant that no agreement restricts it from doing this work",
+   "clause_ref": "§9.1(d)",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "it is not bound by any agreement or restriction which would prevent or restrict it from performing the Services for the Company.",
+   "explanation": "This is a warranty by AtliQ, not itself a restriction on AtliQ; the restriction comes from Al Noor §12. Given Al Noor §12.1 and §12.2, AtliQ could not give this statement as drafted without a carve-out or a written release from Al Noor. Signing it would add a second problem on top of F-01: a possible breach-of-warranty claim by Gulf Crown, against a draft that lets Gulf Crown deduct delay penalties from payments (§12.4). Whether the statement would be untrue in law is for counsel.",
+   "rule": "R-13",
+   "register_refs": [
+    {
+     "entry_id": "REG-A18",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§12.1",
+     "quote": "the Supplier undertakes that neither it nor any of its Affiliates shall, during the Restricted Period, directly or indirectly, provide data analytics, artificial intelligence or revenue-management services to any Hospitality Business in the GCC."
+    },
+    {
+     "entry_id": "REG-A18",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§12.3 (Affiliates must also comply)",
+     "quote": "The Supplier shall procure that each of its Affiliates complies with this Clause 12 as if it were a party to this Agreement, and any breach by an Affiliate shall be deemed a breach by the Supplier."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Al Noor Hospitality MSA §12",
+     "label": "deliberate",
+     "note": "The restriction is a recorded, negotiated decision (negotiation_notes.md). Gulf Crown's warranty was not discussed in any file."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The draft asks AtliQ to confirm it is bound by no restriction that affects this work. That confirmation needs a check against existing commitments; ask Karandeep."
+  },
+  {
+   "id": "F-03",
+   "severity": "Medium",
+   "type": "clause_risk",
+   "title": "Liability capped at 1x fees, but data protection and confidentiality breaches are uncapped",
+   "clause_ref": "§10.2",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "Save in respect of liability arising from fraud, wilful misconduct, breach of Clause 7 (Confidentiality) or Clause 13 (Data Protection), each Party's aggregate liability under this Agreement shall not exceed the Contract Value.",
+   "explanation": "The headline cap equals the Contract Value, USD 140,000, which is Karandeep's '1x fees'. But a breach of the data protection clause (§13: Saudi guest and loyalty-programme data, 72-hour breach notice) has no cap at all, so a data incident is outside the 1x position. The Al Noor MSA also leaves confidentiality outside its cap, but not data protection. Outside the checklist, exposure not bounded for data incidents.",
+   "rule": "R-03",
+   "register_refs": [
+    {
+     "entry_id": "REG-A22",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§14.3",
+     "quote": "Nothing in this Agreement limits liability for fraud, wilful misconduct, breach of Clause 8 (Confidentiality), or death or personal injury caused by negligence."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Kessler Mobility (not signed)",
+     "label": "deliberate",
+     "note": "Karandeep refused unlimited liability and 'Offered 1x fees with carve-outs' (negotiation_notes.md); the carve-outs he offered are not listed."
+    },
+    {
+     "contract": "Al Noor Hospitality MSA §14",
+     "label": "unlabelled",
+     "note": "Cap is fees paid in the prior 12 months; no negotiation evidence either way."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "Liability cap is 1x fees but some breach types sit outside it; ask Karandeep."
+  },
+  {
+   "id": "F-04",
+   "severity": "Medium",
+   "type": "clause_risk",
+   "title": "Delay penalty is 1% of the whole contract per week, on any milestone, rounded up",
+   "clause_ref": "§12.2-12.3",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "Should the Service Provider fail to achieve any Milestone by its scheduled completion date, the Service Provider shall pay to the Company, by way of liquidated damages and not as a penalty, an amount equal to one percent (1%) of the Contract Value for each week or part thereof of delay.",
+   "explanation": "1% x USD 140,000 = USD 1,400 for every week or part of a week of delay, capped at 10% x USD 140,000 = USD 14,000 in total (§12.3). The cap exists, so R-01 passes, but the rate is above Karandeep's recorded position (0.5% of the affected milestone fee per week, cap 5% of that milestone fee). Example: Milestone M1 is USD 21,000 (Schedule 3); a 1-week slip costs USD 1,400 here, about 6.7% of that milestone's fee. Gulf Crown may also deduct the amount from any payment (§12.4). The 10% total cap equals the figure Karandeep approved for Al Noor only, as a one-off.",
+   "rule": "R-02",
+   "register_refs": [
+    {
+     "entry_id": "REG-A21",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§10.3",
+     "quote": "If the Supplier fails to achieve a Milestone by its due date for reasons attributable to the Supplier, the Supplier shall pay to the Client, as liquidated damages, one percent (1%) of the Fees payable for the affected Milestone for each complete week of delay, provided that the aggregate liquidated damages payable under this Agreement shall not exceed ten percent (10%) of the total Fees payable under this Agreement."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Al Noor Hospitality MSA §10.3",
+     "label": "deliberate",
+     "note": "10% of total fees cap approved by Karandeep 'as a strategic exception for Al Noor only, not our new standard' (negotiation_notes.md)."
+    },
+    {
+     "contract": "Acme, Northwind, Trustline",
+     "label": "deliberate",
+     "note": "Each time Karandeep countered to 0.5% of milestone fee per week, cap 5% of the milestone, client delay excluded, and the client agreed (negotiation_notes.md)."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "Delay penalty rate is above AtliQ's usual range; ask Karandeep."
+  },
+  {
+   "id": "F-05",
+   "severity": "Medium",
+   "type": "clause_risk",
+   "title": "Only force majeure excuses delay; no excuse where Gulf Crown causes it",
+   "clause_ref": "§12.5",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "The Service Provider shall not be liable for delay to the extent such delay is caused by a Force Majeure Event as defined in Clause 15.",
+   "explanation": "Delay penalties run from 'Effective Date + N weeks' dates (Schedule 3). The only excuse is force majeure. Nothing excuses delay caused by Gulf Crown being late with system access, data or acceptance, and the draft has no acceptance period or deemed acceptance. The Brightwater dispute was exactly this gap: 19 days of client-caused delay, no exclusion in the contract, and a claim of USD 18,400.",
+   "rule": "R-02",
+   "register_refs": [
+    {
+     "entry_id": "REG-A50",
+     "file": "signed_contracts/2025-03-10_acme_retail_group_msa.md",
+     "clause_ref": "§7.3 (recorded position: no LD for client delay)",
+     "quote": "No liquidated damages shall be payable where the delay is caused by the Client, including delayed access to data or systems, delayed review of Deliverables, or changes in scope, or by a Force Majeure event."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Brightwater Insurance Services Agreement",
+     "label": "waved_through",
+     "note": "Signed from a phone with no redlines; post-mortem: 'Contract had no exclusion for client-caused delay.' Settled with a USD 9,000 credit."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "No excuse for client-caused delay in the draft; ask Karandeep."
+  },
+  {
+   "id": "F-06",
+   "severity": "Medium",
+   "type": "clause_risk",
+   "title": "Payment due in 60 days, beyond the 45-day maximum",
+   "clause_ref": "§5.3",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "The Company shall pay each undisputed invoice within sixty (60) days from the date of receipt of a valid invoice.",
+   "explanation": "Checklist is 30 days, 45 max, so 60 days is 15 days beyond the maximum. Invoices are only raised after Gulf Crown's written acceptance of each milestone (§5.2), and the draft has no deemed-acceptance rule, so cash timing also depends on how fast Gulf Crown accepts. Gulf Crown has 15 Business Days to dispute an invoice (§5.5).",
+   "rule": "R-05",
+   "register_refs": [
+    {
+     "entry_id": "REG-A25",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§5.2",
+     "quote": "Invoices are payable within thirty (30) days of receipt."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Trustline NBFC MSA",
+     "label": "deliberate",
+     "note": "Client asked 90 days; Karandeep held at 45 and the client agreed (negotiation_notes.md)."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Payment terms are 60 days; AtliQ's normal maximum is 45. Ask Karandeep."
+  },
+  {
+   "id": "F-07",
+   "severity": "Medium",
+   "type": "entity_law",
+   "title": "Saudi law and Riyadh courts; not India",
+   "clause_ref": "§14.1, §14.3",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "This Agreement shall be governed by and construed in accordance with the laws and regulations in force in the Kingdom of Saudi Arabia.",
+   "explanation": "Karandeep's position for AtliQ Technologies Pvt Ltd is Indian law. §14.3 sends disputes to the Riyadh courts with exclusive jurisdiction. No Saudi law contract is in the register. Foreign law has been accepted twice before, each with a recorded reason (Al Noor DIFC, Northwind English law). No review of Saudi law was possible from the files.",
+   "rule": "R-06",
+   "register_refs": [
+    {
+     "entry_id": "REG-A26",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§21.1",
+     "quote": "This Agreement and any non-contractual obligations arising out of it shall be governed by the laws of the Dubai International Financial Centre."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Al Noor Hospitality MSA §21",
+     "label": "deliberate",
+     "note": "DIFC law accepted as 'group standard for all technology vendors' (negotiation_notes.md)."
+    },
+    {
+     "contract": "Northwind Logistics MSA §17",
+     "label": "deliberate",
+     "note": "Karandeep: 'English law / LCIA - not worth losing the deal over.'"
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Draft uses Saudi law and Riyadh courts; AtliQ's normal position is Indian law. Ask Karandeep."
+  },
+  {
+   "id": "F-08",
+   "severity": "Medium",
+   "type": "consistency",
+   "title": "Arabic text prevails; no Arabic copy has been received",
+   "clause_ref": "§15.3",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "This Agreement is executed in English and Arabic. In the event of any inconsistency, the Arabic text shall prevail.",
+   "explanation": "The only file received is the English draft. If the Arabic version differs, the Arabic is the one that counts, and nobody at AtliQ can read it from the files. Everything above was read from the English text only; the Arabic text is NOT CHECKED.",
+   "rule": "R-15",
+   "register_refs": [],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Arabic text prevails and the Arabic version has not been received; ask the client for it."
+  },
+  {
+   "id": "F-09",
+   "severity": "Medium",
+   "type": "clause_risk",
+   "title": "Only Gulf Crown can end for convenience, and pays only for work 'performed and accepted'",
+   "clause_ref": "§6.3, §6.5",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "The Company may terminate this Agreement for convenience upon sixty (60) days' written notice, in which event the Company shall pay for all Services performed and accepted up to the date of termination.",
+   "explanation": "AtliQ has no matching right. Work in progress that has not yet been accepted is not paid for, yet §6.5 requires AtliQ to hand over all work in progress and give up to 60 days of transition help. Checklist: 'they pay for work done'. Al Noor's version pays for services performed plus non-cancellable costs.",
+   "rule": "R-08",
+   "register_refs": [
+    {
+     "entry_id": "REG-A30",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§6.4",
+     "quote": "The Client may terminate an SOW for convenience on sixty (60) days' written notice, subject to payment for all Services performed up to the date of termination and any non-cancellable costs."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Al Noor Hospitality MSA §6.4",
+     "label": "unlabelled",
+     "note": "Only the client could terminate for convenience there too; no negotiation evidence either way."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Termination for convenience pays only for accepted work; ask Karandeep."
+  }
+ ],
+ "bundle": {
+  "needed": [
+   {
+    "document": "Arabic version of the Agreement",
+    "status": "missing",
+    "note": "Clause 15.3 says the Arabic text prevails; none on file.",
+    "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+    "quote": "This Agreement is executed in English and Arabic. In the event of any inconsistency, the Arabic text shall prevail."
+   },
+   {
+    "document": "Al Noor written consent under §12.4 for Gulf Crown",
+    "status": "missing",
+    "note": "The only Al Noor consent on file is the Seaside letter, which excludes any other Hospitality Business in the GCC.",
+    "file": "signed_contracts/2026-02-10_al_noor_waiver_letter.md",
+    "quote": "This consent is strictly limited to the Seaside SOW. It does not extend to (a) any other services provided to Seaside, including any extension, renewal, change order or follow-on statement of work, unless separately consented to in writing by the Client; (b) any other Hospitality Business, whether in the Sultanate of Oman or elsewhere in the GCC; or (c) any Affiliate of the Supplier."
+   }
+  ]
+ },
+ "data_class": {
+  "class": "personal data",
+  "basis": "Guest Data is defined as personal data of guests, loyalty members and prospective guests of the nine hotels; §13 applies the Saudi Personal Data Protection Law. It is not health data on the text.",
+  "question": "Will Pune engineers see Guest Data? §13.2 requires hosting inside Saudi Arabia, and the draft is silent on whether remote access from India counts as a transfer needing Gulf Crown's written approval.",
+  "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+  "quote": "Guest Data shall be hosted within the Kingdom of Saudi Arabia unless the Company provides prior written approval for any transfer outside the Kingdom."
+ },
+ "checks_passed": [
+  {
+   "rule": "R-01",
+   "note": "The delay penalty has a cap (10% of Contract Value). The rate itself is flagged under R-02.",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "The aggregate liquidated damages payable under this Clause 12 shall not exceed ten percent (10%) of the Contract Value."
+  },
+  {
+   "rule": "R-04",
+   "note": "Each side covers a narrow, own-side risk: AtliQ for IP infringement by the Deliverables, Gulf Crown for AtliQ's use of Gulf Crown materials. Nobody covers the other's negligence.",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "The Company shall indemnify the Service Provider against claims arising from the Service Provider's use, in accordance with this Agreement, of materials supplied by the Company."
+  },
+  {
+   "rule": "R-07",
+   "note": "Gulf Crown owns what is built specifically for it after payment; AtliQ keeps its pre-existing tools and know-how and licenses them as part of the Deliverables.",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "The Service Provider shall retain ownership of its pre-existing tools, methodologies and know-how (\"Background IP\")."
+  },
+  {
+   "rule": "R-11",
+   "note": "Contracting entity is AtliQ Technologies Pvt Ltd for a Saudi client, which matches the entity fact sheet (non-US clients).",
+   "file": "atliq_entities.md",
+   "quote": "Clients in India, the Middle East, Europe, and any other region outside the United States"
+  },
+  {
+   "rule": "R-12",
+   "note": "Invoices are raised by 'the Service Provider', which is the contracting entity (Pvt Ltd).",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "The Service Provider shall submit an invoice upon the Company's written acceptance of each Milestone."
+  }
+ ],
+ "not_checked": [
+  {
+   "item": "Arabic text of the Agreement (§15.3)",
+   "reason": "R-15: the Arabic text prevails and no Arabic copy is on file. Read from English only."
+  },
+  {
+   "item": "How Al Noor §12 would be read and what Al Noor could claim",
+   "reason": "Legal question for counsel. The notes say counsel (Priya Menon, Mehta Rao) asked for the actual Al Noor document, whether the Affiliate definition catches AtliQ Inc, and whether the Oman waiver helps. Her 25 Sep call notes also say not to tell the client anything firm until she has read it. Her engagement letter was unsigned as of 28 Sep and only the Al Noor MSA had been sent; the waiver letter had not."
+  },
+  {
+   "item": "Al Noor liability amount if §12 were breached",
+   "reason": "Clause 12 states no sum; the cap in §14.2 depends on fees paid in the prior 12 months, which are not in the files."
+  },
+  {
+   "item": "Saudi law points (data protection law, withholding tax, treatment of delay penalties)",
+   "reason": "No source for Saudi law is on file; only what the draft says was read."
+  },
+  {
+   "item": "Other signed contracts that might also restrict hospitality work",
+   "reason": "Register covers 17 of about 30 signed contracts. Counsel asked for every signed contract with restrictive covenants, exclusivity or MFN; the other signed contracts have not been read."
+  },
+  {
+   "item": "Whether the Seaside work stayed inside the Feb 2026 waiver",
+   "reason": "The Seaside SOW is not in the files (tracker C-017 lists it as done, ended 2026-08-31)."
+  },
+  {
+   "item": "Full Schedule 1 specifications",
+   "reason": "Schedule 1 is headed '(SUMMARY)'; the detailed specifications that §4.3 refers to are not in the draft."
+  }
+ ],
+ "low": [
+  {
+   "title": "Delay clause has no acceptance period",
+   "clause_ref": "§5.2",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "The Service Provider shall submit an invoice upon the Company's written acceptance of each Milestone.",
+   "note": "Invoicing waits for Gulf Crown's written acceptance and the draft has no review deadline or deemed acceptance. The Al Noor contract has a 10-Business-Day deemed acceptance."
+  },
+  {
+   "title": "Data breach notice is 72 hours",
+   "clause_ref": "§13.3",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "notify the Company of any personal data breach within seventy-two (72) hours of becoming aware of it.",
+   "note": "Worth knowing; the Al Noor contract requires 48 hours."
+  },
+  {
+   "title": "Dedicated project manager on site in Riyadh",
+   "clause_ref": "§4.4",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "The Service Provider shall deploy a dedicated project manager who shall be available during Riyadh business hours and shall attend on-site at the Company's head office as reasonably requested.",
+   "note": "The draft has no travel-expense clause; cost of on-site attendance is not covered anywhere in the text."
+  },
+  {
+   "title": "Subcontracting needs Gulf Crown's prior consent",
+   "clause_ref": "§15.2",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "The Service Provider shall not assign or subcontract any of its obligations without the prior written consent of the Company.",
+   "note": "Matters if any delivery is routed through another group company or freelancers."
+  },
+  {
+   "title": "Tax withholding",
+   "clause_ref": "§5.4",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "Where the Company is required by law to withhold any tax from payments, the Company shall deduct such tax and provide the Service Provider with the relevant withholding certificate.",
+   "note": "Net receipts may be lower than invoice value; the rate is not stated and Saudi tax law was not reviewed."
+  },
+  {
+   "title": "Availability target 99.5% in Schedule 1",
+   "clause_ref": "Schedule 1",
+   "file": "incoming/2026-09-18_gulf_crown_hotels_msa_draft.md",
+   "quote": "Cloud hosting within KSA region; availability target 99.5% monthly.",
+   "note": "The draft states no remedy for missing the target; worth knowing."
+  }
+ ],
+ "seller_view": {
+  "flag_types": [
+   "conflict",
+   "clause_risk",
+   "entity_law",
+   "consistency"
+  ],
+  "missing_documents": [
+   "Arabic version of the Agreement (§15.3)",
+   "Written consent from an existing client for this engagement, if one is needed"
+  ],
+  "ask_karandeep": [
+   "Counsel review of an existing client restriction is pending; do not give the client a firm answer yet.",
+   "Decide the position on delay penalties, liability carve-outs, 60-day payment, termination and governing law before replying.",
+   "Ask the client for the Arabic text."
+  ]
+ },
+ "provenance": "Pre-generated from the capstone dataset in a build session. Quotes validated by exact string match."
+}

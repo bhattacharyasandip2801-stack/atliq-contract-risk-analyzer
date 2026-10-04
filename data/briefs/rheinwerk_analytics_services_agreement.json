@@ -1,0 +1,308 @@
+{
+  "slug": "rheinwerk_analytics_services_agreement",
+  "draft_file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+  "tracker_id": "C-028",
+  "counterparty": "Rheinwerk Analytics GmbH",
+  "doc_type": "Services Agreement (MSA + SOW in one document; Annex 1 and Annex 3 not in the file)",
+  "atliq_entity_in_draft": "AtliQ Technologies Pvt Ltd",
+  "client_country": "Germany",
+  "tracker_status": "In review",
+  "deadline": "15 Oct 2026 (tracker note / 22 Sep queue)",
+  "value": "EUR 88,000 (draft §4.1); tracker lists $96,000",
+  "headline": "The draft is mostly inside AtliQ's usual positions (capped liability, 0.5%/5% delay penalty, 30-day payment), but it has AtliQ warrant that it solely owns PipeKit, which the signed Northwind contract appears to have already assigned to Northwind, and two annexes (the scope and the data processing agreement) are missing from the file.",
+  "highest_severity": "High",
+  "exposure": [
+    {
+      "label": "Delay penalty, largest milestone (M2, M3 or M4 at EUR 22,000)",
+      "clause_ref": "§8.2",
+      "calculation": "0.5% x EUR 22,000 per full week; cap 5% x EUR 22,000",
+      "result": "EUR 110 per week; at most EUR 1,100 for that milestone",
+      "cap": "read from clause: up to a maximum of 5% of that Milestone Fee (all five milestones together: 5% x EUR 88,000 = EUR 4,400)",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "Client may claim a contractual penalty (Vertragsstrafe) of 0.5% of the Milestone Fee of the affected Milestone for each full week of delay, up to a maximum of 5% of that Milestone Fee."
+    },
+    {
+      "label": "General liability for slight negligence in a core obligation",
+      "clause_ref": "§9.2",
+      "calculation": "1 x total remuneration of EUR 88,000",
+      "result": "EUR 88,000",
+      "cap": "read from clause: in any event to the total remuneration under this Agreement. Not capped for intent, gross negligence, injury to life, body or health, or product liability (§9.1).",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "liability shall be limited to the foreseeable damage typical for this type of contract, and in any event to the total remuneration under this Agreement."
+    },
+    {
+      "label": "PipeKit ownership warranty and indemnity (third-party IP claims)",
+      "clause_ref": "§6.3 and §6.4",
+      "calculation": "Not calculable from the text: the amount of a third-party claim is unknown",
+      "result": "Unquantified",
+      "cap": "The draft does not say whether the §6.4 indemnity sits inside the §9.2 cap of EUR 88,000. Treat as uncapped until counsel reads it.",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "Supplier shall indemnify Client against all third-party claims arising from any breach of the warranty in § 6.3, in accordance with § 10."
+    }
+  ],
+  "findings": [
+    {
+      "id": "F-01",
+      "severity": "High",
+      "type": "conflict",
+      "title": "AtliQ warrants it solely owns PipeKit; the signed Northwind contract appears to assign PipeKit to Northwind",
+      "clause_ref": "§6.1 to §6.4",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "Supplier warrants that it is the sole owner of all intellectual property rights in PipeKit, that it is entitled to grant the rights set out in § 6.2, and that PipeKit and its use under this Agreement do not infringe any rights of third parties.",
+      "explanation": "The Rheinwerk draft builds the project on PipeKit (§6.1) and has AtliQ promise it is the sole owner and free to license it (§6.3), backed by an indemnity (§6.4). The signed Northwind contract says all IP in the Deliverables, expressly including tools, frameworks, libraries and pre-existing materials incorporated into them, vests in Northwind on payment of each Milestone, and SOW-1 says PipeKit is incorporated into the delivered pipeline. Neither Northwind clause carves PipeKit out or gives AtliQ a licence back. Whether Northwind now owns PipeKit as delivered, and whether AtliQ can still give the §6.3 promise, is a possible conflict, for counsel. Pranav's remark that PipeKit can be reused 'like we did for Northwind' is the reuse that Northwind's text may already have given away.",
+      "rule": "R-13",
+      "register_refs": [
+        {
+          "entry_id": "REG-B12",
+          "file": "signed_contracts/2025-06-20_northwind_logistics_msa.md",
+          "clause_ref": "§9.2",
+          "quote": "All Intellectual Property Rights in the Deliverables, including any software, tools, frameworks, libraries and pre-existing materials incorporated into the Deliverables, shall vest in the Client absolutely upon payment of the Charges for the relevant Milestone."
+        },
+        {
+          "entry_id": "REG-B13",
+          "file": "signed_contracts/2025-06-20_northwind_logistics_msa.md",
+          "clause_ref": "SOW-1 §S1.2",
+          "quote": "PipeKit will be configured and extended for the Client and incorporated into the delivered pipeline as its ingestion and orchestration layer."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "Northwind Logistics MSA + SOW-1",
+          "label": "waved_through",
+          "note": "negotiation_notes.md: LD and governing law were negotiated; on IP Karandeep said 'I skimmed the IP and boilerplate'."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": true,
+      "seller_text": "Possible clash with an existing client commitment on reusable tooling; ask Karandeep."
+    },
+    {
+      "id": "F-02",
+      "severity": "Medium",
+      "type": "clause_risk",
+      "title": "PipeKit licence is perpetual, irrevocable, covers modification, and reaches Rheinwerk's customers and sub-licensees",
+      "clause_ref": "§6.2",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "Supplier hereby grants Client a perpetual, irrevocable, non-exclusive, worldwide, royalty-free right to use, reproduce, modify and operate PipeKit as incorporated in the Work Results, for the purposes of operating, maintaining and further developing the Platform, including for the benefit of Client's customers.",
+      "explanation": "The draft does not assign PipeKit: §6.5 excludes it from what Rheinwerk acquires, and AtliQ keeps ownership. What it does give is a permanent, non-revocable right to modify PipeKit and use it for Rheinwerk's own customers, and to sub-license it to Rheinwerk's affiliates and service providers (§6.2). AtliQ's other signed deals limit the licence to using PipeKit-type materials inside the Deliverable (Crestline) or for the client's internal business purposes (Lakeshore draft). Karandeep's checklist says 'we keep our own stuff'; this licence lets Rheinwerk's customers run it. The commercial value of that is a decision for a person.",
+      "rule": "R-07",
+      "register_refs": [
+        {
+          "entry_id": "REG-A03",
+          "file": "signed_contracts/2024-08-01_crestline_retail_msa.md",
+          "clause_ref": "§8.2",
+          "quote": "To the extent Supplier Materials are incorporated in a Deliverable, Supplier grants Crestline a non-exclusive, perpetual, royalty-free license to use them as part of such Deliverable."
+        }
+      ],
+      "exception_history": [],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "AtliQ keeps PipeKit, but the licence given to the client is broad; ask Karandeep."
+    },
+    {
+      "id": "F-03",
+      "severity": "Medium",
+      "type": "bundle",
+      "title": "Annex 1 (scope) and Annex 3 (data processing agreement with transfer clauses) are referred to but not in the file",
+      "clause_ref": "§13.1 and §15.5",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "the Parties shall conclude the Data Processing Agreement pursuant to Art. 28 GDPR attached as Annex 3, which forms an integral part of this Agreement.",
+      "explanation": "The draft says the Art. 28 GDPR data processing agreement and the EU Standard Contractual Clauses for transfers to India are in Annex 3, and that the detailed specification is in Annex 1. Neither annex is in the file; only Annex 2 (milestones and fees) is. Acceptance (§5.1), the warranty (§7.1) and the milestone definitions (§1.3) all depend on Annex 1, and the data protection terms AtliQ would be bound by sit in Annex 3. Those terms cannot be tested until the annexes are supplied.",
+      "rule": "R-17",
+      "register_refs": [],
+      "exception_history": [
+        {
+          "contract": "Northwind Logistics MSA",
+          "label": "unlabelled",
+          "note": "The signed Northwind file also refers to Schedules 2 and 3 that are not on file (register REG-B22); no evidence either way on how that was handled."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "Annex 1 (scope) and Annex 3 (data processing terms) are referred to but not attached; please send them."
+    },
+    {
+      "id": "F-04",
+      "severity": "Medium",
+      "type": "entity_law",
+      "title": "German law and exclusive Munich courts; AtliQ's usual position for the Pvt Ltd is Indian law",
+      "clause_ref": "§14.1 and §14.2",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "The exclusive place of jurisdiction for all disputes arising out of or in connection with this Agreement shall be Munich, Germany.",
+      "explanation": "Karandeep's checklist is Indian law for the Pvt Ltd. This draft uses German law (§14.1) and Munich courts only (§14.2); there is no arbitration option. AtliQ has accepted a non-Indian law for the Pvt Ltd twice before, each time with a recorded reason (English law at Northwind, DIFC law at Al Noor). The Kessler Mobility German deal was lost over unlimited liability, not governing law, and the liability terms here are different (see checks passed). Whether to accept German law and courts is a recorded-decision item.",
+      "rule": "R-06",
+      "register_refs": [
+        {
+          "entry_id": "REG-B20",
+          "file": "signed_contracts/2025-06-20_northwind_logistics_msa.md",
+          "clause_ref": "§17.1",
+          "quote": "This Agreement and any dispute or claim (including non-contractual disputes or claims) arising out of or in connection with it shall be governed by the law of England and Wales."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "Northwind Logistics MSA",
+          "label": "deliberate",
+          "note": "negotiation_notes.md: Karandeep: 'English law / LCIA — not worth losing the deal over.'"
+        },
+        {
+          "contract": "Al Noor Hospitality MSA",
+          "label": "deliberate",
+          "note": "negotiation_notes.md: DIFC law accepted as 'group standard for all technology vendors'."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "Governing law and courts are German; AtliQ's usual position for this entity is Indian law; ask Karandeep."
+    }
+  ],
+  "bundle": {
+    "needed": [
+      {
+        "document": "Annex 1 (Statement of Work / Leistungsbeschreibung)",
+        "status": "referenced_absent",
+        "note": "Defines the detailed specification, the milestones and what acceptance is tested against. Not in the file.",
+        "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+        "quote": "The detailed specification is set out in Annex 1 (Leistungsbeschreibung / Statement of Work)."
+      },
+      {
+        "document": "Annex 3 (Data Processing Agreement incl. SCCs)",
+        "status": "referenced_absent",
+        "note": "Art. 28 GDPR terms and Standard Contractual Clauses for transfers to India. Not in the file.",
+        "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+        "quote": "Transfers of personal data to India shall be based on the EU Standard Contractual Clauses (Module 2, Controller-to-Processor) incorporated in Annex 3"
+      },
+      {
+        "document": "Annex 2 (Milestones and Remuneration)",
+        "status": "draft_only",
+        "note": "Present in the file; milestone fees add up to EUR 88,000 (13,200 + 22,000 + 22,000 + 22,000 + 8,800).",
+        "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+        "quote": "| M5 | Documentation and knowledge transfer | Start + 24 weeks | 8,800 |"
+      }
+    ]
+  },
+  "data_class": {
+    "class": "unknown",
+    "basis": "The draft defines Client Data as including sensor, machine and maintenance data 'and any personal data contained therein', and §13.1 applies only 'to the extent' AtliQ processes personal data. It does not say whether personal data (for example operator or user identifiers in machine logs) is actually in scope. Annex 3, which would say, is not in the file.",
+    "question": "Will the sensor, machine and maintenance data AtliQ handles contain personal data, and if so who in Pune will access it and under which signed Annex 3 before access starts?",
+    "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+    "quote": "\"Client Data\" means all data made available by Client or its customers, including sensor, machine and maintenance data and any personal data contained therein."
+  },
+  "checks_passed": [
+    {
+      "rule": "R-11",
+      "note": "Contracting entity is the Pvt Ltd for a German client. The entity fact sheet assigns clients in Europe to the Pvt Ltd, and AtliQ Inc is US only.",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "AtliQ Technologies Pvt Ltd, 4th Floor, Baner Business Bay, Pune 411045, Maharashtra, India, CIN U72900MH2019PTC321456, represented by its Director"
+    },
+    {
+      "rule": "R-03",
+      "note": "Liability is capped. Slight negligence in a core obligation is limited to the total remuneration (1x EUR 88,000) and other slight negligence is excluded. Only intent, gross negligence, injury to life, body or health, and product liability are unlimited, and that applies to both parties. This is not the 'without limitation for all damages' position that ended the Kessler Mobility talks.",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "Otherwise, liability for slight negligence is excluded."
+    },
+    {
+      "rule": "R-02",
+      "note": "Delay penalty is 0.5% of the affected milestone fee per full week, capped at 5% of that fee, with no penalty for client-caused delay or force majeure: the same shape as the Acme, Northwind and Trustline counters.",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "No penalty shall be payable to the extent the delay is caused by Client, including by failure to fulfil its cooperation duties under § 3, or by force majeure."
+    },
+    {
+      "rule": "R-05",
+      "note": "Payment within 30 days of receipt of invoice; invoices follow acceptance, and acceptance is deemed after 10 working days of silence (§5.3).",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "Invoices are payable within thirty (30) days of receipt without deduction."
+    },
+    {
+      "rule": "R-04",
+      "note": "General indemnity is mutual: each party covers third-party claims from its own culpable breach.",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "Each Party shall indemnify the other against third-party claims resulting from its culpable breach of this Agreement."
+    },
+    {
+      "rule": "R-08",
+      "note": "If the client ends the contract for convenience, AtliQ is paid for services rendered plus committed costs.",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "Upon termination by Client for convenience (§ 648 BGB), Supplier shall be entitled to the agreed remuneration for services rendered plus compensation for committed costs."
+    },
+    {
+      "rule": "R-07",
+      "note": "For work built specifically for Rheinwerk, the client gets the right of use on payment of the milestone fee, and PipeKit is expressly excluded from that. The draft does not take ownership of PipeKit (but see F-01 and F-02).",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "Except for PipeKit, Client shall acquire the exclusive, perpetual, transferable and unrestricted right of use in all Work Results created specifically for Client, upon full payment of the relevant Milestone Fee."
+    }
+  ],
+  "not_checked": [
+    {
+      "item": "Annex 1 (scope and specification)",
+      "reason": "Not in the file. Scope, acceptance criteria and whether the milestone dates match any proposal cannot be compared (R-10)."
+    },
+    {
+      "item": "Annex 3 (data processing agreement and Standard Contractual Clauses)",
+      "reason": "Not in the file. Processor duties, sub-processor terms, audit rights and any liability terms inside it are untested."
+    },
+    {
+      "item": "Whether Northwind has paid the milestone fees that trigger the transfer in Northwind §9.2",
+      "reason": "Payment status is not in the files. The Northwind clause transfers rights 'upon payment of the Charges for the relevant Milestone'."
+    },
+    {
+      "item": "German-language version",
+      "reason": "The draft is headed 'English version' and §15.4 says the English version prevails, so the text checked is the controlling one. No German copy is on file; if one exists it was not compared."
+    },
+    {
+      "item": "Which AtliQ entity will invoice Rheinwerk (R-12)",
+      "reason": "The draft names the Pvt Ltd as contracting party; the invoicing entity is not stated anywhere in the files."
+    },
+    {
+      "item": "Tax treatment (reverse charge, withholding under the Germany-India treaty)",
+      "reason": "§4.3 refers to both; tax effect is outside what the text alone can show."
+    }
+  ],
+  "low": [
+    {
+      "title": "Delay penalty is credited against damages, not the only remedy",
+      "clause_ref": "§8.4",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "The contractual penalty shall be credited against any claim for damages for the same delay.",
+      "note": "At Northwind the LD was the sole financial remedy for the delay. Here Rheinwerk could claim damages beyond the penalty, within the §9 limits."
+    },
+    {
+      "title": "Unlimited liability for gross negligence and intent, both ways",
+      "clause_ref": "§9.1",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "The Parties shall be liable without limitation for damage caused intentionally or by gross negligence, for injury to life, body or health, and under the Product Liability Act (Produkthaftungsgesetz).",
+      "note": "Checklist says 1x fees, not unlimited. These carve-outs are narrow and apply to both sides; worth knowing."
+    },
+    {
+      "title": "Termination for convenience is the client's only",
+      "clause_ref": "§12.2",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "The right of either Party to terminate for good cause (aus wichtigem Grund) remains unaffected.",
+      "note": "Only the client has a convenience right (§648 BGB, paid for work done). Same pattern as Northwind; AtliQ is protected by payment for work done."
+    },
+    {
+      "title": "Travel costs for Munich workshops capped at EUR 6,000",
+      "clause_ref": "§4.4",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "Travel expenses for on-site workshops shall be reimbursed at cost up to a maximum of EUR 6,000 in total, subject to prior approval.",
+      "note": "Any on-site cost above the cap falls to AtliQ."
+    },
+    {
+      "title": "Subcontracting needs the client's prior written consent",
+      "clause_ref": "§15.3",
+      "file": "incoming/2026-09-23_rheinwerk_analytics_services_agreement_draft.md",
+      "quote": "Supplier may subcontract parts of the services only with Client's prior written consent.",
+      "note": "§2.3 says AtliQ uses its own personnel, primarily remotely from India."
+    }
+  ],
+  "seller_view": {
+    "flag_types": ["conflict", "clause_risk", "bundle", "entity_law"],
+    "missing_documents": ["Annex 1 (Statement of Work)", "Annex 3 (Data Processing Agreement incl. SCCs)"],
+    "ask_karandeep": [
+      "Possible clash with an existing client commitment on reusable tooling; confirm before any promise about PipeKit.",
+      "German law and Munich courts: is this accepted for the Pvt Ltd?",
+      "How broad should the licence to the reusable accelerator be?"
+    ]
+  },
+  "provenance": "Pre-generated from the capstone dataset in a build session. Quotes validated by exact string match."
+}

@@ -1,0 +1,410 @@
+{
+  "slug": "finserve_capital_mutual_nda",
+  "draft_file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+  "tracker_id": "C-036",
+  "counterparty": "FinServe Capital Private Limited",
+  "doc_type": "Mutual NDA (titled 'mutual'; FinServe form FSC/LGL/MNDA/2026/118)",
+  "atliq_entity_in_draft": "AtliQ Technologies Private Limited (Pvt Ltd)",
+  "client_country": "India",
+  "tracker_status": "In review",
+  "deadline": "Before the 1 Oct 2026 data walkthrough (tracker note C-036: 'K: will sign tonight')",
+  "value": "No fee stated (NDA)",
+  "headline": "Despite its title this is not a mutual NDA: only AtliQ's duties are written down, and the draft also adds a 12-month India financial-services non-compete, a 24-month no-hire, a residuals licence for FinServe and an uncapped one-way indemnity; the non-compete may also reach the live Trustline NBFC work (possible conflict, for counsel).",
+  "highest_severity": "High",
+  "exposure": [
+    {
+      "label": "One-way indemnity for any breach, including legal fees",
+      "clause_ref": "§10.2",
+      "calculation": "No cap, no exclusion for indirect loss, no limit by amount anywhere in the draft; covers breaches by AtliQ's 'Representatives' (directors, officers, employees, professional advisers) too",
+      "result": "Uncapped",
+      "cap": "uncapped",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "The Recipient shall indemnify the Company for all losses, costs and expenses (including legal fees) arising from any breach of this Agreement by the Recipient or its Representatives."
+    },
+    {
+      "label": "Non-compete period on AtliQ",
+      "clause_ref": "§8.1 with §7.1",
+      "calculation": "Term runs until either side gives 30 days' notice (§7.1); then 12 months after termination (§8.1). Earliest end if AtliQ gives notice = 30 days + 12 months",
+      "result": "About 13 months after AtliQ gives notice (longer if FinServe ends it later); it starts on the Effective Date even if no deal follows",
+      "cap": "No cap on geography within India or on the number of clients barred; limited to 'services similar to those contemplated by the Proposed Transaction' and to 'Competitors' as defined",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "In order to protect the Confidential Information, the Recipient shall not, during the term of this Agreement and for a period of twelve (12) months after its termination, provide services similar to those contemplated by the Proposed Transaction to any Competitor."
+    },
+    {
+      "label": "No-hire period on AtliQ",
+      "clause_ref": "§8.2 with §7.1",
+      "calculation": "30 days' notice (§7.1) + 24 months (§8.2)",
+      "result": "About 25 months after AtliQ gives notice",
+      "cap": "No limit to people AtliQ actually met; covers any employee or consultant of the Company, which includes its Affiliates",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "The Recipient shall not, during the term of this Agreement and for a period of twenty-four (24) months after its termination, directly or indirectly solicit, hire or engage any employee or consultant of the Company."
+    },
+    {
+      "label": "Length of confidentiality duty on AtliQ",
+      "clause_ref": "§7.2",
+      "calculation": "Obligations of the Recipient continue after termination with no end date",
+      "result": "Perpetual",
+      "cap": "uncapped in time",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "The obligations of the Recipient under this Agreement shall survive termination and shall continue in perpetuity."
+    },
+    {
+      "label": "Live and pending India financial-sector work that may sit inside the non-compete",
+      "clause_ref": "§8.1 / §1.5",
+      "calculation": "Trustline NBFC MSA fees USD 48,000 (signed 15 Aug 2026, one-year term) + FinEdge Bank MSA USD 95,000 (tracker: awaiting client) = USD 143,000",
+      "result": "Up to USD 143,000 of work whose status under §8.1 needs counsel (whether either is a 'Competitor' is not answered by the draft)",
+      "cap": "Not a loss figure: shows the value of work that could be affected; FinEdge has no contract text on file",
+      "file": "signed_contracts/2026-08-15_trustline_nbfc_msa.md",
+      "quote": "The Service Provider shall provide the services described in the SOW (\"Services\"), namely the design and build of a collections analytics data mart, an early-warning risk scorecard, and Power BI dashboards for collections and portfolio monitoring."
+    }
+  ],
+  "findings": [
+    {
+      "id": "F-01",
+      "severity": "High",
+      "type": "clause_risk",
+      "title": "Titled 'mutual' but only FinServe's information is protected and only AtliQ is bound",
+      "clause_ref": "§1.2, §2.1, Recital B",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "\"Confidential Information\" means all information, in any form, disclosed or made available by or on behalf of the Company to the Recipient or its Representatives, whether before or after the Effective Date,",
+      "explanation": "Recital B says the parties expect 'a mutual exchange of information', but the only definition of Confidential Information covers information coming from the Company (FinServe plus its Affiliates) to AtliQ. Every duty in clause 2 (use limits, secrecy, security, responsibility for Representatives) falls on 'the Recipient', which is defined as AtliQ. Nothing protects AtliQ's own architecture, methods or pricing if AtliQ shares them, and the arrangement the tracker note calls 'our standard mutual NDA' does not do what the title says. This fails the checklist line 'NDAs -> just sign if mutual'.",
+      "rule": "R-09",
+      "register_refs": [
+        {
+          "entry_id": "REG-A12",
+          "file": "signed_contracts/2025-01-22_al_noor_mutual_nda.md",
+          "clause_ref": "§2.1",
+          "quote": "Each Party, as Receiving Party, shall:"
+        },
+        {
+          "entry_id": "REG-B54",
+          "file": "signed_contracts/2026-07-16_meridian_healthcare_nda.md",
+          "clause_ref": "§2.1",
+          "quote": "\"Confidential Information\" means all information disclosed by or on behalf of Meridian to the Recipient"
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "Meridian Healthcare NDA (Jul 2026)",
+          "label": "waved_through",
+          "note": "Same one-way shape (only Meridian discloses, only AtliQ bound). Needed that night before a data walkthrough, 'it's standard'; signed within the hour with no changes (negotiation_notes.md)."
+        },
+        {
+          "contract": "GlobalMart NDA (Mar 2026)",
+          "label": "deliberate",
+          "note": "They sent a one-way NDA; Karandeep: 'We only sign mutual - we'll be sharing our architecture too.' They agreed and a mutual NDA was signed 12 Mar 2026 (negotiation_notes.md)."
+        },
+        {
+          "contract": "Al Noor NDA (Jan 2025) and Harrington NDA (Aug 2026)",
+          "label": "unlabelled",
+          "note": "Both are genuinely mutual (each side is Disclosing and Receiving Party); the register has no negotiation evidence for Al Noor, and Harrington was signed next day with 'nothing discussed'."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "The draft is called mutual but only protects one side's information. Ask Karandeep before sending anything."
+    },
+    {
+      "id": "F-02",
+      "severity": "High",
+      "type": "clause_risk",
+      "title": "12-month non-compete on AtliQ across India financial services, starting on signature",
+      "clause_ref": "§8.1, §1.5",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "In order to protect the Confidential Information, the Recipient shall not, during the term of this Agreement and for a period of twelve (12) months after its termination, provide services similar to those contemplated by the Proposed Transaction to any Competitor.",
+      "explanation": "The Proposed Transaction is data analytics and reporting solutions for FinServe's lending and wealth businesses (Recital A). 'Competitor' means any bank, NBFC, wealth manager, broker or fintech platform operating in India that offers products substantially similar to the Company's, and 'the Company' includes FinServe's Affiliates. The ban runs from the Effective Date for the whole term and 12 months after, even if no engagement follows, and binds AtliQ only. The checklist treats a non-compete in an NDA as a fail.",
+      "rule": "R-09",
+      "register_refs": [
+        {
+          "entry_id": "REG-A18",
+          "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+          "clause_ref": "§12.1",
+          "quote": "the Supplier undertakes that neither it nor any of its Affiliates shall, during the Restricted Period, directly or indirectly, provide data analytics, artificial intelligence or revenue-management services to any Hospitality Business in the GCC."
+        },
+        {
+          "entry_id": "REG-A68",
+          "file": "signed_contracts/2022-07-01_orbit_travels_msa_scanned.md",
+          "clause_ref": "§6.1",
+          "quote": "it shall not develop, license or provide travel-booking software to any online travel agency operating in India."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "Al Noor MSA (Mar 2025)",
+          "label": "deliberate",
+          "note": "They asked for worldwide, 3 years; Karandeep: 'Worldwide for three years would stop us working in hospitality altogether.' Negotiated to GCC, term + 18 months. That promise later needed a consent letter for Seaside Hotels, Muscat (negotiation_notes.md)."
+        },
+        {
+          "contract": "Orbit Travels MSA (2022)",
+          "label": "unlabelled",
+          "note": "Earlier India non-compete (online travel agencies, term + 12 months) in a signed MSA; no negotiation evidence on file. Its stated end date has passed."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "The draft would stop AtliQ working for other firms in the same sector for about a year. Ask Karandeep."
+    },
+    {
+      "id": "F-03",
+      "severity": "High",
+      "type": "clause_risk",
+      "title": "24-month no-hire on any employee or consultant of FinServe and its Affiliates",
+      "clause_ref": "§8.2",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "The Recipient shall not, during the term of this Agreement and for a period of twenty-four (24) months after its termination, directly or indirectly solicit, hire or engage any employee or consultant of the Company.",
+      "explanation": "This bars AtliQ from hiring or engaging (not just soliciting) any FinServe employee or consultant for the term plus 24 months, and 'the Company' includes FinServe's Affiliates. It is not limited to people AtliQ met, and nothing stops FinServe doing the same to AtliQ. A no-hire in an NDA is a fail under the checklist. The Meridian NDA signed in July is narrower (only people AtliQ had contact with) and the Al Noor, PayTrack, Acme and Sunrise contracts have mutual no-solicit clauses only.",
+      "rule": "R-09",
+      "register_refs": [
+        {
+          "entry_id": "REG-B52",
+          "file": "signed_contracts/2026-07-16_meridian_healthcare_nda.md",
+          "clause_ref": "§7.3",
+          "quote": "the Recipient shall not, directly or indirectly, solicit for employment or engagement, or employ or engage, any employee or consultant of Meridian with whom the Recipient had contact in connection with the Purpose, without Meridian's prior written consent."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "Meridian Healthcare NDA (Jul 2026)",
+          "label": "waved_through",
+          "note": "Signed within the hour, no changes asked; no evidence anyone read the no-hire clause (register REG-B52, negotiation_notes.md)."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "The draft limits who AtliQ may hire, for about two years, and only binds AtliQ. Ask Karandeep."
+    },
+    {
+      "id": "F-04",
+      "severity": "High",
+      "type": "clause_risk",
+      "title": "Residuals clause lets FinServe use what it remembers from AtliQ, with no matching protection for AtliQ",
+      "clause_ref": "§1.4, §4.1",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "Notwithstanding anything in this Agreement, the Company shall be free to use Residuals for any purpose, including the development, marketing and procurement of products and services, provided that this Clause 4.1 does not grant any licence under any patent or copyright.",
+      "explanation": "'Residuals' means information remembered by anyone who saw material exchanged in the discussions, including ideas, concepts, know-how and techniques (§1.4). Only the Company may use them, and because AtliQ's own information is not 'Confidential Information' under §1.2, AtliQ's methods and architecture shared at the walkthrough are neither protected nor excluded from this free use. A residuals clause in an NDA is a fail under the checklist; no signed AtliQ NDA on file contains one.",
+      "rule": "R-09",
+      "register_refs": [],
+      "exception_history": [],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "The draft lets one side reuse ideas and know-how it picks up in the meetings. Ask Karandeep."
+    },
+    {
+      "id": "F-05",
+      "severity": "High",
+      "type": "clause_risk",
+      "title": "One-way, uncapped indemnity for any breach, including breaches by AtliQ's advisers and staff",
+      "clause_ref": "§10.2, §10.1",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "The Recipient shall indemnify the Company for all losses, costs and expenses (including legal fees) arising from any breach of this Agreement by the Recipient or its Representatives.",
+      "explanation": "AtliQ would pay all losses and legal costs from any breach, with no cap (the draft has no liability limit at all), and 'Representatives' includes directors, officers, employees and professional advisers. FinServe gives no indemnity and has no limit on its own side. Clause 10.1 also gives only the Company injunctive relief and specific performance 'without proof of actual damage'. This fails the checklist lines 'indemnity -> mutual' and 'liability -> 1x fees. NOT unlimited'.",
+      "rule": "R-04",
+      "register_refs": [
+        {
+          "entry_id": "REG-B53",
+          "file": "signed_contracts/2026-07-16_meridian_healthcare_nda.md",
+          "clause_ref": "§6.2",
+          "quote": "The Recipient shall indemnify Meridian against losses arising from any breach of this Agreement by the Recipient or its personnel."
+        },
+        {
+          "entry_id": "REG-A42",
+          "file": "signed_contracts/2025-01-22_paytrack_technologies_msa.md",
+          "clause_ref": "§10.2",
+          "quote": "Neither Party shall be required to indemnify the other to the extent any Losses are caused by the negligence, breach or wilful misconduct of the Indemnified Party."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "Meridian Healthcare NDA (Jul 2026)",
+          "label": "waved_through",
+          "note": "Same one-way indemnity signed within the hour with no changes (negotiation_notes.md)."
+        },
+        {
+          "contract": "PayTrack MSA (Jan 2025)",
+          "label": "deliberate",
+          "note": "Karandeep: 'Can't accept 10.1 as written - we can't insure against PayTrack's own negligence.' A mutual indemnity was agreed (negotiation_notes.md)."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "The draft makes AtliQ pay all losses for any breach with no limit, and does not work both ways. Ask Karandeep."
+    },
+    {
+      "id": "F-06",
+      "severity": "High",
+      "type": "possible_conflict",
+      "title": "Non-compete may already catch live work for an India NBFC (and a pending bank contract)",
+      "clause_ref": "§8.1, §1.5",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "\"Competitor\" means any bank, non-banking financial company, wealth manager, broker or fintech platform operating in India that offers products substantially similar to those of the Company.",
+      "explanation": "Possible conflict, for counsel. AtliQ's Trustline NBFC MSA (signed 15 Aug 2026, one-year term, USD 48,000) is for collections analytics and dashboards for a retail and MSME lender, which sounds close to 'services similar to those contemplated' for FinServe's lending and wealth businesses. The tracker also lists FinEdge Bank (India, USD 95,000, awaiting client). The draft does not say what FinServe's products are, so it cannot be told from the text whether Trustline or FinEdge would be a 'Competitor'; because §8.1 starts on the Effective Date, signing could put existing work under a restriction on day one.",
+      "rule": "R-14",
+      "register_refs": [
+        {
+          "entry_id": "REG-B68",
+          "file": "signed_contracts/2026-08-15_trustline_nbfc_msa.md",
+          "clause_ref": "§5.1",
+          "quote": "This Agreement shall commence on the Effective Date and shall remain in force for one (1) year, unless terminated earlier or extended by mutual written agreement."
+        }
+      ],
+      "exception_history": [],
+      "decision_needed": true,
+      "redact_in_seller_view": true,
+      "seller_text": "Possible clash with an existing client commitment; ask Karandeep."
+    },
+    {
+      "id": "F-07",
+      "severity": "Medium",
+      "type": "clause_risk",
+      "title": "Open-ended term and perpetual one-way secrecy",
+      "clause_ref": "§7.1, §7.2, §2.2",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "The obligations of the Recipient under this Agreement shall survive termination and shall continue in perpetuity.",
+      "explanation": "The agreement has no end date; it runs until someone gives 30 days' notice, and AtliQ's duties then continue forever. The signed NDAs on file all end: Meridian 3 years + 3, Harrington 2 years + 3, Al Noor 2 years + 5. Clause 2.2 also stops AtliQ saying that discussions are taking place without FinServe's consent, so AtliQ could not name FinServe as a prospect or reference. Exposure is bounded in the sense that AtliQ can end the term, but not the duties.",
+      "rule": "R-09",
+      "register_refs": [
+        {
+          "entry_id": "REG-B56",
+          "file": "signed_contracts/2026-07-16_meridian_healthcare_nda.md",
+          "clause_ref": "§5.1",
+          "quote": "This Agreement shall remain in force for three (3) years from its date. The Recipient's obligations shall survive for three (3) years after expiry or termination."
+        },
+        {
+          "entry_id": "REG-B72",
+          "file": "signed_contracts/2026-08-20_harrington_health_mutual_nda.md",
+          "clause_ref": "§5.1",
+          "quote": "This Agreement applies to disclosures made during the two (2) years following the Effective Date. Either Party may terminate it earlier on thirty (30) days' written notice."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "Meridian Healthcare NDA (Jul 2026)",
+          "label": "waved_through",
+          "note": "Fixed 3-year term with 3-year tail, signed within the hour (negotiation_notes.md)."
+        }
+      ],
+      "decision_needed": false,
+      "redact_in_seller_view": false,
+      "seller_text": "The draft has no end date for AtliQ's secrecy duties. Ask Karandeep."
+    },
+    {
+      "id": "F-08",
+      "severity": "Medium",
+      "type": "bundle",
+      "title": "AtliQ must meet an information-security policy it has not been shown",
+      "clause_ref": "§2.1(c)",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "apply security measures no less stringent than those required under the Company's information-security policy as notified to the Recipient from time to time; and",
+      "explanation": "The standard AtliQ must meet is in a FinServe policy that is not attached and can change 'from time to time'. Combined with the uncapped indemnity in §10.2, a breach of a standard AtliQ has never seen could be charged to AtliQ in full. The policy is a document the contract depends on and is not on file.",
+      "rule": "R-17",
+      "register_refs": [
+        {
+          "entry_id": "REG-B66",
+          "file": "signed_contracts/2026-08-15_trustline_nbfc_msa.md",
+          "clause_ref": "§13.2",
+          "quote": "The Service Provider shall report any security incident to the Company within six (6) hours of detection."
+        }
+      ],
+      "exception_history": [],
+      "decision_needed": false,
+      "redact_in_seller_view": false,
+      "seller_text": "The draft refers to a security policy that has not been provided. Ask for a copy."
+    }
+  ],
+  "bundle": {
+    "needed": [
+      {
+        "document": "FinServe information-security policy",
+        "status": "referenced_absent",
+        "note": "Clause 2.1(c) makes AtliQ meet it; no copy supplied or on file.",
+        "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+        "quote": "apply security measures no less stringent than those required under the Company's information-security policy as notified to the Recipient from time to time; and"
+      }
+    ]
+  },
+  "data_class": {
+    "class": "unknown",
+    "basis": "The definition lists 'customer and portfolio data, credit models' and §6.2 refers to 'any personal data' that may form part of the information, but nothing says whether real, identifiable customer records will be shown at the 1 Oct walkthrough or whether samples will be masked.",
+    "question": "Will FinServe show real, identifiable customer or portfolio records at the walkthrough, or only masked/aggregate samples, and who at AtliQ will see them?",
+    "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+    "quote": "including customer and portfolio data, credit models, product plans, pricing, technology architecture, business processes,"
+  },
+  "checks_passed": [
+    {
+      "rule": "R-06",
+      "note": "Indian law for an India client and AtliQ Technologies Pvt Ltd; courts at Mumbai (FinServe's city). Law fits the checklist; the Mumbai-only courts are a venue point only.",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "This Agreement shall be governed by the laws of India, and the courts at Mumbai shall have exclusive jurisdiction."
+    },
+    {
+      "rule": "R-11",
+      "note": "Contracting entity is AtliQ Technologies Pvt Ltd (CIN and GSTIN match the entity fact sheet) for an India company; AtliQ Inc is not used.",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "ATLIQ TECHNOLOGIES PRIVATE LIMITED, a company incorporated under the Companies Act, 2013 (CIN U72900MH2019PTC321456; GSTIN 27AAKCA4821F1Z3), having its registered office at 4th Floor, Baner Business Bay, Pune 411045, Maharashtra, India (the \"Recipient\"),"
+    }
+  ],
+  "not_checked": [
+    {
+      "item": "Whether Trustline NBFC, FinEdge Bank or PayTrack Technologies fall within 'Competitor' / 'services similar to those contemplated'",
+      "reason": "The draft does not list FinServe's products; FinEdge Bank has no contract text on file (tracker row only); PayTrack's MSA describes a payments reconciliation platform, whose similarity to FinServe's products cannot be judged from the files. For counsel."
+    },
+    {
+      "item": "Who FinServe's Affiliates are",
+      "reason": "'Affiliate' is defined by control but no entity is named, so the reach of the non-compete, no-hire and secrecy duties across the FinServe group cannot be sized."
+    },
+    {
+      "item": "FinServe's information-security policy (§2.1(c))",
+      "reason": "Not attached and not on file; the standard AtliQ must meet cannot be tested."
+    },
+    {
+      "item": "What will actually be shown at the 1 Oct walkthrough",
+      "reason": "Not stated in the draft or the tracker; see data_class question."
+    }
+  ],
+  "low": [
+    {
+      "title": "Six-hour personal data breach notice",
+      "clause_ref": "§6.2",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "The Recipient shall comply with the Digital Personal Data Protection Act, 2023 in respect of any personal data forming part of the Confidential Information, and shall notify the Company of any personal data breach within six (6) hours.",
+      "note": "Tight, but not new: the Trustline MSA has a 6-hour incident report and the Meridian NDA a 24-hour notice. Worth knowing who at AtliQ would own that clock."
+    },
+    {
+      "title": "Return or destroy within 5 business days, certified by a director, covering AtliQ's own notes",
+      "clause_ref": "§5.1, §1.2",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "On the Company's written request, the Recipient shall promptly, and in any event within five (5) business days, return or permanently destroy all Confidential Information and certify such destruction in writing signed by a director.",
+      "note": "The definition in §1.2 includes analyses and notes AtliQ prepares that reflect FinServe information, and there is no carve-out for back-ups or legal retention. Meridian allowed 7 days."
+    },
+    {
+      "title": "Access to records for FinServe and its regulators",
+      "clause_ref": "§6.1",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "agrees to provide such co-operation and access to records as the Company or its regulators may reasonably require in connection with the Confidential Information.",
+      "note": "Open-ended audit-style access, not limited to NDA information handling. Worth knowing before any data is shared."
+    },
+    {
+      "title": "Assignment works one way",
+      "clause_ref": "§11.3",
+      "file": "incoming/2026-09-25_finserve_capital_mutual_nda_draft.md",
+      "quote": "The Recipient may not assign this Agreement. The Company may assign it to any Affiliate.",
+      "note": "FinServe could move AtliQ's obligations to any group company; AtliQ cannot move the agreement at all."
+    }
+  ],
+  "seller_view": {
+    "flag_types": [
+      "clause_risk",
+      "possible_conflict",
+      "bundle"
+    ],
+    "missing_documents": [
+      "FinServe information-security policy referred to in clause 2.1(c)"
+    ],
+    "ask_karandeep": [
+      "Is AtliQ willing to sign an NDA that only protects FinServe's information?",
+      "Does the non-compete clash with current India financial-sector work?",
+      "Will real customer records be shown at the 1 Oct walkthrough?"
+    ]
+  },
+  "provenance": "Pre-generated from the capstone dataset in a build session. Quotes validated by exact string match."
+}

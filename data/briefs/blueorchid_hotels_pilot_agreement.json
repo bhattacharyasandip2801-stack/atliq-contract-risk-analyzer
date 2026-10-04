@@ -1,0 +1,251 @@
+{
+ "slug": "blueorchid_hotels_pilot_agreement",
+ "draft_file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+ "tracker_id": "C-027",
+ "counterparty": "BlueOrchid Hotels Pvt Ltd",
+ "doc_type": "Pilot Services Agreement (client paper, unmarked)",
+ "atliq_entity_in_draft": "AtliQ Technologies Pvt Ltd",
+ "client_country": "India (client HQ Mumbai); properties in India, UAE and Oman",
+ "tracker_status": "In review",
+ "deadline": "5 Oct 2026 (tracker note; 22 Sep queue); wants to start before Diwali",
+ "value": "$38,000 (tracker; draft §5.1)",
+ "headline": "The pilot is not India-only: 3 of the 12 hotels (two in Dubai, one in Muscat) are in the GCC, which is a possible conflict with the Al Noor restriction, for counsel; everything else in the draft sits at or inside Karandeep's recorded position.",
+ "highest_severity": "High",
+ "exposure": [
+  {
+   "label": "Delay penalty (LD) per week, M2 (largest milestone)",
+   "clause_ref": "§12.1",
+   "calculation": "0.5% x USD 15,200 (M2 fee, Annexure C)",
+   "result": "USD 76 per complete week of delay (M1 and M3: 0.5% x 11,400 = USD 57)",
+   "cap": "read from clause: 'a maximum of 5% of that Milestone Fee' = 5% x 15,200 = USD 760 for M2; 5% x 11,400 = USD 570 for M1 or M3; USD 1,900 across all three",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "BlueOrchid shall be entitled to liquidated damages of 0.5% of the relevant Milestone Fee for each complete week of delay, subject to a maximum of 5% of that Milestone Fee."
+  },
+  {
+   "label": "Overall liability cap",
+   "clause_ref": "§10.2",
+   "calculation": "Cap = total fees paid or payable = USD 38,000 (1x fees)",
+   "result": "USD 38,000 for most claims",
+   "cap": "read from clause: fraud, wilful misconduct and breach of confidentiality sit outside the cap",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "Except for breach of confidentiality, fraud or wilful misconduct, each Party's total aggregate liability under this Agreement shall not exceed the total fees paid or payable under this Agreement."
+  },
+  {
+   "label": "Al Noor restriction window (if it applies)",
+   "clause_ref": "Al Noor MSA §1.14, §6.1",
+   "calculation": "Term ends 14 Mar 2028 + 18 months = 14 Sep 2029 if the Al Noor MSA runs to its stated end; the pilot runs 16 weeks (§4.2), about to 30 Jan 2027 if started 10 Oct 2026",
+   "result": "The whole pilot would fall inside the window",
+   "cap": "No amount stated in Al Noor §12",
+   "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+   "quote": "\"Restricted Period\" means the Term and the period of eighteen (18) months following the expiry or termination of this Agreement."
+  }
+ ],
+ "findings": [
+  {
+   "id": "F-01",
+   "severity": "High",
+   "type": "possible_conflict",
+   "title": "Three of twelve hotels are in the GCC; possible conflict with the Al Noor restriction, for counsel",
+   "clause_ref": "Annexure B rows 10-12; §4.1; §3.2",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "| 10 | BlueOrchid Dubai Business Bay | Dubai | United Arab Emirates | | 11 | Orchid Residences Dubai Marina | Dubai | United Arab Emirates | | 12 | BlueOrchid Muscat Qurum | Muscat | Oman |",
+   "explanation": "The tracker note says Jay thinks it is 'just India hotels', but §4.1 delivers the solution for 'all twelve (12) Properties' and the background says the portfolio is 'in India and the Middle East'. Annexure B puts two hotels in Dubai (UAE) and one in Muscat (Oman); rows 1-9 are Indian. Al Noor §12.2 treats services as 'in the GCC' if they relate to properties located in a GCC state, wherever performed, and Al Noor §1.9 lists both the UAE and Oman. BlueOrchid owns and operates hotels, so it is a Hospitality Business, and AI review analytics looks like 'data analytics' or 'artificial intelligence' services. The Feb 2026 waiver covers only the Seaside SOW in Muscat and expressly excludes any other Hospitality Business in Oman or elsewhere in the GCC, so BlueOrchid Muscat Qurum is not covered. Possible conflict, for counsel: whether guest-review sentiment work falls within the clause is a reading for counsel; the Al Noor §12.4 consent route is in Al Noor's sole discretion.",
+   "rule": "R-13",
+   "register_refs": [
+    {
+     "entry_id": "REG-A18",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§12.1",
+     "quote": "the Supplier undertakes that neither it nor any of its Affiliates shall, during the Restricted Period, directly or indirectly, provide data analytics, artificial intelligence or revenue-management services to any Hospitality Business in the GCC."
+    },
+    {
+     "entry_id": "REG-A18",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§12.2",
+     "quote": "For the purposes of Clause 12.1, services are provided \"in the GCC\" if the Hospitality Business receiving them is headquartered in, or the services relate to properties or operations located in, any state of the GCC, irrespective of where the services are performed."
+    },
+    {
+     "entry_id": "REG-A18",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§1.9 (GCC)",
+     "quote": "\"GCC\" means the member states of the Gulf Cooperation Council, being the United Arab Emirates, the Kingdom of Saudi Arabia, the State of Qatar, the State of Kuwait, the Kingdom of Bahrain and the Sultanate of Oman."
+    },
+    {
+     "entry_id": "REG-A19",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§12.4",
+     "quote": "The Client may, in its sole discretion, waive the restriction in Clause 12.1 in respect of a specific engagement by written consent signed by an authorised signatory of the Client. Any such waiver shall be limited to its express terms."
+    },
+    {
+     "entry_id": "REG-A18",
+     "file": "signed_contracts/2026-02-10_al_noor_waiver_letter.md",
+     "clause_ref": "Waiver letter para 3",
+     "quote": "This consent is strictly limited to the Seaside SOW. It does not extend to (a) any other services provided to Seaside, including any extension, renewal, change order or follow-on statement of work, unless separately consented to in writing by the Client; (b) any other Hospitality Business, whether in the Sultanate of Oman or elsewhere in the GCC; or (c) any Affiliate of the Supplier."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Al Noor Hospitality MSA §12",
+     "label": "deliberate",
+     "note": "Negotiated by Karandeep down to GCC / term + 18 months (negotiation_notes.md)."
+    },
+    {
+     "contract": "Al Noor waiver letter, 10 Feb 2026",
+     "label": "deliberate",
+     "note": "One project only (Seaside, Muscat); the letter excludes everything else."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "Some of the hotels are in the Gulf, which may clash with an existing client commitment; ask Karandeep before replying on scope."
+  }
+ ],
+ "bundle": {
+  "needed": [
+   {
+    "document": "Annexures A, B and C",
+    "status": "draft_only",
+    "note": "All three annexures the agreement relies on are present in the unsigned draft.",
+    "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+    "quote": "| M1 | Data source onboarding and model setup | Week 4 | 11,400 |"
+   }
+  ]
+ },
+ "data_class": {
+  "class": "personal data",
+  "basis": "Client Data is review data, survey responses and booking references 'including any personal data contained therein'; the draft applies India's DPDP Act 2023 and the laws of properties outside India. Nothing on health data.",
+  "question": "Do the reviews, surveys or booking references carry guest names or contact details, and does UAE or Oman law restrict where that data from the three Gulf hotels can be processed?",
+  "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+  "quote": "AtliQ shall process personal data contained in Client Data only for the purposes of the Pilot and in accordance with the Digital Personal Data Protection Act, 2023 and any other applicable data protection law, including the laws applicable to Properties located outside India."
+ },
+ "checks_passed": [
+  {
+   "rule": "R-01",
+   "note": "Delay penalty has a cap.",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "subject to a maximum of 5% of that Milestone Fee."
+  },
+  {
+   "rule": "R-02",
+   "note": "0.5% of the milestone fee per week, cap 5% of that fee, and no LD for client-caused delay: identical to Karandeep's recorded counters. Looks like a penalty clause but is inside the position.",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "No liquidated damages shall be payable for any delay caused by BlueOrchid, its vendors, or a force majeure event."
+  },
+  {
+   "rule": "R-03",
+   "note": "Cap is total fees paid or payable (1x, USD 38,000); only confidentiality, fraud and wilful misconduct sit outside it, and data protection is inside the cap.",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "Except for breach of confidentiality, fraud or wilful misconduct, each Party's total aggregate liability under this Agreement shall not exceed the total fees paid or payable under this Agreement."
+  },
+  {
+   "rule": "R-04",
+   "note": "Genuinely mutual: each side covers claims from its own breach or negligence. Reads broad but does not make AtliQ cover BlueOrchid's mistakes.",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "Each Party (the \"Indemnifying Party\") shall indemnify the other against third-party claims to the extent arising from the Indemnifying Party's breach of this Agreement, negligence or wilful misconduct."
+  },
+  {
+   "rule": "R-05",
+   "note": "30 days from receipt.",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "BlueOrchid shall pay each undisputed invoice within thirty (30) days of receipt."
+  },
+  {
+   "rule": "R-06",
+   "note": "Indian law, sole arbitrator, Mumbai seat: same as the Acme and Trustline contracts.",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "This Agreement shall be governed by the laws of India."
+  },
+  {
+   "rule": "R-07",
+   "note": "BlueOrchid owns what is built for it; each side keeps its pre-existing IP.",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "Each Party retains all rights in its Pre-existing IP."
+  },
+  {
+   "rule": "R-08",
+   "note": "BlueOrchid pays for work performed, including a pro-rata amount for a milestone in progress.",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "subject to payment for all work performed up to the effective date of termination, including a pro-rata amount for any Milestone in progress."
+  },
+  {
+   "rule": "R-11",
+   "note": "Indian client, AtliQ Technologies Pvt Ltd as contracting entity.",
+   "file": "atliq_entities.md",
+   "quote": "Clients in India, the Middle East, Europe, and any other region outside the United States"
+  },
+  {
+   "rule": "R-12",
+   "note": "Invoices are raised by AtliQ, which is the contracting Pvt Ltd (GSTIN stated).",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "AtliQ shall raise an invoice on completion of each Milestone."
+  },
+  {
+   "rule": "R-09",
+   "note": "Confidentiality is mutual: each side holds the other's information in confidence; no non-compete, no-hire or residuals clause.",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "Each Party shall hold the other Party's confidential information in strict confidence, use it only for the purposes of this Agreement, and disclose it only to its employees and professional advisers on a need-to-know basis."
+  }
+ ],
+ "not_checked": [
+  {
+   "item": "Whether guest-review sentiment analytics falls within Al Noor §12.1",
+   "reason": "Reading of Al Noor's clause; for counsel. Counsel has so far been sent only the Al Noor MSA (25 Sep call notes)."
+  },
+  {
+   "item": "UAE and Oman data protection law for the three Gulf hotels",
+   "reason": "No source for those laws on file; §13.1 makes AtliQ responsible for 'laws applicable to Properties located outside India'."
+  },
+  {
+   "item": "Other signed contracts that might restrict this work",
+   "reason": "Register covers 17 of about 30 signed contracts."
+  }
+ ],
+ "low": [
+  {
+   "title": "Future MSA for a full-scale rollout",
+   "clause_ref": "§15.6",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "Upon successful completion of the Pilot, the Parties may enter into a master services agreement for a full-scale rollout on terms to be mutually agreed.",
+   "note": "Not binding and no exclusivity; but a rollout covering the same twelve hotels would carry the same GCC question."
+  },
+  {
+   "title": "Delay penalty is BlueOrchid's sole remedy for delay",
+   "clause_ref": "§12.3",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "Liquidated damages under this Clause shall be BlueOrchid's sole and exclusive remedy for delay.",
+   "note": "In AtliQ's favour; looks risky only because it sits in a penalty clause."
+  },
+  {
+   "title": "Pilot success criteria",
+   "clause_ref": "Annexure A",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "Sentiment classification accuracy of at least 85% on a BlueOrchid-validated sample of 1,000 reviews.",
+   "note": "The draft states no consequence for missing 85%; milestone M3 is payable on 'Evaluation phase complete; pilot report'. Worth knowing."
+  },
+  {
+   "title": "Arabic and Hindi language analysis in scope",
+   "clause_ref": "§4.1(b)",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "multilingual sentiment and aspect analysis (English, Hindi, Arabic)",
+   "note": "A delivery point, not a legal one."
+  },
+  {
+   "title": "Effective Date is blank",
+   "clause_ref": "Execution",
+   "file": "incoming/2026-09-21_blueorchid_hotels_pilot_agreement_draft.md",
+   "quote": "This Pilot Services Agreement (\"Agreement\") is entered into at Mumbai on this ____ day of __________ 2026 (\"Effective Date\").",
+   "note": "Effective Date is blank; the 16-week pilot clock and every milestone date start from it."
+  }
+ ],
+ "seller_view": {
+  "flag_types": [
+   "possible_conflict"
+  ],
+  "missing_documents": [],
+  "ask_karandeep": [
+   "Three of the twelve hotels are outside India; check an existing client restriction before agreeing scope.",
+   "Confirm whether the pilot can be scoped to the Indian hotels only."
+  ]
+ },
+ "provenance": "Pre-generated from the capstone dataset in a build session. Quotes validated by exact string match."
+}

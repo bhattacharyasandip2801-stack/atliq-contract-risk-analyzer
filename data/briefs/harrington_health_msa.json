@@ -1,0 +1,838 @@
+{
+ "slug": "harrington_health_msa",
+ "draft_file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+ "tracker_id": "C-023",
+ "counterparty": "Harrington Health Systems, Inc.",
+ "doc_type": "Master Professional Services Agreement (client paper, with Exhibit D BAA)",
+ "atliq_entity_in_draft": "AtliQ Inc",
+ "client_country": "United States (Texas)",
+ "tracker_status": "In review",
+ "deadline": "1 Oct 2026 (Rebecca; MSA and BAA to be signed together; tracker C-023, C-046, 22 Sep queue, 27 Sep huddle)",
+ "value": "$210,000 (tracker; MSA §1.14)",
+ "headline": "This healthcare MSA would charge AtliQ $4,200 for every day a delivery slips with no cap, leave its liability unlimited, assign its own tools to Harrington, and sits on a BAA nobody has signed while a sample extract that looks like real patient data has reportedly gone to Pune.",
+ "highest_severity": "High",
+ "exposure": [
+  {
+   "label": "Delay damages per calendar day",
+   "clause_ref": "§11.2",
+   "calculation": "2% x $210,000 (Total Contract Value, §1.14)",
+   "result": "$4,200 per calendar day ($29,400 per week)",
+   "cap": "uncapped (no cap in Article 11); cumulative with actual damages (§11.3)",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "Contractor shall pay Client, as liquidated damages, an amount equal to two percent (2%) of the Total Contract Value for each calendar day from the Delivery Date until the date the applicable Deliverable is accepted."
+  },
+  {
+   "label": "Days until delay damages equal the whole contract",
+   "clause_ref": "§11.2, §1.14",
+   "calculation": "$210,000 / $4,200 per day",
+   "result": "50 calendar days",
+   "cap": "uncapped",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "which as of the Effective Date is Two Hundred Ten Thousand U.S. Dollars ($210,000.00)"
+  },
+  {
+   "label": "One late milestone costs more than its fee",
+   "clause_ref": "§11.2; Exhibit A milestone 5",
+   "calculation": "Milestone 5 fee $25,000 / $4,200 per day = 5.95 days; 6 days late x $4,200",
+   "result": "$25,200 (more than the $25,000 fee for that milestone)",
+   "cap": "uncapped",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "Knowledge transfer and hypercare | Effective Date + 34 weeks | 25,000"
+  },
+  {
+   "label": "Delay damages are on top of actual damages and can be deducted from payments",
+   "clause_ref": "§11.3",
+   "calculation": "LD (e.g. $4,200 x days late) + actual damages Harrington proves",
+   "result": "no combined figure; both apply",
+   "cap": "uncapped",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "Liquidated damages under this Article are in addition to and not in lieu of Client's right to recover its actual damages, to terminate this Agreement for cause, and to exercise any other right or remedy available at law or in equity."
+  },
+  {
+   "label": "AtliQ's total liability",
+   "clause_ref": "§10.3",
+   "calculation": "Checklist 1x fees = 1 x $210,000",
+   "result": "checklist ceiling $210,000; draft ceiling none",
+   "cap": "uncapped (Harrington's own liability is capped at fees paid, §10.2)",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "NOTHING IN THIS AGREEMENT SHALL LIMIT OR EXCLUDE CONTRACTOR'S LIABILITY FOR ANY LOSSES, WHETHER DIRECT OR INDIRECT, ARISING OUT OF OR RELATING TO THIS AGREEMENT, INCLUDING CONTRACTOR'S INDEMNIFICATION OBLIGATIONS, BREACH OF THE BAA, OR ANY DATA SECURITY INCIDENT."
+  },
+  {
+   "label": "Security-incident costs",
+   "clause_ref": "§12.3",
+   "calculation": "no figure in the text (investigation, notification, credit monitoring, remediation)",
+   "result": "not quantifiable from the text",
+   "cap": "uncapped",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "shall bear all costs of investigation, notification, credit monitoring and remediation."
+  },
+  {
+   "label": "Cyber insurance gap",
+   "clause_ref": "§13.1",
+   "calculation": "$5,000,000 required - $1,000,000 held (27 Sep huddle)",
+   "result": "$4,000,000 short",
+   "cap": "n/a (insurance requirement; other lines untested)",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "(c) cyber liability of $5,000,000 per claim;"
+  },
+  {
+   "label": "Payment delay",
+   "clause_ref": "§4.3",
+   "calculation": "90 days - 45 days (checklist maximum)",
+   "result": "45 days beyond the maximum on each invoice; total fees $210,000",
+   "cap": "n/a",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "Client shall pay each properly submitted, undisputed invoice within ninety (90) days after Client's receipt thereof."
+  },
+  {
+   "label": "Work in progress unpaid on convenience termination",
+   "clause_ref": "§5.3",
+   "calculation": "Milestone 2 fee $60,000 in build; 7 days' notice; only accepted Deliverables paid",
+   "result": "$0 owed for that work in progress (example)",
+   "cap": "n/a",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "Client shall have no obligation to pay for work in progress, unaccepted Deliverables, demobilization costs or anticipated profits."
+  }
+ ],
+ "findings": [
+  {
+   "id": "F-01",
+   "severity": "High",
+   "type": "clause_risk",
+   "title": "Delay damages of $4,200 a day, no cap, on top of actual damages",
+   "clause_ref": "§11.2-11.3",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "if Contractor fails to achieve any Delivery Date, Contractor shall pay Client, as liquidated damages, an amount equal to two percent (2%) of the Total Contract Value for each calendar day from the Delivery Date until the date the applicable Deliverable is accepted.",
+   "explanation": "The clause charges 2% of the whole $210,000 contract value for every calendar day a delivery date is missed: 2% x $210,000 = $4,200 a day, or $29,400 a week. Nothing in Article 11 caps it, and §11.3 says it is on top of Harrington's right to recover actual damages and lets Harrington deduct it from payments. The clock runs until Harrington accepts the deliverable, and acceptance is never deemed to happen by the passage of time (§3.3), so it also runs while Harrington is testing (up to 30 days under §3.1). At $4,200 a day the charge equals the entire contract value after 50 days ($210,000 / $4,200).",
+   "rule": "R-01",
+   "register_refs": [
+    {
+     "entry_id": "REG-B38",
+     "file": "signed_contracts/2025-11-28_brightwater_insurance_msa.md",
+     "clause_ref": "§9.1 to §9.3",
+     "quote": "9.1 If the Supplier fails to achieve any Key Date, the Supplier shall pay to the Customer liquidated damages in the amount of one per cent (1%) of the Contract Value for each day or part day by which the relevant Key Date is missed."
+    },
+    {
+     "entry_id": "REG-B39",
+     "file": "signed_contracts/2025-11-28_brightwater_insurance_msa.md",
+     "clause_ref": "§5.2 and §6.1",
+     "quote": "5.2 The Supplier shall meet each Key Date. Time shall be of the essence in respect of the Key Dates."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Brightwater Insurance MSA (Nov 2025)",
+     "label": "waved_through",
+     "note": "1% of contract value per day, no client-delay exclusion, signed from a phone. Brightwater's lawyers claimed LD of $18,400 and it ended in a $9,000 credit and $14,200 of counsel fees (14 Apr post-mortem)."
+    },
+    {
+     "contract": "Acme, Northwind, Trustline MSAs",
+     "label": "deliberate",
+     "note": "Each time Karandeep countered open-ended LD with 0.5% of the affected milestone fee per week, capped at 5% of that milestone fee, no LD for client-caused delay (negotiation_notes.md)."
+    },
+    {
+     "contract": "Al Noor MSA (Mar 2025)",
+     "label": "deliberate",
+     "note": "A 10% cap was approved as a one-off: 'not our new standard' (Karandeep). Even that exception had a cap."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The delay-damages clause in this draft has no cap and is added to actual damages; ask Karandeep."
+  },
+  {
+   "id": "F-02",
+   "severity": "High",
+   "type": "clause_risk",
+   "title": "AtliQ's liability is unlimited; Harrington's is capped at what it has paid",
+   "clause_ref": "§10.3 (with §10.1-10.2)",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "NOTHING IN THIS AGREEMENT SHALL LIMIT OR EXCLUDE CONTRACTOR'S LIABILITY FOR ANY LOSSES, WHETHER DIRECT OR INDIRECT, ARISING OUT OF OR RELATING TO THIS AGREEMENT, INCLUDING CONTRACTOR'S INDEMNIFICATION OBLIGATIONS, BREACH OF THE BAA, OR ANY DATA SECURITY INCIDENT.",
+   "explanation": "There is no ceiling on what AtliQ Inc can owe, including indirect losses, indemnity payments, a BAA breach or any data security incident. Karandeep's recorded position is 1x fees, here $210,000. The clause is one-sided: §10.1 stops Harrington being liable to AtliQ for indirect losses and lost profit, and §10.2 caps Harrington's liability at the fees it has actually paid. The BAA adds its own 'no limitation' wording (BAA §8.2).",
+   "rule": "R-03",
+   "register_refs": [
+    {
+     "entry_id": "REG-A43",
+     "file": "signed_contracts/2025-01-22_paytrack_technologies_msa.md",
+     "clause_ref": "§11.2-11.3",
+     "quote": "Each Party's total aggregate liability under or in connection with this Agreement shall not exceed the total fees paid or payable under the SOW giving rise to the claim."
+    },
+    {
+     "entry_id": "REG-B61",
+     "file": "signed_contracts/2026-08-15_trustline_nbfc_msa.md",
+     "clause_ref": "§12.2",
+     "quote": "12.2 The aggregate liability of either Party under this Agreement shall not exceed the total fees paid or payable under this Agreement."
+    },
+    {
+     "entry_id": "REG-B40",
+     "file": "signed_contracts/2025-11-28_brightwater_insurance_msa.md",
+     "clause_ref": "§15.3 and §15.4",
+     "quote": "15.3 Subject to clauses 9, 15.1 and 15.4, the Supplier's total liability under this Agreement shall not exceed one hundred and fifty per cent (150%) of the Contract Value."
+    },
+    {
+     "entry_id": "REG-B35",
+     "file": "signed_contracts/2025-10-06_carebridge_clinics_baa.md",
+     "clause_ref": "§9.1",
+     "quote": "9.1 Each Party's liability arising out of or relating to this BAA, including any Breach, is subject to the limitations and exclusions of liability in the Master Services Agreement, under which aggregate liability for claims relating to a Breach or a violation of this BAA shall not exceed two (2) times the Fees paid or payable under the Master Services Agreement in the twelve (12) months preceding the event giving rise to the claim."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Brightwater Insurance MSA (Nov 2025)",
+     "label": "waved_through",
+     "note": "Cap of 150% of contract value, but made 'subject to' the LD clause; signed from a phone."
+    },
+    {
+     "contract": "CareBridge Clinics BAA (Oct 2025)",
+     "label": "unlabelled",
+     "note": "Breach/BAA liability capped at 2x fees, counsel-reviewed (Calloway Stern); no recorded decision on that term."
+    },
+    {
+     "contract": "Kessler Mobility framework (Jan 2026, not signed)",
+     "label": "deliberate",
+     "note": "Karandeep refused 'without limitation for all damages' on a ~EUR 120k deal: 'one bad incident ... and the company is gone.' Deal lost (negotiation_notes.md)."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The draft puts no limit on the supplier's liability; ask Karandeep."
+  },
+  {
+   "id": "F-03",
+   "severity": "High",
+   "type": "clause_risk",
+   "title": "One-way indemnity that covers Harrington's own negligence",
+   "clause_ref": "§9.1-9.2",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "in each case regardless of whether such Losses are caused in whole or in part by the negligence of any Client Indemnitee.",
+   "explanation": "AtliQ must defend and pay for all Losses 'arising out of or relating to' the Services, any breach, or any act of its personnel, even when Harrington or its staff partly caused them. In return Harrington only covers third-party claims arising from its gross negligence or willful misconduct (§9.2). This is the reverse of 'indemnity mutual, we don't cover their mistakes'. Payments under it are not capped (§10.3).",
+   "rule": "R-04",
+   "register_refs": [
+    {
+     "entry_id": "REG-A05",
+     "file": "signed_contracts/2024-08-01_crestline_retail_msa.md",
+     "clause_ref": "§10.1-10.2",
+     "quote": "Supplier shall defend, indemnify and hold harmless Crestline from third-party claims arising from (a) Supplier's gross negligence or willful misconduct, (b) infringement by the Deliverables of any third-party intellectual property right, or (c) any claim by Supplier Personnel for wages, benefits or employment status."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "PayTrack MSA (Jan 2025)",
+     "label": "deliberate",
+     "note": "PayTrack's draft made AtliQ indemnify 'including those arising from the negligence of PayTrack'. Karandeep: 'we can't insure against PayTrack's own negligence'; mutual indemnity agreed (negotiation_notes.md)."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The indemnity in this draft is one-way; ask Karandeep."
+  },
+  {
+   "id": "F-04",
+   "severity": "High",
+   "type": "clause_risk",
+   "title": "IP assignment reaches AtliQ's pre-existing and licensed tools",
+   "clause_ref": "§7.2 (with §1.11, §1.6)",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "To the extent any Deliverable, or any Pre-Existing Materials incorporated into or necessary for the use of any Deliverable, does not qualify as a work made for hire, Contractor hereby irrevocably assigns, transfers and conveys to Client all right, title and interest therein, including all intellectual property rights, without further consideration.",
+   "explanation": "'Pre-Existing Materials' (§1.11) means software, tools, libraries, frameworks, templates, methodologies, accelerators and know-how AtliQ owned or licensed before the contract. If any of these is built into a Deliverable or needed to use one, §7.2 assigns it outright to Harrington. 'Deliverables' (§1.6) include data pipelines and code 'in whole or in part'. This is the opposite of 'we keep our own stuff'. It also reaches things AtliQ only licenses, such as a freelancer's tools. The text does not say which AtliQ materials would go into this platform; that is a question for a person.",
+   "rule": "R-07",
+   "register_refs": [
+    {
+     "entry_id": "REG-A03",
+     "file": "signed_contracts/2024-08-01_crestline_retail_msa.md",
+     "clause_ref": "§8.1-8.2",
+     "quote": "Supplier retains all rights in its pre-existing materials, tools and know-how (\"Supplier Materials\"). To the extent Supplier Materials are incorporated in a Deliverable, Supplier grants Crestline a non-exclusive, perpetual, royalty-free license to use them as part of such Deliverable."
+    },
+    {
+     "entry_id": "REG-B12",
+     "file": "signed_contracts/2025-06-20_northwind_logistics_msa.md",
+     "clause_ref": "§9.2",
+     "quote": "9.2 All Intellectual Property Rights in the Deliverables, including any software, tools, frameworks, libraries and pre-existing materials incorporated into the Deliverables, shall vest in the Client absolutely upon payment of the Charges for the relevant Milestone."
+    },
+    {
+     "entry_id": "REG-B13",
+     "file": "signed_contracts/2025-06-20_northwind_logistics_msa.md",
+     "clause_ref": "SOW-1 §S1.2 and §S1.3(b)",
+     "quote": "S1.2 Approach. The Supplier will build the pipeline using its proprietary pipeline accelerator, PipeKit, which provides pre-built ingestion connectors, orchestration templates, data-quality checks and monitoring components."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Northwind MSA (Jun 2025)",
+     "label": "waved_through",
+     "note": "IP clause also reaches 'pre-existing materials incorporated into the Deliverables'; SOW-1 is built on PipeKit; Karandeep 'skimmed the IP and boilerplate'. Pranav has said PipeKit can be reused (tracker C-028)."
+    },
+    {
+     "contract": "Crestline MSA (Aug 2024)",
+     "label": "unlabelled",
+     "note": "Crestline owns Deliverables but AtliQ keeps its pre-existing materials and only licenses them inside a Deliverable."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The draft's IP clause also transfers the supplier's own pre-existing tools; ask Karandeep."
+  },
+  {
+   "id": "F-05",
+   "severity": "High",
+   "type": "bundle",
+   "title": "BAA is a draft and nothing covering patient data is signed",
+   "clause_ref": "§1.3, §12.1 (Exhibit D)",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "\"Business Associate Agreement\" or \"BAA\" means the business associate agreement attached hereto as Exhibit D.",
+   "explanation": "The MSA makes the BAA part of the contract (Exhibit D, incorporated by §12.1), but the BAA only reached AtliQ on 16 Sep and is unsigned; Harrington wants both signed together by 1 Oct (tracker C-046, 27 Sep huddle). The signed NDA says PHI is excluded and may be disclosed only after a BAA is signed (NDA §2.3). As of the 28 Sep note, no BAA with Harrington had been signed. Until it is, no document on file permits AtliQ to hold Harrington patient data.",
+   "rule": "R-16",
+   "register_refs": [
+    {
+     "entry_id": "REG-B69",
+     "file": "signed_contracts/2026-08-20_harrington_health_mutual_nda.md",
+     "clause_ref": "§2.3",
+     "quote": "2.3 Protected Health Information. Protected Health Information, as defined at 45 C.F.R. § 160.103, is excluded from this Agreement and shall be disclosed only after execution of a Business Associate Agreement between the Parties. Harrington shall not disclose, and AtliQ shall not request, Protected Health Information under this Agreement."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Harrington Mutual NDA (Aug 2026)",
+     "label": "waved_through",
+     "note": "Signed the day after it was needed, 'Nothing discussed' (negotiation_notes.md)."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "A separate data-protection agreement must be signed alongside this contract before any protected data is shared; ask Karandeep.",
+   "extra_quotes": [
+    {
+     "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+     "quote": "As of 2026-09-28 no Business Associate Agreement had been signed with Harrington; the sample extract remained with the two Pune engineers; no subcontractor BAA had been drafted for Daniel Ortiz; the insurance gap was not raised with Harrington."
+    }
+   ]
+  },
+  {
+   "id": "F-06",
+   "severity": "High",
+   "type": "data_class",
+   "title": "Reported: a sample extract that looks like real patient data was forwarded to Pune",
+   "clause_ref": "§2.3 of signed NDA; MSA §12.4",
+   "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+   "quote": "Pranav opened it here and forwarded to Sneha and Vikram in Pune to start profiling. \"It's real data I think — names, DOBs, some diagnosis codes.\"",
+   "explanation": "Reported in the 27 Sep huddle; not confirmed. Pranav said Harrington's data engineering manager emailed a 'sample extract' on 12 Sep and that 'It's real data I think — names, DOBs, some diagnosis codes', and that he forwarded it to two engineers in Pune. If it is real patient data, it arrived before any BAA existed (NDA §2.3: PHI only after a BAA), and it sits with people outside the United States, which MSA §12.4 and BAA §4.1 do not allow without Harrington's written consent. The 28 Sep note says the extract remained with the two Pune engineers. This is logged here as a possible stop-and-escalate item (R-21); it is not treated as proven.",
+   "rule": "R-21",
+   "register_refs": [
+    {
+     "entry_id": "REG-B69",
+     "file": "signed_contracts/2026-08-20_harrington_health_mutual_nda.md",
+     "clause_ref": "§2.3",
+     "quote": "2.3 Protected Health Information. Protected Health Information, as defined at 45 C.F.R. § 160.103, is excluded from this Agreement and shall be disclosed only after execution of a Business Associate Agreement between the Parties. Harrington shall not disclose, and AtliQ shall not request, Protected Health Information under this Agreement."
+    }
+   ],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "Possible issue with data already shared; ask Karandeep.",
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+     "quote": "No PHI shall be accessed, stored or processed outside the United States without Client's prior written consent."
+    },
+    {
+     "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+     "quote": "As of 2026-09-28 no Business Associate Agreement had been signed with Harrington; the sample extract remained with the two Pune engineers; no subcontractor BAA had been drafted for Daniel Ortiz; the insurance gap was not raised with Harrington."
+    }
+   ]
+  },
+  {
+   "id": "F-07",
+   "severity": "High",
+   "type": "bundle",
+   "title": "No subcontractor BAA or consent for Daniel Ortiz, who is due to start 5 Oct",
+   "clause_ref": "§1.5, §2.5",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "\"Contractor Personnel\" means all employees, agents, subcontractors and independent contractors of Contractor or its subcontractors who perform any portion of the Services.",
+   "explanation": "Dhaval is engaging Daniel Ortiz, a freelancer in Austin, to build ingestion pipelines from Harrington's electronic health record, patient accounting and scheduling systems (his Engagement Schedule), starting 5 Oct 2026. An independent contractor is Contractor Personnel under §1.5, so Harrington's written consent is needed (§2.5; BAA §4.2) and a written agreement on the same PHI terms before any access (BAA §4.3). His draft contract and NDA contain no PHI, HIPAA or BAA wording, nothing restricting the work to the US (his schedule only lists Austin as location) and only a 'promptly' notice duty in his NDA §3.2 against Harrington's 24 hours, and §5.1 has him use his own computer rather than a Client-controlled environment (BAA §9.3). The huddle line 'US-based, so the offshore thing is solved' deals with location only.",
+   "rule": "R-16",
+   "register_refs": [],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Individual contractors who touch protected data need their own data-protection agreement and client approval; ask Karandeep.",
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+     "quote": "The Contractor shall furnish, at the Contractor's own expense, the computer equipment, software, internet connectivity and other tools the Contractor considers necessary to perform the Services, and shall be responsible for maintaining them."
+    },
+    {
+     "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+     "quote": "October 5, 2026 (or the Effective Date, if later)"
+    },
+    {
+     "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+     "quote": "Dhaval: the BAA says nobody outside the US touches patient data, so he's bringing in Daniel Ortiz, freelance data engineer in Austin."
+    }
+   ]
+  },
+  {
+   "id": "F-08",
+   "severity": "High",
+   "type": "bundle",
+   "title": "The Pune team is not covered for Harrington; the existing intercompany BAA is CareBridge-only",
+   "clause_ref": "§12.4, §1.5",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "Any Contractor Personnel located outside the United States shall access only de-identified data within Client-controlled environments.",
+   "explanation": "The only intercompany BAA between AtliQ Inc and AtliQ Technologies Pvt Ltd names the CareBridge Engagement (SOW-1) and allows de-identified data only. It does not mention Harrington. In the 27 Sep huddle the answer to 'does the CareBridge setup cover this too' was 'should do, same kind of work', and 'Nobody checked'. Karandeep chose 'per engagement, keep it simple' for CareBridge, so a Harrington-specific one would be new. Nothing in the files shows Harrington supplying de-identified data, and BAA §2.4 stops AtliQ de-identifying PHI itself without Harrington's written approval.",
+   "rule": "R-16",
+   "register_refs": [
+    {
+     "entry_id": "REG-B25",
+     "file": "signed_contracts/2025-10-06_atliq_intercompany_subcontractor_baa.md",
+     "clause_ref": "§2.1 and Schedule 1",
+     "quote": "2.1 This Agreement applies to the Engagement Services. Any services Subcontractor performs for Business Associate other than the Engagement Services are governed by the Intercompany Agreement."
+    },
+    {
+     "entry_id": "REG-B26",
+     "file": "signed_contracts/2025-10-06_atliq_intercompany_subcontractor_baa.md",
+     "clause_ref": "§3.1 and §3.2",
+     "quote": "3.1 Subcontractor and its personnel shall access De-identified Data only. Subcontractor shall not access, receive, store, view or process PHI."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Intercompany BAA (Oct 2025)",
+     "label": "deliberate",
+     "note": "Karandeep: 'Per engagement, keep it simple.' Only de-identified data offshore (negotiation_notes.md)."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Work done by the offshore delivery team on protected data needs its own internal agreement and client approval; ask Karandeep.",
+   "extra_quotes": [
+    {
+     "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+     "quote": "Pranav asked if the CareBridge setup (the intercompany thing) covers this too — Karandeep: \"should do, same kind of work.\" Nobody checked."
+    }
+   ]
+  },
+  {
+   "id": "F-09",
+   "severity": "Medium",
+   "type": "consistency",
+   "title": "MSA allows offshore staff on de-identified data; the BAA does not",
+   "clause_ref": "§12.4 vs BAA §4.1-4.2",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "No PHI shall be accessed, stored or processed outside the United States without Client's prior written consent. Any Contractor Personnel located outside the United States shall access only de-identified data within Client-controlled environments.",
+   "explanation": "MSA §12.4 leaves two routes open: PHI offshore with Harrington's written consent, and offshore staff on de-identified data. BAA §4.1 bans PHI outside the US with no consent route, and BAA §4.2 says every approved subcontractor must be a US-organized entity with all personnel in the US. BAA §1.5 counts any Affiliate as a Subcontractor, so AtliQ Technologies Pvt Ltd (Pune) would be one. The MSA says the BAA controls 'with respect to PHI' (§12.1, §15.10) but is silent on de-identified data. Which document governs Pune's access to de-identified data is a possible conflict, for counsel.",
+   "rule": "R-18",
+   "register_refs": [
+    {
+     "entry_id": "REG-B32",
+     "file": "signed_contracts/2025-10-06_carebridge_clinics_baa.md",
+     "clause_ref": "§3.1 and §3.2",
+     "quote": "3.2 Personnel of Business Associate or of any Subcontractor located outside the United States may access De-identified Data only, and only within the Covered Entity Environment or a secure environment approved in writing by Covered Entity. No PHI shall be accessed, stored or processed outside the United States."
+    }
+   ],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The supplier's contract documents may disagree about offshore access; ask Karandeep."
+  },
+  {
+   "id": "F-10",
+   "severity": "Medium",
+   "type": "consistency",
+   "title": "24-hour incident notice to Harrington vs 2 business days from Pune; costs uncapped",
+   "clause_ref": "§12.3 vs BAA §5.1",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "Contractor shall notify Client of any actual or reasonably suspected security incident affecting Client data within twenty-four (24) hours of discovery and shall bear all costs of investigation, notification, credit monitoring and remediation.",
+   "explanation": "AtliQ Inc must notify Harrington within 24 hours (MSA §12.3; BAA §5.1 by phone and in writing). The BAA treats an event as discovered when any Subcontractor knows of it, and its Subcontractor definition includes Affiliates. AtliQ's own intercompany BAA gives Pune 2 business days to report to AtliQ Inc (§5.1). A weekend or two business days can therefore pass inside Pune before AtliQ Inc hears of it while Harrington's 24 hours is running. The costs AtliQ bears under §12.3 are not capped (§10.3).",
+   "rule": "R-18",
+   "register_refs": [
+    {
+     "entry_id": "REG-B27",
+     "file": "signed_contracts/2025-10-06_atliq_intercompany_subcontractor_baa.md",
+     "clause_ref": "§5.1 and §3.4",
+     "quote": "5.1 Subcontractor shall report to Business Associate any use or disclosure not provided for by this Agreement, any Security Incident and any actual or suspected Breach within two (2) business days after discovery, so as to allow Business Associate to meet its reporting obligations under the Upstream BAA."
+    },
+    {
+     "entry_id": "REG-B31",
+     "file": "signed_contracts/2025-10-06_carebridge_clinics_baa.md",
+     "clause_ref": "§5.1 and §5.3",
+     "quote": "5.1 Breaches and Non-Permitted Uses. Business Associate shall report to Covered Entity any use or disclosure of PHI not provided for by this BAA, including any Breach of Unsecured PHI, without unreasonable delay and in no case later than five (5) business days after discovery."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "CareBridge BAA (Oct 2025)",
+     "label": "unlabelled",
+     "note": "Gave AtliQ Inc 5 business days to report; Harrington's 24 hours is much tighter."
+    },
+    {
+     "contract": "Brightwater MSA (Nov 2025)",
+     "label": "waved_through",
+     "note": "Also 24 hours, signed from a phone."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "Incident-notice periods across the supplier's documents may not line up; ask Karandeep."
+  },
+  {
+   "id": "F-11",
+   "severity": "Medium",
+   "type": "clause_risk",
+   "title": "Insurance required at $5M cyber and $5M errors and omissions; AtliQ's cyber cover is $1M",
+   "clause_ref": "§13.1",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "(b) professional liability/errors and omissions of $5,000,000 per claim; (c) cyber liability of $5,000,000 per claim; (d) workers' compensation as required by law; and (e) umbrella liability of $5,000,000.",
+   "explanation": "Cyber cover required is $5,000,000 per claim; the 27 Sep huddle records AtliQ's cyber policy at $1M, so the gap is $5,000,000 - $1,000,000 = $4,000,000 (BAA §8.3 repeats the $5M and adds a 3-year tail). The files do not show AtliQ's errors and omissions ($5M asked), general liability ($2M asked) or umbrella ($5M asked) cover, so those are untested. Certificates are due before work starts (§13.2). The huddle footnote says the gap had not been raised with Harrington.",
+   "rule": "R-19",
+   "register_refs": [
+    {
+     "entry_id": "REG-B45",
+     "file": "signed_contracts/2025-11-28_brightwater_insurance_msa.md",
+     "clause_ref": "§17.1",
+     "quote": "17.1 The Supplier shall maintain professional indemnity insurance of not less than USD 2,000,000 and cyber liability insurance of not less than USD 1,000,000."
+    }
+   ],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The draft asks for higher insurance than the supplier may hold; ask Karandeep.",
+   "extra_quotes": [
+    {
+     "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+     "quote": "Karandeep: \"Our cyber policy is $1M btw, Harrington BAA wants 5.\""
+    }
+   ]
+  },
+  {
+   "id": "F-12",
+   "severity": "Medium",
+   "type": "clause_risk",
+   "title": "Payment 90 days after receipt of invoice; unbilled work 'deemed waived' after 90 days",
+   "clause_ref": "§4.3 (with §4.2, §4.5)",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "Client shall pay each properly submitted, undisputed invoice within ninety (90) days after Client's receipt thereof.",
+   "explanation": "The checklist is 30 days, 45 at most; 90 days is double the maximum. Invoices go monthly in arrears for accepted Deliverables only (§4.2), after a 30-day acceptance window (§3.1), so the wait from delivery to cash is longer than 90 days. Invoices not submitted within 90 days of acceptance are 'deemed waived'. Harrington may also set off amounts it claims under any other agreement (§4.5). AtliQ's own paper pays Daniel Ortiz within 30 days.",
+   "rule": "R-05",
+   "register_refs": [
+    {
+     "entry_id": "REG-B60",
+     "file": "signed_contracts/2026-08-15_trustline_nbfc_msa.md",
+     "clause_ref": "§4.2",
+     "quote": "4.2 The Service Provider shall raise an invoice upon completion of each Milestone. The Company shall pay each undisputed invoice within forty-five (45) days of receipt of the invoice."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Trustline MSA (Aug 2026)",
+     "label": "deliberate",
+     "note": "Trustline asked for 90 days; Karandeep held at 45 days and it was agreed (negotiation_notes.md)."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The payment period in this draft is longer than usual; ask Karandeep."
+  },
+  {
+   "id": "F-13",
+   "severity": "Medium",
+   "type": "clause_risk",
+   "title": "Harrington can end on 7 days' notice and pay nothing for work in progress",
+   "clause_ref": "§5.3 (with §5.5)",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "Client may terminate this Agreement or any SOW, in whole or in part, for any reason or no reason, upon seven (7) days' written notice to Contractor. Upon such termination, Client's sole obligation shall be to pay Fees for Deliverables accepted by Client prior to the effective date of termination; Client shall have no obligation to pay for work in progress, unaccepted Deliverables, demobilization costs or anticipated profits.",
+   "explanation": "Only Harrington has a convenience exit; AtliQ can end only for uncured breach (§5.2). On exit AtliQ must hand over all Deliverables 'whether complete or incomplete' at once (§5.5(a)) and is paid only for accepted ones. Example: Milestone 2 ($60,000, due at week 14) is in build and Harrington gives 7 days' notice: the clause leaves $0 owing for that work, though the incomplete Deliverable is handed over. The checklist says 'they pay for work done'.",
+   "rule": "R-08",
+   "register_refs": [],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The termination clause lets the client leave without paying for work in progress; ask Karandeep."
+  },
+  {
+   "id": "F-14",
+   "severity": "Medium",
+   "type": "clause_risk",
+   "title": "Delay rate and mechanics far above the recorded position, with no carve-out for Harrington-caused delay",
+   "clause_ref": "§11.2, §2.6",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "Client shall use reasonable efforts to provide Contractor with access to Client Materials reasonably necessary for the performance of the Services.",
+   "explanation": "The recorded position (Acme, Northwind, Trustline) is 0.5% of the affected milestone fee per week, capped at 5% of that fee, and no LD for client-caused delay. On Milestone 2 ($60,000) that is $300 a week and at most $3,000. Harrington's rate is $29,400 a week, 98 times as much ($29,400 / $300), and passes $3,000 inside one day. §11 has no exclusion for delay caused by Harrington. The only Harrington duty is 'reasonable efforts' on access (§2.6), the same gap behind the Brightwater dispute, where access came 19 days late.",
+   "rule": "R-02",
+   "register_refs": [
+    {
+     "entry_id": "REG-B16",
+     "file": "signed_contracts/2025-06-20_northwind_logistics_msa.md",
+     "clause_ref": "§11.1 to §11.3",
+     "quote": "11.1 If the Supplier fails to achieve a Milestone by its Milestone date, other than as a result of any act or omission of the Client (including late provision of Client Materials or system access) or a force majeure event, the Supplier shall pay the Client liquidated damages of 0.5% of the Milestone Fee for the affected Milestone for each full week of delay."
+    },
+    {
+     "entry_id": "REG-B59",
+     "file": "signed_contracts/2026-08-15_trustline_nbfc_msa.md",
+     "clause_ref": "§7.1 to §7.3",
+     "quote": "7.1 If the Service Provider fails to complete any Milestone by the date specified in the SOW for reasons solely attributable to the Service Provider, the Service Provider shall pay liquidated damages of 0.5% (zero point five percent) of the Milestone Fee of the delayed Milestone for each completed week of delay."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Brightwater MSA (Nov 2025)",
+     "label": "waved_through",
+     "note": "Milestone slipped ~3 weeks because the client gave access 19 days late; no client-delay exclusion, LD claimed (post-mortem)."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The delay-damages rate and conditions are well outside AtliQ's usual position; ask Karandeep."
+  },
+  {
+   "id": "F-15",
+   "severity": "Medium",
+   "type": "bundle",
+   "title": "Security requirements exhibit, full SOW and travel policy referenced but not in the files",
+   "clause_ref": "Exhibits A-C",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "Exhibit B — Client Information Security Requirements",
+   "explanation": "The MSA and the BAA tell AtliQ to comply with Exhibit B (BAA §3.2) and to receive PHI only through the secure methods it specifies (BAA §9.3), and MSA §3.1 tests Deliverables against acceptance criteria in the SOW. Exhibit B, the full Exhibit A SOW and Exhibit C are not among the documents provided. What AtliQ would be promising under them cannot be read.",
+   "rule": "R-17",
+   "register_refs": [],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Some documents the contract refers to were not provided; ask Karandeep."
+  }
+ ],
+ "bundle": {
+  "needed": [
+   {
+    "document": "Master Professional Services Agreement (this MSA draft, Contract No. HHS-IT-2026-0193)",
+    "status": "draft_only",
+    "note": "Harrington's paper; AtliQ has not marked it up. Tracker C-023 shows 'In review', needed by 1 Oct (Rebecca) and says Harrington's lawyers call the template non-negotiable.",
+    "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+    "quote": "Client's paper — AtliQ has not yet marked up."
+   },
+   {
+    "document": "Business Associate Agreement (Exhibit D)",
+    "status": "draft_only",
+    "note": "Arrived 16 Sep as a draft. The MSA makes it Exhibit D and the BAA says it must be executed at the same time as the MSA (BAA §12.10). Nothing is signed. Tracker C-046: 'must be signed together with the MSA'.",
+    "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+    "quote": "Client's paper — to be signed together with the MSA."
+   },
+   {
+    "document": "Mutual NDA (HHS-NDA-2026-0412)",
+    "status": "signed",
+    "note": "Signed 20 Aug 2026. It excludes PHI and says PHI may be disclosed only after a BAA is signed (§2.3). It does not replace the BAA.",
+    "file": "signed_contracts/2026-08-20_harrington_health_mutual_nda.md",
+    "quote": "Protected Health Information, as defined at 45 C.F.R. § 160.103, is excluded from this Agreement and shall be disclosed only after execution of a Business Associate Agreement between the Parties."
+   },
+   {
+    "document": "Subcontractor BAA for Daniel Ortiz (US freelance data engineer)",
+    "status": "missing",
+    "note": "Dhaval is bringing Daniel Ortiz in to build the EHR ingestion pipelines. His contractor agreement and NDA are drafts and neither mentions PHI, HIPAA or a business associate agreement. The huddle footnote records that none had been drafted as of 28 Sep.",
+    "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+    "quote": "no subcontractor BAA had been drafted for Daniel Ortiz"
+   },
+   {
+    "document": "Intercompany subcontractor BAA (AtliQ Inc to AtliQ Technologies Pvt Ltd) covering Harrington",
+    "status": "missing",
+    "note": "The only intercompany BAA on file is limited to the CareBridge Engagement and to de-identified data. Nothing on file extends it to Harrington. In the huddle 'should do, same kind of work' was said and 'Nobody checked'.",
+    "file": "signed_contracts/2025-10-06_atliq_intercompany_subcontractor_baa.md",
+    "quote": "\"Engagement\" means the CareBridge Engagement described in Schedule 1."
+   },
+   {
+    "document": "Harrington's prior written consent and approval of subcontractors (MSA §2.5, BAA §4.2)",
+    "status": "missing",
+    "note": "Both documents require Harrington's written consent/approval before any subcontractor is engaged. No consent or approval request is in the files.",
+    "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+    "quote": "Contractor shall not subcontract any portion of the Services without Client's prior written consent."
+   },
+   {
+    "document": "Daniel Ortiz Independent Contractor Agreement (with Engagement Schedule No. 1)",
+    "status": "draft_only",
+    "note": "Prepared by Dhaval on 27 Sep from the US contractor template; not yet sent. Schedule shows a start date of 5 Oct 2026.",
+    "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+    "quote": "AtliQ draft prepared by Dhaval on 2026-09-27 from the US contractor template. Not yet sent."
+   },
+   {
+    "document": "Daniel Ortiz Mutual NDA",
+    "status": "draft_only",
+    "note": "Prepared 27 Sep from the US mutual NDA template; not yet sent. Contains no PHI wording.",
+    "file": "incoming/2026-09-27_daniel_ortiz_nda_draft.md",
+    "quote": "AtliQ draft prepared by Dhaval on 2026-09-27 from the US mutual NDA template. Not yet sent."
+   },
+   {
+    "document": "Exhibit B - Client Information Security Requirements",
+    "status": "referenced_absent",
+    "note": "Listed in the MSA and incorporated into the BAA (BAA §3.2, §9.3) but not in the files. Its content cannot be checked.",
+    "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+    "quote": "Exhibit B — Client Information Security Requirements"
+   },
+   {
+    "document": "Exhibit A - full Initial SOW (acceptance criteria)",
+    "status": "referenced_absent",
+    "note": "Only a summary milestone table is in the MSA. MSA §3.1 tests Deliverables against 'the acceptance criteria in the applicable SOW', which are not in the files.",
+    "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+    "quote": "Exhibit A (Summary) — Initial SOW Milestones"
+   },
+   {
+    "document": "Exhibit C - Vendor Travel Policy",
+    "status": "referenced_absent",
+    "note": "Referenced in MSA §4.6 for expenses; not in the files.",
+    "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+    "quote": "Exhibit C — Vendor Travel Policy"
+   },
+   {
+    "document": "Intercompany services agreement (AtliQ Inc to AtliQ Technologies Pvt Ltd)",
+    "status": "referenced_absent",
+    "note": "The CareBridge intercompany BAA refers to it as the basis for Pune's delivery work. It is not in the files, so how Pune work for Harrington would be papered cannot be checked.",
+    "file": "signed_contracts/2025-10-06_atliq_intercompany_subcontractor_baa.md",
+    "quote": "Subcontractor provides software development and data engineering services to Business Associate under the intercompany services agreement between the Parties (the \"Intercompany Agreement\")."
+   }
+  ]
+ },
+ "data_class": {
+  "class": "PHI",
+  "basis": "The MSA defines PHI and puts it in scope: the platform consolidates data from Harrington's electronic health record and patient accounting systems and ingestion into the platform is Milestone 2. The BAA's recitals say the services involve creating, receiving, maintaining or transmitting PHI. The text never describes the work as using only de-identified data; MSA §12.4 only limits what offshore staff may see.",
+  "question": "Will Harrington supply identifiable PHI, de-identified data, or both, and who de-identifies it (BAA §2.4 stops AtliQ doing so without approval)? Is the 12 Sep extract identifiable?",
+  "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+  "quote": "design and build of a cloud data platform consolidating data from Client's electronic health record, patient accounting, scheduling and workforce management systems"
+ },
+ "checks_passed": [
+  {
+   "rule": "R-11",
+   "note": "Contracting entity is AtliQ Inc and the client is a Texas health system, so a US client with the US entity.",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "AtliQ Inc, a Delaware corporation with its principal place of business at 101 College Road East, Suite 210, Princeton, New Jersey 08540"
+  },
+  {
+   "rule": "R-06",
+   "note": "Texas law for AtliQ Inc and a US client: US law, as the checklist asks. No earlier exception needed.",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "This Agreement shall be governed by and construed in accordance with the laws of the State of Texas, without regard to its conflict of laws principles."
+  },
+  {
+   "rule": "R-13",
+   "note": "No non-compete, exclusivity, most-favoured-customer or similar restraint on AtliQ in the draft; the agreement is non-exclusive.",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "This Agreement is non-exclusive. Client may engage other contractors for similar services."
+  },
+  {
+   "rule": "R-09",
+   "note": "Confidentiality in MSA Article 6 binds both sides. The signed Harrington NDA is also genuinely mutual and has no non-compete, no-hire or residuals clause.",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "Each Party shall (a) hold the other Party's Confidential Information in strict confidence"
+  },
+  {
+   "rule": "R-16",
+   "note": "The draft points to a BAA before PHI work and puts the BAA first in the order of precedence for PHI (the BAA still has to be signed; see F-05).",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "In the event of conflict: (a) the BAA (as to PHI); (b) this Agreement; (c) the applicable SOW; (d) other Exhibits."
+  }
+ ],
+ "not_checked": [
+  {
+   "item": "Exhibit B (Client Information Security Requirements), full Exhibit A SOW and acceptance criteria, Exhibit C",
+   "reason": "Referenced but not in the files."
+  },
+  {
+   "item": "Whether AtliQ holds the E&O ($5M), general liability ($2M), umbrella ($5M) and workers' compensation cover MSA §13.1 requires, and whether the carriers meet the A- VII rating",
+   "reason": "Only the $1M cyber figure is on record (27 Sep huddle)."
+  },
+  {
+   "item": "Crestline most-favoured-customer promise (REG-A02) against Harrington's pricing",
+   "reason": "The Exhibit A summary shows milestone fees ($210,000 total) but no hourly rates, so it cannot be compared with Crestline's rate card. The Harrington rates may sit in an SOW not in the files."
+  },
+  {
+   "item": "Harrington's policies 'made available to Contractor, as updated from time to time' (§2.3)",
+   "reason": "Not provided."
+  },
+  {
+   "item": "Whether the sample extract of 12 Sep is real patient data and who else has copies",
+   "reason": "Only the 27 Sep huddle reports it; the extract itself is not in the files and was not opened."
+  },
+  {
+   "item": "Whether HIPAA training, background checks and MFA are in place for Sneha, Vikram, Daniel Ortiz (§2.4, BAA §3.3)",
+   "reason": "No records in the files."
+  },
+  {
+   "item": "Certificates of insurance (§13.2) and the intercompany services agreement between AtliQ Inc and AtliQ Technologies Pvt Ltd",
+   "reason": "Not in the files."
+  },
+  {
+   "item": "Whether Texas or federal health-privacy rules named in §1.2 add duties beyond the contract text",
+   "reason": "Outside the files; for counsel."
+  }
+ ],
+ "low": [
+  {
+   "title": "Harrington says its template is not negotiable",
+   "clause_ref": "tracker C-023",
+   "file": "contract_tracker.csv",
+   "quote": "their lawyers say template is non-negotiable",
+   "note": "Tracker note, not in the draft. Karandeep has previously negotiated client paper on LD, payment and indemnity (Acme, Northwind, Trustline, PayTrack). Whether Harrington will move on this form is untested."
+  },
+  {
+   "title": "Refund of all fees on rejection; acceptance never deemed",
+   "clause_ref": "§3.2-3.3",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "Acceptance shall not be deemed to occur by use in production, by payment, or by the passage of time.",
+   "note": "Payment depends on Harrington's acceptance and Harrington can reject and receive a refund of all Fees paid for that Deliverable (§3.2). This also keeps delay damages running (F-01)."
+  },
+  {
+   "title": "No open-source or third-party software without approval",
+   "clause_ref": "§7.6",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "Contractor shall not incorporate any open-source or third-party software into any Deliverable without Client's prior written approval.",
+   "note": "A data platform typically relies on such components. What AtliQ plans to use is not in the files."
+  },
+  {
+   "title": "Daniel Ortiz's tools are licensed to AtliQ, not owned",
+   "clause_ref": "Ortiz §6.2 vs MSA §7.2",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "If any Contractor Tools are incorporated into Work Product, the Contractor grants the Company and its clients a perpetual, royalty-free, non-exclusive, transferable license to use them as part of the Work Product.",
+   "note": "AtliQ would hold only a licence to his pre-existing tools but MSA §7.2 assigns Pre-Existing Materials to Harrington. His assignment of Work Product takes effect only on payment (§6.1) while MSA §7.1 vests Deliverables in Harrington from creation."
+  },
+  {
+   "title": "Audit notice differs between MSA and BAA",
+   "clause_ref": "MSA §12.5 vs BAA §7.2",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "Client or its designee may audit Contractor's compliance with this Article upon ten (10) days' notice, no more than once annually except following a security incident.",
+   "note": "BAA §7.2 allows audit on 48 hours' notice at any time. The BAA controls for PHI (MSA §12.1)."
+  },
+  {
+   "title": "Texas courts, jury waiver",
+   "clause_ref": "§14.3-14.4",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "Any action arising out of or relating to this Agreement shall be brought exclusively in the state or federal courts located in Harris County, Texas, and each Party irrevocably submits to the personal jurisdiction of such courts.",
+   "note": "Exclusive Houston venue for a New Jersey-based company; fits the 'US law for Inc' position but travel and local counsel are a cost."
+  },
+  {
+   "title": "Transition help up to 90 days at SOW rates",
+   "clause_ref": "§5.5(b)",
+   "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+   "quote": "provide transition assistance as reasonably requested by Client for up to ninety (90) days at the rates in the applicable SOW;",
+   "note": "Paid at SOW rates, but the SOW summary shows milestone fees, not rates."
+  }
+ ],
+ "seller_view": {
+  "flag_types": [
+   "clause_risk",
+   "bundle",
+   "data_class",
+   "consistency"
+  ],
+  "missing_documents": [
+   "Signed Business Associate Agreement",
+   "Subcontractor data-protection agreement for the freelance engineer",
+   "Internal agreement covering the offshore team for this client",
+   "Exhibit B Client Information Security Requirements",
+   "Full Exhibit A statement of work with acceptance criteria"
+  ],
+  "ask_karandeep": [
+   "Delay damages and liability limits",
+   "Indemnity and IP ownership of pre-existing tools",
+   "Insurance levels and incident-notice periods",
+   "Payment period and termination for convenience",
+   "Patient data already received"
+  ]
+ },
+ "provenance": "Pre-generated from the capstone dataset in a build session. Quotes validated by exact string match."
+}

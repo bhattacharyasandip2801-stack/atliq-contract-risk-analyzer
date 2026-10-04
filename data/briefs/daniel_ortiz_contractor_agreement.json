@@ -1,0 +1,426 @@
+{
+ "slug": "daniel_ortiz_contractor_agreement",
+ "draft_file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+ "tracker_id": "C-047",
+ "counterparty": "Daniel Ortiz (individual, Austin, Texas)",
+ "doc_type": "Independent Contractor Agreement (US template)",
+ "atliq_entity_in_draft": "AtliQ Inc",
+ "client_country": "USA (Harrington Health Systems, Inc., Texas; contractor in Austin, Texas)",
+ "tracker_status": "Draft",
+ "deadline": "Start date 5 Oct 2026 (Engagement Schedule No. 1); Harrington wants MSA + BAA by 1 Oct (tracker C-023, 27 Sep huddle)",
+ "value": "Not stated in tracker; maximum USD 67,200 = USD 70 x 160 hours x 6 months (computed from the Engagement Schedule)",
+ "headline": "On its own terms this is a fair, plain freelancer agreement, but it has no HIPAA flow-down and it is meant to start on 5 Oct on Harrington patient-data work: 'US-based' meets only the location rule in the Harrington BAA, not the approval, written flow-down or reporting duties.",
+ "highest_severity": "High",
+ "exposure": [
+  {
+   "label": "Contractor fees at the hours cap",
+   "clause_ref": "Engagement Schedule",
+   "calculation": "USD 70 x 160 hours = USD 11,200 per month; x 6 months",
+   "result": "USD 67,200 maximum over the term",
+   "cap": "read from clause: 'up to 160 hours per month unless approved in writing'",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "USD 70.00 per hour, up to 160 hours per month unless approved in writing"
+  },
+  {
+   "label": "Ortiz's liability to AtliQ if he causes a patient-data event",
+   "clause_ref": "§9.2",
+   "calculation": "12 months of fees paid or payable; the term is only 6 months, so at most USD 11,200 x 6",
+   "result": "up to USD 67,200 (unless the claim is for breach of §7 confidentiality, fraud or willful misconduct, which are outside the cap)",
+   "cap": "read from clause: fees paid or payable in the twelve (12) months preceding the claim",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "Each Party's aggregate liability under this Agreement shall not exceed the total fees paid or payable to the Contractor under this Agreement in the twelve (12) months preceding the claim"
+  },
+  {
+   "label": "AtliQ's liability to Harrington for a Subcontractor's privacy event (if the BAA is signed as drafted)",
+   "clause_ref": "BAA §8.1-8.2",
+   "calculation": "no figure can be computed: the BAA names no ceiling",
+   "result": "uncapped",
+   "cap": "uncapped: 'not subject to any limitation or exclusion of liability'",
+   "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+   "quote": "8.2 No Limitation. The obligations of Business Associate under this Article 8 are not subject to any limitation or exclusion of liability, and shall apply notwithstanding any limitation of liability in the Master Services Agreement."
+  }
+ ],
+ "findings": [
+  {
+   "id": "F-01",
+   "severity": "High",
+   "type": "conflict",
+   "title": "No written HIPAA flow-down for Ortiz; the BAA wants one before any access",
+   "clause_ref": "§7.1 (and whole agreement)",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "7.1 Each Party shall keep confidential the non-public business, technical and financial information of the other Party, and of the Company's clients, disclosed to it in connection with this Agreement, and shall use it only for the purposes of this Agreement.",
+   "explanation": "The draft never mentions HIPAA, patient data, a Business Associate Agreement or Harrington's rules; its only client-data protection is the generic confidentiality clause in §7. The Harrington BAA draft (§4.3) says AtliQ must make sure every Subcontractor agrees in writing, before any access to PHI, to the same restrictions AtliQ accepts, and §1.5 defines a Subcontractor as any person to whom AtliQ delegates a function other than its workforce. Ortiz is described as an independent contractor who controls his own manner and hours (§1.3, §4.1), which points to Subcontractor rather than workforce; that reading is a question for counsel. The signed intercompany BAA does not fill the gap: it covers only the CareBridge engagement and only the Pune entity. The 27 Sep huddle note records that no subcontractor BAA had been drafted for Ortiz, while the schedule has him starting on 5 Oct 2026. The Harrington BAA itself is not yet signed (tracker C-046, in review), so the duty bites once it is signed as drafted.",
+   "rule": "R-16",
+   "register_refs": [
+    {
+     "entry_id": "REG-B25",
+     "file": "signed_contracts/2025-10-06_atliq_intercompany_subcontractor_baa.md",
+     "clause_ref": "§2.1 and Schedule 1",
+     "quote": "2.1 This Agreement applies to the Engagement Services. Any services Subcontractor performs for Business Associate other than the Engagement Services are governed by the Intercompany Agreement."
+    },
+    {
+     "entry_id": "REG-B33",
+     "file": "signed_contracts/2025-10-06_carebridge_clinics_baa.md",
+     "clause_ref": "§6.1",
+     "quote": "6.1 Business Associate shall ensure, in accordance with 45 C.F.R. §§ 164.502(e)(1)(ii) and 164.308(b)(2), that any Subcontractor that creates, receives, maintains or transmits PHI on behalf of Business Associate agrees in a written business associate agreement to the same restrictions, conditions and requirements that apply to Business Associate under this BAA, including Section 3."
+    }
+   ],
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+     "clause_ref": "§4.3",
+     "quote": "4.3 Flow-Down. In accordance with 45 C.F.R. §§ 164.502(e)(1)(ii) and 164.308(b)(2), Business Associate shall ensure that each Subcontractor agrees in writing, prior to any access to PHI, to the same restrictions, conditions and requirements that apply to Business Associate under this BAA."
+    },
+    {
+     "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+     "clause_ref": "§1.5",
+     "quote": "1.5 \"Subcontractor\" means any person or entity, including any Affiliate of Business Associate, to whom Business Associate delegates a function, activity or service under the Master Services Agreement, other than in the capacity of a member of Business Associate's workforce."
+    },
+    {
+     "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+     "clause_ref": "closing note",
+     "quote": "no subcontractor BAA had been drafted for Daniel Ortiz"
+    },
+    {
+     "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+     "clause_ref": "Engagement Schedule",
+     "quote": "October 5, 2026 (or the Effective Date, if later)"
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "AtliQ intercompany subcontractor BAA (CareBridge)",
+     "label": "deliberate",
+     "note": "negotiation_notes.md: Karandeep chose a per-engagement intercompany BAA ('Per engagement, keep it simple'). That choice means each new engagement, Harrington included, needs its own flow-down; nobody has checked it, per the 27 Sep huddle ('should do, same kind of work. Nobody checked')."
+    },
+    {
+     "contract": "Harrington Mutual NDA",
+     "label": "waved_through",
+     "note": "Signed the day after it arrived with 'Nothing discussed'; its §2.3 excludes PHI until a BAA is signed."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "Possible data-protection paperwork is still needed before access to client systems; ask Karandeep."
+  },
+  {
+   "id": "F-02",
+   "severity": "High",
+   "type": "conflict",
+   "title": "'US-based' only answers the location rule; the BAA also requires Harrington's approval and a US-organized subcontractor",
+   "clause_ref": "Engagement Schedule (Location); BAA §4.1-4.4; MSA §2.4-2.5",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "Remote, Austin, Texas",
+   "explanation": "Dhaval's 'US-based, so the offshore thing is solved' is right about one thing: Austin satisfies the no-access-from-outside-the-US rule in BAA §4.1. The BAA asks for more. §4.2 says AtliQ may not engage any Subcontractor without Harrington's prior written approval, and that an approved Subcontractor shall be organized under the laws of a State of the United States; Ortiz is an individual contracting in his own name, so whether he can meet that wording is a question for Harrington and counsel. §4.3 requires the written flow-down (F-01) and §4.4 makes AtliQ fully responsible for his acts. The Harrington MSA draft adds that no part of the Services may be subcontracted without Harrington's prior written consent (§2.5) and that independent contractors accessing Harrington systems must complete its background check and compliance training (§2.4, §1.5). Nothing in the files shows that Harrington has been asked to approve Ortiz.",
+   "rule": "R-16",
+   "register_refs": [
+    {
+     "entry_id": "REG-B33",
+     "file": "signed_contracts/2025-10-06_carebridge_clinics_baa.md",
+     "clause_ref": "§6.2",
+     "quote": "6.2 Business Associate shall notify Covered Entity in writing of any Subcontractor engaged in connection with the Services and shall remain responsible for the performance of its Subcontractors."
+    }
+   ],
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+     "clause_ref": "§4.1",
+     "quote": "4.1 Domestic Performance. Business Associate shall not, and shall ensure that no Subcontractor shall, access, view, create, receive, maintain, transmit, store or process PHI from or at any location outside the United States, whether directly or by remote access."
+    },
+    {
+     "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+     "clause_ref": "§4.2",
+     "quote": "4.2 Subcontractor Requirements. Business Associate shall not engage any Subcontractor in connection with the Services without Covered Entity's prior written approval of such Subcontractor. Each approved Subcontractor shall be organized under the laws of a State of the United States, and all of its personnel performing Services shall be located in the United States."
+    },
+    {
+     "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+     "clause_ref": "§4.4",
+     "quote": "4.4 Business Associate shall remain fully responsible for the acts and omissions of its Subcontractors as if they were Business Associate's own."
+    },
+    {
+     "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+     "clause_ref": "§2.5",
+     "quote": "2.5 Subcontracting. Contractor shall not subcontract any portion of the Services without Client's prior written consent."
+    },
+    {
+     "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+     "clause_ref": "§2.4",
+     "quote": "Contractor Personnel accessing Client facilities or systems shall complete Client's background check, drug screening, immunization and compliance training requirements."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "CareBridge BAA",
+     "label": "deliberate",
+     "note": "The signed CareBridge BAA only requires AtliQ to notify CareBridge of Subcontractors (§6.2). Harrington's draft is stricter: prior written approval (§4.2). The CareBridge routine does not carry over."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "Possible client approval step still outstanding for this engagement; ask Karandeep."
+  },
+  {
+   "id": "F-03",
+   "severity": "Medium",
+   "type": "clause_risk",
+   "title": "Draft has none of the BAA's subcontractor duties: 24-hour incident notice, training, audit, 30-day return",
+   "clause_ref": "§7.3",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "On termination, the Contractor shall return or delete Company and client information in the Contractor's possession.",
+   "explanation": "The BAA counts a privacy event as discovered when any Subcontractor knows of it and gives AtliQ 24 hours to notify Harrington (§5.1); requires HIPAA training before access (§3.3); lets Harrington audit a Subcontractor's systems on 48 hours' notice (§7.2); and requires return or destruction of all PHI, including a Subcontractor's, within 30 days with written certification (§11.3). The Ortiz draft has no incident-notice duty, no training duty, no audit right and no deadline or certificate for deletion (§7.3 says only 'return or delete' on termination). AtliQ would be answerable to Harrington for gaps it has not asked Ortiz to close.",
+   "rule": "R-16",
+   "register_refs": [],
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+     "clause_ref": "§5.1",
+     "quote": "A Privacy Event shall be deemed discovered on the first day on which it is known, or by exercising reasonable diligence would have been known, to any employee, officer, agent or Subcontractor of Business Associate."
+    },
+    {
+     "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+     "clause_ref": "§7.2",
+     "quote": "Covered Entity or its designee may inspect and audit Business Associate's and any Subcontractor's facilities, systems, books, records, policies and procedures relating to PHI upon forty-eight (48) hours' notice"
+    },
+    {
+     "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+     "clause_ref": "§11.3",
+     "quote": "Upon termination or expiration of the Master Services Agreement, Business Associate shall, within thirty (30) days, return or destroy all PHI, including PHI in the possession of Subcontractors, retain no copies, and certify destruction in writing."
+    }
+   ],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "Possible additional data-handling duties may be requested of this contractor; ask Karandeep."
+  },
+  {
+   "id": "F-04",
+   "severity": "Medium",
+   "type": "clause_risk",
+   "title": "Ortiz supplies his own computer and tools; the BAA requires encryption, MFA, logging and client-controlled access",
+   "clause_ref": "§5.1",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "5.1 The Contractor shall furnish, at the Contractor's own expense, the computer equipment, software, internet connectivity and other tools the Contractor considers necessary to perform the Services, and shall be responsible for maintaining them.",
+   "explanation": "The draft leaves the choice of equipment and tools to Ortiz. The BAA requires AtliQ to meet Harrington's Exhibit B security requirements, including encryption at rest and in transit, multi-factor authentication and logging of all access to PHI (§3.2), and says Harrington provides PHI only through secure transfer methods or Harrington-controlled environments (§9.3). The draft says nothing about where data may sit or how Ortiz must connect (§5.2 gives him credentials to AtliQ's repositories and communication tools only). Exhibit B is listed in the MSA but is not in the files, so what it requires cannot be tested. Whether any PHI would ever land on his machine is not stated.",
+   "rule": "R-16",
+   "register_refs": [
+    {
+     "entry_id": "REG-B26",
+     "file": "signed_contracts/2025-10-06_atliq_intercompany_subcontractor_baa.md",
+     "clause_ref": "§3.2",
+     "quote": "3.2 Subcontractor shall access De-identified Data only within the Covered Entity Environment (as defined in the Upstream BAA) or another secure environment approved in writing by Business Associate and the Covered Entity. Subcontractor shall not download, copy or transfer De-identified Data to its own systems or devices."
+    }
+   ],
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+     "clause_ref": "§3.2",
+     "quote": "Business Associate shall comply with the Client Information Security Requirements set forth in Exhibit B to the Master Services Agreement, including encryption of PHI at rest and in transit, multi-factor authentication, and logging and monitoring of all access to PHI."
+    },
+    {
+     "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+     "clause_ref": "§9.3",
+     "quote": "Covered Entity shall provide PHI to Business Associate only through the secure transfer methods or Client-controlled environments specified in Exhibit B to the Master Services Agreement."
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "AtliQ intercompany subcontractor BAA (CareBridge)",
+     "label": "deliberate",
+     "note": "For CareBridge the Pune team was barred from copying data to its own devices (§3.2). Nothing similar is in the Ortiz draft."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "Possible requirement to work only inside client-controlled systems; ask Karandeep."
+  },
+  {
+   "id": "F-05",
+   "severity": "Medium",
+   "type": "clause_risk",
+   "title": "AtliQ's uncapped BAA exposure for a Subcontractor cannot be passed down beyond Ortiz's capped liability",
+   "clause_ref": "§9.2",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "9.2 Each Party's aggregate liability under this Agreement shall not exceed the total fees paid or payable to the Contractor under this Agreement in the twelve (12) months preceding the claim, except for breach of Section 7 or a Party's fraud or willful misconduct.",
+   "explanation": "Ortiz's cap is mutual and in line with 1x fees (USD 11,200 x 6 = USD 67,200 at most over the six-month term), which is fair for a freelancer. The mismatch is upstream: if the Harrington BAA is signed as drafted, AtliQ indemnifies Harrington without limit for any privacy event involving a Subcontractor (§8.1-8.2), and the BAA also sets a USD 5,000,000 cyber insurance floor (§8.3) against the USD 1M policy mentioned in the 27 Sep huddle. A breach by Ortiz that is not a 'breach of Section 7' would leave AtliQ holding an uncapped claim against a USD 67,200 recovery at most. This is a decision about the Harrington BAA that shows up in this contract.",
+   "rule": "R-03",
+   "register_refs": [],
+   "extra_quotes": [
+    {
+     "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+     "clause_ref": "§8.1",
+     "quote": "Business Associate shall defend, indemnify and hold harmless Covered Entity, its Affiliates and their respective trustees, officers, employees and agents from and against any and all Losses arising out of or relating to (a) any Privacy Event involving Business Associate or any Subcontractor;"
+    },
+    {
+     "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+     "clause_ref": "§8.3",
+     "quote": "with limits of not less than Five Million U.S. Dollars ($5,000,000) per claim and in the aggregate"
+    },
+    {
+     "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+     "clause_ref": "Karandeep",
+     "quote": "Our cyber policy is $1M btw, Harrington BAA wants 5."
+    }
+   ],
+   "exception_history": [],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "Possible liability mismatch with a client commitment; ask Karandeep."
+  }
+ ],
+ "bundle": {
+  "needed": [
+   {
+    "document": "Harrington Business Associate Agreement",
+    "status": "draft_only",
+    "note": "Client's draft, to be signed together with the MSA; tracker C-046 'In review'. Its §4.3 flow-down is what Ortiz's paper has to meet.",
+    "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+    "quote": "4.3 Flow-Down."
+   },
+   {
+    "document": "Subcontractor BAA / written flow-down for Daniel Ortiz",
+    "status": "missing",
+    "note": "The 27 Sep huddle note records none had been drafted. The signed intercompany BAA covers only the CareBridge engagement and Pune.",
+    "file": "meeting_notes/2026-09-27_harrington_huddle.md",
+    "quote": "no subcontractor BAA had been drafted for Daniel Ortiz"
+   },
+   {
+    "document": "Harrington's prior written approval of Ortiz as a Subcontractor",
+    "status": "missing",
+    "note": "BAA §4.2 and MSA §2.5 require it. No request or approval appears in the files read.",
+    "file": "incoming/2026-09-16_harrington_health_baa_draft.md",
+    "quote": "Business Associate shall not engage any Subcontractor in connection with the Services without Covered Entity's prior written approval of such Subcontractor."
+   },
+   {
+    "document": "Exhibit B, Client Information Security Requirements (Harrington MSA)",
+    "status": "referenced_absent",
+    "note": "Listed in the MSA exhibit index and incorporated by BAA §3.2; not in the dataset, so the security duties Ortiz would have to meet cannot be read.",
+    "file": "incoming/2026-09-10_harrington_health_msa_draft.md",
+    "quote": "Exhibit B — Client Information Security Requirements"
+   },
+   {
+    "document": "Mutual Nondisclosure Agreement with Ortiz",
+    "status": "draft_only",
+    "note": "Draft of 27 Sep (see the separate NDA brief); §7.3 of this agreement says it will apply.",
+    "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+    "quote": "The Parties have entered into, or will enter into, a Mutual Nondisclosure Agreement, which shall also apply."
+   }
+  ]
+ },
+ "data_class": {
+  "class": "unknown",
+  "basis": "The Engagement Schedule has Ortiz building ingestion pipelines from Harrington's electronic health record, patient accounting and scheduling systems. No clause says what data he will see, whether it is PHI or de-identified, or where he will see it. The agreement is silent, so it cannot be classed as anything other than unknown. The 27 Sep huddle describes a Harrington sample extract as 'real data I think' with names, DOBs and diagnosis codes.",
+  "question": "Will Daniel Ortiz see PHI, de-identified data, or no patient data at all, and in which Harrington-controlled environment? If PHI, who asks Harrington to approve him and who signs his flow-down before 5 Oct?",
+  "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+  "quote": "Data engineering: build and test ingestion pipelines from Harrington's electronic health record, patient accounting and scheduling systems into the cloud data platform"
+ },
+ "checks_passed": [
+  {
+   "rule": "R-05",
+   "note": "Payment within 30 days of receipt of undisputed invoices, with a 10-day dispute window and the undisputed part paid on time.",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "The Company shall pay each undisputed invoice within thirty (30) days of receipt, by ACH transfer in U.S. Dollars."
+  },
+  {
+   "rule": "R-07",
+   "note": "AtliQ is the buyer: the Work Product is AtliQ's (work made for hire, with an assignment as backup), which lets AtliQ pass ownership on to the client; Ortiz keeps his own pre-existing tools and licenses them. This is the reverse of the Rohan Iyer paper (REG-B01, REG-B02), where the freelancer kept ownership.",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "The Contractor retains ownership of general skills, know-how and tools developed before the Effective Date and not specific to the Company or its clients (\"Contractor Tools\")."
+  },
+  {
+   "rule": "R-08",
+   "note": "AtliQ pays for all Services performed through the termination date.",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "On termination, the Company shall pay the Contractor for all Services performed through the effective date of termination"
+  },
+  {
+   "rule": "R-20",
+   "note": "No exclusivity, no non-compete, equal 14-day termination notice for both sides, and a mutual non-solicit of six months. Nothing here collides with Karandeep's stated fairness stance.",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "Nothing in this Agreement restricts the Contractor from working for any client or competitor of the Company after the term."
+  },
+  {
+   "rule": "R-20",
+   "note": "Termination for convenience is equal for both parties.",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "Either Party may terminate this Agreement for any reason on fourteen (14) days' written notice to the other Party."
+  },
+  {
+   "rule": "R-06",
+   "note": "Texas law and Travis County courts: US law for a US entity, in line with the checklist. Texas is the contractor's home state; the Harrington NDA is also under Texas law.",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "This Agreement is governed by the laws of the State of Texas, without regard to its conflict of laws principles."
+  },
+  {
+   "rule": "R-11",
+   "note": "AtliQ Inc contracts with a US individual for a US client, consistent with the entity sheet and tracker C-047.",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "AtliQ Inc, a Delaware corporation (EIN 88-4410273) with its principal place of business at 101 College Road East, Suite 210, Princeton, New Jersey 08540"
+  }
+ ],
+ "not_checked": [
+  {
+   "item": "Harrington MSA and BAA final wording",
+   "reason": "Both are the client's drafts; tracker C-023 says their lawyers call the template non-negotiable. The flow-down duties above are read from the drafts and may change."
+  },
+  {
+   "item": "Exhibit B (Client Information Security Requirements)",
+   "reason": "Referenced by the BAA and MSA but not in the dataset."
+  },
+  {
+   "item": "Whether Ortiz counts as AtliQ 'workforce' rather than a Subcontractor under the BAA",
+   "reason": "The BAA §1.5 definition turns on workforce status, which the text does not settle. Possible conflict, for counsel."
+  },
+  {
+   "item": "Whether an individual can meet 'organized under the laws of a State' in BAA §4.2",
+   "reason": "Wording question for Harrington or counsel; the files do not say whether Ortiz works through an entity."
+  },
+  {
+   "item": "Contractor-versus-employee classification of Ortiz; tax treatment",
+   "reason": "Not tested; outside the rule catalogue."
+  },
+  {
+   "item": "Engagement Schedules after No. 1",
+   "reason": "§1.1 allows more by later written schedule; none exist."
+  }
+ ],
+ "low": [
+  {
+   "title": "'Affiliate' is used but not defined",
+   "clause_ref": "§10.2",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "The Company may assign this Agreement to an Affiliate or successor on written notice.",
+   "note": "Same undefined term as in the signed Rohan Iyer agreement (REG-B11). If the agreement moved to the Pune entity, the BAA's US-only location rule would be in play."
+  },
+  {
+   "title": "IP assignment takes effect on payment",
+   "clause_ref": "§6.1",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "effective upon payment for the Services to which it relates",
+   "note": "If a payment is disputed, title to the Work Product that AtliQ has already handed to Harrington may not have passed to AtliQ."
+  },
+  {
+   "title": "Confidentiality survival differs between the two Ortiz documents",
+   "clause_ref": "§7.4",
+   "file": "incoming/2026-09-27_daniel_ortiz_contractor_agreement_draft.md",
+   "quote": "7.4 This Section 7 survives termination for three (3) years.",
+   "note": "The draft NDA runs two years of disclosure plus three years after; the BAA's duties run until PHI is returned or destroyed (§11.1). Three different clocks (see NDA brief)."
+  }
+ ],
+ "seller_view": {
+  "flag_types": [
+   "conflict",
+   "clause_risk",
+   "data_class"
+  ],
+  "missing_documents": [
+   "Subcontractor BAA / flow-down for this engagement",
+   "Client approval of this contractor",
+   "Client security requirements (Exhibit B)"
+  ],
+  "ask_karandeep": [
+   "Does this engagement involve patient data, and has the client approved this contractor?",
+   "Who signs the data-protection flow-down before the 5 Oct start?"
+  ]
+ },
+ "provenance": "Pre-generated from the capstone dataset in a build session. Quotes validated by exact string match."
+}

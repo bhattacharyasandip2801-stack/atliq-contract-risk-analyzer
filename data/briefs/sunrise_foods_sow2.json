@@ -1,0 +1,223 @@
+{
+  "slug": "sunrise_foods_sow2",
+  "draft_file": "incoming/2026-09-24_sunrise_foods_sow2_draft.md",
+  "tracker_id": "C-029",
+  "counterparty": "Sunrise Foods Pvt Ltd",
+  "doc_type": "SOW-2 under the Sunrise Foods MSA of 18 April 2025 (Distributor Portal v2 and Sales Performance Dashboard)",
+  "atliq_entity_in_draft": "AtliQ Technologies Pvt Ltd",
+  "client_country": "India",
+  "tracker_status": "Not recorded (blank in tracker); draft returned by Sunrise with no changes",
+  "deadline": "8 Oct 2026 (tracker note / 22 Sep queue)",
+  "value": "USD 45,000 (tracker; matches SOW total)",
+  "headline": "SOW-2 lines up with the signed Sunrise MSA on entity, law, payment, delay credit, liability and IP, with no clause outside the checklist; the only gaps are that SOW-1 and any proposal are not on file, so 'same as last time' cannot be fully compared.",
+  "highest_severity": "Low",
+  "exposure": [
+    {
+      "label": "Delay credit, Milestone M1",
+      "clause_ref": "§8.1-8.2, §5",
+      "calculation": "0.5% x USD 6,750 per complete week; cap 5% x USD 6,750",
+      "result": "USD 33.75 per week, capped at USD 337.50",
+      "cap": "read from clause: 'shall not exceed 5% of that Milestone Fee'",
+      "file": "incoming/2026-09-24_sunrise_foods_sow2_draft.md",
+      "quote": "The total service credit for any Milestone shall not exceed 5% of that Milestone Fee."
+    },
+    {
+      "label": "Delay credit, Milestone M2",
+      "clause_ref": "§8.1-8.2, §5",
+      "calculation": "0.5% x USD 13,500 per complete week; cap 5% x USD 13,500",
+      "result": "USD 67.50 per week, capped at USD 675.00",
+      "cap": "5% of the milestone fee",
+      "file": "incoming/2026-09-24_sunrise_foods_sow2_draft.md",
+      "quote": "If AtliQ fails to achieve a Milestone by its Target Date for reasons attributable to AtliQ, the Client shall be entitled to a service credit equal to 0.5% (half a percent) of the Milestone Fee of the delayed Milestone for each complete week of delay."
+    },
+    {
+      "label": "Delay credit, Milestone M3",
+      "clause_ref": "§8.1-8.2, §5",
+      "calculation": "0.5% x USD 11,250 per complete week; cap 5% x USD 11,250",
+      "result": "USD 56.25 per week, capped at USD 562.50",
+      "cap": "5% of the milestone fee",
+      "file": "incoming/2026-09-24_sunrise_foods_sow2_draft.md",
+      "quote": "| M3 | Portal v2 go-live (4.1 c–d) | Start + 13 weeks | 11,250 |"
+    },
+    {
+      "label": "Delay credit, Milestone M4, and total across the SOW",
+      "clause_ref": "§8.1-8.2, §5",
+      "calculation": "M4: 0.5% x USD 13,500 = USD 67.50 per week, cap USD 675.00. Total of the four caps: 337.50 + 675.00 + 562.50 + 675.00 = USD 2,250.00 = 5% x USD 45,000",
+      "result": "Most AtliQ can owe for delay across the whole SOW: USD 2,250",
+      "cap": "5% of each milestone fee; sole remedy for delay (§8.4); nothing owed for client-caused delay (§8.3)",
+      "file": "incoming/2026-09-24_sunrise_foods_sow2_draft.md",
+      "quote": "Service credits shall be adjusted against the next invoice and shall be the Client's sole remedy for delay."
+    },
+    {
+      "label": "Liability cap inherited from the MSA",
+      "clause_ref": "MSA §13.2 via SOW §12",
+      "calculation": "1 x Fees paid or payable under this SOW = 1 x USD 45,000",
+      "result": "USD 45,000 maximum for each party",
+      "cap": "read from clause: aggregate liability under an SOW shall not exceed the Fees paid or payable under that SOW",
+      "file": "signed_contracts/2025-04-18_sunrise_foods_msa.md",
+      "quote": "Each Party's aggregate liability under an SOW shall not exceed the Fees paid or payable under that SOW."
+    }
+  ],
+  "findings": [],
+  "bundle": {
+    "needed": [
+      {
+        "document": "Master Services Agreement dated 18 April 2025",
+        "status": "signed",
+        "note": "Parent contract; signed copy on file and the SOW points to it.",
+        "file": "signed_contracts/2025-04-18_sunrise_foods_msa.md",
+        "quote": "This Master Services Agreement (the \"Agreement\") is made and entered into at Pune on 18 April 2025 (the \"Effective Date\")"
+      },
+      {
+        "document": "SOW No. 1 (Distributor Portal v1)",
+        "status": "referenced_absent",
+        "note": "SOW-2 builds on it (about 140 distributors) and the MSA says it was signed with the MSA; its terms are not on file, so 'same as last time' cannot be compared line by line.",
+        "file": "incoming/2026-09-24_sunrise_foods_sow2_draft.md",
+        "quote": "Under SOW No. 1, AtliQ delivered version 1 of the Sunrise distributor portal, which is used by approximately 140 distributors across Kerala, Tamil Nadu and Karnataka for order placement and scheme tracking."
+      }
+    ]
+  },
+  "data_class": {
+    "class": "personal data",
+    "basis": "The signed MSA covers personal data of distributors or employees processed in the work; SOW-2 adds salesperson-level reporting and distributor payment reconciliation. No health or financial-institution records are mentioned.",
+    "question": "Does v2 handle anything beyond distributor and salesperson business details (for example bank or payment account data for reconciliation), and does Sunrise expect any separate data-protection document beyond MSA clause 14.1?",
+    "file": "signed_contracts/2025-04-18_sunrise_foods_msa.md",
+    "quote": "in relation to any personal data of distributors or employees processed in performing the Services."
+  },
+  "checks_passed": [
+    {
+      "rule": "R-02",
+      "note": "Delay credit equals AtliQ's recorded position exactly: 0.5% of the delayed milestone fee per week, capped at 5% of that milestone fee, none for client-caused delay.",
+      "file": "incoming/2026-09-24_sunrise_foods_sow2_draft.md",
+      "quote": "No service credit shall apply to any delay caused by the Client, including delays in providing ERP access, approvals or UAT participation under Section 7, or by a force majeure event under the MSA."
+    },
+    {
+      "rule": "R-01",
+      "note": "The credit is capped per milestone and is the sole remedy for delay, so it is not open-ended.",
+      "file": "incoming/2026-09-24_sunrise_foods_sow2_draft.md",
+      "quote": "The total service credit for any Milestone shall not exceed 5% of that Milestone Fee."
+    },
+    {
+      "rule": "R-03",
+      "note": "Liability under the SOW is capped at 1x fees by the MSA, which the SOW says governs; no carve-outs in the text.",
+      "file": "signed_contracts/2025-04-18_sunrise_foods_msa.md",
+      "quote": "Each Party's aggregate liability under an SOW shall not exceed the Fees paid or payable under that SOW."
+    },
+    {
+      "rule": "R-04",
+      "note": "Indemnity in the MSA is mutual and limited to each side's own breach of confidentiality, IP infringement, or gross negligence or wilful misconduct.",
+      "file": "signed_contracts/2025-04-18_sunrise_foods_msa.md",
+      "quote": "Each Party shall indemnify the other against third-party claims arising out of its breach of confidentiality, infringement of intellectual property rights, or gross negligence or wilful misconduct."
+    },
+    {
+      "rule": "R-05",
+      "note": "Payment is within 30 days (checklist range).",
+      "file": "incoming/2026-09-24_sunrise_foods_sow2_draft.md",
+      "quote": "The Client shall pay within thirty (30) days of receipt of invoice, as per the MSA."
+    },
+    {
+      "rule": "R-06",
+      "note": "Indian law and Pune arbitration, same as the MSA, for AtliQ Technologies Pvt Ltd and an India client.",
+      "file": "incoming/2026-09-24_sunrise_foods_sow2_draft.md",
+      "quote": "governing law (laws of India) and dispute resolution (arbitration seated in Pune), are as set out in the MSA."
+    },
+    {
+      "rule": "R-07",
+      "note": "Sunrise owns what is built specifically for it after full payment; AtliQ keeps its pre-existing tools, components, libraries and know-how and only licenses what is incorporated. SOW-2 adds no IP wording of its own and names no reusable AtliQ component.",
+      "file": "signed_contracts/2025-04-18_sunrise_foods_msa.md",
+      "quote": "AtliQ retains ownership of its pre-existing tools, components, libraries and know-how."
+    },
+    {
+      "rule": "R-08",
+      "note": "The one termination-for-convenience right in the MSA is Sunrise's and requires payment for all work performed, which meets the checklist line 'they pay for work done' (see Low on the one-way point).",
+      "file": "signed_contracts/2025-04-18_sunrise_foods_msa.md",
+      "quote": "Sunrise may terminate any SOW for convenience by giving forty-five (45) days' written notice, subject to payment for all work performed up to the effective date of termination."
+    },
+    {
+      "rule": "R-10",
+      "note": "Milestone fees add up to the SOW total and the tracker value: 6,750 + 13,500 + 11,250 + 13,500 = 45,000. Entity, governing law, payment and liability all point back to the MSA.",
+      "file": "incoming/2026-09-24_sunrise_foods_sow2_draft.md",
+      "quote": "| | Total | | 45,000 |"
+    },
+    {
+      "rule": "R-11",
+      "note": "Contracting entity is AtliQ Technologies Pvt Ltd for an India client, as the checklist expects.",
+      "file": "incoming/2026-09-24_sunrise_foods_sow2_draft.md",
+      "quote": "AtliQ Technologies Pvt Ltd, having its registered office at 4th Floor, Baner Business Bay, Pune 411045, Maharashtra, India, GSTIN 27AAKCA4821F1Z3"
+    },
+    {
+      "rule": "R-12",
+      "note": "Invoicing entity named in the SOW carries the GSTIN that matches the Pvt Ltd on the entity fact sheet, so the invoicing and contracting entities are the same.",
+      "file": "incoming/2026-09-24_sunrise_foods_sow2_draft.md",
+      "quote": "AtliQ shall invoice each Milestone Fee on acceptance of the relevant Milestone."
+    },
+    {
+      "rule": "R-13",
+      "note": "No restrictive covenant, exclusivity or most-favoured-customer promise in the register touches a distributor portal and sales dashboard for an Indian food company; the only restraint in the Sunrise MSA is a mutual no-poach of staff for the SOW term plus 6 months, which restricts neither side's business.",
+      "file": "signed_contracts/2025-04-18_sunrise_foods_msa.md",
+      "quote": "Neither Party shall solicit the employees of the other Party engaged in the Services during the term of the relevant SOW and six (6) months thereafter."
+    }
+  ],
+  "not_checked": [
+    {
+      "item": "SOW-1 terms (milestones, fee split, support fee, any delay clause)",
+      "reason": "Not on file. The tracker note says 'same as last time', but only the MSA (SOW-1 fees USD 33,000) is available, so SOW-2 can be compared to the MSA and not to SOW-1."
+    },
+    {
+      "item": "SOW-2 against the proposal (scope, milestones, rates)",
+      "reason": "No Sunrise proposal is on file; the checklist asks for this check. The only description of the job is the tracker note 'v2 portal + dashboard'."
+    },
+    {
+      "item": "Pricing against the Crestline most-favoured-customer promise (REG-A02)",
+      "reason": "Crestline's clause reaches rates AtliQ Inc 'or its Affiliates' offer to any other customer for substantially similar services. SOW-2 prices fixed milestone fees with a team table in FTEs but states no hourly rates, so no like-for-like comparison with Crestline's rate card is possible from these files."
+    }
+  ],
+  "low": [
+    {
+      "title": "Payment wording differs slightly from the MSA",
+      "clause_ref": "SOW §5.2 / MSA §5.2",
+      "file": "incoming/2026-09-24_sunrise_foods_sow2_draft.md",
+      "quote": "AtliQ shall invoice each Milestone Fee on acceptance of the relevant Milestone. The Client shall pay within thirty (30) days of receipt of invoice, as per the MSA.",
+      "note": "The MSA says invoice on completion of a milestone and payment within 30 days of the invoice date; the SOW says on acceptance and 30 days of receipt, and calls it 'as per the MSA'. Still 30 days, but the clock can start a little later."
+    },
+    {
+      "title": "Acceptance window shorter than the MSA, and the MSA says it prevails unless the SOW expressly overrides it",
+      "clause_ref": "SOW §6.1-6.2 / MSA §7.1, §2.4",
+      "file": "incoming/2026-09-24_sunrise_foods_sow2_draft.md",
+      "quote": "The Client shall review each Deliverable within seven (7) working days of delivery and either confirm acceptance or share a consolidated list of defects against the agreed requirements.",
+      "note": "The MSA gives Sunrise 10 Business Days. The shorter 7 working days favours AtliQ if it applies, but SOW §2.2 lets the MSA prevail unless the SOW 'expressly states otherwise', and §6 does not say it overrides the MSA. 'Working days' is not defined in the SOW."
+    },
+    {
+      "title": "Delay credit is new compared with the MSA, and headed 'Penalty for Delay'",
+      "clause_ref": "SOW §8 / MSA §8.4",
+      "file": "incoming/2026-09-24_sunrise_foods_sow2_draft.md",
+      "quote": "8.4 Service credits shall be adjusted against the next invoice and shall be the Client's sole remedy for delay.",
+      "note": "The MSA has no delay credit at all, only support service credits, and says its credits 'are not a penalty'. The SOW heading uses the word 'Penalty' while the text is a capped service credit; maximum USD 2,250 across the SOW."
+    },
+    {
+      "title": "Only Sunrise can end an SOW for convenience (inherited from the MSA)",
+      "clause_ref": "MSA §6.3",
+      "file": "signed_contracts/2025-04-18_sunrise_foods_msa.md",
+      "quote": "Sunrise may terminate any SOW for convenience by giving forty-five (45) days' written notice, subject to payment for all work performed up to the effective date of termination.",
+      "note": "AtliQ has no matching right. Payment for all work performed protects AtliQ, and this was signed in the MSA in April 2025; SOW-2 does not change it."
+    },
+    {
+      "title": "No support or maintenance period in SOW-2",
+      "clause_ref": "SOW §5, §11 / MSA §2.2",
+      "file": "signed_contracts/2025-04-18_sunrise_foods_msa.md",
+      "quote": "together with post-go-live support and maintenance for twelve (12) months.",
+      "note": "SOW-1 included 12 months of support; SOW-2 prices four build milestones only and mentions just the MSA warranty period. Worth asking Dhaval whether Sunrise expects support for v2."
+    }
+  ],
+  "seller_view": {
+    "flag_types": [],
+    "missing_documents": [
+      "SOW No. 1 (referred to in the SOW background)",
+      "Sunrise proposal for SOW-2"
+    ],
+    "ask_karandeep": [
+      "Does Sunrise expect a support period for v2, as SOW-1 had?"
+    ]
+  },
+  "provenance": "Pre-generated from the capstone dataset in a build session. Quotes validated by exact string match."
+}

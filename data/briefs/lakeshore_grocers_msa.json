@@ -1,0 +1,307 @@
+{
+  "slug": "lakeshore_grocers_msa",
+  "draft_file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+  "tracker_id": "C-026",
+  "counterparty": "Lakeshore Grocers Inc.",
+  "doc_type": "Master Services Agreement with SOW-1 (Exhibit B) and rate card (Exhibit A)",
+  "atliq_entity_in_draft": "AtliQ Inc",
+  "client_country": "USA",
+  "tracker_status": "In review",
+  "deadline": "3 Oct 2026 (tracker note / 22 Sep queue)",
+  "value": "$64,000 (tracker; draft §4.1 USD 64,000)",
+  "headline": "The rate card in Exhibit A is lower than the signed Crestline rate card for all three roles, and Crestline's most-favoured-customer clause says lower rates offered to any other customer apply to Crestline retroactively with a credit; the rest of the draft is largely inside AtliQ's usual positions.",
+  "highest_severity": "High",
+  "exposure": [
+    {
+      "label": "Crestline price-match credit: Senior Data Engineer rate gap",
+      "clause_ref": "Crestline §6.4 v. Lakeshore Exhibit A",
+      "calculation": "USD 85 (Crestline Exhibit B) - USD 72 (Lakeshore Exhibit A) = USD 13 per hour, 15.3% below Crestline",
+      "result": "USD 13 per hour on every Senior Data Engineer hour invoiced to Crestline from the date the lower rate was first offered. Hours invoiced to Crestline are not in the files, so the total credit cannot be calculated.",
+      "cap": "No cap stated in the clause",
+      "redact_in_seller_view": true,
+      "file": "signed_contracts/2024-08-01_crestline_retail_msa.md",
+      "quote": "If, during the Term, Supplier or any of its Affiliates offers lower rates to any other customer for substantially similar services, Supplier shall promptly notify Crestline, and such lower rates shall apply to Crestline retroactively from the date they were first offered to such other customer."
+    },
+    {
+      "label": "Crestline price-match credit: Data Engineer and BI Developer rate gaps",
+      "clause_ref": "Crestline §6.4 v. Lakeshore Exhibit A",
+      "calculation": "Data Engineer: USD 62 - USD 55 = USD 7 per hour. BI Developer: USD 58 - USD 50 = USD 8 per hour",
+      "result": "USD 7 and USD 8 per hour respectively on hours invoiced to Crestline, same basis as above",
+      "cap": "No cap stated in the clause",
+      "redact_in_seller_view": true,
+      "file": "signed_contracts/2024-08-01_crestline_retail_msa.md",
+      "quote": "Supplier shall issue a credit to Crestline for the difference between the amounts invoiced and the amounts that would have been invoiced at such lower rates, within thirty (30) days."
+    },
+    {
+      "label": "Delay damages, largest milestone (M2, USD 22,000)",
+      "clause_ref": "§11.1",
+      "calculation": "0.5% x USD 22,000 per week; cap 5% x USD 22,000",
+      "result": "USD 110 per week; at most USD 1,100 for M2 (all four milestones together: 5% x USD 64,000 = USD 3,200)",
+      "cap": "read from clause: up to a maximum of five percent (5%) of that Milestone Fee",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "Lakeshore may assess liquidated damages of one-half percent (0.5%) of the affected Milestone Fee per week of delay, up to a maximum of five percent (5%) of that Milestone Fee."
+    },
+    {
+      "label": "General liability cap",
+      "clause_ref": "§9.2",
+      "calculation": "Fees paid or payable under the applicable SOW in the 12 months before the claim; SOW-1 = USD 64,000 (1x fees)",
+      "result": "Up to USD 64,000 for SOW-1, except the uncapped categories in F-02",
+      "cap": "read from clause: fees paid or payable under the applicable SOW in the twelve months preceding the claim; not applied to breach of confidentiality, indemnification obligations, gross negligence or wilful misconduct",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "EACH PARTY'S AGGREGATE LIABILITY UNDER THIS AGREEMENT SHALL NOT EXCEED THE FEES PAID OR PAYABLE UNDER THE APPLICABLE SOW IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM, EXCEPT FOR BREACH OF CONFIDENTIALITY, INDEMNIFICATION OBLIGATIONS, OR GROSS NEGLIGENCE OR WILLFUL MISCONDUCT."
+    }
+  ],
+  "findings": [
+    {
+      "id": "F-01",
+      "severity": "High",
+      "type": "conflict",
+      "title": "Rate card is below the rates in a signed client contract that promises to match any lower rate",
+      "clause_ref": "Exhibit A and §4.2",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "Rates apply to change orders and any future SOWs under this Agreement.",
+      "explanation": "Exhibit A prices three roles below the signed rate card of another AtliQ Inc client for the same roles (the figures are in the exposure section; they are not for a seller). That client's contract says AtliQ warrants its rates are no less favourable than those offered by AtliQ or its Affiliates to any other customer for substantially similar services during the Term, that lower rates must be notified, apply retroactively from the date first offered, and be credited within 30 days; it also gives an annual audit right over this clause. The Term there runs to 31 July 2027, either side can end it on 30 days' notice, and no cap on the credit is stated. Both contracts are with AtliQ Inc, so the 'Affiliates' wording is not needed for the overlap. Whether the two services are 'substantially similar' and whether a rate quoted in a draft counts as 'offered' is a possible conflict, for counsel. Separately, Lakeshore's rates are fixed for 24 months with no increase (§4.2), while the other contract lets AtliQ raise rates 3% a year after month 12, which is also a term in Lakeshore's favour. The tracker says the lower rate was given to win the deal and approved on a call; no date for when it was first offered is in the files.",
+      "rule": "R-13",
+      "register_refs": [
+        {
+          "entry_id": "REG-A02",
+          "file": "signed_contracts/2024-08-01_crestline_retail_msa.md",
+          "clause_ref": "§6.4",
+          "quote": "Supplier represents and warrants that the rates, fees and other commercial terms offered to Crestline under this Agreement are and shall remain no less favorable than those offered by Supplier or its Affiliates to any other customer for substantially similar services during the Term."
+        },
+        {
+          "entry_id": "REG-A02",
+          "file": "signed_contracts/2024-08-01_crestline_retail_msa.md",
+          "clause_ref": "Exhibit B",
+          "quote": "| Senior Data Engineer | $85.00 |"
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "Crestline Retail Professional Services Agreement",
+          "label": "waved_through",
+          "note": "negotiation_notes.md: Dhaval asked K; K: 'We never discount, so it's harmless — fine.' Accepted as drafted; the Affiliates wording and retroactive credit were not discussed."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": true,
+      "seller_text": "Possible clash with an existing client commitment on pricing; ask Karandeep."
+    },
+    {
+      "id": "F-02",
+      "severity": "Medium",
+      "type": "clause_risk",
+      "title": "Liability cap of 1x SOW fees, but confidentiality, indemnities and gross negligence sit outside it",
+      "clause_ref": "§9.2",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "EACH PARTY'S AGGREGATE LIABILITY UNDER THIS AGREEMENT SHALL NOT EXCEED THE FEES PAID OR PAYABLE UNDER THE APPLICABLE SOW IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM, EXCEPT FOR BREACH OF CONFIDENTIALITY, INDEMNIFICATION OBLIGATIONS, OR GROSS NEGLIGENCE OR WILLFUL MISCONDUCT.",
+      "explanation": "The general cap is the SOW fees (USD 64,000 for SOW-1), which matches the checklist of 1x fees. But breach of confidentiality, indemnities and gross negligence or wilful misconduct have no cap, on both sides. Lakeshore Data includes point-of-sale and loyalty data, and the draft refers to personal information in it, so a data incident handled as a confidentiality breach would fall outside the cap. The same carve-outs appear in AtliQ's signed Crestline contract, and in the Kessler Mobility talks Karandeep offered 1x fees 'with carve-outs'. It is bounded by what the carve-outs cover, not unlimited across the board.",
+      "rule": "R-03",
+      "register_refs": [
+        {
+          "entry_id": "REG-A04",
+          "file": "signed_contracts/2024-08-01_crestline_retail_msa.md",
+          "clause_ref": "§12.2",
+          "quote": "EXCEPT FOR BREACH OF SECTION 7 OR A PARTY'S INDEMNIFICATION OBLIGATIONS, EACH PARTY'S AGGREGATE LIABILITY SHALL NOT EXCEED THE FEES PAID OR PAYABLE BY CRESTLINE UNDER THIS AGREEMENT IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "Crestline Retail Professional Services Agreement",
+          "label": "unlabelled",
+          "note": "No evidence in negotiation_notes.md either way."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "Liability cap is 1x fees but several categories are uncapped; ask Karandeep."
+    },
+    {
+      "id": "F-03",
+      "severity": "Medium",
+      "type": "bundle",
+      "title": "AtliQ must follow security requirements (Exhibit C) that are not in the file",
+      "clause_ref": "§12.1 and Exhibit C",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "Vendor shall comply with Lakeshore's Information Security Requirements (Exhibit C) and applicable privacy laws, including the Illinois Personal Information Protection Act.",
+      "explanation": "Exhibit C is shown only as 'attached separately' and is not in the file. AtliQ would be bound to it, alongside a 72-hour breach notice (§12.2) and the rule that personal information is accessed offshore only in Lakeshore-approved secure environments (§3.2). What Exhibit C requires, for example on where data may be held or who may access it, cannot be tested.",
+      "rule": "R-17",
+      "register_refs": [],
+      "exception_history": [],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "Exhibit C (information security requirements) is referred to but not attached; please send it."
+    },
+    {
+      "id": "F-04",
+      "severity": "Medium",
+      "type": "entity_law",
+      "title": "Illinois law fits AtliQ Inc, but disputes go to Singapore arbitration",
+      "clause_ref": "§13.1 and §13.3",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "The seat of arbitration shall be Singapore. The tribunal shall consist of one arbitrator. The language of the arbitration shall be English. This forum is selected to align with the dispute resolution framework applicable across the Parent's group of companies.",
+      "explanation": "The law is Illinois (§13.1), which fits the checklist for AtliQ Inc. The forum is SIAC arbitration seated in Singapore, chosen because of Lakeshore's Singapore parent, for a dispute between two US companies. The Brightwater dispute, also a US entity contract with a foreign forum (English courts), cost USD 14,200 in counsel fees on top of the LD claim; the Singapore seat is a travel and cost question rather than a law question. The register shows AtliQ accepted SIAC at CloudSpan.",
+      "rule": "R-06",
+      "register_refs": [
+        {
+          "entry_id": "REG-A39",
+          "file": "signed_contracts/2025-09-01_cloudspan_strategic_partnership_agreement.md",
+          "clause_ref": "§15.3",
+          "quote": "The seat of arbitration shall be Singapore."
+        }
+      ],
+      "exception_history": [
+        {
+          "contract": "CloudSpan Strategic Partnership Agreement",
+          "label": "deliberate",
+          "note": "negotiation_notes.md: 'Singapore law / SIAC ok.' (a partnership, with the Pvt Ltd)."
+        }
+      ],
+      "decision_needed": true,
+      "redact_in_seller_view": false,
+      "seller_text": "Law is Illinois but disputes go to arbitration in Singapore; ask Karandeep."
+    }
+  ],
+  "bundle": {
+    "needed": [
+      {
+        "document": "Master Services Agreement (the parent for the SOW and rate card)",
+        "status": "draft_only",
+        "note": "The draft itself is the MSA; SOW-1 is Exhibit B and the rate card is Exhibit A. No separate Lakeshore MSA exists or is needed to read the SOW against. The tracker calls it 'SOW + rate card'.",
+        "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+        "quote": "The first SOW (\"SOW-1\") is attached as Exhibit B and covers:"
+      },
+      {
+        "document": "Exhibit C Information Security Requirements (Lakeshore vendor security schedule v3.2)",
+        "status": "referenced_absent",
+        "note": "Marked 'attached separately'; not in the file.",
+        "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+        "quote": "(Lakeshore standard vendor security schedule v3.2 — attached separately.)"
+      }
+    ]
+  },
+  "data_class": {
+    "class": "personal data",
+    "basis": "Lakeshore Data covers point-of-sale, loyalty, inventory and supplier data, and the draft refers to 'Lakeshore Data containing personal information' and Illinois personal-information law. It is a grocery retail contract, not healthcare.",
+    "question": "Will Pune staff need loyalty or customer-level records, or can they work on masked data, and which Lakeshore-approved environment will they use?",
+    "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+    "quote": "Vendor may use offshore delivery personnel provided that Lakeshore Data containing personal information is accessed only through Lakeshore-approved secure environments."
+  },
+  "checks_passed": [
+    {
+      "rule": "R-11",
+      "note": "AtliQ Inc contracts with a US (Illinois) client. The Singapore parent is not the contracting party.",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "AtliQ Inc, a Delaware corporation having its principal office at 101 College Road East, Suite 210, Princeton, New Jersey 08540"
+    },
+    {
+      "rule": "R-02",
+      "note": "Delay damages are 0.5% of the affected milestone fee per week, capped at 5% of that fee, with no damages for client-caused delay: exactly the recorded counter used at Acme, Northwind and Trustline.",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "Liquidated damages shall not apply to any delay caused by Lakeshore, its third-party vendors or a force majeure event."
+    },
+    {
+      "rule": "R-05",
+      "note": "Payment within 30 days of receipt of invoice, milestone-based.",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "Lakeshore shall pay undisputed amounts within thirty (30) days of receipt of invoice."
+    },
+    {
+      "rule": "R-07",
+      "note": "Lakeshore owns what is built for it on payment; AtliQ keeps its pre-existing tools and gives a licence for internal business use. No assignment of AtliQ's reusable tools.",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "Vendor retains all rights in its pre-existing tools, code libraries and methodologies"
+    },
+    {
+      "rule": "R-04",
+      "note": "Negligence indemnity is mutual; AtliQ's one-way indemnity is limited to IP infringement by its own Deliverables.",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "Each party shall indemnify the other against third-party claims for bodily injury or property damage to the extent caused by its negligence or willful misconduct."
+    },
+    {
+      "rule": "R-08",
+      "note": "On termination for convenience by Lakeshore, AtliQ is paid for all services performed to the termination date.",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "Lakeshore may terminate any SOW for convenience on thirty (30) days' written notice, and shall pay Vendor for all Services performed through the effective date of termination."
+    },
+    {
+      "rule": "R-10",
+      "note": "SOW-1 sits inside this MSA, so there is no separate parent to conflict with. Milestone fees add up to the MSA fee: 8,000 + 22,000 + 18,000 + 16,000 = USD 64,000. The estimate of about 1,050 hours is consistent with the rate card: 1,050 x USD 50 = USD 52,500 at the lowest rate and 1,050 x USD 72 = USD 75,600 at the highest, and USD 64,000 lies between.",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "Estimated effort: approximately 1,050 hours, blended across the roles in Exhibit A."
+    }
+  ],
+  "not_checked": [
+    {
+      "item": "Exhibit C Information Security Requirements",
+      "reason": "Not in the file."
+    },
+    {
+      "item": "SOW-1 against Lakeshore's proposal (scope, milestones, rates)",
+      "reason": "No Lakeshore proposal is in the files; only the draft and the tracker note."
+    },
+    {
+      "item": "Hours AtliQ Inc has invoiced to Crestline, and the date the $72 rate was first offered to Lakeshore",
+      "reason": "Neither is in the files, so the size of any Crestline credit cannot be calculated. The Crestline SOWs are not on file."
+    },
+    {
+      "item": "Whether Lakeshore and Crestline services are 'substantially similar'",
+      "reason": "A judgement for counsel; the text of Crestline §6.4 does not define the phrase."
+    },
+    {
+      "item": "Other AtliQ Inc or Pvt Ltd customers with lower rates",
+      "reason": "Crestline's clause covers rates offered to any other customer by AtliQ or its Affiliates; only the 17 registered contracts were read and no other rate card is in the files."
+    },
+    {
+      "item": "Whether AtliQ Inc holds general liability (USD 1,000,000) and professional liability (USD 2,000,000) insurance (R-19)",
+      "reason": "The files show only the cyber policy (USD 1,000,000). The policies required by §14.4 are not described anywhere."
+    }
+  ],
+  "low": [
+    {
+      "title": "Rates fixed for 24 months with no escalator",
+      "clause_ref": "§4.2",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "which shall remain fixed for the first twenty-four (24) months of this Agreement.",
+      "note": "AtliQ cannot raise rates for two years, and Exhibit A says offshore and onshore staff are charged at the same rates. See also F-01."
+    },
+    {
+      "title": "Delay damages are not stated to be the only remedy",
+      "clause_ref": "§11.1",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "If Vendor fails to complete a milestone by the date specified in the SOW due to causes attributable to Vendor, Lakeshore may assess liquidated damages",
+      "note": "The Northwind contract made LD the sole financial remedy; this draft is silent, so other damages within the §9 limits are not ruled out."
+    },
+    {
+      "title": "Lakeshore may assign to its Singapore parent or any parent affiliate; AtliQ cannot assign without consent",
+      "clause_ref": "§14.3",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "Neither party may assign this Agreement without the other's consent, except that Lakeshore may assign to Parent or any Parent affiliate.",
+      "note": "One-way assignment right."
+    },
+    {
+      "title": "Only Lakeshore can end an SOW for convenience",
+      "clause_ref": "§5.3",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "Lakeshore may terminate any SOW for convenience on thirty (30) days' written notice",
+      "note": "AtliQ is paid for work done; there is no matching AtliQ right. Same pattern as Northwind."
+    },
+    {
+      "title": "Mutual 12-month non-solicit of staff engaged in the Services",
+      "clause_ref": "§14.2",
+      "file": "incoming/2026-09-19_lakeshore_grocers_msa_draft.md",
+      "quote": "Neither party shall solicit the other's employees engaged in the Services during the term and for twelve (12) months thereafter.",
+      "note": "Mutual and limited to staff engaged in the Services; no non-compete or exclusivity anywhere in the draft."
+    }
+  ],
+  "seller_view": {
+    "flag_types": ["conflict", "clause_risk", "bundle", "entity_law"],
+    "missing_documents": ["Exhibit C Information Security Requirements"],
+    "ask_karandeep": [
+      "Possible clash with an existing client commitment on pricing; confirm before the rate card is sent.",
+      "Are carve-outs from the liability cap acceptable?",
+      "Is Singapore arbitration acceptable for a US-entity contract?"
+    ]
+  },
+  "provenance": "Pre-generated from the capstone dataset in a build session. Quotes validated by exact string match."
+}
