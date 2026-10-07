@@ -22,6 +22,11 @@ const briefs = fs.readdirSync(briefsDir).filter((f) => f.endsWith(".json") && !f
   .map((f) => JSON.parse(fs.readFileSync(path.join(briefsDir, f), "utf8")));
 fs.writeFileSync(path.join(root, "data", "briefs.json"), JSON.stringify(briefs));
 
+// Simulated test contracts: stored briefs kept apart from the 15 dataset briefs (they never enter the queue, the evaluation or the playbook).
+const sbDir = path.join(root, "data", "sample_briefs");
+const sampleBriefs = fs.existsSync(sbDir) ? fs.readdirSync(sbDir).filter((f) => f.endsWith(".json")).sort().map((f) => JSON.parse(fs.readFileSync(path.join(sbDir, f), "utf8"))) : [];
+fs.writeFileSync(path.join(root, "data", "sample_briefs.json"), JSON.stringify(sampleBriefs));
+
 // tracker csv -> json
 function parseCsv(t) {
   const rows = []; let row = [], cur = "", q = false;
@@ -38,4 +43,4 @@ function parseCsv(t) {
   return r.map((x) => Object.fromEntries(h.map((k, i) => [k, x[i] ?? ""])));
 }
 fs.writeFileSync(path.join(root, "data", "tracker.json"), JSON.stringify(parseCsv(sources["contract_tracker.csv"])));
-console.log("sources", Object.keys(sources).length, "briefs", briefs.length);
+console.log("sources", Object.keys(sources).length, "briefs", briefs.length, "sample briefs", sampleBriefs.length);

@@ -3,7 +3,11 @@ import { useRef, useState } from "react";
 import { useActor, useRole } from "./RoleProvider";
 import { logAudit } from "@/lib/store";
 import { Chip, SeverityBadge, TYPE_LABEL } from "./Badges";
+import Link from "next/link";
 import type { IntakeResult } from "@/lib/intake";
+
+interface Stored { slug: string; counterparty: string; doc_type: string; headline: string; high: number; medium: number; low: number; quotes_checked: number; withheld: number; findings: { id: string; severity: string; title: string; clause_ref: string }[] }
+type Result = IntakeResult & { stored?: Stored };
 
 const GEOS: [string, string][] = [["", "Not sure / not given"], ["US", "United States"], ["India", "India"], ["Middle East", "Middle East"], ["Europe", "Europe"], ["Other", "Elsewhere outside the US"], ["n/a", "Not a client contract (agency, freelancer, partner)"]];
 const show = (s: string) => s.replace(/\*+/g, "");
@@ -11,7 +15,7 @@ const show = (s: string) => s.replace(/\*+/g, "");
 export default function IntakeForm({ samples }: { samples: { slug: string; label: string }[] }) {
   const actor = useActor(), role = useRole();
   const [text, setText] = useState(""), [geo, setGeo] = useState(""), [value, setValue] = useState(""), [cur, setCur] = useState("$"), [name, setName] = useState("");
-  const [res, setRes] = useState<IntakeResult | null>(null), [busy, setBusy] = useState(false), [msg, setMsg] = useState<string | null>(null);
+  const [res, setRes] = useState<Result | null>(null), [busy, setBusy] = useState(false), [msg, setMsg] = useState<string | null>(null);
   const file = useRef<HTMLInputElement>(null);
 
   async function loadSample(slug: string) {
@@ -80,6 +84,17 @@ export default function IntakeForm({ samples }: { samples: { slug: string; label
             </div>
           ) : (
             <>
+              {res.stored && (
+                <div className="card mb-3 rounded-lg border-2 border-accent bg-card p-5" aria-label="Stored brief for this contract">
+                  <h2 className="text-lg font-bold">Brief ready: {res.stored.counterparty}</h2>
+                  <p className="text-sm text-muted">{res.stored.doc_type}</p>
+                  <p className="mt-2 text-sm leading-relaxed">{res.stored.headline}</p>
+                  <p className="mt-2 text-sm"><b>{res.stored.high}</b> High, <b>{res.stored.medium}</b> Medium, <b>{res.stored.low}</b> worth knowing. {res.stored.quotes_checked} quotes checked against the source files just now{res.stored.withheld ? `; ${res.stored.withheld} finding(s) withheld` : "; none withheld"}.</p>
+                  <ul className="mt-3 grid gap-1 text-sm">{res.stored.findings.map((f) => <li key={f.id}><SeverityBadge s={f.severity as "High" | "Medium"} /> <Link className="text-accent underline" href={`/brief/${res.stored!.slug}#${f.id}`}>{f.title}</Link> <span className="text-xs text-muted">{f.clause_ref}</span></li>)}</ul>
+                  <Link href={`/brief/${res.stored.slug}`} className="mt-4 inline-block rounded bg-accent px-4 py-2.5 text-sm font-medium text-white hover:opacity-90">Open the full brief</Link>
+                  <p className="mt-3 text-xs text-muted">The quick rule check on the same text is below. It finds only the wording its rules look for, so it can show fewer points than the brief.</p>
+                </div>
+              )}
               <p className="rounded-lg border border-rule bg-card p-4 text-sm" role="status"><span className="font-semibold">{name ? `${name}: ` : ""}</span>{res.summary}</p>
               {res.exposure.length > 0 && <div className="card mt-3 rounded-lg border border-rule bg-card p-4"><h2 className="text-base font-semibold">Exposure</h2>{res.exposure.map((x, i) => <p key={i} className="mt-1 text-sm"><span className="font-medium">{x.label}:</span> {x.calculation}, that is <span className="font-semibold">{x.result}</span>.</p>)}</div>}
               <ul className="mt-4 grid grid-cols-[minmax(0,1fr)] gap-3">

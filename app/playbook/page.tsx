@@ -35,7 +35,7 @@ export default async function PlaybookPage() {
       <section className="card mt-5 rounded-lg border border-rule bg-card p-5" aria-label="Exceptions">
         <h2 className="text-lg font-semibold">2. Exceptions on record</h2>
         <p className="mt-1 text-sm text-muted">On paper a deliberate exception and a slip look the same. The register labels each clause from the negotiation notes and the Brightwater post-mortem. A waved-through clause is never a precedent. A deliberate one carries its stated limit, such as Al Noor&apos;s 10% cap: &ldquo;a strategic exception for Al Noor only — not our new standard&rdquo;.</p>
-        <div className="mt-3 overflow-x-auto"><table className="w-full min-w-[480px] text-left text-sm">
+        <div className="mt-3 overflow-x-auto" tabIndex={0} role="region" aria-label="Playbook table"><table className="w-full min-w-[480px] text-left text-sm">
           <thead className="text-xs uppercase tracking-wide text-muted"><tr><th className="py-1 pr-3">Counterparty</th><th className="py-1 pr-3">Deliberate clauses</th><th className="py-1">Waved-through clauses</th></tr></thead>
           <tbody>{ex.map((e) => <tr key={e.contract} className="border-t border-rule"><td className="py-1.5 pr-3"><Link className="text-accent underline" href={`/register?type=all&q=${encodeURIComponent(e.contract.split(" ")[0])}`}>{e.contract}</Link></td><td className="py-1.5 pr-3">{e.deliberate || "–"}</td><td className="py-1.5">{e.waved ? <Chip tone="warn">{e.waved}</Chip> : "–"}</td></tr>)}</tbody>
         </table></div>

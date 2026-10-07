@@ -50,6 +50,9 @@ if (process.argv[1] && process.argv[1].endsWith("validate-quotes.mjs")) {
         ...(fs.existsSync(path.join(root, "data/briefs"))
           ? fs.readdirSync(path.join(root, "data/briefs")).filter((f) => f.endsWith(".json") && !f.startsWith("_")).map((f) => "data/briefs/" + f)
           : []),
+        ...(fs.existsSync(path.join(root, "data/sample_briefs"))
+          ? fs.readdirSync(path.join(root, "data/sample_briefs")).filter((f) => f.endsWith(".json")).map((f) => "data/sample_briefs/" + f)
+          : []),
       ];
   let bad = 0, total = 0;
   for (const f of files) {

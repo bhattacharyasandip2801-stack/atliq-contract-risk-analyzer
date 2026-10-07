@@ -11,6 +11,7 @@ Built for Codebasics AI PM Cohort, Capstone 2. Author: Sandip Gopal Bhattacharya
 | Part | How it works in this prototype |
 |---|---|
 | Briefs for the 15 drafts | **Pre-generated.** They were written from the dataset in a build session with Claude and stored as JSON in `data/briefs/`. The app does **not** call an AI model when you open a brief. |
+| Two **simulated** test contracts (`data/dataset/samples/`) | **Pre-generated and stored**, like the 15 briefs. A made-up client MSA (Zephyr Home Retail, INR 96,00,000) and a linked vendor agreement (Tarang Annotation Services) were written on 7 Oct 2026 for live testing; they are **not part of the capstone dataset**. Their briefs are in `data/sample_briefs/` with 99 quotes, each matched word for word to the contract files and to the dataset (checklist, negotiation notes, register, entity sheet). In **Check a new draft**, the reviewer uploads the same file and gets that stored brief; any other text, or an edited copy, gets the rule check only. No model and no key. They never appear in the queue, the evaluation, the playbook or the knowledge base. |
 | Quote check | **Live, in code.** Each time a brief page loads, every quote is matched against the source file. A finding whose quote fails is withheld and logged. |
 | Exposure figures | Written into the stored briefs with the arithmetic shown (for example 2% x $210,000 = $4,200 per day). |
 | Redaction (seller view) | **Live, in code**, on the server. The seller view is rebuilt from redaction-safe fields only. |
@@ -69,6 +70,7 @@ npm run lint
 | **Queue** (`/`) | The 15 drafts with counterparty, document, AtliQ entity, deadline from the tracker and meeting notes, highest severity and how many High findings have a decision. |
 | **Brief** (`/brief/<slug>`) | Header and plain-English headline; exposure table; High and Medium findings with the draft quote beside the signed clause it collides with; earlier similar clauses labelled deliberate, waved through or unlabelled; documents the deal needs (signed, draft only, missing, referenced but absent); data type (asks a question when the contract is silent); NOT CHECKED list; checks that passed; decision buttons; a box that refuses to sign, send, negotiate or give legal advice; print to A4 PDF. |
 | **Check a new draft** (`/intake`) | Paste text, upload a .txt or .md file, or pick a draft from the dataset. Returns findings with exact quotes from your text, the delay-damages amount per day when you give a contract value, the entity and country fit, what AtliQ has already signed that may be touched (Karandeep's view only), a data-type question, NOT CHECKED, and the list of checks that ran. Sellers see flags and questions without other clients' terms. |
+| **Decide in 5 minutes** (top of every reviewer brief) | All findings on one screen with level, clause and decision status, a reading-time estimate (230 words a minute, reading only) and a timer. The timer starts when the brief is first opened and stops when every High finding has a recorded decision made after the start. Target: under 5 minutes (the client's stated threshold). Times are kept in the browser and listed on the Evaluation screen. The longest stored brief (Harrington MSA, about 2,000 words) is about 9 minutes to read, so the target is not met by reading alone for that one. |
 | **Knowledge base** (`/knowledge`) | A strip of counts, a search box, 12 topic tiles (each runs a search, so what it shows always comes from the files), suggested questions, your recent searches (kept only in your browser) and a library of all 40 documents grouped by type. Results show the exact passages; **Read in context** opens the full document beside them with the passage highlighted, and **Copy citation** copies the source. A "Terms in plain English" panel gives 17 short definitions. **Those definitions are general information written for this prototype, not taken from AtliQ's files, and not legal advice**; each has a button to find the term in the files. Karandeep's view only. |
 | **Playbook** (`/playbook`) | Karandeep's nine checklist rules and which drafts hit each, the exceptions on record labelled deliberate or waved through, the 16 past negotiations as written, and the entity rules. Karandeep's view only. |
 | **Register** (`/register`) | Obligations from the 17 signed contracts, with the banner "17 of about 30 signed contracts", the Al Noor waiver attached to the clause it modifies, and a CSV export of every restrictive covenant, exclusivity and most-favoured-customer term for counsel. |
@@ -115,6 +117,9 @@ No contract was changed. The four meeting-note files were copied from the projec
 - Sign-in is a demo: pick a person, no password, and the cookie is not signed, so anyone could set it by hand. It shows role-based access (PRD FR-17); it does not secure anything. Decisions and the audit log live in one browser.
 - The tracker value of the Kriti agreement ($10,100) is not reconciled with its INR fee because the sources give no exchange rate.
 
+- The quick rule check in **Check a new draft** is narrower than the stored briefs. On the two simulated contracts it finds payment, indemnity wording, termination and the data-agreement point, but it does **not** find the 24-month conflict-of-interest bar or the delay indemnity "howsoever caused", and it marks 60- and 90-day payment High where the spec rule R-05 says Medium. The screen says so and shows the stored brief first.
+- Masking of confidential clauses before text goes to an AI provider was raised in the client meeting and is **not built**: the app calls no AI provider.
+
 ## Examiner API (read-only, JSON)
 
 The API uses the same sign-in. `GET /api/health` is open. For the others, sign in first, for example:
@@ -148,7 +153,7 @@ The running app makes no model calls, so it costs nothing to run on Vercel's fre
 app/            screens and API routes (Next.js App Router)
 components/     brief views, decision panel, ask box, sign-in
 lib/            data loading, quote validation, seller redaction, evaluation, browser store
-data/           register.json, briefs/, generated bundles, dataset/ (the capstone files)
+data/           register.json, briefs/, sample_briefs/ (simulated), generated bundles, dataset/ (the capstone files; samples/ is simulated)
 scripts/        validate-quotes.mjs, build-data.mjs
 spec/           the shared rules used to write the register and briefs
 ```

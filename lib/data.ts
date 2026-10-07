@@ -1,8 +1,9 @@
 import briefsJson from "@/data/briefs.json";
+import sampleBriefsJson from "@/data/sample_briefs.json";
 import registerJson from "@/data/register.json";
 import trackerJson from "@/data/tracker.json";
 import type { Brief, Register } from "./types";
-import { auditQuotes, checkQuote } from "./validate";
+import { auditQuotes, checkQuote, norm, normalisedSource } from "./validate";
 
 export const REGISTER = registerJson as unknown as Register;
 export const TRACKER = trackerJson as Record<string, string>[];
@@ -35,7 +36,17 @@ export function serveBrief(raw: Brief): ServedBrief {
   return { brief, quotesChecked: checked, dropped };
 }
 export function allBriefs(): Brief[] { return RAW; }
-export function getBriefRaw(slug: string): Brief | undefined { return RAW.find((b) => b.slug === slug); }
+/** Simulated test contracts with stored, quote-checked briefs. Reviewer only; never in the queue, evaluation or playbook. */
+const SAMPLES = sampleBriefsJson as unknown as Brief[];
+export function isSample(slug: string) { return SAMPLES.some((b) => b.slug === slug); }
+export function getBriefRaw(slug: string): Brief | undefined { return RAW.find((b) => b.slug === slug) ?? SAMPLES.find((b) => b.slug === slug); }
+/** If the pasted or uploaded text is exactly one of the simulated contract files (same words, ignoring layout), return that brief's slug. */
+export function matchSample(text: string): string | null {
+  const t = norm(text);
+  if (t.length < 200) return null;
+  for (const b of SAMPLES) { if (normalisedSource(b.draft_file) === t) return b.slug; }
+  return null;
+}
 export function getBrief(slug: string): ServedBrief | undefined { const b = getBriefRaw(slug); return b ? serveBrief(b) : undefined; }
 
 export function sortedBriefs(): Brief[] {
@@ -64,4 +75,7 @@ export function briefsFor(user: DemoUser): Brief[] {
   const all = sortedBriefs();
   return user.role === "reviewer" ? all : all.filter((b) => requestedBy(b.tracker_id) === user.name);
 }
-export function canSee(user: DemoUser, slug: string) { return briefsFor(user).some((b) => b.slug === slug); }
+export function canSee(user: DemoUser, slug: string) { return (user.role === "reviewer" && isSample(slug)) || briefsFor(user).some((b) => b.slug === slug); }
+
+/** Display names for every brief, including the simulated ones (used by the review-times card). */
+export function briefNames(): Record<string, string> { return Object.fromEntries([...RAW, ...SAMPLES].map((b) => [b.slug, b.counterparty])); }

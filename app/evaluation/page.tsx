@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { runEvaluation } from "@/lib/eval";
+import { briefNames } from "@/lib/data";
+import ReviewTimes from "@/components/ReviewTimes";
 import { getRole } from "@/lib/role";
 import { Chip } from "@/components/Badges";
 import { AuditOnMount } from "@/components/Small";
@@ -22,6 +24,7 @@ export default async function EvaluationPage() {
         {[["Run at", new Date(r.generated).toLocaleString()], ["Model", "None (stored briefs)"], ["Tokens used", "0"], ["Result", `${pass} passed, ${fail} failed`]].map(([k, v]) => <div key={k} className="card rounded-lg border border-rule bg-card p-3"><dt className="text-xs uppercase tracking-wide text-muted">{k}</dt><dd className="text-sm font-semibold">{v}</dd></div>)}
       </dl>
       <p className="mt-2 text-xs text-muted"><Link className="text-accent underline" href="/evaluation">Run again</Link></p>
+      <ReviewTimes names={briefNames()} />
       <section className="card mt-5 rounded-lg border border-rule bg-card p-4" aria-label="Scorecard">
         <h2 className="text-base font-semibold">Scorecard</h2>
         <p className="text-xs text-muted">Each bar shows the share of labelled cases that passed. Grey bars are information only and are not graded.</p>
@@ -52,7 +55,7 @@ export default async function EvaluationPage() {
             </summary>
             {d.note && <p className="mt-2 text-sm text-muted">{d.note}</p>}
             {d.checks.length > 0 && (
-              <div className="mt-3 overflow-x-auto"><table className="w-full min-w-[560px] text-left text-sm">
+              <div className="mt-3 overflow-x-auto" tabIndex={0} role="region" aria-label="Case detail"><table className="w-full min-w-[560px] text-left text-sm">
                 <thead className="text-xs uppercase tracking-wide text-muted"><tr><th className="py-1 pr-3"> </th><th className="py-1 pr-3">Case</th><th className="py-1 pr-3">Expected</th><th className="py-1">Found</th></tr></thead>
                 <tbody>{d.checks.map((c, i) => <tr key={i} className="border-t border-rule align-top"><td className="py-1.5 pr-3">{c.pass ? <Chip tone="ok">Pass</Chip> : <Chip tone="warn">Fail</Chip>}</td><td className="py-1.5 pr-3">{c.label}</td><td className="py-1.5 pr-3 text-muted">{c.expected}</td><td className="py-1.5 text-muted">{c.found}</td></tr>)}</tbody>
               </table></div>

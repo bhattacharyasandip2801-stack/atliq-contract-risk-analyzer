@@ -40,3 +40,5 @@ export function auditQuotes(obj: unknown, where = ""): { checked: number; failed
   walk(obj, where);
   return { checked, failed };
 }
+/** Normalised text of one source file (null if the file is not in the dataset). Used to recognise an uploaded simulated contract. */
+export function normalisedSource(file: string): string | null { return srcText(file); }

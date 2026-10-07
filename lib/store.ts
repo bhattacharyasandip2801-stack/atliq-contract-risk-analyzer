@@ -20,7 +20,22 @@ export const getAudit = () => read<AuditRow>(AK);
 export function logAudit(role: string, action: string, target: string, detail?: string) {
   const all = getAudit(); all.push({ at: new Date().toISOString(), role, action, target, detail }); write(AK, all.slice(-500));
 }
-export function clearAll() { write(DK, []); write(AK, []); }
+
+// Review timer (PRD target: Karandeep decides in under 5 minutes). One record per brief per browser.
+export interface Review { slug: string; start: string; end?: string; seconds?: number }
+const RK = "atliq.reviews.v1";
+export const getReviews = () => read<Review>(RK);
+/** Starts the clock the first time a brief is opened. Does nothing if a record already exists. */
+export function startReview(slug: string) { const all = getReviews(); if (!all.some((r) => r.slug === slug)) write(RK, [...all, { slug, start: new Date().toISOString() }]); }
+/** Stops the clock once every High finding has a recorded decision. */
+export function finishReview(slug: string) {
+  const all = getReviews(), r = all.find((x) => x.slug === slug);
+  if (!r || r.end) return;
+  const end = new Date(); r.end = end.toISOString(); r.seconds = Math.max(1, Math.round((end.getTime() - new Date(r.start).getTime()) / 1000));
+  write(RK, all);
+}
+export function resetReview(slug: string) { write(RK, getReviews().filter((r) => r.slug !== slug)); }
+export function clearAll() { write(DK, []); write(AK, []); write(RK, []); }
 
 function subscribe(cb: () => void) {
   window.addEventListener("atliq-store", cb); window.addEventListener("storage", cb);
@@ -33,3 +48,4 @@ function useList<T>(k: string): T[] {
 }
 export const useDecisions = () => useList<Decision>(DK);
 export const useAudit = () => useList<AuditRow>(AK);
+export const useReviews = () => useList<Review>(RK);

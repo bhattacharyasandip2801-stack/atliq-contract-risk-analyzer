@@ -1,0 +1,385 @@
+{
+ "slug": "tarang_annotation_vendor_agreement",
+ "draft_file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+ "tracker_id": "SIM-02",
+ "counterparty": "Tarang Annotation Services LLP (simulated)",
+ "doc_type": "Vendor Services Agreement (AtliQ paper, linked to the Zephyr MSA, simulated)",
+ "atliq_entity_in_draft": "AtliQ Technologies Private Limited",
+ "client_country": "India (vendor in Chennai; end client Zephyr in Bengaluru)",
+ "tracker_status": "Simulated test contract (not in the tracker)",
+ "deadline": null,
+ "value": "INR 9,60,000 (§1.2, fixed)",
+ "headline": "This vendor draft does not back up the Zephyr MSA: Tarang would own the labelled data AtliQ must hand to the Client, answers for delay only if wilful while AtliQ answers without a cap, and has no duty to report a data breach. AtliQ can end in 7 days but Tarang needs 60, and AtliQ's own payment terms are longer than the ones Karandeep refused at PixelCraft.",
+ "highest_severity": "High",
+ "exposure": [
+  {
+   "label": "Liability gap between the two agreements",
+   "clause_ref": "Tarang §7.1; Zephyr §8.1, §9.2",
+   "calculation": "Tarang's liability is capped at the fees paid to it (at most INR 9,60,000); the Zephyr delay indemnity has no cap",
+   "result": "Any loss above INR 9,60,000 stays with AtliQ; for a Tarang delay that is not wilful, Tarang pays nothing (§2.2)",
+   "cap": "Tarang: fees paid; Zephyr: none for Clause 8",
+   "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+   "quote": "The Vendor's total liability under this Agreement shall not exceed the fees paid to the Vendor under this Agreement."
+  },
+  {
+   "label": "Vendor fee against the milestone it supports",
+   "clause_ref": "Tarang §1.2; Zephyr Schedule 1 (M1)",
+   "calculation": "INR 9,60,000 / INR 28,80,000 = one third of the M1 fee",
+   "result": "Tarang is paid a third of the M1 fee; AtliQ carries the rest of the risk on M1",
+   "cap": "fixed fee",
+   "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+   "quote": "The fees for the Services are INR 9,60,000, fixed."
+  },
+  {
+   "label": "Time left between the vendor's date and the Client's date",
+   "clause_ref": "Tarang Schedule; Zephyr Schedule 1",
+   "calculation": "30 November 2026 to 15 December 2026 = 15 days",
+   "result": "15 days to check and fix labelled data before M1 is due",
+   "cap": "not applicable",
+   "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+   "quote": "**Delivery Date:** 30 November 2026."
+  }
+ ],
+ "findings": [
+  {
+   "id": "F-01",
+   "severity": "High",
+   "type": "consistency",
+   "title": "Tarang owns the labelled dataset AtliQ must deliver to the Client",
+   "clause_ref": "§4.1, §4.2",
+   "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+   "quote": "The Vendor owns all labelled datasets, scripts and other outputs of the Services (the \"Outputs\").",
+   "explanation": "Milestone 1 of the Client MSA is 'Data foundation and labelled customer dataset', and the Client MSA says Deliverables become the Client's property on payment. Under this draft AtliQ only gets a non-exclusive, non-transferable licence to use the Outputs for the End Client Project, so it cannot pass ownership to the Client. Karandeep's rule is that the client owns what AtliQ builds for it. A similar vendor-owns-IP term at Rohan Iyer was waved through; that is a pattern to stop, not a precedent for this deal.",
+   "rule": "R-07",
+   "register_refs": [
+    {
+     "entry_id": "REG-B01",
+     "file": "signed_contracts/2025-04-28_rohan_iyer_contractor_agreement.md",
+     "clause_ref": "§5.2",
+     "quote": "5.2 The Contractor retains ownership of all intellectual property rights in the Work Product and in any pre-existing materials, components and templates of the Contractor."
+    },
+    {
+     "entry_id": "REG-B02",
+     "file": "signed_contracts/2025-04-28_rohan_iyer_contractor_agreement.md",
+     "clause_ref": "§5.3",
+     "quote": "5.3 The Contractor grants AtliQ a non-exclusive, perpetual, irrevocable, royalty-free, worldwide licence to use, copy, modify and deploy the Work Product for the purposes of AtliQ's business, including for delivery to AtliQ's clients."
+    }
+   ],
+   "extra_quotes": [
+    {
+     "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+     "quote": "The Vendor grants AtliQ a non-exclusive, non-transferable licence to use the Outputs for the End Client Project.",
+     "clause_ref": "§4.2"
+    },
+    {
+     "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+     "quote": "Deliverables created specifically for the Client shall, on payment in full, become the property of the Client.",
+     "note": "Client MSA §4.1.",
+     "clause_ref": "Zephyr §4.1"
+    },
+    {
+     "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+     "quote": "| M1 | Data foundation and labelled customer dataset | 15 December 2026 | 28,80,000 |",
+     "clause_ref": "Zephyr Schedule 1"
+    },
+    {
+     "file": "karandeep_contract_checklist.md",
+     "quote": "IP → client owns what we build for them, we keep our own stuff"
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Rohan Iyer contractor agreement §5",
+     "label": "waved_through",
+     "note": "Freelancer kept IP and gave AtliQ a licence; approved by 'ok' from a phone."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The vendor would own the data AtliQ must deliver to the client. Ask Karandeep."
+  },
+  {
+   "id": "F-02",
+   "severity": "High",
+   "type": "data_class",
+   "title": "Customer personal data sits with Tarang with no breach notice, no instructions clause and the Client's terms not passed down",
+   "clause_ref": "§6.1, §6.2, §6.3, §5.2",
+   "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+   "quote": "AtliQ will provide the Vendor with extracts of the end client's customer transaction data for labelling, including customer names and mobile numbers.",
+   "explanation": "The Client MSA requires DPDP compliance, processing only on the Client's instructions and notice within 48 hours of a breach. This draft has none of those duties, lets Tarang store the data on its own systems and use its own contractors, and keeps confidentiality for 2 years against 5 in the Client MSA. If Tarang has a breach, AtliQ cannot meet its own 48-hour duty because Tarang has no duty to tell it. Rule R-16 asks for approval and flow-down before a subcontractor touches personal data.",
+   "rule": "R-16",
+   "extra_quotes": [
+    {
+     "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+     "quote": "The Vendor shall store the data on its own systems in Chennai.",
+     "clause_ref": "§6.2"
+    },
+    {
+     "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+     "quote": "The Vendor may engage its own contractors to perform the Services.",
+     "clause_ref": "§6.3"
+    },
+    {
+     "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+     "quote": "The obligations in this Clause 5 continue for two (2) years after termination of this Agreement.",
+     "clause_ref": "§5.2"
+    },
+    {
+     "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+     "quote": "The Supplier shall comply with the Digital Personal Data Protection Act, 2023, process that data only on the Client's documented instructions, and notify the Client within forty-eight (48) hours of any personal data breach.",
+     "clause_ref": "Zephyr §6.2"
+    },
+    {
+     "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+     "quote": "The obligations in this Clause 5 continue for five (5) years after expiry or termination of this Agreement.",
+     "clause_ref": "Zephyr §5.2"
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "Customer data goes to a small vendor without the client's data terms. Ask Karandeep."
+  },
+  {
+   "id": "F-03",
+   "severity": "High",
+   "type": "consistency",
+   "title": "Delay and liability do not match the Client MSA: Tarang answers only for wilful delay, AtliQ answers without a cap",
+   "clause_ref": "§2.1, §2.2, §7.1; Zephyr §8.1",
+   "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+   "quote": "The Vendor shall be liable for delay only where the delay is caused by the Vendor's wilful default.",
+   "explanation": "The Client MSA makes AtliQ indemnify the Client for delay 'howsoever caused', expressly including delay by its subcontractors, with no cap. Tarang's delivery duty is 'reasonable efforts', it is liable for delay only if wilful, and its total liability is capped at the fees paid to it. If Tarang is late, the Client can claim against AtliQ without limit and AtliQ has almost nothing to recover. Tarang can also leave on 60 days' notice (§8.2) while AtliQ stays bound to M1. This is the gap the Zephyr brief's F-02 creates; see that brief for the rule position.",
+   "rule": "R-18",
+   "extra_quotes": [
+    {
+     "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+     "quote": "The Vendor shall use reasonable efforts to deliver the labelled dataset by the Delivery Date stated in the Schedule.",
+     "clause_ref": "§2.1"
+    },
+    {
+     "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+     "quote": "The Vendor's total liability under this Agreement shall not exceed the fees paid to the Vendor under this Agreement.",
+     "clause_ref": "§7.1"
+    },
+    {
+     "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+     "quote": "The Vendor may terminate this Agreement for convenience on sixty (60) days' written notice.",
+     "clause_ref": "§8.2"
+    },
+    {
+     "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+     "quote": "arising from any delay in the delivery of any Milestone, howsoever caused, including delay attributable to the Supplier's subcontractors, third-party data providers or software vendors, or the Client's own dependencies.",
+     "clause_ref": "Zephyr §8.1"
+    },
+    {
+     "file": "karandeep_contract_checklist.md",
+     "quote": "liability → 1x fees. NOT unlimited"
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "If the vendor is late, AtliQ carries the client's claim. Ask Karandeep."
+  },
+  {
+   "id": "F-04",
+   "severity": "High",
+   "type": "fairness",
+   "title": "AtliQ can end in 7 days but Tarang, an 8-person firm, must give 60; pay is only for accepted deliverables",
+   "clause_ref": "§8.1, §8.2",
+   "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+   "quote": "AtliQ may terminate this Agreement for convenience on seven (7) days' written notice, and shall pay only for deliverables it has accepted before the termination date.",
+   "explanation": "Rule R-20 flags one-sided termination periods against a small vendor in AtliQ's own paper, and the checklist says that on termination the other side is paid for work done. Karandeep softened PixelCraft's paper for the same reason: 'They're six people.' Tarang is described in this draft as having eight people.",
+   "rule": "R-20",
+   "register_refs": [],
+   "extra_quotes": [
+    {
+     "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+     "quote": "The Vendor may terminate this Agreement for convenience on sixty (60) days' written notice.",
+     "clause_ref": "§8.2"
+    },
+    {
+     "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+     "quote": "a limited liability partnership with eight (8) people",
+     "clause_ref": "Parties"
+    },
+    {
+     "file": "negotiation_notes.md",
+     "quote": "They're six people. I don't want our paper to be the thing I hate receiving.",
+     "note": "Karandeep at PixelCraft.",
+     "clause_ref": "PixelCraft"
+    },
+    {
+     "file": "karandeep_contract_checklist.md",
+     "quote": "termination → they pay for work done"
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "PixelCraft vendor agreement (Oct 2025)",
+     "label": "deliberate",
+     "note": "Karandeep softened AtliQ's own paper for a six-person vendor."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "The vendor termination terms favour AtliQ heavily."
+  },
+  {
+   "id": "F-05",
+   "severity": "Medium",
+   "type": "clause_risk",
+   "title": "Pay-when-paid with a 90-day long-stop is longer than the terms Karandeep refused at PixelCraft",
+   "clause_ref": "§3.1",
+   "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+   "quote": "AtliQ shall pay each invoice within thirty (30) days after AtliQ receives the corresponding payment from the end client, and in any event within ninety (90) days after receipt of the invoice.",
+   "explanation": "Rule R-05 tests pay-when-paid in AtliQ's own paper against the same limit: 30 days, 45 at most. Here the Vendor may wait up to 90 days. At PixelCraft, Karandeep deleted a 60-day payment term and set 30 days.",
+   "rule": "R-05",
+   "extra_quotes": [
+    {
+     "file": "karandeep_contract_checklist.md",
+     "quote": "payment → 30 days, 45 max"
+    },
+    {
+     "file": "negotiation_notes.md",
+     "quote": "Deleted the penalty, 30-day payment, liability capped at fees for both sides.",
+     "note": "PixelCraft outcome.",
+     "clause_ref": "PixelCraft"
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "PixelCraft vendor agreement (Oct 2025)",
+     "label": "deliberate",
+     "note": "60 days changed to 30 in PixelCraft's copy only; the template may not have been updated."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Vendor payment can take up to 90 days."
+  },
+  {
+   "id": "F-06",
+   "severity": "Medium",
+   "type": "bundle",
+   "title": "The Client's written consent to use Tarang is not on file",
+   "clause_ref": "Schedule; Zephyr §1.3",
+   "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+   "quote": "**End client:** Zephyr Home Retail Private Limited, Bengaluru (AtliQ project: customer analytics and demand-forecasting platform, SOW-1).",
+   "explanation": "The Client MSA says AtliQ shall not subcontract any part of the Services without the Client's prior written consent. The Zephyr Schedule only says AtliQ proposes Tarang. This draft is not yet sent to the vendor and no consent is in the dataset, so work should not start until consent is in writing.",
+   "rule": "R-17",
+   "extra_quotes": [
+    {
+     "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+     "quote": "The Supplier shall not subcontract any part of the Services without the Client's prior written consent.",
+     "clause_ref": "Zephyr §1.3"
+    },
+    {
+     "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+     "quote": "The Supplier proposes to use Tarang Annotation Services LLP, Chennai, for data labelling in Milestone 1.",
+     "clause_ref": "Zephyr Schedule 1"
+    }
+   ],
+   "decision_needed": false,
+   "redact_in_seller_view": false,
+   "seller_text": "The client must approve this vendor in writing first."
+  }
+ ],
+ "bundle": {
+  "needed": [
+   {
+    "document": "Zephyr Home Retail MSA with SOW-1",
+    "status": "draft_only",
+    "note": "Client paper, still a draft; reviewed as a linked document (see the Zephyr brief).",
+    "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+    "quote": "The Supplier proposes to use Tarang Annotation Services LLP, Chennai, for data labelling in Milestone 1."
+   },
+   {
+    "document": "Client's written consent to subcontract",
+    "status": "missing",
+    "note": "Zephyr §1.3; no consent document is in the dataset.",
+    "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+    "quote": "The Supplier shall not subcontract any part of the Services without the Client's prior written consent."
+   }
+  ]
+ },
+ "data_class": {
+  "class": "personal data",
+  "basis": "AtliQ will give Tarang customer names and mobile numbers from the end client's transaction data. Nothing on health data.",
+  "question": "Can the extracts be limited to what labelling needs, without names and mobile numbers?",
+  "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+  "quote": "AtliQ will provide the Vendor with extracts of the end client's customer transaction data for labelling, including customer names and mobile numbers."
+ },
+ "checks_passed": [
+  {
+   "rule": "R-11",
+   "note": "AtliQ Technologies Pvt Ltd contracts with an Indian vendor for work in India.",
+   "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+   "quote": "**ATLIQ TECHNOLOGIES PRIVATE LIMITED**, a company incorporated under the Companies Act, 2013"
+  },
+  {
+   "rule": "R-06",
+   "note": "Indian law, as the checklist asks for Pvt Ltd.",
+   "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+   "quote": "This Agreement is governed by the laws of India."
+  },
+  {
+   "rule": "R-03",
+   "note": "Both sides capped at fees paid: the position Karandeep set at PixelCraft ('liability capped at fees for both sides').",
+   "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+   "quote": "AtliQ's total liability under this Agreement shall not exceed the fees paid to the Vendor under this Agreement."
+  }
+ ],
+ "not_checked": [
+  {
+   "item": "Whether Tarang is an existing AtliQ vendor",
+   "reason": "No vendor list is in the dataset."
+  },
+  {
+   "item": "Other signed contracts that might restrict this work",
+   "reason": "The register covers 17 of about 30 signed contracts."
+  },
+  {
+   "item": "Insurance",
+   "reason": "The draft states no insurance requirement, so rule R-19 has nothing to test."
+  },
+  {
+   "item": "Enforceability of any clause under Indian law",
+   "reason": "A legal reading; for counsel."
+  },
+  {
+   "item": "Whether Tarang exists",
+   "reason": "This is a simulated contract written for prototype testing."
+  }
+ ],
+ "low": [
+  {
+   "title": "Fixed fee",
+   "clause_ref": "§1.2",
+   "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+   "quote": "The fees for the Services are INR 9,60,000, fixed.",
+   "note": "No hourly or open-ended element; read with the fee-to-milestone ratio in the exposure table."
+  },
+  {
+   "title": "Entire agreement",
+   "clause_ref": "§9.2",
+   "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+   "quote": "This Agreement is the entire agreement between the Parties on its subject matter.",
+   "note": "The Client's terms are not referenced anywhere in this draft, which is the cause of F-02 and F-03."
+  }
+ ],
+ "seller_view": {
+  "flag_types": [
+   "consistency",
+   "data_class",
+   "fairness",
+   "bundle"
+  ],
+  "missing_documents": [
+   "Client's written consent to subcontract"
+  ],
+  "ask_karandeep": [
+   "Vendor ownership of the data the client expects.",
+   "Vendor delay and data terms differ from the client contract."
+  ]
+ },
+ "provenance": "SIMULATED contract. This brief was written once by Claude from the contract text and the capstone dataset files, then stored. Every quote is validated by exact string match against the source files. It is not generated live."
+}

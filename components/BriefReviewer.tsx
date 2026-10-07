@@ -1,6 +1,7 @@
 import type { Brief, Finding } from "@/lib/types";
 import { Chip, SeverityBadge, TYPE_LABEL, EXC_LABEL, EXC_TONE, BUNDLE_LABEL } from "./Badges";
 import DecisionPanel from "./DecisionPanel";
+import FiveMinute from "./FiveMinute";
 
 const srcName = (f: string) => f.split("/").pop()!.replace(/\.md$/, "");
 
@@ -74,6 +75,9 @@ function FindingCard({ slug, f }: { slug: string; f: Finding }) {
 export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief: Brief; quotesChecked: number; dropped: { id: string; reason: string }[] }) {
   const highs = brief.findings.filter((f) => f.severity === "High");
   const meds = brief.findings.filter((f) => f.severity === "Medium");
+  // Words the reviewer has to read: headline plus each finding's title, explanation and main quote. Estimate only.
+  const words = [brief.headline, ...brief.findings.flatMap((f) => [f.title, f.explanation, f.quote])].join(" ").split(/\s+/).filter(Boolean).length;
+  const rows = [...highs, ...meds].map((f) => ({ id: f.id, severity: f.severity, title: f.title, clause_ref: f.clause_ref }));
   return (
     <div className="grid grid-cols-[minmax(0,1fr)] gap-6">
       <section className="card rounded-lg border border-rule bg-card p-5">
@@ -95,11 +99,13 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
         </p>
       </section>
 
+      {rows.length > 0 && <FiveMinute slug={brief.slug} rows={rows} readMinutes={Math.max(1, Math.ceil(words / 230))} words={words} />}
+
       {brief.exposure.length > 0 && (
         <section className="card rounded-lg border border-rule bg-card p-5">
           <h2 className="text-lg font-semibold">Exposure</h2>
           <p className="text-sm text-muted">Calculated from the numbers in each clause. No cap is shown unless the clause states one.</p>
-          <div className="mt-3 overflow-x-auto">
+          <div className="mt-3 overflow-x-auto" tabIndex={0} role="region" aria-label="Exposure table">
             <table className="w-full min-w-[560px] text-left text-sm">
               <thead className="text-xs uppercase tracking-wide text-muted"><tr><th className="py-2 pr-3">Item</th><th className="py-2 pr-3">Clause</th><th className="py-2 pr-3">Calculation</th><th className="py-2 pr-3">Result</th><th className="py-2">Cap</th></tr></thead>
               <tbody>{brief.exposure.map((e, i) => (

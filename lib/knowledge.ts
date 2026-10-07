@@ -3,7 +3,8 @@
 import sources from "@/data/sources.json";
 import { checkQuote } from "./validate";
 
-const SRC = sources as Record<string, string>;
+// Simulated test contracts (samples/) are demo inputs, not part of the capstone dataset, so they stay out of search, stats and the library.
+const SRC = Object.fromEntries(Object.entries(sources as Record<string, string>).filter(([k]) => !k.startsWith("samples/")));
 
 export type Kind = "Signed contract" | "Incoming draft" | "Meeting note" | "Negotiation notes" | "Karandeep's checklist" | "Entity sheet" | "Tracker";
 export interface Passage { id: number; file: string; kind: Kind; title: string; section: string; text: string }

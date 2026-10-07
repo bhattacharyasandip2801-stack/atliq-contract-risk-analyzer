@@ -1,0 +1,528 @@
+{
+ "slug": "zephyr_home_retail_msa",
+ "draft_file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+ "tracker_id": "SIM-01",
+ "counterparty": "Zephyr Home Retail Private Limited (simulated)",
+ "doc_type": "Master Services Agreement with SOW-1 (client paper, simulated)",
+ "atliq_entity_in_draft": "AtliQ Technologies Private Limited",
+ "client_country": "India (Bengaluru)",
+ "tracker_status": "Simulated test contract (not in the tracker)",
+ "deadline": null,
+ "value": "INR 96,00,000 (SOW-1, §1.2)",
+ "headline": "Three points need Karandeep's decision before signing: a 24-month bar on any retail customer that the Client alone judges, a delay indemnity with no cap that covers delays the Client itself causes, and customer names and mobile numbers going to a vendor with no flow-down. Payment at 60 days and pay-for-accepted-work-only termination also sit outside his checklist.",
+ "highest_severity": "High",
+ "exposure": [
+  {
+   "label": "Delay indemnity, overall limit",
+   "clause_ref": "§8.1, §9.2",
+   "calculation": "§9.1 caps liability at fees under the SOW (INR 96,00,000), but §9.2 says the cap does not apply to Clause 8",
+   "result": "No limit stated for delay losses; lost sales, third-party penalties and alternative arrangements are named as recoverable",
+   "cap": "none in the draft",
+   "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+   "quote": "Clause 9.1 does not apply to the Supplier's liability under Clause 6 or Clause 8."
+  },
+  {
+   "label": "Same delay under Karandeep's recorded counter, largest milestone (M2)",
+   "clause_ref": "Schedule 1; Acme/Northwind/Trustline counters",
+   "calculation": "0.5% x INR 38,40,000 = INR 19,200 per complete week; cap 5% x INR 38,40,000 = INR 1,92,000 (M1 and M3: 0.5% x 28,80,000 = INR 14,400 per week, cap INR 1,44,000)",
+   "result": "INR 19,200 per week, at most INR 1,92,000 for M2, for delay caused by AtliQ only",
+   "cap": "recorded counter: 5% of the milestone fee",
+   "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+   "quote": "| M2 | Demand-forecasting model | 28 February 2027 | 38,40,000 |"
+  },
+  {
+   "label": "Retail conflict bar, how long it runs",
+   "clause_ref": "§3.1, §7.1",
+   "calculation": "Term is 3 years from signature (signature date is blank) and the bar continues 24 months after the date of the last SOW; the draft does not say whether that date is the SOW's signature or its last milestone (M3: 30 April 2027)",
+   "result": "At least 3 years from signature; end date cannot be fixed from the draft",
+   "cap": "no amount stated; scope turns on what 'the Client considers'",
+   "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+   "quote": "During the Term and for twenty-four (24) months after the date of the last SOW"
+  }
+ ],
+ "findings": [
+  {
+   "id": "F-01",
+   "severity": "High",
+   "type": "possible_conflict",
+   "title": "24-month conflict-of-interest bar on any retail customer, judged by the Client alone, binding Affiliates and subcontractors; possible conflict, for counsel",
+   "clause_ref": "§7.1, §7.2",
+   "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+   "quote": "the Supplier shall not, and shall procure that its Affiliates and subcontractors do not, undertake any project for any other customer in the retail sector where the Client considers that the project may give rise to a conflict of interest with the Client's business.",
+   "explanation": "The bar covers 'any other customer in the retail sector', and §7.2 makes the Client's decision on whether a conflict exists final. AtliQ already serves two retail customers in the register: Acme Retail Group (term to 9 Mar 2027) and Crestline Retail Inc. (term to 31 Jul 2027, contracted through AtliQ Inc). Both terms overlap the 3-year term in §3.1. The draft uses the word 'Affiliates' once and does not define it, and AtliQ Inc is 100% owned by AtliQ Technologies Pvt Ltd, so the bar may reach the US entity's Crestline work. Possible conflict, for counsel: whether Acme or Crestline work would be caught depends on what the Client 'considers', so the draft cannot answer it. Karandeep has cut broad bars before: he refused worldwide for three years at Al Noor and landed on GCC, term + 18 months, and he removed Europe from the CloudSpan exclusivity.",
+   "rule": "R-14",
+   "register_refs": [
+    {
+     "entry_id": "REG-A56",
+     "file": "signed_contracts/2025-03-10_acme_retail_group_msa.md",
+     "clause_ref": "§5.1, §5.3",
+     "quote": "This Agreement shall commence on the Effective Date and remain in force for a period of two (2) years, unless terminated earlier."
+    },
+    {
+     "entry_id": "REG-A10",
+     "file": "signed_contracts/2024-08-01_crestline_retail_msa.md",
+     "clause_ref": "§4.1; §11.1",
+     "quote": "This Agreement commences on the Effective Date and continues for three (3) years, until July 31, 2027, unless earlier terminated under Section 11."
+    },
+    {
+     "entry_id": "REG-A18",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§12.1, §1.14 (Restricted Period), §12.2-12.3, §12.6",
+     "quote": "the Supplier undertakes that neither it nor any of its Affiliates shall, during the Restricted Period, directly or indirectly, provide data analytics, artificial intelligence or revenue-management services to any Hospitality Business in the GCC."
+    },
+    {
+     "entry_id": "REG-A32",
+     "file": "signed_contracts/2025-09-01_cloudspan_strategic_partnership_agreement.md",
+     "clause_ref": "§7.1-7.3",
+     "quote": "during the Term Partner and its Affiliates shall not act as an implementation, reseller or referral partner for any Competing Platform in India or the GCC."
+    }
+   ],
+   "extra_quotes": [
+    {
+     "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+     "quote": "The Client's decision on whether a conflict of interest exists shall be final.",
+     "clause_ref": "§7.2"
+    },
+    {
+     "file": "signed_contracts/2025-03-10_acme_retail_group_msa.md",
+     "quote": "WHEREAS the Client operates a chain of retail stores in South India",
+     "note": "Acme is a retail customer; term per REG-A56.",
+     "clause_ref": "Recitals"
+    },
+    {
+     "file": "signed_contracts/2024-08-01_crestline_retail_msa.md",
+     "quote": "Crestline operates retail stores and e-commerce channels in the United States",
+     "note": "Crestline is a retail customer of AtliQ Inc; term per REG-A10.",
+     "clause_ref": "Recitals"
+    },
+    {
+     "file": "atliq_entities.md",
+     "quote": "100% owned by AtliQ Technologies Pvt Ltd",
+     "note": "AtliQ Inc is the wholly owned subsidiary that signed with Crestline.",
+     "clause_ref": "Entity sheet, AtliQ Inc"
+    },
+    {
+     "file": "negotiation_notes.md",
+     "quote": "Worldwide for three years would stop us working in hospitality altogether.",
+     "note": "Karandeep on a broad bar at Al Noor.",
+     "clause_ref": "Al Noor"
+    },
+    {
+     "file": "negotiation_notes.md",
+     "quote": "Landed on GCC, term + 18 months.",
+     "note": "The outcome at Al Noor.",
+     "clause_ref": "Al Noor"
+    },
+    {
+     "file": "negotiation_notes.md",
+     "quote": "K: \"We can't do Europe — Europe is where we're growing.\"",
+     "note": "Karandeep on the CloudSpan exclusivity.",
+     "clause_ref": "CloudSpan"
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Al Noor Hospitality MSA §12",
+     "label": "deliberate",
+     "note": "Broad bar negotiated down to GCC and term + 18 months (negotiation_notes.md)."
+    },
+    {
+     "contract": "CloudSpan partnership §7",
+     "label": "deliberate",
+     "note": "Europe removed from the exclusivity (negotiation_notes.md)."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The draft restricts AtliQ from other retail work for a long period. Ask Karandeep before replying."
+  },
+  {
+   "id": "F-02",
+   "severity": "High",
+   "type": "clause_risk",
+   "title": "Delay indemnity with no cap, 'howsoever caused', including delay the Client's own dependencies cause",
+   "clause_ref": "§8.1, §8.3, §9.2",
+   "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+   "quote": "arising from any delay in the delivery of any Milestone, howsoever caused, including delay attributable to the Supplier's subcontractors, third-party data providers or software vendors, or the Client's own dependencies.",
+   "explanation": "This is a one-way indemnity for delay of any kind, including delay the Client's own dependencies cause. §9.2 takes it outside the fees cap and §8.3 says force majeure does not excuse it. The only Client indemnity (§8.2) is for third-party IP claims. Karandeep's checklist says LDs must be capped and never open-ended, liability is 1x fees and not unlimited, and indemnity is mutual so AtliQ does not cover the other side's mistakes. At Acme he countered an open-ended delay clause with 0.5% of the milestone fee per week, capped at 5%, with no LD for client-caused delay; Northwind and Trustline ended the same way. Brightwater, signed with no exclusion for client-caused delay, produced a claim of $18,400. The exposure table shows what the recorded counter would be on M2.",
+   "rule": "R-03",
+   "register_refs": [
+    {
+     "entry_id": "REG-A50",
+     "file": "signed_contracts/2025-03-10_acme_retail_group_msa.md",
+     "clause_ref": "§7.1-7.4",
+     "quote": "The aggregate liquidated damages in respect of any Milestone shall not exceed 5% (five percent) of the Milestone Fee of that Milestone."
+    },
+    {
+     "entry_id": "REG-B16",
+     "file": "signed_contracts/2025-06-20_northwind_logistics_msa.md",
+     "clause_ref": "§11.1 to §11.3",
+     "quote": "11.1 If the Supplier fails to achieve a Milestone by its Milestone date, other than as a result of any act or omission of the Client (including late provision of Client Materials or system access) or a force majeure event, the Supplier shall pay the Client liquidated damages of 0.5% of the Milestone Fee for the affected Milestone for each full week of delay."
+    },
+    {
+     "entry_id": "REG-B59",
+     "file": "signed_contracts/2026-08-15_trustline_nbfc_msa.md",
+     "clause_ref": "§7.1 to §7.3",
+     "quote": "7.1 If the Service Provider fails to complete any Milestone by the date specified in the SOW for reasons solely attributable to the Service Provider, the Service Provider shall pay liquidated damages of 0.5% (zero point five percent) of the Milestone Fee of the delayed Milestone for each completed week of delay."
+    },
+    {
+     "entry_id": "REG-B39",
+     "file": "signed_contracts/2025-11-28_brightwater_insurance_msa.md",
+     "clause_ref": "§5.2 and §6.1",
+     "quote": "5.2 The Supplier shall meet each Key Date. Time shall be of the essence in respect of the Key Dates."
+    }
+   ],
+   "extra_quotes": [
+    {
+     "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+     "quote": "Force majeure shall not excuse the Supplier's obligations under Clause 8.1.",
+     "clause_ref": "§8.3"
+    },
+    {
+     "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+     "quote": "The Client shall indemnify the Supplier against third-party claims that materials supplied by the Client infringe that third party's intellectual property rights.",
+     "note": "The only indemnity the Client gives.",
+     "clause_ref": "§8.2"
+    },
+    {
+     "file": "karandeep_contract_checklist.md",
+     "quote": "LDs → cap it. never open ended"
+    },
+    {
+     "file": "karandeep_contract_checklist.md",
+     "quote": "liability → 1x fees. NOT unlimited"
+    },
+    {
+     "file": "karandeep_contract_checklist.md",
+     "quote": "indemnity → mutual. we don't cover their mistakes"
+    },
+    {
+     "file": "negotiation_notes.md",
+     "quote": "Open-ended isn't something we can sign.",
+     "note": "Karandeep's reply to Acme's uncapped delay clause.",
+     "clause_ref": "Acme"
+    },
+    {
+     "file": "meeting_notes/2026-04-14_brightwater_postmortem.md",
+     "quote": "Contract had no exclusion for client-caused delay. Their UK lawyers claimed LD of $18,400 under the delay clause.",
+     "note": "What happened at Brightwater.",
+     "clause_ref": "Post-mortem"
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Acme Retail MSA §7",
+     "label": "deliberate",
+     "note": "Counter 0.5% per week, cap 5%, client delay excluded; accepted."
+    },
+    {
+     "contract": "Northwind MSA §11",
+     "label": "deliberate",
+     "note": "Same counter; accepted."
+    },
+    {
+     "contract": "Trustline MSA §7",
+     "label": "deliberate",
+     "note": "Same counter; accepted."
+    },
+    {
+     "contract": "Brightwater §9",
+     "label": "waved_through",
+     "note": "No client-delay exclusion; signed from a phone; claim of $18,400 followed."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "The delay clause has no limit and covers delays the client causes. Ask Karandeep before replying."
+  },
+  {
+   "id": "F-03",
+   "severity": "High",
+   "type": "data_class",
+   "title": "Customer names and mobile numbers go to a subcontractor with no flow-down of the Client's data terms",
+   "clause_ref": "§6.1, §6.2, §1.3; Tarang draft §6",
+   "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+   "quote": "The Supplier shall comply with the Digital Personal Data Protection Act, 2023, process that data only on the Client's documented instructions, and notify the Client within forty-eight (48) hours of any personal data breach.",
+   "explanation": "The Client's data terms are: DPDP Act compliance, processing only on documented instructions, and a 48-hour breach notice. In the AtliQ draft with Tarang, AtliQ would hand over extracts with customer names and mobile numbers, Tarang would store them on its own systems in Chennai and may engage its own contractors. The Tarang draft contains no breach-notice duty and no instructions clause, and its confidentiality lasts 2 years against 5 years in the Client MSA. The Client's terms are therefore not passed down, and AtliQ stays responsible for subcontractors under §1.3. Karandeep's rule R-16 asks for approval and flow-down before a subcontractor touches personal data.",
+   "rule": "R-16",
+   "register_refs": [
+    {
+     "entry_id": "REG-A57",
+     "file": "signed_contracts/2025-03-10_acme_retail_group_msa.md",
+     "clause_ref": "§13.1",
+     "quote": "The Service Provider shall process personal data received from the Client only for the purpose of the Services and in compliance with the Digital Personal Data Protection Act, 2023 and the rules made thereunder, as and when in force, and shall implement reasonable security practices."
+    }
+   ],
+   "extra_quotes": [
+    {
+     "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+     "quote": "AtliQ will provide the Vendor with extracts of the end client's customer transaction data for labelling, including customer names and mobile numbers.",
+     "note": "Vendor draft: what Tarang receives.",
+     "clause_ref": "Tarang §6.1"
+    },
+    {
+     "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+     "quote": "The Vendor shall store the data on its own systems in Chennai.",
+     "clause_ref": "Tarang §6.2"
+    },
+    {
+     "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+     "quote": "The Vendor may engage its own contractors to perform the Services.",
+     "clause_ref": "Tarang §6.3"
+    },
+    {
+     "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+     "quote": "The obligations in this Clause 5 continue for two (2) years after termination of this Agreement.",
+     "note": "Against five years in the Client MSA §5.2.",
+     "clause_ref": "Tarang §5.2"
+    },
+    {
+     "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+     "quote": "The obligations in this Clause 5 continue for five (5) years after expiry or termination of this Agreement.",
+     "clause_ref": "§5.2"
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": true,
+   "seller_text": "Customer data would go to a small vendor; the data terms are not passed down yet. Ask Karandeep."
+  },
+  {
+   "id": "F-04",
+   "severity": "Medium",
+   "type": "clause_risk",
+   "title": "Payment in 60 days is above Karandeep's 45-day maximum",
+   "clause_ref": "§2.1",
+   "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+   "quote": "The Client shall pay each undisputed invoice within sixty (60) days of receipt.",
+   "explanation": "Karandeep's checklist says payment in 30 days, 45 at most. Trustline asked for 90 and he held at 45; Brightwater's 45 days was signed without discussion. 60 days is above both. The deal is paid on three milestones, so a longer wait after each one also delays the cash needed to pay Tarang.",
+   "rule": "R-05",
+   "register_refs": [
+    {
+     "entry_id": "REG-B60",
+     "file": "signed_contracts/2026-08-15_trustline_nbfc_msa.md",
+     "clause_ref": "§4.2",
+     "quote": "4.2 The Service Provider shall raise an invoice upon completion of each Milestone. The Company shall pay each undisputed invoice within forty-five (45) days of receipt of the invoice."
+    },
+    {
+     "entry_id": "REG-B42",
+     "file": "signed_contracts/2025-11-28_brightwater_insurance_msa.md",
+     "clause_ref": "§7.3",
+     "quote": "7.3 The Customer shall pay correctly rendered and undisputed invoices within forty-five (45) days of receipt."
+    }
+   ],
+   "extra_quotes": [
+    {
+     "file": "karandeep_contract_checklist.md",
+     "quote": "payment → 30 days, 45 max"
+    },
+    {
+     "file": "negotiation_notes.md",
+     "quote": "K: 45 days; 0.5% of milestone fee per week, cap 5% of milestone, client delays excluded. Agreed.",
+     "note": "Trustline.",
+     "clause_ref": "Trustline"
+    }
+   ],
+   "exception_history": [
+    {
+     "contract": "Trustline NBFC MSA §4.2",
+     "label": "deliberate",
+     "note": "90 days countered to 45; accepted."
+    },
+    {
+     "contract": "Brightwater §7.3",
+     "label": "waved_through",
+     "note": "45 days signed with no redline."
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "Payment terms are 60 days; AtliQ's usual maximum is 45."
+  },
+  {
+   "id": "F-05",
+   "severity": "Medium",
+   "type": "clause_risk",
+   "title": "Client can end for convenience in 7 days and pay only for Deliverables accepted before that date",
+   "clause_ref": "§3.2",
+   "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+   "quote": "On such termination the Client shall pay only for Deliverables accepted before the termination date.",
+   "explanation": "Karandeep's checklist says that on termination the client pays for work done. Here only the Client has the convenience right and work in progress is not paid. The Acme MSA, which he accepted, pays for services rendered and milestones completed or in progress, pro rata. With milestones months apart, a 7-day notice could leave AtliQ and Tarang unpaid for work already done.",
+   "rule": "R-08",
+   "register_refs": [
+    {
+     "entry_id": "REG-A56",
+     "file": "signed_contracts/2025-03-10_acme_retail_group_msa.md",
+     "clause_ref": "§5.1, §5.3",
+     "quote": "This Agreement shall commence on the Effective Date and remain in force for a period of two (2) years, unless terminated earlier."
+    }
+   ],
+   "extra_quotes": [
+    {
+     "file": "karandeep_contract_checklist.md",
+     "quote": "termination → they pay for work done"
+    },
+    {
+     "file": "signed_contracts/2025-03-10_acme_retail_group_msa.md",
+     "quote": "subject to payment for Services rendered and Milestones completed or in progress (pro rata) up to the date of termination.",
+     "note": "Acme §5.3, the accepted position.",
+     "clause_ref": "Acme §5.3"
+    }
+   ],
+   "decision_needed": true,
+   "redact_in_seller_view": false,
+   "seller_text": "The client can end the contract in 7 days and pay only for accepted work."
+  },
+  {
+   "id": "F-06",
+   "severity": "Medium",
+   "type": "bundle",
+   "title": "Tarang is proposed in Schedule 1, but §1.3 needs the Client's prior written consent and the vendor agreement is still a draft",
+   "clause_ref": "§1.3; Schedule 1",
+   "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+   "quote": "The Supplier shall not subcontract any part of the Services without the Client's prior written consent.",
+   "explanation": "Schedule 1 says AtliQ 'proposes' Tarang for data labelling in Milestone 1. No written consent from the Client is on file, and the Tarang agreement is marked as not yet sent to the vendor. Tarang may also engage its own contractors, who are not named in the Client schedule. Karandeep has accepted consent clauses before (Al Noor §13.1), so this needs process, not a rewrite: obtain the consent in writing and make Tarang's own contractors subject to it.",
+   "rule": "R-18",
+   "register_refs": [
+    {
+     "entry_id": "REG-A28",
+     "file": "signed_contracts/2025-03-15_al_noor_hospitality_msa.md",
+     "clause_ref": "§13.1",
+     "quote": "The Supplier shall not subcontract any part of the Services without the Client's prior written consent. The Supplier remains responsible for the acts and omissions of its subcontractors."
+    }
+   ],
+   "extra_quotes": [
+    {
+     "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+     "quote": "The Supplier proposes to use Tarang Annotation Services LLP, Chennai, for data labelling in Milestone 1.",
+     "clause_ref": "Schedule 1"
+    },
+    {
+     "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+     "quote": "AtliQ draft prepared from the vendor template for the Zephyr Home Retail project; not yet sent to the vendor.",
+     "clause_ref": "Tarang header"
+    },
+    {
+     "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+     "quote": "The Vendor may engage its own contractors to perform the Services.",
+     "clause_ref": "Tarang §6.3"
+    }
+   ],
+   "decision_needed": false,
+   "redact_in_seller_view": false,
+   "seller_text": "The client must approve the vendor in writing before work starts."
+  }
+ ],
+ "bundle": {
+  "needed": [
+   {
+    "document": "Tarang Annotation Services vendor agreement",
+    "status": "draft_only",
+    "note": "AtliQ draft, not yet sent to the vendor; reviewed as a linked document (see the Tarang brief).",
+    "file": "samples/2026-10-07_tarang_annotation_vendor_agreement_simulated.md",
+    "quote": "AtliQ draft prepared from the vendor template for the Zephyr Home Retail project; not yet sent to the vendor."
+   },
+   {
+    "document": "Client's written consent to subcontract (§1.3)",
+    "status": "missing",
+    "note": "Required before Tarang is used; no consent document is in the dataset.",
+    "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+    "quote": "The Supplier shall not subcontract any part of the Services without the Client's prior written consent."
+   },
+   {
+    "document": "SOW-1 (Schedule 1)",
+    "status": "draft_only",
+    "note": "Present in the draft: three milestones totalling INR 96,00,000.",
+    "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+    "quote": "| M3 | Go-live of the analytics platform | 30 April 2027 | 28,80,000 |"
+   }
+  ]
+ },
+ "data_class": {
+  "class": "personal data",
+  "basis": "The Supplier will process customer names, mobile numbers and purchase history; the draft applies India's DPDP Act 2023. Nothing on health data.",
+  "question": "Does Tarang need names and mobile numbers to label the dataset, or can the extracts leave them out?",
+  "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+  "quote": "The Supplier will process the Client's customer transaction data, including customer names, mobile numbers and purchase history."
+ },
+ "checks_passed": [
+  {
+   "rule": "R-11",
+   "note": "Contracting entity fits: an Indian client contracts with AtliQ Technologies Pvt Ltd.",
+   "file": "atliq_entities.md",
+   "quote": "Clients in India, the Middle East, Europe, and any other region outside the United States"
+  },
+  {
+   "rule": "R-06",
+   "note": "Indian law, as the checklist asks for Pvt Ltd (gov law: ours, India for Pvt Ltd, US for Inc).",
+   "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+   "quote": "This Agreement is governed by the laws of India."
+  },
+  {
+   "rule": "R-07",
+   "note": "Client owns Deliverables made for it on payment; AtliQ keeps its pre-existing tools: the same position as Acme (REG-A55).",
+   "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+   "quote": "The Supplier retains all rights in its pre-existing tools, libraries, methods and know-how"
+  },
+  {
+   "rule": "R-09",
+   "note": "Confidentiality is mutual: each Party's information is protected and each is bound.",
+   "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+   "quote": "Each Party shall keep the other Party's Confidential Information confidential, use it only for the purposes of this Agreement"
+  }
+ ],
+ "not_checked": [
+  {
+   "item": "Whether Acme or Crestline work would be caught by §7.1",
+   "reason": "Depends on what the Client 'considers'; for counsel."
+  },
+  {
+   "item": "Other signed contracts that might restrict this work",
+   "reason": "The register covers 17 of about 30 signed contracts."
+  },
+  {
+   "item": "Insurance",
+   "reason": "The draft states no insurance requirement, so rule R-19 has nothing to test."
+  },
+  {
+   "item": "Enforceability of any clause under Indian law",
+   "reason": "A legal reading; for counsel."
+  },
+  {
+   "item": "Whether Zephyr Home Retail exists",
+   "reason": "This is a simulated contract written for prototype testing."
+  }
+ ],
+ "low": [
+  {
+   "title": "Three-year term, no renewal wording",
+   "clause_ref": "§3.1",
+   "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+   "quote": "This Agreement continues for three (3) years from the date of signature.",
+   "note": "No renewal wording. It sets the length of the §7.1 bar, so read it with F-01."
+  },
+  {
+   "title": "Fees exclusive of GST",
+   "clause_ref": "§2.2",
+   "file": "samples/2026-10-07_zephyr_home_retail_msa_simulated.md",
+   "quote": "Fees are exclusive of Goods and Services Tax, which the Client shall pay at the applicable rate.",
+   "note": "Same treatment as the Acme MSA §4.3."
+  }
+ ],
+ "seller_view": {
+  "flag_types": [
+   "possible_conflict",
+   "clause_risk",
+   "data_class",
+   "bundle"
+  ],
+  "missing_documents": [
+   "Client's written consent to subcontract"
+  ],
+  "ask_karandeep": [
+   "Restriction on other retail work for 24 months after the last SOW.",
+   "Delay clause has no limit and covers client-caused delay.",
+   "Customer data goes to a small vendor."
+  ]
+ },
+ "provenance": "SIMULATED contract. This brief was written once by Claude from the contract text and the capstone dataset files, then stored. Every quote is validated by exact string match against the source files. It is not generated live."
+}
