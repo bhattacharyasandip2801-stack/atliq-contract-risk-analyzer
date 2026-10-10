@@ -42,7 +42,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
     { k: "Drafts to review", v: String(all.length), sub: reviewer ? "from the capstone dataset" : "that you requested", tone: "border-t-accent" },
     { k: "Decide before signing", v: reviewer ? String(totals.high) : "Ask Karandeep", sub: reviewer ? `findings, in ${byLevel("High")} of ${all.length} drafts` : "hidden in seller view", tone: "border-t-high" },
     { k: "Negotiate", v: reviewer ? String(totals.medium) : "Ask Karandeep", sub: reviewer ? `findings, in ${withMedium} of ${all.length} drafts` : "hidden in seller view", tone: "border-t-medium" },
-    { k: "Drafts with nothing to decide", v: reviewer ? `${noHigh} of ${all.length}` : "Ask Karandeep", sub: reviewer ? "no Decide-before-signing finding" : "hidden in seller view", tone: "border-t-ok" },
+    { k: "Drafts needing a decision", v: reviewer ? `${byLevel("High")} of ${all.length}` : "Ask Karandeep", sub: reviewer ? `${byLevel("Medium")} negotiate only · ${clean} information only` : "hidden in seller view", tone: "border-t-ok" },
     { k: "Signed contracts read", v: "17 of ~30", sub: "register coverage", tone: "border-t-low" },
   ];
 
