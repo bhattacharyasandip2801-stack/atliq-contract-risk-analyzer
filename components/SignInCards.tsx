@@ -32,7 +32,7 @@ export default function SignInCards({ people, next }: { people: (DemoUser & { dr
                 <span className="min-w-0 flex-1">
                   <span className="flex flex-wrap items-center gap-2">
                     <span className="text-base font-semibold">{u.name}</span>
-                    {full && <span className="rounded bg-accent-bg px-2 py-0.5 text-xs font-semibold text-accent">Start here</span>}
+                    {full && <span className="rounded-md bg-accent-bg px-2 py-0.5 text-xs font-semibold text-accent">Start here</span>}
                   </span>
                   <span className="block text-sm text-muted">{u.title}</span>
                   <span className="mt-1 block text-sm">{u.access}</span>

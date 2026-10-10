@@ -79,7 +79,7 @@ export default function IntakeForm({ samples }: { samples: { slug: string; label
             <span className="mt-1 flex gap-1"><select aria-label="Currency" value={cur} onChange={(e) => setCur(e.target.value)} className="rounded border border-rule bg-paper p-2 text-sm text-ink">{["$", "₹", "€", "£"].map((c) => <option key={c}>{c}</option>)}</select>
               <input inputMode="numeric" value={value} onChange={(e) => setValue(e.target.value)} placeholder="210000" className="w-32 rounded border border-rule bg-paper p-2 text-sm text-ink" /></span>
           </label>
-          <button disabled={busy || text.trim().length < 20} className="rounded bg-accent px-4 py-2.5 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50">{busy ? "Checking…" : "Check this draft"}</button>
+          <button disabled={busy || text.trim().length < 20} className="rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50">{busy ? "Checking…" : "Check this draft"}</button>
           {text && <button type="button" onClick={() => { setText(""); setRes(null); setName(""); setMsg(null); }} className="rounded border border-rule bg-card px-3 py-2.5 text-sm hover:bg-accent-bg">Clear</button>}
         </div>
       </form>
@@ -99,7 +99,7 @@ export default function IntakeForm({ samples }: { samples: { slug: string; label
                   <p className="mt-2 text-sm leading-relaxed">{res.stored.headline}</p>
                   <p className="mt-2 text-sm"><b>{res.stored.high}</b> to decide before signing, <b>{res.stored.medium}</b> to negotiate, <b>{res.stored.low}</b> for your information. {res.stored.quotes_checked} quotes checked against the source files just now{res.stored.withheld ? `; ${res.stored.withheld} finding(s) withheld` : "; none withheld"}.</p>
                   <ul className="mt-3 grid gap-1 text-sm">{res.stored.findings.map((f) => <li key={f.id}><SeverityBadge s={f.severity as "High" | "Medium"} /> <Link className="text-accent underline" href={`/brief/${res.stored!.slug}#${f.id}`}>{f.title}</Link> <span className="text-xs text-muted">{f.clause_ref}</span></li>)}</ul>
-                  <Link href={`/brief/${res.stored.slug}`} className="mt-4 inline-block rounded bg-accent px-4 py-2.5 text-sm font-medium text-white hover:opacity-90">Open the full brief</Link>
+                  <Link href={`/brief/${res.stored.slug}`} className="mt-4 inline-block rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-white hover:opacity-90">Open the full brief</Link>
                   <p className="mt-3 text-xs text-muted">The quick rule check on the same text is below. It finds only the wording its rules look for, so it can show fewer points than the brief.</p>
                 </div>
               )}

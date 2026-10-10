@@ -43,7 +43,7 @@ export default function Sidebar() {
       <nav aria-label="Main" className="flex gap-1 overflow-x-auto px-2 pb-2 lg:flex-1 lg:flex-col lg:overflow-visible lg:pb-0">
         {items.map((i) => (
           <Link key={i.href} href={i.href} aria-current={active(i.href) ? "page" : undefined}
-            className={`flex items-center gap-2.5 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium ${active(i.href) ? "bg-white/15 text-white" : "text-white/75 hover:bg-nav-hover hover:text-white"}`}>
+            className={`flex items-center gap-2.5 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium ${active(i.href) ? "bg-accent text-white" : "text-white/75 hover:bg-nav-hover hover:text-white"}`}>
             {ICON[i.icon]}{i.label}
           </Link>
         ))}

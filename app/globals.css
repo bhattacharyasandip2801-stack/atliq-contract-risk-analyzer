@@ -1,11 +1,12 @@
+@import "@fontsource-variable/inter-tight";
 @import "tailwindcss";
 
 @theme inline {
-  --color-paper: #f3f5f9;
+  --color-paper: #f3f4f6;
   --color-card: #ffffff;
-  --color-ink: #0f172a;
-  --color-muted: #566174;
-  --color-rule: #e1e5ed;
+  --color-ink: #061033;
+  --color-muted: #54585b;
+  --color-rule: #e0e3e8;
   --color-high: #c62828;
   --color-high-bg: #fdecec;
   --color-medium: #b45309;
@@ -14,18 +15,18 @@
   --color-low-bg: #eceff4;
   --color-ok: #166534;
   --color-ok-bg: #e7f6ec;
-  --color-accent: #1d4ed8;
-  --color-accent-bg: #e8effd;
-  --color-nav: #0f1b3d;
-  --color-nav-hover: #1a2a57;
-  --font-serif: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --color-accent: #602be9;
+  --color-accent-bg: #efeafd;
+  --color-nav: #061033;
+  --color-nav-hover: #162052;
+  --font-serif: "Inter Tight Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Inter Tight Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 html { background: var(--color-paper); }
 body { color: var(--color-ink); font-family: var(--font-sans); background: var(--color-paper); }
-h1, h2, h3 { letter-spacing: -0.015em; }
+h1, h2, h3 { letter-spacing: -0.015em; color: var(--color-ink); font-weight: 600; }
 .quote { border-left: 3px solid var(--color-rule); padding: 2px 0 2px 12px; font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; font-size: 0.95rem; line-height: 1.55; color: #2b2925; }
 .quote-signed { border-left-color: var(--color-accent); }
 a { text-underline-offset: 3px; }

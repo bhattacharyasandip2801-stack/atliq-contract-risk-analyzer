@@ -50,7 +50,7 @@ export default function DecisionPanel({ slug, findingId, title, required }: { sl
             <label className="text-xs text-muted">Decided by
               <input value={person} onChange={(e) => setPerson(e.target.value)} className="mt-1 w-full rounded border border-rule bg-card p-1.5 text-sm text-ink" />
             </label>
-            <button onClick={save} className="rounded bg-accent px-3 py-1.5 text-sm font-medium text-white hover:opacity-90">Save decision</button>
+            <button onClick={save} className="rounded-md bg-accent px-3 py-1.5 text-sm font-medium text-white hover:opacity-90">Save decision</button>
           </div>
           {err && <p className="text-xs text-high sm:col-span-2" role="alert">{err}</p>}
         </div>

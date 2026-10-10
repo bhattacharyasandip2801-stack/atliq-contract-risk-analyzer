@@ -88,13 +88,13 @@ export function DemoPanel() {
       <div aria-live="polite">
         <h2 className="mt-3 text-base font-semibold leading-snug">{s.title}</h2>
         <p className="mt-1.5 text-sm leading-relaxed">{s.body}</p>
-        {s.tip && <p className="mt-2 rounded bg-accent-bg px-2.5 py-1.5 text-xs text-accent">{s.tip}</p>}
+        {s.tip && <p className="mt-2 rounded-md bg-accent-bg px-2.5 py-1.5 text-xs text-accent">{s.tip}</p>}
       </div>
       <div className="mt-3 flex items-center justify-between gap-2">
         <button type="button" disabled={step === 0} onClick={() => go(step - 1)} className="rounded border border-rule px-3 py-1.5 text-sm hover:bg-accent-bg disabled:opacity-40">Back</button>
         {last
-          ? <button type="button" onClick={exit} className="rounded bg-accent px-3 py-1.5 text-sm font-medium text-white hover:opacity-90">Finish</button>
-          : <button type="button" onClick={() => go(step + 1)} className="rounded bg-accent px-3 py-1.5 text-sm font-medium text-white hover:opacity-90">Next</button>}
+          ? <button type="button" onClick={exit} className="rounded-md bg-accent px-3 py-1.5 text-sm font-medium text-white hover:opacity-90">Finish</button>
+          : <button type="button" onClick={() => go(step + 1)} className="rounded-md bg-accent px-3 py-1.5 text-sm font-medium text-white hover:opacity-90">Next</button>}
       </div>
     </aside>
   );

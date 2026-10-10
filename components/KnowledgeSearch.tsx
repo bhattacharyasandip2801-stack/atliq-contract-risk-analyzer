@@ -102,7 +102,7 @@ export default function KnowledgeSearch({ stats, library }: { stats: { files: nu
             {KINDS.map((k) => <option key={k} value={k}>{k || "Everything"}</option>)}
           </select>
         </label>
-        <button disabled={busy} className="rounded bg-accent px-4 py-2.5 text-sm font-medium text-white hover:opacity-90 disabled:opacity-60">{busy ? "Searching…" : "Search"}</button>
+        <button disabled={busy} className="rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-white hover:opacity-90 disabled:opacity-60">{busy ? "Searching…" : "Search"}</button>
         {(hits || doc) && <button type="button" onClick={clearAll} className="rounded border border-rule bg-card px-4 py-2.5 text-sm hover:bg-accent-bg">Clear</button>}
       </form>
       <p className="mt-2 text-xs text-muted">Every passage shown is copied word for word from its file and re-checked against it. Nothing is written or guessed by the search.</p>

@@ -31,6 +31,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
   const clean = all.filter((b) => ["Low", "None"].includes(highestSeverity(b))).length;
   const byLevel = (l: string) => all.filter((b) => highestSeverity(b) === l).length;
   const noHigh = all.length - byLevel("High");
+  const withMedium = all.filter((b) => countBy(b).medium > 0).length;
   const briefs = sev === "All" ? all : all.filter((b) => (sev === "Low" ? ["Low", "None"].includes(highestSeverity(b)) : highestSeverity(b) === sev));
   const deadlineGroups = [...new Set(all.map((b) => deadlineIso(b.slug) ?? "none"))].map((k) => ({
     key: k, label: k === "none" ? "No date" : fmt(k).replace(/ 2026$/, ""), items: all.filter((b) => (deadlineIso(b.slug) ?? "none") === k),
@@ -39,9 +40,9 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
 
   const tiles: { k: string; v: string; sub: string; tone: string }[] = [
     { k: "Drafts to review", v: String(all.length), sub: reviewer ? "from the capstone dataset" : "that you requested", tone: "border-t-accent" },
-    { k: "Decide before signing", v: reviewer ? String(totals.high) : "Ask Karandeep", sub: reviewer ? `across ${byLevel("High")} drafts` : "hidden in seller view", tone: "border-t-high" },
-    { k: "To negotiate", v: reviewer ? String(totals.medium) : "Ask Karandeep", sub: reviewer ? "outside the usual reference points" : "hidden in seller view", tone: "border-t-medium" },
-    { k: "Nothing to decide before signing", v: String(noHigh), sub: `${byLevel("Medium")} to negotiate, ${clean} information only or none`, tone: "border-t-ok" },
+    { k: "Decide before signing", v: reviewer ? String(totals.high) : "Ask Karandeep", sub: reviewer ? `findings, in ${byLevel("High")} of ${all.length} drafts` : "hidden in seller view", tone: "border-t-high" },
+    { k: "Negotiate", v: reviewer ? String(totals.medium) : "Ask Karandeep", sub: reviewer ? `findings, in ${withMedium} of ${all.length} drafts` : "hidden in seller view", tone: "border-t-medium" },
+    { k: "Drafts with nothing to decide", v: reviewer ? `${noHigh} of ${all.length}` : "Ask Karandeep", sub: reviewer ? "no Decide-before-signing finding" : "hidden in seller view", tone: "border-t-ok" },
     { k: "Signed contracts read", v: "17 of ~30", sub: "register coverage", tone: "border-t-low" },
   ];
 
@@ -69,9 +70,9 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
       </dl>
 
       {reviewer && (
-        <section className="card mt-5 rounded-lg border border-rule bg-card p-4" aria-label="Findings by severity">
+        <section className="card mt-5 rounded-lg border border-rule bg-card p-4" aria-label="Findings by action">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 className="text-base font-semibold">Findings by severity</h2>
+            <h2 className="text-base font-semibold">Findings by action</h2>
             <span className="text-xs text-muted">{totals.high + totals.medium + totals.low} findings across {all.length} drafts</span>
           </div>
           <div className="mt-3 flex h-4 overflow-hidden rounded-full bg-low-bg" role="img" aria-label={`${totals.high} decide before signing, ${totals.medium} negotiate, ${totals.low} for your information`}>
@@ -80,9 +81,9 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
             <div className="bg-low" style={{ width: `${(totals.low / sumAll) * 100}%` }} />
           </div>
           <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-xs text-muted">
-            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-high" />Decide before signing {totals.high}</span>
-            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-medium" />Negotiate {totals.medium}</span>
-            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-low" />For your information {totals.low}</span>
+            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-high" />Decide before signing: {totals.high}</span>
+            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-medium" />Negotiate: {totals.medium}</span>
+            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-low" />For your information: {totals.low}</span>
           </div>
         </section>
       )}
