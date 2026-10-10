@@ -21,31 +21,7 @@ export function logAudit(role: string, action: string, target: string, detail?: 
   const all = getAudit(); all.push({ at: new Date().toISOString(), role, action, target, detail }); write(AK, all.slice(-500));
 }
 
-// Review timer (PRD target: Karandeep decides in under 5 minutes). One record per brief per browser.
-export interface Review { slug: string; start: string; end?: string; seconds?: number; spent?: number }
-const RK = "atliq.reviews.v1";
-export const getReviews = () => read<Review>(RK);
-/** Starts the clock when the reviewer presses Start timer. Does nothing if a record already exists. */
-export function startReview(slug: string) {
-  // Records made before the optional timer (no end and no spent) were auto-started; drop them so a real start replaces them.
-  const all = getReviews().filter((r) => r.slug !== slug || r.end || r.spent !== undefined);
-  if (!all.some((r) => r.slug === slug)) write(RK, [...all, { slug, start: new Date().toISOString(), spent: 0 }]);
-}
-/** Saves the seconds spent so far on this brief. The clock counts only while the brief is open and visible. */
-export function saveSpent(slug: string, spent: number) {
-  const all = getReviews(), r = all.find((x) => x.slug === slug);
-  if (!r || r.end || r.spent === spent) return;
-  r.spent = spent; write(RK, all);
-}
-/** Stops the clock once every High finding has a recorded decision. */
-export function finishReview(slug: string, spent: number) {
-  const all = getReviews(), r = all.find((x) => x.slug === slug);
-  if (!r || r.end) return;
-  r.end = new Date().toISOString(); r.spent = spent; r.seconds = Math.max(1, spent);
-  write(RK, all);
-}
-export function resetReview(slug: string) { write(RK, getReviews().filter((r) => r.slug !== slug)); }
-export function clearAll() { write(DK, []); write(AK, []); write(RK, []); }
+export function clearAll() { write(DK, []); write(AK, []); }
 
 function subscribe(cb: () => void) {
   window.addEventListener("atliq-store", cb); window.addEventListener("storage", cb);
@@ -58,4 +34,3 @@ function useList<T>(k: string): T[] {
 }
 export const useDecisions = () => useList<Decision>(DK);
 export const useAudit = () => useList<AuditRow>(AK);
-export const useReviews = () => useList<Review>(RK);

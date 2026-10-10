@@ -8,7 +8,6 @@ import BriefSeller from "@/components/BriefSeller";
 import AskBox from "@/components/AskBox";
 import DecisionProgress from "@/components/DecisionProgress";
 import AllDone from "@/components/AllDone";
-import ReviewTimer from "@/components/ReviewTimer";
 import { AuditOnMount, PrintButton } from "@/components/Small";
 
 export const dynamic = "force-dynamic";
@@ -55,7 +54,6 @@ export default async function BriefPage({ params }: { params: Promise<{ slug: st
                   <div className="flex justify-between"><span><i className="mr-1.5 inline-block h-2 w-2 rounded-full bg-medium" />Negotiate</span><b>{c.medium}</b></div>
                   <div className="flex justify-between"><span><i className="mr-1.5 inline-block h-2 w-2 rounded-full bg-low" />For your information</span><b>{c.low}</b></div>
                   <div className="mt-1.5 border-t border-rule pt-1.5"><DecisionProgress big slug={brief.slug} ids={highIds} /></div>
-                  {(c.high + c.medium) > 0 && <div className="mt-2 border-t border-rule pt-2"><ReviewTimer slug={brief.slug} highIds={highIds} /></div>}
                   {c.high > 0 && <AllDone slug={brief.slug} ids={highIds} />}
                 </div>
               ) : <p className="mt-1 text-sm text-muted">Brief ready. Counts are visible to the reviewer.</p>}

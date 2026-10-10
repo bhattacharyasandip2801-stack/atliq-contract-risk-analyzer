@@ -48,7 +48,6 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
 
   const all = briefsFor(user);
   const totals = all.reduce((t, b) => { const c = countBy(b); return { high: t.high + c.high, medium: t.medium + c.medium, low: t.low + c.low }; }, { high: 0, medium: 0, low: 0 });
-  const sumAll = Math.max(1, totals.high + totals.medium + totals.low);
   const clean = all.filter((b) => ["Low", "None"].includes(highestSeverity(b))).length;
   const byLevel = (l: string) => all.filter((b) => highestSeverity(b) === l).length;
   const withMedium = all.filter((b) => countBy(b).medium > 0).length;
@@ -109,9 +108,9 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
         ))}
       </dl>
 
-      <section className="mt-6" aria-label="Top priorities">
-        <h2 className="text-base font-semibold">Top priorities</h2>
-        <p className="text-sm text-muted">Act on these first: the three drafts due soonest that need a decision before signing.</p>
+      <section className="mt-10" aria-label="Top priorities">
+        <h2 className="border-b-2 border-high/40 pb-1.5 text-lg font-bold">Top priorities</h2>
+        <p className="mt-1.5 text-sm text-muted">Act on these first: the three drafts due soonest that need a decision before signing.</p>
         <ul className="mt-3 grid gap-3 md:grid-cols-3">
           {urgent.map((b) => {
             const c = countBy(b);
@@ -134,10 +133,29 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
         </ul>
       </section>
 
-      <section id="drafts" className="mt-8 scroll-mt-4" aria-label="All drafts">
+      <section className="mt-10" aria-label="Due dates">
+        <h2 className="border-b-2 border-rule pb-1.5 text-lg font-bold">Due dates</h2>
+        <p className="mt-1.5 text-sm text-muted">When each draft is due, soonest first. Select a name to open its brief. Dates before today are marked overdue.</p>
+        <ol className="card mt-3 grid gap-2 rounded-lg border border-rule bg-card p-4">
+          {deadlineGroups.map((g) => (
+            <li key={g.key} className="grid grid-cols-[4.5rem_minmax(0,1fr)] items-start gap-x-3 border-t border-rule pt-2 first:border-0 first:pt-0">
+              <span className="text-sm font-semibold">{g.label}</span>
+              <span className="flex flex-wrap gap-1.5">
+                {g.items.map((b) => (
+                  <Link key={b.slug} href={`/brief/${b.slug}`} className="inline-flex items-center gap-1.5 rounded-full border border-rule px-2.5 py-0.5 text-xs hover:bg-accent-bg">
+                    <i className={`h-2 w-2 rounded-full ${BAR[highestSeverity(b)] ?? "bg-low"}`} />{b.counterparty.replace(/,? (Inc\.?|LLC|LLP|GmbH|Pvt Ltd|Private Limited|FZ-LLC).*$/i, "")}{g.items.filter((x) => x.counterparty === b.counterparty).length > 1 && <span className="text-muted"> ({/Associate/.test(b.doc_type) ? "BAA" : /Master/.test(b.doc_type) ? "MSA" : "other"})</span>}
+                  </Link>
+                ))}
+              </span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section id="drafts" className="mt-10 scroll-mt-4" aria-label="Full queue">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h2 className="text-base font-semibold">All drafts</h2>
+            <h2 className="w-full border-b-2 border-rule pb-1.5 text-lg font-bold">Full queue ({all.length} drafts)</h2>
             <p className="text-sm text-muted">{sorted.length === all.length ? `${all.length} drafts` : `${sorted.length} of ${all.length} drafts`}, sorted by {SORTS.find(([k]) => k === sort)![1].toLowerCase()}. Open a row to see its brief.</p>
           </div>
           <nav className="flex flex-wrap gap-1.5" aria-label="Filter by highest severity">
@@ -232,51 +250,6 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
         )}
         <p className="mt-4 text-xs text-muted">Due dates come from the tracker notes and the 22 Sep, 25 Sep and 27 Sep meeting notes; where the notes give none, the row says so. Overdue and due-soon labels count from today.</p>
       </section>
-
-      <details className="card mt-8 rounded-lg border border-rule bg-card p-4">
-        <summary className="text-base font-semibold">Timeline and totals <span className="text-sm font-normal text-muted">(findings by action, due dates)</span></summary>
-        <div className="mt-3 grid gap-4">
-      {reviewer && (
-        <section className="rounded-lg border border-rule p-4" aria-label="Findings by action">
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 className="text-base font-semibold">Findings by action</h2>
-            <span className="text-xs text-muted">{totals.high + totals.medium + totals.low} findings across {all.length} drafts</span>
-          </div>
-          <div className="mt-3 flex h-4 overflow-hidden rounded-full bg-low-bg" role="img" aria-label={`${totals.high} decide before signing, ${totals.medium} negotiate, ${totals.low} for your information`}>
-            <div className="bg-high" style={{ width: `${(totals.high / sumAll) * 100}%` }} />
-            <div className="bg-medium" style={{ width: `${(totals.medium / sumAll) * 100}%` }} />
-            <div className="bg-low" style={{ width: `${(totals.low / sumAll) * 100}%` }} />
-          </div>
-          <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-xs text-muted">
-            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-high" />Decide before signing: {totals.high}</span>
-            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-medium" />Negotiate: {totals.medium}</span>
-            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-low" />For your information: {totals.low}</span>
-          </div>
-        </section>
-      )}
-
-
-      <section className="rounded-lg border border-rule p-4" aria-label="Deadlines">
-        <h2 className="text-base font-semibold">Deadlines</h2>
-        <p className="text-xs text-muted">Due dates from the tracker and meeting notes. Dates before today are marked overdue.</p>
-        <ol className="mt-3 grid gap-2">
-          {deadlineGroups.map((g) => (
-            <li key={g.key} className="grid grid-cols-[4.5rem_minmax(0,1fr)] items-start gap-x-3 border-t border-rule pt-2 first:border-0 first:pt-0">
-              <span className="text-sm font-semibold">{g.label}</span>
-              <span className="flex flex-wrap gap-1.5">
-                {g.items.map((b) => (
-                  <Link key={b.slug} href={`/brief/${b.slug}`} className="inline-flex items-center gap-1.5 rounded-full border border-rule px-2.5 py-0.5 text-xs hover:bg-accent-bg">
-                    <i className={`h-2 w-2 rounded-full ${BAR[highestSeverity(b)] ?? "bg-low"}`} />{b.counterparty.replace(/,? (Inc\.?|LLC|LLP|GmbH|Pvt Ltd|Private Limited|FZ-LLC).*$/i, "")}{g.items.filter((x) => x.counterparty === b.counterparty).length > 1 && <span className="text-muted"> ({/Associate/.test(b.doc_type) ? "BAA" : /Master/.test(b.doc_type) ? "MSA" : "other"})</span>}
-                  </Link>
-                ))}
-              </span>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-        </div>
-      </details>
 
     </div>
   );

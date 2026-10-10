@@ -1,7 +1,5 @@
 import Link from "next/link";
 import { runEvaluation } from "@/lib/eval";
-import { briefNames } from "@/lib/data";
-import ReviewTimes from "@/components/ReviewTimes";
 import { getRole } from "@/lib/role";
 import { Chip } from "@/components/Badges";
 import { AuditOnMount } from "@/components/Small";
@@ -24,7 +22,6 @@ export default async function EvaluationPage() {
         {[["Run at", new Date(r.generated).toLocaleString()], ["Model", "None (stored briefs)"], ["Tokens used", "0"], ["Result", `${pass} passed, ${fail} failed`]].map(([k, v]) => <div key={k} className="card rounded-lg border border-rule bg-card p-3"><dt className="text-xs uppercase tracking-wide text-muted">{k}</dt><dd className="text-sm font-semibold">{v}</dd></div>)}
       </dl>
       <p className="mt-2 text-xs text-muted"><Link className="text-accent underline" href="/evaluation">Run again</Link></p>
-      <ReviewTimes names={briefNames()} />
       <section className="card mt-5 rounded-lg border border-rule bg-card p-4" aria-label="Scorecard">
         <h2 className="text-base font-semibold">Scorecard</h2>
         <p className="text-xs text-muted">Each bar shows the share of labelled cases that passed. Grey bars are information only and are not graded.</p>

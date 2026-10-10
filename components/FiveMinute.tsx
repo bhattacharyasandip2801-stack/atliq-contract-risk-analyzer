@@ -3,17 +3,16 @@ import { SeverityBadge } from "./Badges";
 import Gloss from "./Gloss";
 import { useDecisions } from "@/lib/store";
 
-export { TARGET_SECONDS, fmt } from "./ReviewTimer";
 export interface GlanceRow { id: string; severity: "High" | "Medium"; title: string; clause_ref: string }
 
-/** "Decide in 5 minutes": every finding on one screen with its decision status. The optional timer lives in the side panel (ReviewTimer). */
+/** "Decision checklist": every finding on one screen with its decision status. */
 export default function FiveMinute({ slug, rows }: { slug: string; rows: GlanceRow[] }) {
   const decisions = useDecisions();
   const decided = (id: string) => decisions.find((d) => d.key === `${slug}:${id}`);
   return (
     <section aria-labelledby="glance" className="card rounded-lg border border-rule bg-card p-5">
-      <h2 id="glance" className="text-lg font-semibold">Decide in 5 minutes</h2>
-      <p className="text-sm text-muted">Every finding on one screen. Select a title to jump to its quote and clause. The optional timer is in the side panel.</p>
+      <h2 id="glance" className="text-lg font-semibold">Decision checklist</h2>
+      <p className="text-sm text-muted">Every finding in this draft and whether you have decided it. Select a title to jump to its quote and clause.</p>
       <div className="mt-3 hidden overflow-x-auto sm:block" tabIndex={0} role="region" aria-label="Findings at a glance">
         <table className="w-full min-w-[520px] text-left text-sm">
           <thead className="text-xs uppercase tracking-wide text-muted"><tr><th className="py-1.5 pr-3">Level</th><th className="py-1.5 pr-3">Finding</th><th className="py-1.5 pr-3">Clause</th><th className="py-1.5">Decision</th></tr></thead>
