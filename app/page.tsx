@@ -51,7 +51,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
         <div>
           <h1 className="text-2xl font-bold">Contract dashboard</h1>
           <p className="mt-1 max-w-2xl text-sm text-muted">
-            Incoming drafts, ranked. Every finding quotes the contract, names the rule or signed clause behind it, and ends in a recorded decision.
+            Start with “Do these first”, then work through all drafts. Every finding quotes the contract and the rule behind it, and ends in a recorded decision.
             {!reviewer && ` You are signed in as ${user.name}: you see the ${all.length === 1 ? "draft" : all.length + " drafts"} you requested, with flag types, missing documents and what to ask Karandeep.`}
           </p>
         </div>
@@ -69,48 +69,9 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
         ))}
       </dl>
 
-      {reviewer && (
-        <section className="card mt-5 rounded-lg border border-rule bg-card p-4" aria-label="Findings by action">
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 className="text-base font-semibold">Findings by action</h2>
-            <span className="text-xs text-muted">{totals.high + totals.medium + totals.low} findings across {all.length} drafts</span>
-          </div>
-          <div className="mt-3 flex h-4 overflow-hidden rounded-full bg-low-bg" role="img" aria-label={`${totals.high} decide before signing, ${totals.medium} negotiate, ${totals.low} for your information`}>
-            <div className="bg-high" style={{ width: `${(totals.high / sumAll) * 100}%` }} />
-            <div className="bg-medium" style={{ width: `${(totals.medium / sumAll) * 100}%` }} />
-            <div className="bg-low" style={{ width: `${(totals.low / sumAll) * 100}%` }} />
-          </div>
-          <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-xs text-muted">
-            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-high" />Decide before signing: {totals.high}</span>
-            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-medium" />Negotiate: {totals.medium}</span>
-            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-low" />For your information: {totals.low}</span>
-          </div>
-        </section>
-      )}
-
-
-      <section className="card mt-5 rounded-lg border border-rule bg-card p-4" aria-label="Deadlines">
-        <h2 className="text-base font-semibold">Deadlines</h2>
-        <p className="text-xs text-muted">From the tracker notes and meeting notes. Dates are not adjusted to today.</p>
-        <ol className="mt-3 grid gap-2">
-          {deadlineGroups.map((g) => (
-            <li key={g.key} className="grid grid-cols-[4.5rem_minmax(0,1fr)] items-start gap-x-3 border-t border-rule pt-2 first:border-0 first:pt-0">
-              <span className="text-sm font-semibold">{g.label}</span>
-              <span className="flex flex-wrap gap-1.5">
-                {g.items.map((b) => (
-                  <Link key={b.slug} href={`/brief/${b.slug}`} className="inline-flex items-center gap-1.5 rounded-full border border-rule px-2.5 py-0.5 text-xs hover:bg-accent-bg">
-                    <i className={`h-2 w-2 rounded-full ${BAR[highestSeverity(b)] ?? "bg-low"}`} />{b.counterparty.replace(/,? (Inc\.?|LLC|LLP|GmbH|Pvt Ltd|Private Limited|FZ-LLC).*$/i, "")}{g.items.filter((x) => x.counterparty === b.counterparty).length > 1 && <span className="text-muted"> ({/Associate/.test(b.doc_type) ? "BAA" : /Master/.test(b.doc_type) ? "MSA" : "other"})</span>}
-                  </Link>
-                ))}
-              </span>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <section className="mt-6" aria-label="Needs attention first">
-        <h2 className="text-base font-semibold">Action required</h2>
-        <p className="text-sm text-muted">The first three drafts with something to decide before signing, in deadline order.</p>
+      <section className="mt-6" aria-label="Do these first">
+        <h2 className="text-base font-semibold">Do these first</h2>
+        <p className="text-sm text-muted">The three drafts with the earliest due dates that have something to decide before signing.</p>
         <ul className="mt-3 grid gap-3 md:grid-cols-3">
           {urgent.map((b) => {
             const c = countBy(b);
@@ -136,7 +97,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <h2 className="text-base font-semibold">All drafts</h2>
-            <p className="text-sm text-muted">Ordered by the deadline written in the tracker and meeting notes.</p>
+            <p className="text-sm text-muted">Ordered by due date. Open a row to see its brief.</p>
           </div>
           <nav className="flex flex-wrap gap-1.5" aria-label="Filter by highest severity">
             {FILTERS.map((f) => {
@@ -154,7 +115,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
         <div className="mt-3 hidden overflow-hidden rounded-lg border border-rule bg-card md:block">
           <table className="w-full text-left text-sm">
             <thead className="bg-paper text-xs font-semibold text-muted">
-              <tr><th className="p-3">Counterparty and document</th><th className="p-3">AtliQ entity</th><th className="p-3">Deadline</th><th className="p-3">Highest</th><th className="p-3">{reviewer ? "Decisions" : "Status"}</th><th className="p-3"><span className="sr-only">Open</span></th></tr>
+              <tr><th className="p-3">Draft</th><th className="p-3">AtliQ entity</th><th className="p-3">Due (from notes)</th><th className="p-3">What it needs</th><th className="p-3">{reviewer ? "Progress" : "Status"}</th><th className="p-3"><span className="sr-only">Open</span></th></tr>
             </thead>
             <tbody>
               {briefs.map((b) => {
@@ -170,14 +131,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
                     <td className="p-3 whitespace-nowrap">{fmt(deadlineIso(b.slug))}</td>
                     <td className="p-3">
                       <SeverityBadge s={h} />
-                      {reviewer && (
-                        <div className="mt-1.5 flex items-center gap-1" title={`${c.high} decide before signing · ${c.medium} negotiate · ${c.low} for your information`}>
-                          {Array.from({ length: c.high }).map((_, i) => <i key={"h" + i} className={`h-2.5 w-2.5 rounded-full ${BAR.High}`} />)}
-                          {Array.from({ length: c.medium }).map((_, i) => <i key={"m" + i} className={`h-2.5 w-2.5 rounded-full ${BAR.Medium}`} />)}
-                          {Array.from({ length: c.low }).map((_, i) => <i key={"l" + i} className={`h-2.5 w-2.5 rounded-full ${BAR.Low} opacity-60`} />)}
-                        </div>
-                      )}
-                      {reviewer && <div className="mt-1 text-xs text-muted">{c.high} decide · {c.medium} negotiate · {c.low} for information</div>}
+                      {reviewer && <div className="mt-1 text-xs text-muted">{c.high} to decide · {c.medium} to negotiate · {c.low} for information</div>}
                     </td>
                     <td className="p-3">{reviewer ? <DecisionProgress slug={b.slug} ids={b.findings.filter((f) => f.severity === "High").map((f) => f.id)} /> : <span className="text-xs text-muted">Brief ready</span>}</td>
                     <td className="p-3 text-right"><Link className="rounded border border-rule px-2.5 py-1 hover:bg-accent-bg" href={`/brief/${b.slug}`}>Open</Link></td>
@@ -204,8 +158,54 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
           })}
         </ul>
         {briefs.length === 0 && <p className="mt-3 text-sm text-muted">No drafts at this level.</p>}
-        <p className="mt-4 text-xs text-muted">Deadlines come from the tracker notes and the 22 Sep, 25 Sep and 27 Sep meeting notes. Where the notes give none, the row says so.</p>
+        <p className="mt-4 text-xs text-muted">Due dates come from the tracker notes and the 22 Sep, 25 Sep and 27 Sep meeting notes; where the notes give none, the row says so. The dataset date is 28 Sep 2026.</p>
       </section>
+
+      <details className="card mt-8 rounded-lg border border-rule bg-card p-4">
+        <summary className="text-base font-semibold">Timeline and totals <span className="text-sm font-normal text-muted">(findings by action, due dates)</span></summary>
+        <div className="mt-3 grid gap-4">
+      {reviewer && (
+        <section className="rounded-lg border border-rule p-4" aria-label="Findings by action">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h2 className="text-base font-semibold">Findings by action</h2>
+            <span className="text-xs text-muted">{totals.high + totals.medium + totals.low} findings across {all.length} drafts</span>
+          </div>
+          <div className="mt-3 flex h-4 overflow-hidden rounded-full bg-low-bg" role="img" aria-label={`${totals.high} decide before signing, ${totals.medium} negotiate, ${totals.low} for your information`}>
+            <div className="bg-high" style={{ width: `${(totals.high / sumAll) * 100}%` }} />
+            <div className="bg-medium" style={{ width: `${(totals.medium / sumAll) * 100}%` }} />
+            <div className="bg-low" style={{ width: `${(totals.low / sumAll) * 100}%` }} />
+          </div>
+          <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-xs text-muted">
+            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-high" />Decide before signing: {totals.high}</span>
+            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-medium" />Negotiate: {totals.medium}</span>
+            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-low" />For your information: {totals.low}</span>
+          </div>
+        </section>
+      )}
+
+
+      <section className="rounded-lg border border-rule p-4" aria-label="Deadlines">
+        <h2 className="text-base font-semibold">Deadlines</h2>
+        <p className="text-xs text-muted">Due dates from the tracker and meeting notes. The dataset date is 28 Sep 2026, so earlier dates are not shown as overdue.</p>
+        <ol className="mt-3 grid gap-2">
+          {deadlineGroups.map((g) => (
+            <li key={g.key} className="grid grid-cols-[4.5rem_minmax(0,1fr)] items-start gap-x-3 border-t border-rule pt-2 first:border-0 first:pt-0">
+              <span className="text-sm font-semibold">{g.label}</span>
+              <span className="flex flex-wrap gap-1.5">
+                {g.items.map((b) => (
+                  <Link key={b.slug} href={`/brief/${b.slug}`} className="inline-flex items-center gap-1.5 rounded-full border border-rule px-2.5 py-0.5 text-xs hover:bg-accent-bg">
+                    <i className={`h-2 w-2 rounded-full ${BAR[highestSeverity(b)] ?? "bg-low"}`} />{b.counterparty.replace(/,? (Inc\.?|LLC|LLP|GmbH|Pvt Ltd|Private Limited|FZ-LLC).*$/i, "")}{g.items.filter((x) => x.counterparty === b.counterparty).length > 1 && <span className="text-muted"> ({/Associate/.test(b.doc_type) ? "BAA" : /Master/.test(b.doc_type) ? "MSA" : "other"})</span>}
+                  </Link>
+                ))}
+              </span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+        </div>
+      </details>
+
     </div>
   );
 }

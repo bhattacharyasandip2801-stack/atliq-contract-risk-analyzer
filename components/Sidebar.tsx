@@ -1,4 +1,5 @@
 "use client";
+import { Fragment } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRole } from "./RoleProvider";
@@ -18,16 +19,16 @@ const ICON = {
   kb: I("M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-5-5"),
   playbook: I("M5 4h11a3 3 0 013 3v13H8a3 3 0 01-3-3zM5 17a3 3 0 013-3h11"),
 };
-const ITEMS: { href: string; label: string; icon: keyof typeof ICON; reviewerOnly?: boolean }[] = [
-  { href: "/", label: "Contract dashboard", icon: "queue" },
-  { href: "/intake", label: "Review a new draft", icon: "intake" },
-  { href: "/findings", label: "Findings worklist", icon: "decisions", reviewerOnly: true },
-  { href: "/knowledge", label: "Knowledge base", icon: "kb", reviewerOnly: true },
-  { href: "/playbook", label: "Playbook", icon: "playbook", reviewerOnly: true },
-  { href: "/register", label: "Obligation register", icon: "register", reviewerOnly: true },
-  { href: "/decisions", label: "Decisions", icon: "decisions", reviewerOnly: true },
-  { href: "/evaluation", label: "Evaluation", icon: "eval", reviewerOnly: true },
-  { href: "/audit", label: "Audit log", icon: "audit" },
+const ITEMS: { href: string; label: string; icon: keyof typeof ICON; reviewerOnly?: boolean; group: string }[] = [
+  { href: "/", group: "Work", label: "Contract dashboard", icon: "queue" },
+  { href: "/intake", group: "Work", label: "Review a new draft", icon: "intake" },
+  { href: "/findings", group: "Work", label: "Findings worklist", icon: "decisions", reviewerOnly: true },
+  { href: "/knowledge", group: "Reference", label: "Knowledge base", icon: "kb", reviewerOnly: true },
+  { href: "/playbook", group: "Reference", label: "Playbook", icon: "playbook", reviewerOnly: true },
+  { href: "/register", group: "Reference", label: "Obligation register", icon: "register", reviewerOnly: true },
+  { href: "/decisions", group: "Records", label: "Decisions", icon: "decisions", reviewerOnly: true },
+  { href: "/evaluation", group: "Records", label: "Evaluation", icon: "eval", reviewerOnly: true },
+  { href: "/audit", group: "Records", label: "Audit log", icon: "audit" },
 ];
 
 export default function Sidebar() {
@@ -42,11 +43,14 @@ export default function Sidebar() {
         <div className="leading-tight"><div className="text-sm font-semibold">AtliQ</div><div className="text-xs text-white/60">Contract Risk Analyzer</div></div>
       </div>
       <nav aria-label="Main" className="flex gap-1 overflow-x-auto px-2 pb-2 lg:flex-1 lg:flex-col lg:overflow-visible lg:pb-0">
-        {items.map((i) => (
-          <Link key={i.href} href={i.href} aria-current={active(i.href) ? "page" : undefined}
+        {items.map((i, n) => (
+          <Fragment key={i.href}>
+            {(n === 0 || items[n - 1].group !== i.group) && <span className="hidden px-3 pb-1 pt-4 text-[11px] font-semibold uppercase tracking-wide text-white/60 first:pt-1 lg:block">{i.group}</span>}
+          <Link href={i.href} aria-current={active(i.href) ? "page" : undefined}
             className={`flex items-center gap-2.5 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium ${active(i.href) ? "bg-accent text-white" : "text-white/75 hover:bg-nav-hover hover:text-white"}`}>
             {ICON[i.icon]}{i.label}
           </Link>
+          </Fragment>
         ))}
       </nav>
       <div className="hidden border-t border-white/10 p-3 lg:block">
