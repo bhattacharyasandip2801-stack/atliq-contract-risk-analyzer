@@ -19,7 +19,7 @@ export default async function PlaybookPage() {
 
       <section className="card mt-5 rounded-lg border border-rule bg-card p-5" aria-label="Checklist">
         <h2 className="text-lg font-semibold">1. Karandeep&apos;s checklist</h2>
-        <p className="mt-1 text-sm text-muted">The only written record of how AtliQ reviews contracts. Last edited March 2024. The count shows how many of the 15 incoming drafts have a finding that cites this rule (the mapping of checklist lines to rule IDs is proposed).</p>
+        <p className="mt-1 text-sm text-muted">The only written record of how AtliQ reviews contracts. Last edited March 2024. The count shows how many of the 15 incoming drafts have a finding that cites this rule (the link between checklist lines and rules is a working draft).</p>
         <ul className="mt-3 grid gap-2">
           {rules.map((r) => { const hits = draftsHitting(r); return (
             <li key={r} className="rounded border border-rule p-3">

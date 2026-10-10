@@ -16,13 +16,14 @@ export default function DecisionPanel({ slug, findingId, title, required }: { sl
   const [reason, setReason] = useState("");
   const [person, setPerson] = useState(user?.name ?? "Karandeep");
   const [err, setErr] = useState("");
+  const [open, setOpen] = useState(false);
 
   if (existing) {
     return (
       <div className="no-print mt-3 flex flex-wrap items-center gap-3 rounded border border-ok/30 bg-ok-bg px-3 py-2 text-sm" aria-live="polite">
         <span className="font-semibold text-ok">Decision recorded: {existing.choice}</span>
         <span className="text-muted">by {existing.person} on {new Date(existing.at).toLocaleString()}{existing.reason ? ` (${existing.reason})` : ""}</span>
-        <button className="ml-auto text-xs underline" onClick={() => clearDecision(key, actor)}>Undo</button>
+        <button className="ml-auto text-xs underline" onClick={() => clearDecision(key, actor)}>Change decision</button>
       </div>
     );
   }
@@ -31,6 +32,9 @@ export default function DecisionPanel({ slug, findingId, title, required }: { sl
     if (choice === "override" && reason.trim().length < 5) { setErr("An override needs a reason (at least a short sentence)."); return; }
     saveDecision({ key, slug, findingId, choice, reason: reason.trim(), person: person.trim() || "Karandeep", role: actor, title });
     setChoice(null); setReason(""); setErr("");
+  }
+  if (!required && !open && !choice) {
+    return <div className="no-print mt-3"><button type="button" onClick={() => setOpen(true)} className="text-sm text-accent underline">Record a decision (optional)</button></div>;
   }
   return (
     <div className="no-print mt-3 rounded border border-rule bg-paper px-3 py-2">

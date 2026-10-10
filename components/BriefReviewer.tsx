@@ -1,5 +1,6 @@
 import type { Brief, Finding } from "@/lib/types";
-import { Chip, SeverityBadge, TYPE_LABEL, EXC_LABEL, EXC_TONE, BUNDLE_LABEL } from "./Badges";
+import { Chip, SeverityBadge, TYPE_LABEL, TYPE_HINT, EXC_LABEL, EXC_TONE, BUNDLE_LABEL } from "./Badges";
+import Gloss from "./Gloss";
 import DecisionPanel from "./DecisionPanel";
 import FiveMinute from "./FiveMinute";
 
@@ -30,12 +31,12 @@ function FindingCard({ slug, f }: { slug: string; f: Finding }) {
     <article id={f.id} className={`card rounded-lg border border-rule border-l-4 bg-card p-4 ${f.severity === "High" ? "border-l-high" : "border-l-medium"}`}>
       <header className="flex flex-wrap items-center gap-2">
         <SeverityBadge s={f.severity} />
-        <Chip tone="accent">{TYPE_LABEL[f.type] ?? f.type}</Chip>
-        <Chip>{f.rule}</Chip>
+        <Chip tone="accent" title={TYPE_HINT[f.type]}>{TYPE_LABEL[f.type] ?? f.type}</Chip>
         <span className="text-xs text-muted">{f.clause_ref}</span>
+        <span className="text-xs text-muted/80" title="Checklist rule this finding applies">rule {f.rule}</span>
       </header>
-      <h3 className="mt-2 text-lg font-semibold leading-snug">{f.title}</h3>
-      <p className="mt-2 text-[0.95rem] leading-relaxed">{f.explanation}</p>
+      <h3 className="mt-2 text-lg font-semibold leading-snug"><Gloss text={f.title} /></h3>
+      <p className="mt-2 text-[0.95rem] leading-relaxed"><Gloss text={f.explanation} /></p>
       {f.register_refs && f.register_refs.length ? (
         <div className="mt-3 grid grid-cols-[minmax(0,1fr)] items-start gap-2 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
           <Quote file={f.file} quote={f.quote} label={`This draft, ${f.clause_ref}`} />
@@ -75,8 +76,6 @@ function FindingCard({ slug, f }: { slug: string; f: Finding }) {
 export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief: Brief; quotesChecked: number; dropped: { id: string; reason: string }[] }) {
   const highs = brief.findings.filter((f) => f.severity === "High");
   const meds = brief.findings.filter((f) => f.severity === "Medium");
-  // Words the reviewer has to read: headline plus each finding's title, explanation and main quote. Estimate only.
-  const words = [brief.headline, ...brief.findings.flatMap((f) => [f.title, f.explanation, f.quote])].join(" ").split(/\s+/).filter(Boolean).length;
   const rows = [...highs, ...meds].map((f) => ({ id: f.id, severity: f.severity, title: f.title, clause_ref: f.clause_ref }));
   return (
     <div className="grid grid-cols-[minmax(0,1fr)] gap-6">
@@ -89,7 +88,7 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
         <p className="text-muted">{brief.doc_type}</p>
         <p className="mt-3 max-w-3xl text-base leading-relaxed">{brief.headline}</p>
         <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-3">
-          <div><dt className="text-xs uppercase tracking-wide text-muted">Deadline</dt><dd>{brief.deadline ?? "None in the notes"}</dd></div>
+          <div><dt className="text-xs uppercase tracking-wide text-muted">Deadline</dt><dd title={brief.deadline ?? undefined}>{brief.deadline ? brief.deadline.replace(/\s*\(.*$/, "") : "None in the notes"}</dd></div>
           <div><dt className="text-xs uppercase tracking-wide text-muted">Value</dt><dd>{brief.value}</dd></div>
           <div><dt className="text-xs uppercase tracking-wide text-muted">Tracker status</dt><dd>{brief.tracker_status || "Not stated"}</dd></div>
         </dl>
@@ -99,7 +98,7 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
         </p>
       </section>
 
-      {rows.length > 0 && <FiveMinute slug={brief.slug} rows={rows} readMinutes={Math.max(1, Math.ceil(words / 230))} words={words} />}
+      {rows.length > 0 && <FiveMinute slug={brief.slug} rows={rows} />}
 
       {brief.exposure.length > 0 && (
         <section className="card rounded-lg border border-rule bg-card p-5">

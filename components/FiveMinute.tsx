@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { SeverityBadge } from "./Badges";
+import Gloss from "./Gloss";
 import { finishReview, resetReview, startReview, useDecisions, useReviews } from "@/lib/store";
 
 export const TARGET_SECONDS = 300;
@@ -8,7 +9,7 @@ export const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padSta
 export interface GlanceRow { id: string; severity: "High" | "Medium"; title: string; clause_ref: string }
 
 /** "Decide in 5 minutes": every finding on one screen, a reading-time estimate and a timer that stops when all High findings have a recorded decision. */
-export default function FiveMinute({ slug, rows, readMinutes, words }: { slug: string; rows: GlanceRow[]; readMinutes: number; words: number }) {
+export default function FiveMinute({ slug, rows }: { slug: string; rows: GlanceRow[] }) {
   const decisions = useDecisions();
   const review = useReviews().find((r) => r.slug === slug);
   const highIds = rows.filter((r) => r.severity === "High").map((r) => r.id);
@@ -32,11 +33,11 @@ export default function FiveMinute({ slug, rows, readMinutes, words }: { slug: s
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h2 id="glance" className="text-lg font-semibold">Decide in 5 minutes</h2>
-          <p className="text-sm text-muted">Every finding on one screen. Select a title to jump to its quote and clause.</p>
+          <p className="text-sm text-muted">Every finding on one screen. Select a title to jump to its quote and clause. The clock starts when you open this brief and stops at your last “Decide before signing” decision.</p>
         </div>
         <div className="no-print text-right" role="timer" aria-label="Review timer">
           <div className={`text-2xl font-bold tabular-nums ${running ? (within ? "text-ink" : "text-high") : within ? "text-ok" : "text-high"}`}>{fmt(elapsed)}</div>
-          <div className="text-xs text-muted">{review?.end ? (within ? "Reviewed within the 5-minute target" : "Reviewed, over the 5-minute target") : highIds.length === 0 ? "Nothing to decide before signing" : `Stops when all ${highIds.length} “Decide before signing” items are decided. Target: under 5:00`}</div>
+          <div className="text-xs text-muted">{review?.end ? (within ? "Reviewed within the 5-minute target" : "Reviewed, over the 5-minute target") : highIds.length === 0 ? "Nothing to decide before signing" : `${highIds.length} to decide. Target: under 5:00`}</div>
           <button type="button" onClick={() => { resetReview(slug); startReview(slug); }} className="mt-1 text-xs underline">Restart timer</button>
         </div>
       </div>
@@ -48,7 +49,7 @@ export default function FiveMinute({ slug, rows, readMinutes, words }: { slug: s
             return (
               <tr key={r.id} className="border-t border-rule align-top">
                 <td className="py-2 pr-3"><SeverityBadge s={r.severity} /></td>
-                <td className="py-2 pr-3"><a className="text-accent underline" href={`#${r.id}`}>{r.title}</a></td>
+                <td className="py-2 pr-3"><a className="text-accent underline" href={`#${r.id}`}><Gloss text={r.title} /></a></td>
                 <td className="py-2 pr-3 text-muted">{r.clause_ref}</td>
                 <td className="py-2">{d ? <span className="font-medium text-ok">{d.choice}</span> : <span className="text-muted">{r.severity === "High" ? "Needed" : "Optional"}</span>}</td>
               </tr>
@@ -56,7 +57,6 @@ export default function FiveMinute({ slug, rows, readMinutes, words }: { slug: s
           })}</tbody>
         </table>
       </div>
-      <p className="mt-3 text-xs text-muted">Reading time: about {readMinutes} minute{readMinutes === 1 ? "" : "s"} for the {words.toLocaleString()} words in the headline, findings and quotes (estimate at 230 words per minute, reading only; deciding takes extra). The timer above measures real time in this browser, from first opening this brief to the last “Decide before signing” decision. To time a fresh run, undo the old decisions, then restart the timer.</p>
     </section>
   );
 }

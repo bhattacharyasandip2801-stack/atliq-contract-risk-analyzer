@@ -4,6 +4,8 @@ import { getUser } from "@/lib/role";
 import { SeverityBadge } from "@/components/Badges";
 import DecisionProgress from "@/components/DecisionProgress";
 import { ExportLink } from "@/components/Small";
+import Gloss from "@/components/Gloss";
+import { shortHeadline } from "@/lib/short";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = { title: "Contract dashboard" };
@@ -14,6 +16,18 @@ function fmt(iso: string | null) {
   if (!iso) return "No date in the notes";
   return new Date(iso + "T00:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 }
+
+/** Today in India, or DEMO_AS_OF=YYYY-MM-DD to pin the date for a demo. */
+const AS_OF = () => process.env.DEMO_AS_OF || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+function dueNote(iso: string | null): { text: string; cls: string } | null {
+  if (!iso) return null;
+  const d = Math.round((Date.parse(iso + "T00:00:00Z") - Date.parse(AS_OF() + "T00:00:00Z")) / 86400000);
+  if (d < 0) return { text: `Overdue by ${-d} day${d === -1 ? "" : "s"}`, cls: "font-semibold text-high" };
+  if (d === 0) return { text: "Due today", cls: "font-semibold text-medium" };
+  if (d <= 7) return { text: `Due in ${d} day${d === 1 ? "" : "s"}`, cls: "text-medium" };
+  return null;
+}
+const Due = ({ iso }: { iso: string | null }) => { const n = dueNote(iso); return n ? <span className={`block text-xs ${n.cls}`}>{n.text}</span> : null; };
 
 const BAR: Record<string, string> = { High: "bg-high", Medium: "bg-medium", Low: "bg-low", None: "bg-ok" };
 const FILTERS = ["All", "High", "Medium", "Low"] as const;
@@ -63,12 +77,12 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
   }));
   const urgent = all.filter((b) => highestSeverity(b) === "High").slice(0, 3);
 
-  const tiles: { k: string; v: string; sub: string; tone: string; href?: string }[] = [
-    { k: "Drafts to review", v: String(all.length), sub: reviewer ? "from the capstone dataset" : "that you requested", tone: "border-t-accent", href: "/#drafts" },
-    { k: "Decide before signing", v: reviewer ? String(totals.high) : "Ask Karandeep", sub: reviewer ? `findings, in ${byLevel("High")} of ${all.length} drafts` : "hidden in seller view", tone: "border-t-high", href: reviewer ? "/findings?level=High" : undefined },
-    { k: "Negotiate", v: reviewer ? String(totals.medium) : "Ask Karandeep", sub: reviewer ? `findings, in ${withMedium} of ${all.length} drafts` : "hidden in seller view", tone: "border-t-medium", href: reviewer ? "/findings?level=Medium" : undefined },
-    { k: "Drafts needing a decision", v: reviewer ? `${byLevel("High")} of ${all.length}` : "Ask Karandeep", sub: reviewer ? `${byLevel("Medium")} negotiate only · ${clean} information only` : "hidden in seller view", tone: "border-t-ok", href: reviewer ? "/?sev=High#drafts" : undefined },
-    { k: "Signed contracts read", v: "17 of ~30", sub: "register coverage", tone: "border-t-low", href: reviewer ? "/register" : undefined },
+  const tiles: { k: string; v: string; sub: string; tone: string; href?: string; cta?: string }[] = [
+    { k: "Drafts to review", v: String(all.length), sub: reviewer ? "waiting for your review" : "that you requested", tone: "border-t-accent", href: "/#drafts", cta: "See the list" },
+    { k: "Decide before signing", v: reviewer ? String(totals.high) : "Ask Karandeep", sub: reviewer ? `findings, in ${byLevel("High")} of ${all.length} drafts` : "hidden in seller view", tone: "border-t-high", href: reviewer ? "/findings?level=High" : undefined, cta: "See every finding" },
+    { k: "Negotiate", v: reviewer ? String(totals.medium) : "Ask Karandeep", sub: reviewer ? `findings, in ${withMedium} of ${all.length} drafts` : "hidden in seller view", tone: "border-t-medium", href: reviewer ? "/findings?level=Medium" : undefined, cta: "See every finding" },
+    { k: "Drafts needing a decision", v: reviewer ? `${byLevel("High")} of ${all.length}` : "Ask Karandeep", sub: reviewer ? `${byLevel("Medium")} negotiate only · ${clean} information only` : "hidden in seller view", tone: "border-t-ok", href: reviewer ? "/?sev=High#drafts" : undefined, cta: "See those drafts" },
+    { k: "Signed contracts read", v: "17 of ~30", sub: "signed contracts read so far", tone: "border-t-low", href: reviewer ? "/register" : undefined, cta: "See what they say" },
   ];
 
   return (
@@ -90,7 +104,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
             <dt className="text-xs uppercase tracking-wide text-muted">{t.href ? <Link href={t.href} className="after:absolute after:inset-0 after:content-[''] focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-accent">{t.k}</Link> : t.k}</dt>
             <dd className="mt-1 text-2xl font-bold leading-tight">{t.v}</dd>
             <dd className="mt-0.5 text-xs text-muted">{t.sub}</dd>
-            {t.href && <dd className="mt-1 text-xs font-semibold text-accent" aria-hidden="true">View →</dd>}
+            {t.href && <dd className="mt-1 text-xs font-semibold text-accent" aria-hidden="true">{t.cta ?? "View"} →</dd>}
           </div>
         ))}
       </dl>
@@ -108,7 +122,8 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
                   <SeverityBadge s="High" />
                 </div>
                 <div className="text-xs text-muted">{b.doc_type.replace(/\s*\(.*$/, "")} · due {fmt(deadlineIso(b.slug))}</div>
-                {reviewer ? <p className="mt-2 flex-1 text-sm">{b.headline}</p> : <p className="mt-2 flex-1 text-sm text-muted">A “Decide before signing” flag is raised. Open the brief for the questions to ask Karandeep.</p>}
+                <Due iso={deadlineIso(b.slug)} />
+                {reviewer ? <p className="mt-2 flex-1 text-sm"><Gloss text={shortHeadline(b.slug, b.headline)} /></p> : <p className="mt-2 flex-1 text-sm text-muted">A “Decide before signing” flag is raised. Open the brief for the questions to ask Karandeep.</p>}
                 <div className="mt-3 flex items-center justify-between gap-2 text-xs text-muted">
                   <span>{reviewer ? `${c.high} to decide · ${c.medium} to negotiate` : "Brief ready"}</span>
                   <Link className="rounded border border-rule px-2.5 py-1 text-ink hover:bg-accent-bg" href={`/brief/${b.slug}`}>Open brief</Link>
@@ -161,7 +176,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
         <div className="mt-3 hidden overflow-hidden rounded-lg border border-rule bg-card md:block">
           <table className="w-full text-left text-sm">
             <thead className="bg-paper text-xs font-semibold text-muted">
-              <tr><th className="p-3"><Link href={href({ sort: "name" })} className="hover:underline" aria-label="Sort by counterparty">Draft{sort === "name" ? " ↑" : ""}</Link></th><th className="p-3">AtliQ entity</th><th className="p-3"><Link href={href({ sort: undefined })} className="hover:underline" aria-label="Sort by due date">Due (from notes){sort === "due" ? " ↑" : ""}</Link></th><th className="p-3"><Link href={href({ sort: "needs" })} className="hover:underline" aria-label="Sort by most to decide">What it needs{sort === "needs" ? " ↑" : ""}</Link></th><th className="p-3">{reviewer ? "Progress" : "Status"}</th><th className="p-3"><span className="sr-only">Open</span></th></tr>
+              <tr><th className="p-3"><Link href={href({ sort: "name" })} className="hover:underline" aria-label="Sort by counterparty">Draft{sort === "name" ? " ↑" : ""}</Link></th><th className="p-3">AtliQ entity</th><th className="p-3"><Link href={href({ sort: undefined })} className="hover:underline" aria-label="Sort by due date">Due{sort === "due" ? " ↑" : ""}</Link></th><th className="p-3"><Link href={href({ sort: "needs" })} className="hover:underline" aria-label="Sort by most to decide">What it needs{sort === "needs" ? " ↑" : ""}</Link></th><th className="p-3">{reviewer ? "Progress" : "Status"}</th><th className="p-3"><span className="sr-only">Open</span></th></tr>
             </thead>
             <tbody>
               {briefs.map((b) => {
@@ -171,10 +186,10 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
                     <td className={`border-l-4 p-3 ${h === "High" ? "border-l-high" : h === "Medium" ? "border-l-medium" : "border-l-ok"}`}>
                       <Link className="font-semibold text-accent hover:underline" href={`/brief/${b.slug}`}>{b.counterparty}</Link>
                       <div className="text-xs text-muted">{b.doc_type.replace(/\s*\(.*$/, "")} · {b.tracker_id}{reviewer && b.value ? ` · ${b.value.replace(/\s*\(.*$/, "")}` : ""}</div>
-                      {reviewer && <div className="mt-1 line-clamp-2 max-w-md text-xs text-ink/80" title={b.headline}>{b.headline}</div>}
+                      {reviewer && <div className="mt-1 line-clamp-2 max-w-md text-xs text-ink/80" title={b.headline}><Gloss text={shortHeadline(b.slug, b.headline)} /></div>}
                     </td>
                     <td className="p-3">{entityName(b.atliq_entity_in_draft)}</td>
-                    <td className="p-3 whitespace-nowrap">{fmt(deadlineIso(b.slug))}</td>
+                    <td className="p-3 whitespace-nowrap">{fmt(deadlineIso(b.slug))}<Due iso={deadlineIso(b.slug)} /></td>
                     <td className="p-3">
                       <SeverityBadge s={h} />
                       {reviewer && <div className="mt-1 text-xs text-muted">{c.high} to decide · {c.medium} to negotiate · {c.low} for information</div>}
@@ -195,9 +210,10 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
               <li key={b.slug} className={`card rounded-lg border border-rule border-l-4 bg-card p-3 ${h === "High" ? "border-l-high" : h === "Medium" ? "border-l-medium" : "border-l-ok"}`}>
                 <Link className="font-semibold text-accent hover:underline" href={`/brief/${b.slug}`}>{b.counterparty}</Link>
                 <div className="text-xs text-muted">{b.doc_type.replace(/\s*\(.*$/, "")} · {b.tracker_id}</div>
-                {reviewer && <div className="mt-1 text-xs">{b.headline}</div>}
+                {reviewer && <div className="mt-1 text-xs"><Gloss text={shortHeadline(b.slug, b.headline)} /></div>}
                 <div className="mt-2 flex flex-wrap items-center gap-2"><SeverityBadge s={h} />{reviewer && <span className="text-xs text-muted">{c.high} to decide · {c.medium} to negotiate</span>}</div>
                 <div className="mt-1 text-xs text-muted">Deadline: {fmt(deadlineIso(b.slug))}</div>
+                <Due iso={deadlineIso(b.slug)} />
                 {reviewer && <div className="mt-1"><DecisionProgress slug={b.slug} ids={b.findings.filter((f) => f.severity === "High").map((f) => f.id)} /></div>}
               </li>
             );
@@ -214,7 +230,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
             </span>
           </nav>
         )}
-        <p className="mt-4 text-xs text-muted">Due dates come from the tracker notes and the 22 Sep, 25 Sep and 27 Sep meeting notes; where the notes give none, the row says so. The dataset date is 28 Sep 2026.</p>
+        <p className="mt-4 text-xs text-muted">Due dates come from the tracker notes and the 22 Sep, 25 Sep and 27 Sep meeting notes; where the notes give none, the row says so. Overdue and due-soon labels count from today.</p>
       </section>
 
       <details className="card mt-8 rounded-lg border border-rule bg-card p-4">
@@ -242,7 +258,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
 
       <section className="rounded-lg border border-rule p-4" aria-label="Deadlines">
         <h2 className="text-base font-semibold">Deadlines</h2>
-        <p className="text-xs text-muted">Due dates from the tracker and meeting notes. The dataset date is 28 Sep 2026, so earlier dates are not shown as overdue.</p>
+        <p className="text-xs text-muted">Due dates from the tracker and meeting notes. Dates before today are marked overdue.</p>
         <ol className="mt-3 grid gap-2">
           {deadlineGroups.map((g) => (
             <li key={g.key} className="grid grid-cols-[4.5rem_minmax(0,1fr)] items-start gap-x-3 border-t border-rule pt-2 first:border-0 first:pt-0">

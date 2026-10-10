@@ -25,6 +25,8 @@ export default function IntakeForm({ samples }: { samples: { slug: string; label
     const j = await r.json();
     if (!r.ok) { setMsg(j.error ?? "Could not load that draft."); return; }
     setText(j.text); setGeo(j.geography); setName(j.counterparty); setRes(null);
+    // One click fewer: choosing a draft runs the review straight away.
+    await run(j.text, j.geography, j.counterparty);
   }
   function onFile(f: File | undefined) {
     if (!f) return;
@@ -33,17 +35,18 @@ export default function IntakeForm({ samples }: { samples: { slug: string; label
     if (f.size > 1_000_000) { setMsg("That file is over 1 MB. Paste the part you want checked."); return; }
     const rd = new FileReader(); rd.onload = () => { setText(String(rd.result ?? "")); setName(f.name.replace(/\.\w+$/, "")); }; rd.readAsText(f);
   }
-  async function check(e: React.FormEvent) {
-    e.preventDefault(); setBusy(true); setMsg(null); setRes(null);
+  function check(e: React.FormEvent) { e.preventDefault(); void run(text, geo, name); }
+  async function run(t: string, g: string, label: string) {
+    setBusy(true); setMsg(null); setRes(null);
     try {
       const n = (x: string) => Number(x.replace(/,/g, ""));
       // Contract value: the value typed in, or else monthly fee times months.
       const v = n(value) > 0 ? n(value) : n(fee) > 0 && n(months) > 0 ? n(fee) * n(months) : 0;
-      const r = await fetch("/api/intake", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ text, geography: geo, value: v > 0 ? v : null, currency: cur }) });
+      const r = await fetch("/api/intake", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ text: t, geography: g, value: v > 0 ? v : null, currency: cur }) });
       const j = await r.json();
       if (!r.ok) throw new Error(j.error ?? "Check failed");
       setRes(j);
-      logAudit(actor, "review new draft", name || "pasted text", `${j.stop ? "stopped: real data" : `${j.findings.filter((f: { severity: string }) => f.severity === "High").length} decide before signing, ${j.findings.filter((f: { severity: string }) => f.severity === "Medium").length} negotiate`} · ${j.chars} characters, text not stored`);
+      logAudit(actor, "review new draft", label || "pasted text", `${j.stop ? "stopped: real data" : `${j.findings.filter((f: { severity: string }) => f.severity === "High").length} decide before signing, ${j.findings.filter((f: { severity: string }) => f.severity === "Medium").length} negotiate`} · ${j.chars} characters, text not stored`);
     } catch (er) { setMsg((er as Error).message); } finally { setBusy(false); }
   }
   const reviewer = role === "reviewer";
@@ -52,7 +55,7 @@ export default function IntakeForm({ samples }: { samples: { slug: string; label
       <form onSubmit={check} className="card rounded-lg border border-rule bg-card p-4">
         <div className="flex flex-wrap items-end gap-3">
           {samples.length > 0 && (
-            <label className="min-w-0 text-xs text-muted">Try a draft from the dataset
+            <label className="min-w-0 text-xs text-muted">Quickest: pick a draft already on the dashboard
               <select onChange={(e) => loadSample(e.target.value)} defaultValue="" className="mt-1 block max-w-full rounded border border-rule bg-paper p-2 text-sm text-ink">
                 <option value="">Choose…</option>{samples.map((s) => <option key={s.slug} value={s.slug}>{s.label}</option>)}
               </select>
@@ -81,6 +84,7 @@ export default function IntakeForm({ samples }: { samples: { slug: string; label
           </label>
           <button disabled={busy || text.trim().length < 20} className="rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50">{busy ? "Reviewing…" : "Review this draft"}</button>
           {text && <button type="button" onClick={() => { setText(""); setRes(null); setName(""); setMsg(null); }} className="rounded border border-rule bg-card px-3 py-2.5 text-sm hover:bg-accent-bg">Clear</button>}
+          {text.trim().length < 20 && <p className="basis-full text-xs text-muted">Pick a draft from the list above to see a result at once, or upload a file, or paste the text.</p>}
         </div>
       </form>
       {msg && <p role="alert" className="mt-4 rounded-lg border border-medium/40 bg-medium-bg p-3 text-sm text-medium">{msg}</p>}
