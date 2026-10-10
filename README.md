@@ -2,6 +2,8 @@
 
 A working prototype for AtliQ's contract reviewer (Karandeep) and its sellers. For each of the 15 incoming contract drafts in the capstone dataset it shows a **ranked brief** in which every finding quotes the contract, says which rule or earlier signed clause it relies on, and ends with a recorded decision. It also holds an **obligation register** built from the 17 signed contracts, a **knowledge base** with cited search over every dataset file, Karandeep's **playbook**, a **check-a-new-draft** screen that runs live rules on pasted text, an **evaluation screen**, a **decision log** and an **audit log**.
 
+**Live app:** https://atliq-contract-risk-analyzer.vercel.app/  ·  **Code:** https://github.com/bhattacharyasandip2801-stack/atliq-contract-risk-analyzer
+
 **To open the prototype:** choose a person on the sign-in page. Choose **Karandeep** to see everything. No password is needed.
 
 Built for Codebasics AI PM Cohort, Capstone 2. Author: Sandip Gopal Bhattacharya. All data is the capstone's synthetic dataset. Nothing here is legal advice.
@@ -17,7 +19,7 @@ Built for Codebasics AI PM Cohort, Capstone 2. Author: Sandip Gopal Bhattacharya
 | Redaction (seller view) | **Live, in code**, on the server. The seller view is rebuilt from redaction-safe fields only. |
 | Decision and audit logs | Live, but kept in the **browser's local storage** only. |
 | Evaluation screen | Live, in code, over the stored briefs and register. No model is called, so it shows 0 tokens. |
-| Check a **new** draft (paste or upload) | **Live, in code, no AI.** Fixed rules from Karandeep's checklist and the entity sheet read the pasted text on the server and quote it back exactly. The text is not stored. It always lists what it could not check. Real patient or personal data stops the check. |
+| Review a **new** draft (paste or upload) | **Live, in code, no AI.** Fixed rules from Karandeep's checklist and the entity sheet read the pasted text on the server and quote it back exactly. The text is not stored. It always lists what it could not check. Real patient or personal data stops the check. |
 | Knowledge base search | **Live, in code, no AI.** BM25 keyword search over 821 passages from the 40 dataset files. Every passage is copied word for word and re-checked against its file. Reviewer only. |
 | Optional AI answer over the knowledge base | **Off by default.** Needs three settings in Vercel (see below). It writes a short answer only from passages the search found, and every quote it cites is checked word for word. An invented quote, advice wording or a malformed reply is withheld. **The live call to a real provider has not been tested**; the code path was tested against stand-in servers using the Anthropic, Gemini and OpenAI request formats. |
 | Analysis of a **full brief for a new contract** | **Not built.** Writing a full ranked brief with cross-document checks needs a paid AI API key, which this project does not have. The PRD (Appendix B) describes the design. The paste-a-draft rule check above is the live part. |
@@ -51,7 +53,7 @@ About 6 passages (about 2,500 tokens) go to the model per question. The answer i
 Useful scripts:
 
 ```bash
-npm run validate     # checks every quote in the register and briefs against data/dataset (787 quotes)
+npm run validate     # checks every quote in the register and briefs against data/dataset (886 quotes)
 npm run build:data   # rebuilds data/briefs.json, data/sources.json and data/tracker.json after editing a brief
 npm run lint
 ```
