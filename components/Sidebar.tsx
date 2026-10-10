@@ -20,17 +20,17 @@ const ICON = {
   kb: I("M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-5-5"),
 };
 const ITEMS: { href: string; label: string; icon: keyof typeof ICON; reviewerOnly?: boolean; group: string }[] = [
+  { href: "/about", group: "", label: "About this product", icon: "about" },
   { href: "/", group: "Work", label: "Contract Dashboard", icon: "queue" },
   { href: "/intake", group: "Work", label: "Review a new draft", icon: "intake" },
   { href: "/findings", group: "Work", label: "Findings worklist", icon: "decisions", reviewerOnly: true },
   { href: "/knowledge", group: "Reference", label: "Knowledge base", icon: "kb", reviewerOnly: true },
   { href: "/register", group: "Reference", label: "Obligation register", icon: "register", reviewerOnly: true },
-  { href: "/about", group: "Reference", label: "About this product", icon: "about" },
   { href: "/decisions", group: "Work", label: "Decisions", icon: "decisions", reviewerOnly: true },
   { href: "/evaluation", group: "Quality and Audit", label: "Evaluation", icon: "eval", reviewerOnly: true },
   { href: "/audit", group: "Quality and Audit", label: "Audit log", icon: "audit" },
 ];
-const GROUPS = ["Work", "Reference", "Quality and Audit"];
+const GROUPS = ["", "Work", "Reference", "Quality and Audit"];
 
 export default function Sidebar() {
   const path = usePathname();
@@ -52,7 +52,7 @@ export default function Sidebar() {
       <nav aria-label="Main" className="flex gap-1 overflow-x-auto px-2 pb-2 lg:flex-1 lg:flex-col lg:overflow-visible lg:pb-0">
         {items.map((i, n) => (
           <Fragment key={i.href}>
-            {(n === 0 || items[n - 1].group !== i.group) && <span className="hidden px-3 pb-1 pt-4 text-[11px] font-semibold uppercase tracking-wide text-white/60 first:pt-1 lg:block">{i.group}</span>}
+            {i.group !== "" && (n === 0 || items[n - 1].group !== i.group) && <span className="hidden px-3 pb-1 pt-4 text-[11px] font-semibold uppercase tracking-wide text-white/60 first:pt-1 lg:block">{i.group}</span>}
             {link(i)}
           </Fragment>
         ))}

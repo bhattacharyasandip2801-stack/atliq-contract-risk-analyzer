@@ -75,7 +75,7 @@ Karandeep's answer (10 Oct): each contract is judged fresh, sometimes against it
 
 ## Screens
 
-The sidebar groups the screens as **Work** (Contract Dashboard, Review a new draft, Findings worklist, Decisions), **Reference** (Knowledge base, Obligation register, About this product) and **Quality and Audit** (Evaluation, Audit log). Due dates show Overdue, Due today or Due in N days, counted from today in India; set `DEMO_AS_OF=YYYY-MM-DD` to pin the date for a demo. The look follows the AtliQ website (navy and violet palette, Inter Tight type).
+The sidebar starts with **About this product** (the home page), then groups the screens as **Work** (Contract Dashboard, Review a new draft, Findings worklist, Decisions), **Reference** (Knowledge base, Obligation register) and **Quality and Audit** (Evaluation, Audit log). Due dates show Overdue, Due today or Due in N days, counted from today in India; set `DEMO_AS_OF=YYYY-MM-DD` to pin the date for a demo. The look follows the AtliQ website (navy and violet palette, Inter Tight type).
 
 | Screen | What it shows |
 |---|---|
