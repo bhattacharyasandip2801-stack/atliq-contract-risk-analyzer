@@ -6,7 +6,7 @@ import DecisionProgress from "@/components/DecisionProgress";
 import { ExportLink } from "@/components/Small";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Contract queue" };
+export const metadata: Metadata = { title: "Contract dashboard" };
 
 export const dynamic = "force-dynamic";
 
@@ -30,7 +30,6 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
   const sumAll = Math.max(1, totals.high + totals.medium + totals.low);
   const clean = all.filter((b) => ["Low", "None"].includes(highestSeverity(b))).length;
   const byLevel = (l: string) => all.filter((b) => highestSeverity(b) === l).length;
-  const noHigh = all.length - byLevel("High");
   const withMedium = all.filter((b) => countBy(b).medium > 0).length;
   const briefs = sev === "All" ? all : all.filter((b) => (sev === "Low" ? ["Low", "None"].includes(highestSeverity(b)) : highestSeverity(b) === sev));
   const deadlineGroups = [...new Set(all.map((b) => deadlineIso(b.slug) ?? "none"))].map((k) => ({
@@ -38,19 +37,19 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
   }));
   const urgent = all.filter((b) => highestSeverity(b) === "High").slice(0, 3);
 
-  const tiles: { k: string; v: string; sub: string; tone: string }[] = [
-    { k: "Drafts to review", v: String(all.length), sub: reviewer ? "from the capstone dataset" : "that you requested", tone: "border-t-accent" },
-    { k: "Decide before signing", v: reviewer ? String(totals.high) : "Ask Karandeep", sub: reviewer ? `findings, in ${byLevel("High")} of ${all.length} drafts` : "hidden in seller view", tone: "border-t-high" },
-    { k: "Negotiate", v: reviewer ? String(totals.medium) : "Ask Karandeep", sub: reviewer ? `findings, in ${withMedium} of ${all.length} drafts` : "hidden in seller view", tone: "border-t-medium" },
-    { k: "Drafts needing a decision", v: reviewer ? `${byLevel("High")} of ${all.length}` : "Ask Karandeep", sub: reviewer ? `${byLevel("Medium")} negotiate only · ${clean} information only` : "hidden in seller view", tone: "border-t-ok" },
-    { k: "Signed contracts read", v: "17 of ~30", sub: "register coverage", tone: "border-t-low" },
+  const tiles: { k: string; v: string; sub: string; tone: string; href?: string }[] = [
+    { k: "Drafts to review", v: String(all.length), sub: reviewer ? "from the capstone dataset" : "that you requested", tone: "border-t-accent", href: "/#drafts" },
+    { k: "Decide before signing", v: reviewer ? String(totals.high) : "Ask Karandeep", sub: reviewer ? `findings, in ${byLevel("High")} of ${all.length} drafts` : "hidden in seller view", tone: "border-t-high", href: reviewer ? "/findings?level=High" : undefined },
+    { k: "Negotiate", v: reviewer ? String(totals.medium) : "Ask Karandeep", sub: reviewer ? `findings, in ${withMedium} of ${all.length} drafts` : "hidden in seller view", tone: "border-t-medium", href: reviewer ? "/findings?level=Medium" : undefined },
+    { k: "Drafts needing a decision", v: reviewer ? `${byLevel("High")} of ${all.length}` : "Ask Karandeep", sub: reviewer ? `${byLevel("Medium")} negotiate only · ${clean} information only` : "hidden in seller view", tone: "border-t-ok", href: reviewer ? "/?sev=High#drafts" : undefined },
+    { k: "Signed contracts read", v: "17 of ~30", sub: "register coverage", tone: "border-t-low", href: reviewer ? "/register" : undefined },
   ];
 
   return (
     <div>
       <header className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold">Contract queue</h1>
+          <h1 className="text-2xl font-bold">Contract dashboard</h1>
           <p className="mt-1 max-w-2xl text-sm text-muted">
             Incoming drafts, ranked. Every finding quotes the contract, names the rule or signed clause behind it, and ends in a recorded decision.
             {!reviewer && ` You are signed in as ${user.name}: you see the ${all.length === 1 ? "draft" : all.length + " drafts"} you requested, with flag types, missing documents and what to ask Karandeep.`}
@@ -61,10 +60,11 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
 
       <dl className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-5">
         {tiles.map((t) => (
-          <div key={t.k} className={`card rounded-lg border border-rule border-t-4 bg-card p-3 ${t.tone}`}>
-            <dt className="text-xs uppercase tracking-wide text-muted">{t.k}</dt>
+          <div key={t.k} className={`card relative rounded-lg border border-rule border-t-4 bg-card p-3 ${t.tone} ${t.href ? "hover:bg-accent-bg" : ""}`}>
+            <dt className="text-xs uppercase tracking-wide text-muted">{t.href ? <Link href={t.href} className="after:absolute after:inset-0 after:content-[''] focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-accent">{t.k}</Link> : t.k}</dt>
             <dd className="mt-1 text-2xl font-bold leading-tight">{t.v}</dd>
             <dd className="mt-0.5 text-xs text-muted">{t.sub}</dd>
+            {t.href && <dd className="mt-1 text-xs font-semibold text-accent" aria-hidden="true">View →</dd>}
           </div>
         ))}
       </dl>
@@ -132,7 +132,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
         </ul>
       </section>
 
-      <section className="mt-8" aria-label="All drafts">
+      <section id="drafts" className="mt-8 scroll-mt-4" aria-label="All drafts">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <h2 className="text-base font-semibold">All drafts</h2>

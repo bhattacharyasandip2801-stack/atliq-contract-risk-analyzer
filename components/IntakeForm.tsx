@@ -43,7 +43,7 @@ export default function IntakeForm({ samples }: { samples: { slug: string; label
       const j = await r.json();
       if (!r.ok) throw new Error(j.error ?? "Check failed");
       setRes(j);
-      logAudit(actor, "check new draft", name || "pasted text", `${j.stop ? "stopped: real data" : `${j.findings.filter((f: { severity: string }) => f.severity === "High").length} decide before signing, ${j.findings.filter((f: { severity: string }) => f.severity === "Medium").length} negotiate`} · ${j.chars} characters, text not stored`);
+      logAudit(actor, "review new draft", name || "pasted text", `${j.stop ? "stopped: real data" : `${j.findings.filter((f: { severity: string }) => f.severity === "High").length} decide before signing, ${j.findings.filter((f: { severity: string }) => f.severity === "Medium").length} negotiate`} · ${j.chars} characters, text not stored`);
     } catch (er) { setMsg((er as Error).message); } finally { setBusy(false); }
   }
   const reviewer = role === "reviewer";
@@ -79,7 +79,7 @@ export default function IntakeForm({ samples }: { samples: { slug: string; label
             <span className="mt-1 flex gap-1"><select aria-label="Currency" value={cur} onChange={(e) => setCur(e.target.value)} className="rounded border border-rule bg-paper p-2 text-sm text-ink">{["$", "₹", "€", "£"].map((c) => <option key={c}>{c}</option>)}</select>
               <input inputMode="numeric" value={value} onChange={(e) => setValue(e.target.value)} placeholder="210000" className="w-32 rounded border border-rule bg-paper p-2 text-sm text-ink" /></span>
           </label>
-          <button disabled={busy || text.trim().length < 20} className="rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50">{busy ? "Checking…" : "Check this draft"}</button>
+          <button disabled={busy || text.trim().length < 20} className="rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50">{busy ? "Reviewing…" : "Review this draft"}</button>
           {text && <button type="button" onClick={() => { setText(""); setRes(null); setName(""); setMsg(null); }} className="rounded border border-rule bg-card px-3 py-2.5 text-sm hover:bg-accent-bg">Clear</button>}
         </div>
       </form>

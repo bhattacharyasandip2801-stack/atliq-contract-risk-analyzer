@@ -5,6 +5,7 @@ import { RoleProvider } from "@/components/RoleProvider";
 import Sidebar from "@/components/Sidebar";
 import { MobileBar } from "@/components/SignedIn";
 import { DemoPanel } from "@/components/UserDemo";
+import BackToDashboard from "@/components/BackToDashboard";
 
 export const metadata: Metadata = {
   title: { default: "AtliQ Contract Risk Analyzer (prototype)", template: "%s · AtliQ Contract Risk Analyzer" },
@@ -32,7 +33,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               <Sidebar />
               <div className="lg:pl-60">
                 <MobileBar />
-                <main className="mx-auto min-w-0 max-w-6xl px-4 py-6 lg:px-8">{children}</main>
+                <main className="mx-auto min-w-0 max-w-6xl px-4 py-6 lg:px-8"><BackToDashboard />{children}</main>
                 <Footer />
               </div>
               <DemoPanel />

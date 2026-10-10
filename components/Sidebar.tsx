@@ -19,8 +19,9 @@ const ICON = {
   playbook: I("M5 4h11a3 3 0 013 3v13H8a3 3 0 01-3-3zM5 17a3 3 0 013-3h11"),
 };
 const ITEMS: { href: string; label: string; icon: keyof typeof ICON; reviewerOnly?: boolean }[] = [
-  { href: "/", label: "Contract queue", icon: "queue" },
-  { href: "/intake", label: "Check a new draft", icon: "intake" },
+  { href: "/", label: "Contract dashboard", icon: "queue" },
+  { href: "/intake", label: "Review a new draft", icon: "intake" },
+  { href: "/findings", label: "Findings worklist", icon: "decisions", reviewerOnly: true },
   { href: "/knowledge", label: "Knowledge base", icon: "kb", reviewerOnly: true },
   { href: "/playbook", label: "Playbook", icon: "playbook", reviewerOnly: true },
   { href: "/register", label: "Obligation register", icon: "register", reviewerOnly: true },
