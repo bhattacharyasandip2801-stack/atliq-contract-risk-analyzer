@@ -27,7 +27,7 @@ export function SignedInCard() {
         <div className="truncate text-sm font-semibold">{user.name}</div>
         <div className="truncate text-xs text-white/60">{user.role === "reviewer" ? "Full access" : "Limited view"}</div>
       </div>
-      <button type="button" onClick={signOut} className="rounded border border-white/25 px-2 py-1 text-xs hover:bg-nav-hover">Sign out</button>
+      <button type="button" onClick={signOut} className="rounded border border-white/25 px-3 py-2 text-xs hover:bg-nav-hover">Sign out</button>
     </div>
   );
 }
@@ -41,7 +41,7 @@ export function MobileBar() {
       <DemoStartButton variant="compact" />
       <div className="flex items-center gap-2 text-xs">
         <span className="text-muted">Signed in as <b className="text-ink">{user.name}</b></span>
-        <button type="button" onClick={signOut} className="rounded border border-rule px-2 py-1 hover:bg-accent-bg">Sign out</button>
+        <button type="button" onClick={signOut} className="rounded border border-rule px-3 py-2 hover:bg-accent-bg">Sign out</button>
       </div>
     </div>
   );

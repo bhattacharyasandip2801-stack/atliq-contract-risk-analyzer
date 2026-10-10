@@ -121,10 +121,10 @@ export default function KnowledgeSearch({ stats, library }: { stats: { files: nu
 
           <section aria-label="Try a question" className="card rounded-lg border border-rule bg-card p-4">
             <h2 className="text-base font-semibold">Try a question</h2>
-            <div className="mt-2 flex flex-wrap gap-2">{IDEAS.map((i) => <button key={i} onClick={() => { setQ(i); search(i); }} className="rounded-full border border-rule bg-card px-3 py-1 text-xs hover:bg-accent-bg">{i}</button>)}</div>
+            <div className="mt-2 flex flex-wrap gap-2">{IDEAS.map((i) => <button key={i} onClick={() => { setQ(i); search(i); }} className="rounded-full border border-rule bg-card px-3 py-1.5 text-xs hover:bg-accent-bg">{i}</button>)}</div>
             {recent.length > 0 && <>
               <h3 className="mt-4 text-sm font-semibold">Your recent searches</h3>
-              <div className="mt-2 flex flex-wrap gap-2">{recent.map((r) => <button key={r} onClick={() => { setQ(r); search(r); }} className="rounded-full border border-rule bg-paper px-3 py-1 text-xs hover:bg-accent-bg">{r}</button>)}
+              <div className="mt-2 flex flex-wrap gap-2">{recent.map((r) => <button key={r} onClick={() => { setQ(r); search(r); }} className="rounded-full border border-rule bg-paper px-3 py-1.5 text-xs hover:bg-accent-bg">{r}</button>)}
                 <button onClick={() => { writeRecent([]); setRecent([]); }} className="px-2 py-1 text-xs text-muted underline">Clear recent</button></div>
               <p className="mt-1 text-xs text-muted">Kept only in this browser.</p></>}
           </section>

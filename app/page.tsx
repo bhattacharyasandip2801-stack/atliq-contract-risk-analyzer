@@ -129,7 +129,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
                 {reviewer ? <p className="mt-2 flex-1 text-sm"><Gloss text={shortHeadline(b.slug, b.headline)} /></p> : <p className="mt-2 flex-1 text-sm text-muted">A “Decide before signing” flag is raised. Open the brief for the questions to ask Karandeep.</p>}
                 <div className="mt-3 flex items-center justify-between gap-2 text-xs text-muted">
                   <span>{reviewer ? `${c.high} to decide · ${c.medium} to negotiate` : "Brief ready"}</span>
-                  <Link className="rounded-md bg-accent px-3 py-1.5 text-xs font-semibold text-white hover:opacity-90" href={`/brief/${b.slug}`}>Open brief →</Link>
+                  <Link className="rounded-md bg-accent px-3 py-2 text-xs font-semibold text-white hover:opacity-90" href={`/brief/${b.slug}`}>Open brief →</Link>
                 </div>
               </li>
             );
@@ -156,10 +156,13 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
         </ol>
       </section>
 
-      <section id="drafts" className="mt-10 scroll-mt-4" aria-label="Full queue">
-        <div className="flex flex-wrap items-end justify-between gap-3">
+      <details id="drafts" open className="queue mt-10 scroll-mt-4">
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 border-b-2 border-rule pb-1.5">
+          <h2 className="text-lg font-bold">Full queue ({all.length} drafts)</h2>
+          <span className="queue-hint text-xs font-medium text-muted" aria-hidden="true" />
+        </summary>
+        <div className="mt-2 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h2 className="w-full border-b-2 border-rule pb-1.5 text-lg font-bold">Full queue ({all.length} drafts)</h2>
             <p className="text-sm text-muted">{sorted.length === all.length ? `${all.length} drafts` : `${sorted.length} of ${all.length} drafts`}, sorted by {SORTS.find(([k]) => k === sort)![1].toLowerCase()}. Open a row to see its brief.</p>
           </div>
           <nav className="flex flex-wrap gap-1.5" aria-label="Filter by highest severity">
@@ -167,7 +170,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
               const n = f === "All" ? all.length : f === "Low" ? clean : byLevel(f);
               return (
                 <Link key={f} href={href({ sev: f === "All" ? undefined : f })} aria-current={sev === f ? "page" : undefined}
-                  className={`rounded-full border px-3 py-1 text-xs font-semibold ${sev === f ? "border-accent bg-accent text-white" : "border-rule bg-card text-ink hover:bg-accent-bg"}`}>
+                  className={`rounded-full border px-3 py-1.5 text-xs font-semibold ${sev === f ? "border-accent bg-accent text-white" : "border-rule bg-card text-ink hover:bg-accent-bg"}`}>
                   {f === "High" ? "Decide before signing" : f === "Medium" ? "Negotiate" : f === "Low" ? "Information only or none" : f} · {n}
                 </Link>
               );
@@ -191,7 +194,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
               {SORTS.map(([k, l]) => <option key={k} value={k}>{l}</option>)}
             </select>
           </label>
-          <button type="submit" className="rounded-md bg-accent px-3 py-1.5 text-sm font-semibold text-white">Apply</button>
+          <button type="submit" className="rounded-md bg-accent px-4 py-2 text-sm font-semibold text-white">Apply</button>
           {filtersOn && <Link href="/#drafts" className="py-1.5 text-sm text-accent hover:underline">Clear filters</Link>}
         </form>
 
@@ -217,7 +220,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
                       {reviewer && <div className="mt-1 text-xs text-muted">{c.high} to decide · {c.medium} to negotiate · {c.low} for information</div>}
                     </td>
                     <td className="p-3">{reviewer ? <DecisionProgress slug={b.slug} ids={b.findings.filter((f) => f.severity === "High").map((f) => f.id)} /> : <span className="text-xs text-muted">Brief ready</span>}</td>
-                    <td className="p-3 text-right"><Link className="inline-block rounded-md bg-accent px-3 py-1.5 text-xs font-semibold text-white hover:opacity-90" href={`/brief/${b.slug}`}>Open →</Link></td>
+                    <td className="p-3 text-right"><Link className="inline-block rounded-md bg-accent px-3 py-2 text-xs font-semibold text-white hover:opacity-90" href={`/brief/${b.slug}`}>Open →</Link></td>
                   </tr>
                 );
               })}
@@ -253,7 +256,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
           </nav>
         )}
         <p className="mt-4 text-xs text-muted">Due dates come from the tracker notes and the 22 Sep, 25 Sep and 27 Sep meeting notes; where the notes give none, the row says so. Overdue and due-soon labels count from today.</p>
-      </section>
+      </details>
 
     </div>
   );

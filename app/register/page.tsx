@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { REGISTER } from "@/lib/data";
 import { getRole } from "@/lib/role";
 import { Chip, EXC_LABEL, EXC_TONE } from "@/components/Badges";
@@ -14,7 +13,7 @@ const TYPE_NAME: Record<string, string> = { restrictive_covenant: "Restrictive c
 export default async function RegisterPage({ searchParams }: { searchParams: Promise<{ type?: string; q?: string }> }) {
   const role = await getRole();
   if (role === "seller") {
-    return <div className="card rounded-lg border border-rule bg-card p-6"><h1 className="text-2xl font-bold">Register</h1><p className="mt-2 text-muted">The register holds other clients&apos; commercial terms, so it is hidden in the seller view. Ask Karandeep, or switch to the Karandeep view.</p><Link className="mt-3 inline-block text-accent underline" href="/">Back to the dashboard</Link></div>;
+    return <div className="card rounded-lg border border-rule bg-card p-6"><h1 className="text-2xl font-bold">Register</h1><p className="mt-2 text-muted">The register holds other clients&apos; commercial terms, so it is hidden in the seller view. Ask Karandeep for access.</p></div>;
   }
   const sp = await searchParams;
   const type = sp.type && sp.type !== "all" ? sp.type : "counsel";

@@ -91,7 +91,7 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
         {(highs.length > 0 || meds.length > 0) && (
           <div className="no-print mt-4 flex flex-wrap items-center gap-3">
             <a href={highs.length ? "#high" : "#med"} className="inline-block rounded-md bg-accent px-4 py-2 text-sm font-semibold text-white hover:opacity-90">{highs.length ? `Start deciding (${highs.length}) ↓` : "Review negotiate points ↓"}</a>
-            {brief.exposure.length > 0 && <a href="#exposure" className="text-sm text-accent underline">See exposure numbers</a>}
+            {brief.exposure.length > 0 && <a href="#exposure" className="inline-block py-2 text-sm text-accent underline">See exposure numbers</a>}
           </div>
         )}
         <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-3">

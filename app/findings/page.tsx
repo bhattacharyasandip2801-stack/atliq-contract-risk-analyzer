@@ -31,7 +31,7 @@ export default async function FindingsPage({ searchParams }: { searchParams: Pro
       <nav className="mt-4 flex flex-wrap gap-1.5" aria-label="Choose a level">
         {tabs.map(([v, label]) => (
           <Link key={v} href={`/findings?level=${v}`} aria-current={level === v ? "page" : undefined}
-            className={`rounded-full border px-3 py-1 text-xs font-semibold ${level === v ? "border-accent bg-accent text-white" : "border-rule bg-card text-ink hover:bg-accent-bg"}`}>{label} · {count(v)}</Link>
+            className={`rounded-full border px-3 py-1.5 text-xs font-semibold ${level === v ? "border-accent bg-accent text-white" : "border-rule bg-card text-ink hover:bg-accent-bg"}`}>{label} · {count(v)}</Link>
         ))}
       </nav>
       <p className="mt-3 text-sm text-muted">{rows.length} findings in {drafts} drafts.</p>

@@ -34,7 +34,7 @@ export default function Home({ signedIn }: { signedIn: boolean }) {
             <span className="text-sm font-semibold">AtliQ Contract Risk Analyzer</span>
           </div>
           <nav aria-label="On this page" className="hidden items-center gap-5 text-sm text-muted md:flex">
-            <a className="hover:text-ink" href="#how">How it works</a><a className="hover:text-ink" href="#features">Features</a><a className="hover:text-ink" href="#trust">Trust</a><a className="hover:text-ink" href="#faq">FAQ</a>
+            <a className="py-2 hover:text-ink" href="#how">How it works</a><a className="py-2 hover:text-ink" href="#features">Features</a><a className="py-2 hover:text-ink" href="#trust">Trust</a><a className="py-2 hover:text-ink" href="#faq">FAQ</a>
           </nav>
           <Link href={href} className="rounded-md bg-accent px-4 py-2 text-sm font-semibold text-white hover:opacity-90">{label}</Link>
         </header>
@@ -42,10 +42,9 @@ export default function Home({ signedIn }: { signedIn: boolean }) {
 
       {/* Hero */}
       <section aria-label="Overview" className="px-4 pb-12 pt-12 sm:px-2 sm:pt-16">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="max-w-3xl">
           <div>
-            <span className="inline-block rounded-full bg-accent-bg px-3 py-1 text-xs font-semibold text-accent">Contract review for teams without a legal department</span>
-            <h1 className="mt-4 text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">Know what you are signing, before you sign it.</h1>
+            <h1 className="text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">Know what you are signing, before you sign it.</h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
               Every incoming contract gets a short, ranked brief: what to decide before signing, what to negotiate, and the exact clause behind each point.
               People stay in charge of every decision.
@@ -57,29 +56,6 @@ export default function Home({ signedIn }: { signedIn: boolean }) {
             <p className="mt-4 text-sm text-muted">Prototype on synthetic data. Not legal advice.</p>
           </div>
 
-          {/* Illustration of a brief, generic on purpose */}
-          <div aria-hidden="true" className="relative">
-            <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-br from-accent-bg via-paper to-card" />
-            <div className="rounded-xl border border-rule bg-card p-4 shadow-lg">
-              <div className="flex items-center justify-between text-xs text-muted"><span className="font-semibold text-ink">Services agreement · illustration</span><span>2 to decide · 3 to negotiate</span></div>
-              <div className="mt-3 grid gap-2.5 text-sm">
-                {[
-                  ["Decide before signing", "Overlaps a restriction in a signed contract", "Clause 4.1", "bg-high-bg text-high border-high/30"],
-                  ["Decide before signing", "Liability has no ceiling for one party", "Clause 10.2", "bg-high-bg text-high border-high/30"],
-                  ["Negotiate", "Payment terms are longer than the usual limit", "Clause 5.3", "bg-medium-bg text-medium border-medium/30"],
-                ].map(([lvl, t, c, cls]) => (
-                  <div key={t} className="rounded-lg border border-rule p-3">
-                    <div className="flex items-center justify-between gap-2"><span className={`rounded border px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${cls}`}>{lvl}</span><span className="text-xs text-muted">{c}</span></div>
-                    <div className="mt-1.5 font-medium">{t}</div>
-                  </div>
-                ))}
-                <div className="rounded-lg border border-dashed border-rule bg-paper p-3 text-xs text-muted">The exact quote appears here, beside the rule or signed clause it relies on, and is checked against its source.</div>
-              </div>
-              <div className="mt-3 flex gap-2 text-xs font-semibold">
-                <span className="rounded-md border border-ok/30 bg-ok-bg px-2.5 py-1 text-ok">✓ Accept</span><span className="rounded-md border border-medium/30 bg-medium-bg px-2.5 py-1 text-medium">⇄ Negotiate</span><span className="rounded-md border border-high/30 bg-high-bg px-2.5 py-1 text-high">✕ Reject</span>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -92,21 +68,8 @@ export default function Home({ signedIn }: { signedIn: boolean }) {
         </ul>
       </section>
 
-      {/* Problem */}
-      <section aria-label="The problem" className="px-4 py-14 sm:px-2">
-        <Kicker>The problem</Kicker>
-        <H2>Contracts get signed faster than they can be understood.</H2>
-        <Sub>Without a legal team, someone in the business reads each contract in full, under time pressure. What matters is rarely on the first page.</Sub>
-        <ul className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <Tile icon="⏱" title="Slow to read">Long agreements take hours, so reviews slip or get skimmed.</Tile>
-          <Tile icon="⚡" title="Hidden clashes">A new clause can quietly collide with a promise made in an earlier contract.</Tile>
-          <Tile icon="⚖" title="Lopsided terms">One-sided clauses and open-ended exposure sit inside standard boilerplate.</Tile>
-          <Tile icon="🗂" title="No record">Months later, nobody remembers why an exception was accepted.</Tile>
-        </ul>
-      </section>
-
       {/* How it works */}
-      <section id="how" aria-label="How it works" className="scroll-mt-20 border-y border-rule bg-card px-4 py-14 sm:px-2">
+      <section id="how" aria-label="How it works" className="scroll-mt-20 px-4 py-14 sm:px-2">
         <Kicker>How it works</Kicker>
         <H2>From incoming draft to recorded decision in three steps.</H2>
         <ol className="mt-8 grid gap-4 md:grid-cols-3">
@@ -123,7 +86,7 @@ export default function Home({ signedIn }: { signedIn: boolean }) {
       </section>
 
       {/* Features */}
-      <section id="features" aria-label="Features" className="scroll-mt-20 px-4 py-14 sm:px-2">
+      <section id="features" aria-label="Features" className="scroll-mt-20 border-y border-rule bg-card px-4 py-14 sm:px-2">
         <Kicker>What it does</Kicker>
         <H2>Everything a reviewer needs to decide, in one place.</H2>
         <ul className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -140,50 +103,41 @@ export default function Home({ signedIn }: { signedIn: boolean }) {
       </section>
 
       {/* Who it helps */}
-      <section aria-label="Who it helps" className="border-y border-rule bg-card px-4 py-14 sm:px-2">
+      <section aria-label="Who it helps" className="px-4 py-14 sm:px-2">
         <Kicker>Who it helps</Kicker>
         <H2>Faster for the person who signs, safer for everyone else.</H2>
         <ul className="mt-8 grid gap-4 md:grid-cols-3">
           {[["Leaders without a legal team", "Start from a short checklist of what to decide, not from page one of the contract."],
             ["Sales and account teams", "Get clear flags and questions on their own drafts without waiting for a full read."],
             ["Counsel and advisers", "Spend time only on the points marked for them, with the quotes and clause numbers already pulled."]].map(([t, d]) => (
-            <li key={t} className="rounded-xl border border-rule bg-paper p-5"><h3 className="text-base font-semibold">{t}</h3><p className="mt-1 text-sm leading-relaxed text-muted">{d}</p></li>
+            <li key={t} className="rounded-xl border border-rule bg-card p-5"><h3 className="text-base font-semibold">{t}</h3><p className="mt-1 text-sm leading-relaxed text-muted">{d}</p></li>
           ))}
         </ul>
       </section>
 
       {/* Trust */}
-      <section id="trust" aria-label="Trust and safety" className="scroll-mt-20 px-4 py-14 sm:px-2">
+      <section id="trust" aria-label="Trust and safety" className="scroll-mt-20 border-y border-rule bg-card px-4 py-14 sm:px-2">
         <Kicker>Trust and safety</Kicker>
         <H2>Built to be checked, not taken on faith.</H2>
         <Sub>The product is designed so a reviewer can verify every point and a person always makes the call.</Sub>
         <ul className="mt-8 grid gap-3 text-sm md:grid-cols-2">
           {["Findings with a quote that does not match the source are withheld.", "Uncertain areas are labelled NOT CHECKED, never filled with a guess.", "It never signs, sends, approves or gives legal advice.", "Possible conflicts with signed contracts are marked for counsel.", "Other clients' terms stay hidden from sellers.", "Every view, export and decision is written to an audit log."].map((t) => (
-            <li key={t} className="flex gap-3 rounded-lg border border-rule bg-card p-4"><span className="mt-0.5 text-ok" aria-hidden="true">✓</span><span>{t}</span></li>
+            <li key={t} className="flex gap-3 rounded-lg border border-rule bg-paper p-4"><span className="mt-0.5 text-ok" aria-hidden="true">✓</span><span>{t}</span></li>
           ))}
         </ul>
       </section>
 
       {/* FAQ */}
-      <section id="faq" aria-label="Frequently asked questions" className="scroll-mt-20 border-y border-rule bg-card px-4 py-14 sm:px-2">
+      <section id="faq" aria-label="Frequently asked questions" className="scroll-mt-20 px-4 py-14 sm:px-2">
         <Kicker>FAQ</Kicker>
         <H2>Questions people ask first.</H2>
         <div className="mt-6 grid max-w-3xl gap-3">
           {FAQ.map(([q, a]) => (
-            <details key={q} className="rounded-lg border border-rule bg-paper p-4"><summary className="font-semibold">{q}</summary><p className="mt-2 text-sm leading-relaxed text-muted">{a}</p></details>
+            <details key={q} className="rounded-lg border border-rule bg-card p-4"><summary className="font-semibold">{q}</summary><p className="mt-2 text-sm leading-relaxed text-muted">{a}</p></details>
           ))}
         </div>
       </section>
 
-      {/* Closing call to action */}
-      <section aria-label="Get started" className="px-4 py-14 sm:px-2">
-        <div className="rounded-2xl bg-nav p-8 text-center sm:p-12">
-          <h2 style={{ color: "#fff" }} className="mx-auto max-w-2xl text-2xl font-bold leading-tight sm:text-3xl">See a brief for yourself.</h2>
-          <p className="mx-auto mt-3 max-w-xl text-base text-white/75">Open the demo to explore sample contracts, the findings behind each one, and the decision log. No password needed.</p>
-          <Link href={href} className="mt-6 inline-block rounded-md bg-white px-6 py-3 text-base font-semibold text-nav hover:opacity-90">{label} →</Link>
-          <p className="mt-4 text-xs text-white/60">Prototype on synthetic data. Not legal advice.</p>
-        </div>
-      </section>
     </div>
   );
 }

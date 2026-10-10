@@ -56,3 +56,9 @@ details > summary { cursor: pointer; }
   .card { break-inside: avoid; box-shadow: none !important; }
   body { font-size: 11px; }
 }
+
+/* Collapsible Full queue: show a clear Collapse/Expand hint on the right of the heading. */
+details.queue > summary::-webkit-details-marker { display: none; }
+details.queue > summary .queue-hint::after { content: "Collapse ▲"; }
+details.queue:not([open]) > summary .queue-hint::after { content: "Expand ▼"; }
+details.queue > summary:hover .queue-hint { color: var(--color-accent); }

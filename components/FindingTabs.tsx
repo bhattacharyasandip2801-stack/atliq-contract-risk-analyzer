@@ -62,7 +62,7 @@ export default function FindingTabs({ slug, groups }: { slug: string; groups: Ta
   return (
     <section ref={box} aria-label="Findings" className="card scroll-mt-4 rounded-lg border border-rule bg-card p-5">
       <span id="high" /><span id="med" />
-      <h2 className="sec-h">Findings: decide and negotiate</h2>
+      <h2 className="sec-h">Findings</h2>
       <div role="tablist" aria-label="Finding level" className="no-print flex flex-wrap gap-2">
         {groups.map((g) => {
           const done = g.items.filter((it) => decided(it.id)).length; const on = g.key === group.key;

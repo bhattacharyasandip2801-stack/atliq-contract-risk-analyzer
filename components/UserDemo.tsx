@@ -56,7 +56,7 @@ export function DemoStartButton({ variant = "sidebar" }: { variant?: "sidebar" |
   const cls = {
     sidebar: "flex w-full items-center gap-2.5 rounded-md border border-white/25 px-3 py-2 text-sm font-medium text-white hover:bg-nav-hover",
     inline: "no-print rounded border border-accent px-3 py-1.5 text-sm font-medium text-accent hover:bg-accent-bg",
-    compact: "rounded border border-rule bg-card px-2.5 py-1 text-xs font-medium text-accent hover:bg-accent-bg",
+    compact: "rounded border border-rule bg-card px-3 py-2 text-xs font-medium text-accent hover:bg-accent-bg",
   }[variant];
   return (
     <button type="button" onClick={start} className={cls}>
