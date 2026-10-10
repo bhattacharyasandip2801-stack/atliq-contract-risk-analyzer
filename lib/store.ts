@@ -22,16 +22,22 @@ export function logAudit(role: string, action: string, target: string, detail?: 
 }
 
 // Review timer (PRD target: Karandeep decides in under 5 minutes). One record per brief per browser.
-export interface Review { slug: string; start: string; end?: string; seconds?: number }
+export interface Review { slug: string; start: string; end?: string; seconds?: number; spent?: number }
 const RK = "atliq.reviews.v1";
 export const getReviews = () => read<Review>(RK);
-/** Starts the clock the first time a brief is opened. Does nothing if a record already exists. */
-export function startReview(slug: string) { const all = getReviews(); if (!all.some((r) => r.slug === slug)) write(RK, [...all, { slug, start: new Date().toISOString() }]); }
+/** Starts the clock when the reviewer presses Start timer. Does nothing if a record already exists. */
+export function startReview(slug: string) { const all = getReviews(); if (!all.some((r) => r.slug === slug)) write(RK, [...all, { slug, start: new Date().toISOString(), spent: 0 }]); }
+/** Saves the seconds spent so far on this brief. The clock counts only while the brief is open and visible. */
+export function saveSpent(slug: string, spent: number) {
+  const all = getReviews(), r = all.find((x) => x.slug === slug);
+  if (!r || r.end || r.spent === spent) return;
+  r.spent = spent; write(RK, all);
+}
 /** Stops the clock once every High finding has a recorded decision. */
-export function finishReview(slug: string) {
+export function finishReview(slug: string, spent: number) {
   const all = getReviews(), r = all.find((x) => x.slug === slug);
   if (!r || r.end) return;
-  const end = new Date(); r.end = end.toISOString(); r.seconds = Math.max(1, Math.round((end.getTime() - new Date(r.start).getTime()) / 1000));
+  r.end = new Date().toISOString(); r.spent = spent; r.seconds = Math.max(1, spent);
   write(RK, all);
 }
 export function resetReview(slug: string) { write(RK, getReviews().filter((r) => r.slug !== slug)); }

@@ -1,8 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SeverityBadge } from "./Badges";
 import Gloss from "./Gloss";
-import { finishReview, resetReview, startReview, useDecisions, useReviews } from "@/lib/store";
+import { finishReview, resetReview, saveSpent, startReview, useDecisions, useReviews } from "@/lib/store";
 
 export const TARGET_SECONDS = 300;
 export const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
@@ -14,31 +14,50 @@ export default function FiveMinute({ slug, rows }: { slug: string; rows: GlanceR
   const review = useReviews().find((r) => r.slug === slug);
   const highIds = rows.filter((r) => r.severity === "High").map((r) => r.id);
   const decided = (id: string) => decisions.find((d) => d.key === `${slug}:${id}`);
-  // A decision only stops the clock if it was recorded after the clock started (so old demo decisions do not end a fresh run).
+  // A decision only stops the clock if it was recorded after the clock was started.
   const allHighDone = highIds.length > 0 && !!review && highIds.every((id) => { const d = decided(id); return !!d && d.at >= review.start; });
-  const [now, setNow] = useState<number | null>(null);
-
-  useEffect(() => { startReview(slug); }, [slug]);
-  useEffect(() => { if (allHighDone) finishReview(slug); }, [allHighDone, slug, review?.start]);
-  useEffect(() => {
-    const t0 = setTimeout(() => setNow(Date.now()), 0), t = setInterval(() => setNow(Date.now()), 1000);
-    return () => { clearTimeout(t0); clearInterval(t); };
-  }, []);
-
+  const [live, setLive] = useState<{ k: string; v: number } | null>(null);
+  const secsRef = useRef(0);
   const running = !!review && !review.end;
-  const elapsed = review?.end ? review.seconds ?? 0 : review && now ? Math.max(0, Math.round((now - new Date(review.start).getTime()) / 1000)) : 0;
-  const within = elapsed <= TARGET_SECONDS;
+  const secs = !review ? 0 : review.end ? review.seconds ?? 0 : live && live.k === review.start ? live.v : review.spent ?? 0;
+
+  // The clock counts only while this brief is open and visible, so leaving the page or the tab pauses it.
+  useEffect(() => {
+    if (!review || review.end) return;
+    const k = review.start;
+    secsRef.current = Math.max(secsRef.current, review.spent ?? 0);
+    const t = setInterval(() => {
+      if (document.visibilityState !== "visible") return;
+      secsRef.current += 1; setLive({ k, v: secsRef.current });
+      if (secsRef.current % 5 === 0) saveSpent(slug, secsRef.current);
+    }, 1000);
+    const flush = () => saveSpent(slug, secsRef.current);
+    document.addEventListener("visibilitychange", flush);
+    return () => { clearInterval(t); document.removeEventListener("visibilitychange", flush); flush(); };
+  }, [slug, review?.start, review?.end]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (allHighDone) finishReview(slug, Math.max(secsRef.current, 1)); }, [allHighDone, slug]);
+
+  const within = secs <= TARGET_SECONDS;
   return (
     <section aria-labelledby="glance" className="card rounded-lg border border-rule bg-card p-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h2 id="glance" className="text-lg font-semibold">Decide in 5 minutes</h2>
-          <p className="text-sm text-muted">Every finding on one screen. Select a title to jump to its quote and clause. The clock starts when you open this brief and stops at your last “Decide before signing” decision.</p>
+          <p className="text-sm text-muted">Every finding on one screen. Select a title to jump to its quote and clause. The timer is optional: press Start timer when you begin. It counts only while this brief is open and stops at your last “Decide before signing” decision.</p>
         </div>
         <div className="no-print text-right" role="timer" aria-label="Review timer">
-          <div className={`text-2xl font-bold tabular-nums ${running ? (within ? "text-ink" : "text-high") : within ? "text-ok" : "text-high"}`}>{fmt(elapsed)}</div>
-          <div className="text-xs text-muted">{review?.end ? (within ? "Reviewed within the 5-minute target" : "Reviewed, over the 5-minute target") : highIds.length === 0 ? "Nothing to decide before signing" : `${highIds.length} to decide. Target: under 5:00`}</div>
-          <button type="button" onClick={() => { resetReview(slug); startReview(slug); }} className="mt-1 text-xs underline">Restart timer</button>
+          {!review ? (
+            <>
+              <button type="button" onClick={() => startReview(slug)} className="rounded-md bg-ok px-4 py-2 text-sm font-semibold text-white hover:opacity-90">▶ Start timer (optional)</button>
+              <div className="mt-1 text-xs text-muted">{highIds.length === 0 ? "Nothing to decide before signing" : `${highIds.length} to decide. Target: under 5:00`}</div>
+            </>
+          ) : (
+            <>
+              <div className={`text-2xl font-bold tabular-nums ${running ? (within ? "text-ink" : "text-high") : within ? "text-ok" : "text-high"}`}>{fmt(secs)}</div>
+              <div className="text-xs text-muted">{review.end ? (within ? "Reviewed within the 5-minute target" : "Reviewed, over the 5-minute target") : `Running. ${highIds.length} to decide. Target: under 5:00`}</div>
+              <button type="button" onClick={() => { secsRef.current = 0; setLive(null); resetReview(slug); }} className="mt-1 text-xs underline">Reset timer</button>
+            </>
+          )}
         </div>
       </div>
       <div className="mt-3 overflow-x-auto" tabIndex={0} role="region" aria-label="Findings at a glance">

@@ -3,6 +3,7 @@ import { Chip, SeverityBadge, TYPE_LABEL, TYPE_HINT, EXC_LABEL, EXC_TONE, BUNDLE
 import Gloss from "./Gloss";
 import DecisionPanel from "./DecisionPanel";
 import FiveMinute from "./FiveMinute";
+import FindingTabs from "./FindingTabs";
 
 const srcName = (f: string) => f.split("/").pop()!.replace(/\.md$/, "");
 
@@ -115,13 +116,11 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
         </section>
       )}
 
-      {highs.length > 0 && (
-        <section aria-labelledby="high"><h2 id="high" className="mb-3 text-lg font-semibold">Decide before signing <span className="text-base font-normal text-muted">({highs.length}): each needs a recorded decision</span></h2>
-          <div className="grid grid-cols-[minmax(0,1fr)] gap-4">{highs.map((f) => <FindingCard key={f.id} slug={brief.slug} f={f} />)}</div></section>
-      )}
-      {meds.length > 0 && (
-        <section aria-labelledby="med"><h2 id="med" className="mb-3 text-lg font-semibold">Negotiate <span className="text-base font-normal text-muted">({meds.length})</span></h2>
-          <div className="grid grid-cols-[minmax(0,1fr)] gap-4">{meds.map((f) => <FindingCard key={f.id} slug={brief.slug} f={f} />)}</div></section>
+      {(highs.length > 0 || meds.length > 0) && (
+        <FindingTabs slug={brief.slug} groups={[
+          ...(highs.length ? [{ key: "High" as const, label: "Decide before signing", items: highs.map((f) => ({ id: f.id, title: f.title, clause: f.clause_ref, node: <FindingCard key={f.id} slug={brief.slug} f={f} /> })) }] : []),
+          ...(meds.length ? [{ key: "Medium" as const, label: "Negotiate", items: meds.map((f) => ({ id: f.id, title: f.title, clause: f.clause_ref, node: <FindingCard key={f.id} slug={brief.slug} f={f} /> })) }] : []),
+        ]} />
       )}
       {brief.findings.length === 0 && (
         <section className="card rounded-lg border border-ok/30 bg-ok-bg p-5"><h2 className="text-lg font-semibold text-ok">Nothing to decide or negotiate</h2><p className="mt-1 text-sm">The checks below were run and passed. Minor points are listed under “For your information”.</p></section>

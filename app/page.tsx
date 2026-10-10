@@ -8,7 +8,7 @@ import Gloss from "@/components/Gloss";
 import { shortHeadline } from "@/lib/short";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Contract dashboard" };
+export const metadata: Metadata = { title: "Contract Dashboard" };
 
 export const dynamic = "force-dynamic";
 
@@ -89,9 +89,9 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
     <div>
       <header className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold">Contract dashboard</h1>
+          <h1 className="text-2xl font-bold">Contract Dashboard</h1>
           <p className="mt-1 max-w-2xl text-sm text-muted">
-            Start with “Do these first”, then work through all drafts. Every finding quotes the contract and the rule behind it, and ends in a recorded decision.
+            Start with “Top priorities”, then work through all drafts. Every finding quotes the contract and the rule behind it, and ends in a recorded decision.
             {!reviewer && ` You are signed in as ${user.name}: you see the ${all.length === 1 ? "draft" : all.length + " drafts"} you requested, with flag types, missing documents and what to ask Karandeep.`}
           </p>
         </div>
@@ -109,9 +109,9 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
         ))}
       </dl>
 
-      <section className="mt-6" aria-label="Do these first">
-        <h2 className="text-base font-semibold">Do these first</h2>
-        <p className="text-sm text-muted">The three drafts with the earliest due dates that have something to decide before signing.</p>
+      <section className="mt-6" aria-label="Top priorities">
+        <h2 className="text-base font-semibold">Top priorities</h2>
+        <p className="text-sm text-muted">Act on these first: the three drafts due soonest that need a decision before signing.</p>
         <ul className="mt-3 grid gap-3 md:grid-cols-3">
           {urgent.map((b) => {
             const c = countBy(b);
@@ -126,7 +126,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
                 {reviewer ? <p className="mt-2 flex-1 text-sm"><Gloss text={shortHeadline(b.slug, b.headline)} /></p> : <p className="mt-2 flex-1 text-sm text-muted">A “Decide before signing” flag is raised. Open the brief for the questions to ask Karandeep.</p>}
                 <div className="mt-3 flex items-center justify-between gap-2 text-xs text-muted">
                   <span>{reviewer ? `${c.high} to decide · ${c.medium} to negotiate` : "Brief ready"}</span>
-                  <Link className="rounded border border-rule px-2.5 py-1 text-ink hover:bg-accent-bg" href={`/brief/${b.slug}`}>Open brief</Link>
+                  <Link className="rounded-md bg-accent px-3 py-1.5 text-xs font-semibold text-white hover:opacity-90" href={`/brief/${b.slug}`}>Open brief →</Link>
                 </div>
               </li>
             );
@@ -176,7 +176,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
         <div className="mt-3 hidden overflow-hidden rounded-lg border border-rule bg-card md:block">
           <table className="w-full text-left text-sm">
             <thead className="bg-paper text-xs font-semibold text-muted">
-              <tr><th className="p-3"><Link href={href({ sort: "name" })} className="hover:underline" aria-label="Sort by counterparty">Draft{sort === "name" ? " ↑" : ""}</Link></th><th className="p-3">AtliQ entity</th><th className="p-3"><Link href={href({ sort: undefined })} className="hover:underline" aria-label="Sort by due date">Due{sort === "due" ? " ↑" : ""}</Link></th><th className="p-3"><Link href={href({ sort: "needs" })} className="hover:underline" aria-label="Sort by most to decide">What it needs{sort === "needs" ? " ↑" : ""}</Link></th><th className="p-3">{reviewer ? "Progress" : "Status"}</th><th className="p-3"><span className="sr-only">Open</span></th></tr>
+              <tr><th className="p-3"><Link href={href({ sort: "name" })} className="hover:underline" aria-label="Sort by counterparty">Counterparty{sort === "name" ? " ↑" : ""}</Link></th><th className="p-3">AtliQ entity</th><th className="p-3"><Link href={href({ sort: undefined })} className="hover:underline" aria-label="Sort by due date">Due{sort === "due" ? " ↑" : ""}</Link></th><th className="p-3"><Link href={href({ sort: "needs" })} className="hover:underline" aria-label="Sort by most to decide">What it needs{sort === "needs" ? " ↑" : ""}</Link></th><th className="p-3">{reviewer ? "Progress" : "Status"}</th><th className="p-3"><span className="sr-only">Open</span></th></tr>
             </thead>
             <tbody>
               {briefs.map((b) => {
@@ -195,7 +195,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
                       {reviewer && <div className="mt-1 text-xs text-muted">{c.high} to decide · {c.medium} to negotiate · {c.low} for information</div>}
                     </td>
                     <td className="p-3">{reviewer ? <DecisionProgress slug={b.slug} ids={b.findings.filter((f) => f.severity === "High").map((f) => f.id)} /> : <span className="text-xs text-muted">Brief ready</span>}</td>
-                    <td className="p-3 text-right"><Link className="rounded border border-rule px-2.5 py-1 hover:bg-accent-bg" href={`/brief/${b.slug}`}>Open</Link></td>
+                    <td className="p-3 text-right"><Link className="inline-block rounded-md bg-accent px-3 py-1.5 text-xs font-semibold text-white hover:opacity-90" href={`/brief/${b.slug}`}>Open →</Link></td>
                   </tr>
                 );
               })}

@@ -20,25 +20,23 @@ const ICON = {
   playbook: I("M5 4h11a3 3 0 013 3v13H8a3 3 0 01-3-3zM5 17a3 3 0 013-3h11"),
 };
 const ITEMS: { href: string; label: string; icon: keyof typeof ICON; reviewerOnly?: boolean; group: string }[] = [
-  { href: "/", group: "Work", label: "Contract dashboard", icon: "queue" },
+  { href: "/", group: "Work", label: "Contract Dashboard", icon: "queue" },
   { href: "/intake", group: "Work", label: "Review a new draft", icon: "intake" },
   { href: "/findings", group: "Work", label: "Findings worklist", icon: "decisions", reviewerOnly: true },
   { href: "/knowledge", group: "Reference", label: "Knowledge base", icon: "kb", reviewerOnly: true },
   { href: "/playbook", group: "Reference", label: "Playbook", icon: "playbook", reviewerOnly: true },
   { href: "/register", group: "Reference", label: "Obligation register", icon: "register", reviewerOnly: true },
   { href: "/decisions", group: "Work", label: "Decisions", icon: "decisions", reviewerOnly: true },
-  { href: "/evaluation", group: "Prototype checks", label: "Evaluation", icon: "eval", reviewerOnly: true },
-  { href: "/audit", group: "Prototype checks", label: "Audit log", icon: "audit" },
+  { href: "/evaluation", group: "Quality and Audit", label: "Evaluation", icon: "eval", reviewerOnly: true },
+  { href: "/audit", group: "Quality and Audit", label: "Audit log", icon: "audit" },
 ];
-const GROUPS = ["Work", "Reference", "Prototype checks"];
+const GROUPS = ["Work", "Reference", "Quality and Audit"];
 
 export default function Sidebar() {
   const path = usePathname();
   const role = useRole();
   const active = (href: string) => (href === "/" ? path === "/" || path.startsWith("/brief") : path.startsWith(href));
   const items = ITEMS.filter((i) => !i.reviewerOnly || role === "reviewer").sort((a, b) => GROUPS.indexOf(a.group) - GROUPS.indexOf(b.group));
-  const main = items.filter((i) => i.group !== "Prototype checks");
-  const minor = items.filter((i) => i.group === "Prototype checks");
   const link = (i: (typeof ITEMS)[number]) => (
     <Link key={i.href} href={i.href} aria-current={active(i.href) ? "page" : undefined}
       className={`flex items-center gap-2.5 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium ${active(i.href) ? "bg-accent text-white" : "text-white/75 hover:bg-nav-hover hover:text-white"}`}>
@@ -52,18 +50,12 @@ export default function Sidebar() {
         <div className="leading-tight"><div className="text-sm font-semibold">AtliQ</div><div className="text-xs text-white/60">Contract Risk Analyzer</div></div>
       </div>
       <nav aria-label="Main" className="flex gap-1 overflow-x-auto px-2 pb-2 lg:flex-1 lg:flex-col lg:overflow-visible lg:pb-0">
-        {main.map((i, n) => (
+        {items.map((i, n) => (
           <Fragment key={i.href}>
-            {(n === 0 || main[n - 1].group !== i.group) && <span className="hidden px-3 pb-1 pt-4 text-[11px] font-semibold uppercase tracking-wide text-white/60 first:pt-1 lg:block">{i.group}</span>}
+            {(n === 0 || items[n - 1].group !== i.group) && <span className="hidden px-3 pb-1 pt-4 text-[11px] font-semibold uppercase tracking-wide text-white/60 first:pt-1 lg:block">{i.group}</span>}
             {link(i)}
           </Fragment>
         ))}
-        {minor.length > 0 && (
-          <details className="group lg:mt-3" open={minor.some((i) => active(i.href))}>
-            <summary className="cursor-pointer list-none whitespace-nowrap rounded-md px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-white/60 hover:text-white lg:pt-4">Prototype checks ▾</summary>
-            <div className="flex gap-1 lg:flex-col">{minor.map(link)}</div>
-          </details>
-        )}
       </nav>
       <div className="hidden border-t border-white/10 p-3 lg:block">
         <div className="mb-3"><DemoStartButton /></div>
