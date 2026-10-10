@@ -22,7 +22,7 @@ const ICON = {
 const ITEMS: { href: string; label: string; icon: keyof typeof ICON; reviewerOnly?: boolean; group: string }[] = [
   { href: "/about", group: "", label: "About this product", icon: "about" },
   { href: "/", group: "Work", label: "Contract Dashboard", icon: "queue" },
-  { href: "/intake", group: "Work", label: "Review a new draft", icon: "intake" },
+  { href: "/intake", group: "Work", label: "Review a new contract", icon: "intake" },
   { href: "/findings", group: "Work", label: "Findings worklist", icon: "decisions", reviewerOnly: true },
   { href: "/knowledge", group: "Reference", label: "Knowledge base", icon: "kb", reviewerOnly: true },
   { href: "/register", group: "Reference", label: "Obligation register", icon: "register", reviewerOnly: true },
