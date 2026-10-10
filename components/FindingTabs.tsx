@@ -60,8 +60,9 @@ export default function FindingTabs({ slug, groups }: { slug: string; groups: Ta
   }, [groups, slug, decisions, go]);
 
   return (
-    <section ref={box} aria-label="Findings" className="scroll-mt-4">
+    <section ref={box} aria-label="Findings" className="card scroll-mt-4 rounded-lg border border-rule bg-card p-5">
       <span id="high" /><span id="med" />
+      <h2 className="sec-h">Findings: decide and negotiate</h2>
       <div role="tablist" aria-label="Finding level" className="no-print flex flex-wrap gap-2">
         {groups.map((g) => {
           const done = g.items.filter((it) => decided(it.id)).length; const on = g.key === group.key;

@@ -23,7 +23,7 @@ export default function FiveMinute({ slug, rows }: { slug: string; rows: GlanceR
                 <td className="py-2 pr-3"><SeverityBadge s={r.severity} /></td>
                 <td className="py-2 pr-3"><a className="text-accent underline" href={`#${r.id}`}><Gloss text={r.title} /></a></td>
                 <td className="py-2 pr-3 text-muted">{r.clause_ref}</td>
-                <td className="py-2">{d ? <span className="font-medium text-ok">{d.choice}</span> : <span className="text-muted">{r.severity === "High" ? "Needed" : "Not required"}</span>}</td>
+                <td className="whitespace-nowrap py-2">{d ? <span className="font-medium text-ok">{d.choice}</span> : <span className="text-muted">{r.severity === "High" ? "Needed" : "Not required"}</span>}</td>
               </tr>
             );
           })}</tbody>

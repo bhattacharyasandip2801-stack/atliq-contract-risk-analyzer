@@ -79,7 +79,7 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
   const meds = brief.findings.filter((f) => f.severity === "Medium");
   const rows = [...highs, ...meds].map((f) => ({ id: f.id, severity: f.severity, title: f.title, clause_ref: f.clause_ref }));
   return (
-    <div className="grid grid-cols-[minmax(0,1fr)] gap-6">
+    <div className="grid grid-cols-[minmax(0,1fr)] gap-8">
       <section className="card rounded-lg border border-rule bg-card p-5">
         <div className="flex flex-wrap items-center gap-2">
           <SeverityBadge s={brief.highest_severity} />
