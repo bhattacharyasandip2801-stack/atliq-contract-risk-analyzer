@@ -26,7 +26,11 @@ export interface Review { slug: string; start: string; end?: string; seconds?: n
 const RK = "atliq.reviews.v1";
 export const getReviews = () => read<Review>(RK);
 /** Starts the clock when the reviewer presses Start timer. Does nothing if a record already exists. */
-export function startReview(slug: string) { const all = getReviews(); if (!all.some((r) => r.slug === slug)) write(RK, [...all, { slug, start: new Date().toISOString(), spent: 0 }]); }
+export function startReview(slug: string) {
+  // Records made before the optional timer (no end and no spent) were auto-started; drop them so a real start replaces them.
+  const all = getReviews().filter((r) => r.slug !== slug || r.end || r.spent !== undefined);
+  if (!all.some((r) => r.slug === slug)) write(RK, [...all, { slug, start: new Date().toISOString(), spent: 0 }]);
+}
 /** Saves the seconds spent so far on this brief. The clock counts only while the brief is open and visible. */
 export function saveSpent(slug: string, spent: number) {
   const all = getReviews(), r = all.find((x) => x.slug === slug);

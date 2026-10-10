@@ -88,6 +88,12 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
         <h1 className="mt-2 text-2xl font-bold leading-tight">{brief.counterparty}</h1>
         <p className="text-muted">{brief.doc_type}</p>
         <p className="mt-3 max-w-3xl text-base leading-relaxed">{brief.headline}</p>
+        {(highs.length > 0 || meds.length > 0) && (
+          <div className="no-print mt-4 flex flex-wrap items-center gap-3">
+            <a href={highs.length ? "#high" : "#med"} className="inline-block rounded-md bg-accent px-4 py-2 text-sm font-semibold text-white hover:opacity-90">{highs.length ? `Start deciding (${highs.length}) ↓` : "Review negotiate points ↓"}</a>
+            {brief.exposure.length > 0 && <a href="#exposure" className="text-sm text-accent underline">See exposure numbers</a>}
+          </div>
+        )}
         <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-3">
           <div><dt className="text-xs uppercase tracking-wide text-muted">Deadline</dt><dd title={brief.deadline ?? undefined}>{brief.deadline ? brief.deadline.replace(/\s*\(.*$/, "") : "None in the notes"}</dd></div>
           <div><dt className="text-xs uppercase tracking-wide text-muted">Value</dt><dd>{brief.value}</dd></div>
@@ -101,11 +107,17 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
 
       {rows.length > 0 && <FiveMinute slug={brief.slug} rows={rows} />}
 
+      {(highs.length > 0 || meds.length > 0) && (
+        <FindingTabs slug={brief.slug} groups={[
+          ...(highs.length ? [{ key: "High" as const, label: "Decide before signing", items: highs.map((f) => ({ id: f.id, title: f.title, clause: f.clause_ref, node: <FindingCard key={f.id} slug={brief.slug} f={f} /> })) }] : []),
+          ...(meds.length ? [{ key: "Medium" as const, label: "Negotiate", items: meds.map((f) => ({ id: f.id, title: f.title, clause: f.clause_ref, node: <FindingCard key={f.id} slug={brief.slug} f={f} /> })) }] : []),
+        ]} />
+      )}
       {brief.exposure.length > 0 && (
-        <section className="card rounded-lg border border-rule bg-card p-5">
+        <section id="exposure" className="card rounded-lg border border-rule bg-card p-5">
           <h2 className="text-lg font-semibold">Exposure</h2>
           <p className="text-sm text-muted">Calculated from the numbers in each clause. No cap is shown unless the clause states one.</p>
-          <div className="mt-3 overflow-x-auto" tabIndex={0} role="region" aria-label="Exposure table">
+          <div className="mt-3 hidden overflow-x-auto sm:block" tabIndex={0} role="region" aria-label="Exposure table">
             <table className="w-full min-w-[560px] text-left text-sm">
               <thead className="text-xs uppercase tracking-wide text-muted"><tr><th className="py-2 pr-3">Item</th><th className="py-2 pr-3">Clause</th><th className="py-2 pr-3">Calculation</th><th className="py-2 pr-3">Result</th><th className="py-2">Cap</th></tr></thead>
               <tbody>{brief.exposure.map((e, i) => (
@@ -113,15 +125,17 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
               ))}</tbody>
             </table>
           </div>
+          <ul className="mt-3 grid gap-3 sm:hidden">{brief.exposure.map((e, i) => (
+            <li key={i} className="rounded-md border border-rule p-3 text-sm">
+              <div className="font-semibold">{e.label} <span className="font-normal text-muted">({e.clause_ref})</span></div>
+              <div className="mt-1 font-semibold">{e.result}</div>
+              <div className="mt-1 text-muted">{e.calculation}</div>
+              <div className="mt-1"><span className="text-xs font-semibold uppercase tracking-wide text-muted">Cap: </span>{e.cap}</div>
+            </li>
+          ))}</ul>
         </section>
       )}
 
-      {(highs.length > 0 || meds.length > 0) && (
-        <FindingTabs slug={brief.slug} groups={[
-          ...(highs.length ? [{ key: "High" as const, label: "Decide before signing", items: highs.map((f) => ({ id: f.id, title: f.title, clause: f.clause_ref, node: <FindingCard key={f.id} slug={brief.slug} f={f} /> })) }] : []),
-          ...(meds.length ? [{ key: "Medium" as const, label: "Negotiate", items: meds.map((f) => ({ id: f.id, title: f.title, clause: f.clause_ref, node: <FindingCard key={f.id} slug={brief.slug} f={f} /> })) }] : []),
-        ]} />
-      )}
       {brief.findings.length === 0 && (
         <section className="card rounded-lg border border-ok/30 bg-ok-bg p-5"><h2 className="text-lg font-semibold text-ok">Nothing to decide or negotiate</h2><p className="mt-1 text-sm">The checks below were run and passed. Minor points are listed under “For your information”.</p></section>
       )}

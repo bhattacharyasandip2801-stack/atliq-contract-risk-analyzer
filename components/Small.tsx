@@ -14,5 +14,5 @@ export function PrintButton({ slug }: { slug: string }) {
 }
 export function ExportLink({ href, children }: { href: string; children: React.ReactNode }) {
   const actor = useActor();
-  return <a href={href} onClick={() => logAudit(actor, "export", href)} className="no-print inline-block rounded-md bg-accent px-3 py-1.5 text-sm font-medium text-white hover:opacity-90">{children}</a>;
+  return <a href={href} onClick={() => logAudit(actor, "export", href)} className="no-print inline-block rounded-md border border-accent bg-card px-3 py-1.5 text-sm font-medium text-accent hover:bg-accent-bg">{children}</a>;
 }
