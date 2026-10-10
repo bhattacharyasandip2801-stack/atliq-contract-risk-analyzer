@@ -1,9 +1,11 @@
+/** Action wording shown to people. The data model keeps High, Medium and Low. */
+export const SEV_LABEL: Record<string, string> = { High: "Decide before signing", Medium: "Negotiate", Low: "For your information", None: "No findings" };
 export function SeverityBadge({ s }: { s: string }) {
   const m: Record<string, string> = {
     High: "bg-high-bg text-high border-high/30", Medium: "bg-medium-bg text-medium border-medium/30",
     Low: "bg-low-bg text-low border-low/20", None: "bg-ok-bg text-ok border-ok/30",
   };
-  const label = s === "None" ? "No findings" : s;
+  const label = SEV_LABEL[s] ?? s;
   return <span className={`inline-block rounded border px-2 py-0.5 text-xs font-semibold uppercase tracking-wide ${m[s] ?? m.Low}`}>{label}</span>;
 }
 export function Chip({ children, tone = "plain" }: { children: React.ReactNode; tone?: "plain" | "accent" | "warn" | "ok" }) {

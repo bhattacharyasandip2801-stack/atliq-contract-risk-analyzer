@@ -36,7 +36,7 @@ export default function FiveMinute({ slug, rows, readMinutes, words }: { slug: s
         </div>
         <div className="no-print text-right" role="timer" aria-label="Review timer">
           <div className={`text-2xl font-bold tabular-nums ${running ? (within ? "text-ink" : "text-high") : within ? "text-ok" : "text-high"}`}>{fmt(elapsed)}</div>
-          <div className="text-xs text-muted">{review?.end ? (within ? "Reviewed within the 5-minute target" : "Reviewed, over the 5-minute target") : highIds.length === 0 ? "No High findings to decide" : `Stops when all ${highIds.length} High are decided. Target: under 5:00`}</div>
+          <div className="text-xs text-muted">{review?.end ? (within ? "Reviewed within the 5-minute target" : "Reviewed, over the 5-minute target") : highIds.length === 0 ? "Nothing to decide before signing" : `Stops when all ${highIds.length} “Decide before signing” items are decided. Target: under 5:00`}</div>
           <button type="button" onClick={() => { resetReview(slug); startReview(slug); }} className="mt-1 text-xs underline">Restart timer</button>
         </div>
       </div>
@@ -56,7 +56,7 @@ export default function FiveMinute({ slug, rows, readMinutes, words }: { slug: s
           })}</tbody>
         </table>
       </div>
-      <p className="mt-3 text-xs text-muted">Reading time: about {readMinutes} minute{readMinutes === 1 ? "" : "s"} for the {words.toLocaleString()} words in the headline, findings and quotes (estimate at 230 words per minute, reading only; deciding takes extra). The timer above measures real time in this browser, from first opening this brief to the last High decision. To time a fresh run, undo the old decisions, then restart the timer.</p>
+      <p className="mt-3 text-xs text-muted">Reading time: about {readMinutes} minute{readMinutes === 1 ? "" : "s"} for the {words.toLocaleString()} words in the headline, findings and quotes (estimate at 230 words per minute, reading only; deciding takes extra). The timer above measures real time in this browser, from first opening this brief to the last “Decide before signing” decision. To time a fresh run, undo the old decisions, then restart the timer.</p>
     </section>
   );
 }

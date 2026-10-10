@@ -31,7 +31,7 @@ export default async function BriefPage({ params }: { params: Promise<{ slug: st
   const c = { high: highIds.length, medium: brief.findings.filter((f) => f.severity === "Medium").length, low: brief.low.length };
   const jumps: [string, string][] = role === "seller"
     ? [["#top", "Summary"]]
-    : [["#top", "Summary"], ...(c.high ? [["#high", `High findings (${c.high})`] as [string, string]] : []), ...(c.medium ? [["#med", `Medium findings (${c.medium})`] as [string, string]] : []), ["#docs", "Documents needed"], ["#data", "Data type"], ["#nc", "Not checked"]];
+    : [["#top", "Summary"], ...(c.high ? [["#high", `Decide before signing (${c.high})`] as [string, string]] : []), ...(c.medium ? [["#med", `Negotiate (${c.medium})`] as [string, string]] : []), ["#docs", "Documents needed"], ["#data", "Data type"], ["#nc", "Not checked"]];
   return (
     <div id="top">
       <AuditOnMount action={role === "seller" ? "view brief (seller)" : "view brief"} target={slug} />
@@ -49,9 +49,9 @@ export default async function BriefPage({ params }: { params: Promise<{ slug: st
               <div className="text-xs font-semibold text-muted">Status</div>
               {role === "reviewer" ? (
                 <div className="mt-1.5 grid gap-1 text-sm">
-                  <div className="flex justify-between"><span><i className="mr-1.5 inline-block h-2 w-2 rounded-full bg-high" />High</span><b>{c.high}</b></div>
-                  <div className="flex justify-between"><span><i className="mr-1.5 inline-block h-2 w-2 rounded-full bg-medium" />Medium</span><b>{c.medium}</b></div>
-                  <div className="flex justify-between"><span><i className="mr-1.5 inline-block h-2 w-2 rounded-full bg-low" />Low</span><b>{c.low}</b></div>
+                  <div className="flex justify-between"><span><i className="mr-1.5 inline-block h-2 w-2 rounded-full bg-high" />Decide before signing</span><b>{c.high}</b></div>
+                  <div className="flex justify-between"><span><i className="mr-1.5 inline-block h-2 w-2 rounded-full bg-medium" />Negotiate</span><b>{c.medium}</b></div>
+                  <div className="flex justify-between"><span><i className="mr-1.5 inline-block h-2 w-2 rounded-full bg-low" />For your information</span><b>{c.low}</b></div>
                   <div className="mt-1.5 border-t border-rule pt-1.5"><DecisionProgress big slug={brief.slug} ids={highIds} /></div>
                 </div>
               ) : <p className="mt-1 text-sm text-muted">Brief ready. Counts are visible to the reviewer.</p>}

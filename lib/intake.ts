@@ -48,6 +48,19 @@ function clauseRef(t: string, i: number): string {
   }
   return "clause number not found";
 }
+/** Reads the first money amount in a sentence: symbol or code before or after, thousands commas (also Indian), million, lakh, crore, k. */
+function parseAmount(sent: string): { symbol: string; value: number } | null {
+  const SYM: Record<string, string> = { "$": "$", "us$": "$", usd: "$", "₹": "₹", inr: "₹", rs: "₹", "rs.": "₹", "€": "€", eur: "€", "£": "£", gbp: "£" };
+  const MUL: Record<string, number> = { million: 1e6, m: 1e6, lakh: 1e5, lakhs: 1e5, crore: 1e7, crores: 1e7, k: 1e3, thousand: 1e3 };
+  const pre = /(US\$|\$|USD|₹|INR|Rs\.?|€|EUR|£|GBP)\s?(\d[\d,]*(?:\.\d+)?)\s*(million|lakhs?|crores?|thousand|k|m)?\b/i.exec(sent);
+  const post = /(\d[\d,]*(?:\.\d+)?)\s*(million|lakhs?|crores?|thousand|k|m)?\s*(USD|INR|EUR|GBP|dollars)\b/i.exec(sent);
+  const pick = pre && (!post || pre.index <= post.index) ? { sym: pre[1], n: pre[2], mul: pre[3] } : post ? { sym: post[3], n: post[1], mul: post[2] } : null;
+  if (!pick) return null;
+  const symbol = pick.sym.toLowerCase() === "dollars" ? "$" : SYM[pick.sym.toLowerCase()];
+  const base = Number(pick.n.replace(/,/g, ""));
+  if (!symbol || !Number.isFinite(base)) return null;
+  return { symbol, value: base * (pick.mul ? MUL[pick.mul.toLowerCase()] : 1) };
+}
 const find = (t: string, re: RegExp) => { const m = re.exec(t); return m ? { i: m.index, m } : null; };
 const num = (s: string) => Number(s.replace(/,/g, ""));
 const WORDNUM: Record<string, number> = { one: 1, two: 2, three: 3, five: 5, seven: 7, ten: 10, fifteen: 15, thirty: 30, sixty: 60, ninety: 90, "twenty-four": 24, "twenty four": 24, forty: 40, "forty-five": 45, "forty five": 45, "one hundred twenty": 120 };
@@ -241,6 +254,34 @@ export function runIntake(input: IntakeInput, opts: { reviewer: boolean }): Inta
     });
     done("Liability", "No cap sentence found.");
   } else done("Liability", "A liability cap sentence was found (whether it is equal for both sides was not checked).");
+  // 4b. Liability cap against contract value (client, 10 Oct: "a 12 month contract worth $2k/month with a liability of $500k is a deal in bad faith").
+  // The multiple bands are proposed starting points, not a recorded AtliQ policy. Currency must match or the check says NOT CHECKED.
+  if (hasCap) {
+    const sent = sentenceAt(text, hasCap.i, 700);
+    const amt = parseAmount(sent);
+    if (!amt) {
+      done("Liability against contract value", "The cap is not a fixed amount (for example a multiple of fees), so no comparison with the contract value was made.");
+    } else if (!input.value || input.value <= 0) {
+      done("Liability against contract value", `NOT CHECKED: the cap is ${amt.symbol}${amt.value.toLocaleString("en-US")} but no contract value was entered.`, "not_checked");
+      notChecked.push({ item: "Liability cap against contract value", reason: "Enter the contract value (or monthly fee and months) to compare it with the cap." });
+    } else if (!input.currency || amt.symbol !== input.currency) {
+      done("Liability against contract value", `NOT CHECKED: the cap is in ${amt.symbol} but the value was entered in ${input.currency || "no currency"}. No conversion is guessed.`, "not_checked");
+      notChecked.push({ item: "Liability cap against contract value", reason: "The cap and the contract value are in different currencies; no exchange rate is assumed." });
+    } else {
+      const mult = amt.value / input.value, m1 = Math.round(mult * 10) / 10;
+      const calc = `${amt.symbol}${amt.value.toLocaleString("en-US")} cap / ${amt.symbol}${input.value.toLocaleString("en-US")} contract value`;
+      exposure.push({ label: "Liability cap against contract value", calculation: calc, result: `${m1}x the contract value` });
+      const sev: Sev | null = mult > 10 ? "High" : mult > 3 ? "Medium" : mult > 1 ? "Low" : null;
+      if (sev) {
+        add({
+          severity: sev, type: "clause_risk", title: `Liability cap is about ${m1} times the contract value`, clause_ref: clauseRef(text, hasCap.i), quote: sent,
+          explanation: `${calc} = ${m1}x. Karandeep's test (10 Oct): the liability should be judged against what the contract is worth, for example a 12 month contract at $2k a month with a $500k liability is "a deal in bad faith". Bands used here are proposed starting points (over 1x for information, over 3x negotiate, over 10x decide before signing), not AtliQ policy.`,
+          rule: "Client answer 10 Oct: judged against contract value (bands proposed)", ask: "Counter with a cap in line with the contract value (one times the fees is the checklist reference), or decide to accept, with a reason.",
+        });
+        done("Liability against contract value", `${m1}x the contract value.`);
+      } else done("Liability against contract value", `${m1}x the contract value; not above the contract value.`);
+    }
+  }
   notChecked.push({ item: "Whether the liability cap and indemnity apply equally to both sides", reason: "This tool matches wording only and does not decide who each sentence binds." });
 
   // 5. Indemnity
@@ -450,7 +491,7 @@ export function runIntake(input: IntakeInput, opts: { reviewer: boolean }): Inta
   findings.sort((a, b) => order[a.severity] - order[b.severity]);
   const hi = findings.filter((f) => f.severity === "High").length, me = findings.filter((f) => f.severity === "Medium").length;
   const summary = hi || me
-    ? `${hi} high and ${me} medium finding${hi + me === 1 ? "" : "s"} from the checks that ran. ${notChecked.length} item${notChecked.length === 1 ? "" : "s"} could not be checked.`
-    : "No high-severity findings in the checks run. That is not a statement that the draft is safe: see what could not be checked.";
+    ? `${hi} to decide before signing and ${me} to negotiate, from the checks that ran. ${notChecked.length} item${notChecked.length === 1 ? "" : "s"} could not be checked.`
+    : "Nothing to decide before signing in the checks run. That is not a statement that the draft is safe: see what could not be checked.";
   return { stop: null, findings, checks, notChecked, dataClass, exposure, chars: text.length, summary };
 }

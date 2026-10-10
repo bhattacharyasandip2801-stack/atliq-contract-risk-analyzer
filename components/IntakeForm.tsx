@@ -14,7 +14,7 @@ const show = (s: string) => s.replace(/\*+/g, "");
 
 export default function IntakeForm({ samples }: { samples: { slug: string; label: string }[] }) {
   const actor = useActor(), role = useRole();
-  const [text, setText] = useState(""), [geo, setGeo] = useState(""), [value, setValue] = useState(""), [cur, setCur] = useState("$"), [name, setName] = useState("");
+  const [text, setText] = useState(""), [geo, setGeo] = useState(""), [value, setValue] = useState(""), [fee, setFee] = useState(""), [months, setMonths] = useState(""), [cur, setCur] = useState("$"), [name, setName] = useState("");
   const [res, setRes] = useState<Result | null>(null), [busy, setBusy] = useState(false), [msg, setMsg] = useState<string | null>(null);
   const file = useRef<HTMLInputElement>(null);
 
@@ -36,12 +36,14 @@ export default function IntakeForm({ samples }: { samples: { slug: string; label
   async function check(e: React.FormEvent) {
     e.preventDefault(); setBusy(true); setMsg(null); setRes(null);
     try {
-      const v = Number(value.replace(/,/g, ""));
+      const n = (x: string) => Number(x.replace(/,/g, ""));
+      // Contract value: the value typed in, or else monthly fee times months.
+      const v = n(value) > 0 ? n(value) : n(fee) > 0 && n(months) > 0 ? n(fee) * n(months) : 0;
       const r = await fetch("/api/intake", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ text, geography: geo, value: v > 0 ? v : null, currency: cur }) });
       const j = await r.json();
       if (!r.ok) throw new Error(j.error ?? "Check failed");
       setRes(j);
-      logAudit(actor, "check new draft", name || "pasted text", `${j.stop ? "stopped: real data" : `${j.findings.filter((f: { severity: string }) => f.severity === "High").length} high, ${j.findings.filter((f: { severity: string }) => f.severity === "Medium").length} medium`} · ${j.chars} characters, text not stored`);
+      logAudit(actor, "check new draft", name || "pasted text", `${j.stop ? "stopped: real data" : `${j.findings.filter((f: { severity: string }) => f.severity === "High").length} decide before signing, ${j.findings.filter((f: { severity: string }) => f.severity === "Medium").length} negotiate`} · ${j.chars} characters, text not stored`);
     } catch (er) { setMsg((er as Error).message); } finally { setBusy(false); }
   }
   const reviewer = role === "reviewer";
@@ -67,6 +69,12 @@ export default function IntakeForm({ samples }: { samples: { slug: string; label
           <label className="min-w-0 text-xs text-muted">Where is the client?
             <select value={geo} onChange={(e) => setGeo(e.target.value)} className="mt-1 block max-w-full rounded border border-rule bg-paper p-2 text-sm text-ink">{GEOS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}</select>
           </label>
+          <label className="text-xs text-muted">Monthly fee (optional)
+            <input inputMode="numeric" value={fee} onChange={(e) => setFee(e.target.value)} placeholder="2000" className="mt-1 block w-24 rounded border border-rule bg-paper p-2 text-sm text-ink" />
+          </label>
+          <label className="text-xs text-muted">Months
+            <input inputMode="numeric" value={months} onChange={(e) => setMonths(e.target.value)} placeholder="12" className="mt-1 block w-16 rounded border border-rule bg-paper p-2 text-sm text-ink" />
+          </label>
           <label className="text-xs text-muted">Contract value (optional)
             <span className="mt-1 flex gap-1"><select aria-label="Currency" value={cur} onChange={(e) => setCur(e.target.value)} className="rounded border border-rule bg-paper p-2 text-sm text-ink">{["$", "₹", "€", "£"].map((c) => <option key={c}>{c}</option>)}</select>
               <input inputMode="numeric" value={value} onChange={(e) => setValue(e.target.value)} placeholder="210000" className="w-32 rounded border border-rule bg-paper p-2 text-sm text-ink" /></span>
@@ -89,7 +97,7 @@ export default function IntakeForm({ samples }: { samples: { slug: string; label
                   <h2 className="text-lg font-bold">Brief ready: {res.stored.counterparty}</h2>
                   <p className="text-sm text-muted">{res.stored.doc_type}</p>
                   <p className="mt-2 text-sm leading-relaxed">{res.stored.headline}</p>
-                  <p className="mt-2 text-sm"><b>{res.stored.high}</b> High, <b>{res.stored.medium}</b> Medium, <b>{res.stored.low}</b> worth knowing. {res.stored.quotes_checked} quotes checked against the source files just now{res.stored.withheld ? `; ${res.stored.withheld} finding(s) withheld` : "; none withheld"}.</p>
+                  <p className="mt-2 text-sm"><b>{res.stored.high}</b> to decide before signing, <b>{res.stored.medium}</b> to negotiate, <b>{res.stored.low}</b> for your information. {res.stored.quotes_checked} quotes checked against the source files just now{res.stored.withheld ? `; ${res.stored.withheld} finding(s) withheld` : "; none withheld"}.</p>
                   <ul className="mt-3 grid gap-1 text-sm">{res.stored.findings.map((f) => <li key={f.id}><SeverityBadge s={f.severity as "High" | "Medium"} /> <Link className="text-accent underline" href={`/brief/${res.stored!.slug}#${f.id}`}>{f.title}</Link> <span className="text-xs text-muted">{f.clause_ref}</span></li>)}</ul>
                   <Link href={`/brief/${res.stored.slug}`} className="mt-4 inline-block rounded bg-accent px-4 py-2.5 text-sm font-medium text-white hover:opacity-90">Open the full brief</Link>
                   <p className="mt-3 text-xs text-muted">The quick rule check on the same text is below. It finds only the wording its rules look for, so it can show fewer points than the brief.</p>

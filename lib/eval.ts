@@ -170,6 +170,22 @@ export function runEvaluation(): { dimensions: Dimension[]; labelsNote: string; 
     check("Every brief lists NOT CHECKED items or says none", "15 of 15", briefs.every((b) => Array.isArray(b.not_checked)), `${briefs.filter((b) => b.not_checked.length).length} briefs list items`),
   ]));
 
+  // 11b Value-relative exposure (client, 10 Oct). Constructed test texts, not dataset contracts; bands are proposed.
+  {
+    const mk = (cap: string) => `MASTER SERVICES AGREEMENT between AtliQ Technologies Pvt Ltd and Example Client LLC for annotation services over twelve months.\n\n11. Limitation of Liability\n11.1 The Contractor's aggregate liability under this Agreement shall not exceed ${cap}. Payment is due within 30 days of invoice.\n`;
+    const val = (cap: string, value: number | null, currency = "$") => runIntake({ text: mk(cap), value, currency }, { reviewer: true });
+    const top = (r: ReturnType<typeof runIntake>) => r.findings.find((f) => /times the contract value/.test(f.title));
+    const k = top(val("$500,000", 24000));
+    dims.push(dim("Value-relative exposure (bands proposed)", "100% on constructed cases; NOT CHECKED when value or currency is missing", [
+      { label: "Karandeep's example: $500,000 cap on 12 x $2,000", expected: "about 20.8x, Decide before signing", pass: !!k && k.severity === "High" && /20\.8/.test(k.title), found: k ? `${k.severity}: ${k.title}` : "no finding" },
+      { label: "$100,000 cap on $24,000", expected: "about 4.2x, Negotiate", pass: top(val("$100,000", 24000))?.severity === "Medium", found: top(val("$100,000", 24000))?.title ?? "no finding" },
+      { label: "$50,000 cap on $24,000", expected: "about 2.1x, For your information", pass: top(val("$50,000", 24000))?.severity === "Low", found: top(val("$50,000", 24000))?.title ?? "no finding" },
+      { label: "$20,000 cap on $24,000", expected: "no value finding", pass: !top(val("$20,000", 24000)), found: top(val("$20,000", 24000))?.title ?? "no finding" },
+      { label: "No contract value entered", expected: "NOT CHECKED, no guess", pass: !top(val("$500,000", null)) && val("$500,000", null).notChecked.some((n) => /against contract value/i.test(n.item)), found: val("$500,000", null).notChecked.map((n) => n.item).join("; ") || "none" },
+      { label: "Cap in euro, value in dollars", expected: "NOT CHECKED, no conversion", pass: !top(val("€500,000", 24000)) && val("€500,000", 24000).notChecked.some((n) => /against contract value/i.test(n.item)), found: val("€500,000", 24000).notChecked.map((n) => n.item).join("; ") || "none" },
+    ]));
+  }
+
   // 12 Register extraction
   {
     const e = REGISTER.entries;

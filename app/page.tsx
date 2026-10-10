@@ -39,9 +39,9 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
 
   const tiles: { k: string; v: string; sub: string; tone: string }[] = [
     { k: "Drafts to review", v: String(all.length), sub: reviewer ? "from the capstone dataset" : "that you requested", tone: "border-t-accent" },
-    { k: "High findings", v: reviewer ? String(totals.high) : "Ask Karandeep", sub: reviewer ? `across ${byLevel("High")} drafts` : "hidden in seller view", tone: "border-t-high" },
-    { k: "Medium findings", v: reviewer ? String(totals.medium) : "Ask Karandeep", sub: reviewer ? "inside bounds, outside the checklist" : "hidden in seller view", tone: "border-t-medium" },
-    { k: "Drafts with no High", v: String(noHigh), sub: `${byLevel("Medium")} Medium, ${clean} Low or none`, tone: "border-t-ok" },
+    { k: "Decide before signing", v: reviewer ? String(totals.high) : "Ask Karandeep", sub: reviewer ? `across ${byLevel("High")} drafts` : "hidden in seller view", tone: "border-t-high" },
+    { k: "To negotiate", v: reviewer ? String(totals.medium) : "Ask Karandeep", sub: reviewer ? "outside the usual reference points" : "hidden in seller view", tone: "border-t-medium" },
+    { k: "Nothing to decide before signing", v: String(noHigh), sub: `${byLevel("Medium")} to negotiate, ${clean} information only or none`, tone: "border-t-ok" },
     { k: "Signed contracts read", v: "17 of ~30", sub: "register coverage", tone: "border-t-low" },
   ];
 
@@ -74,15 +74,15 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
             <h2 className="text-base font-semibold">Findings by severity</h2>
             <span className="text-xs text-muted">{totals.high + totals.medium + totals.low} findings across {all.length} drafts</span>
           </div>
-          <div className="mt-3 flex h-4 overflow-hidden rounded-full bg-low-bg" role="img" aria-label={`${totals.high} High, ${totals.medium} Medium, ${totals.low} Low`}>
+          <div className="mt-3 flex h-4 overflow-hidden rounded-full bg-low-bg" role="img" aria-label={`${totals.high} decide before signing, ${totals.medium} negotiate, ${totals.low} for your information`}>
             <div className="bg-high" style={{ width: `${(totals.high / sumAll) * 100}%` }} />
             <div className="bg-medium" style={{ width: `${(totals.medium / sumAll) * 100}%` }} />
             <div className="bg-low" style={{ width: `${(totals.low / sumAll) * 100}%` }} />
           </div>
           <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-xs text-muted">
-            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-high" />High {totals.high}</span>
-            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-medium" />Medium {totals.medium}</span>
-            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-low" />Low {totals.low}</span>
+            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-high" />Decide before signing {totals.high}</span>
+            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-medium" />Negotiate {totals.medium}</span>
+            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-low" />For your information {totals.low}</span>
           </div>
         </section>
       )}
@@ -109,7 +109,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
 
       <section className="mt-6" aria-label="Needs attention first">
         <h2 className="text-base font-semibold">Action required</h2>
-        <p className="text-sm text-muted">The first three drafts with a High finding, in deadline order.</p>
+        <p className="text-sm text-muted">The first three drafts with something to decide before signing, in deadline order.</p>
         <ul className="mt-3 grid gap-3 md:grid-cols-3">
           {urgent.map((b) => {
             const c = countBy(b);
@@ -120,9 +120,9 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
                   <SeverityBadge s="High" />
                 </div>
                 <div className="text-xs text-muted">{b.doc_type.replace(/\s*\(.*$/, "")} · due {fmt(deadlineIso(b.slug))}</div>
-                {reviewer ? <p className="mt-2 flex-1 text-sm">{b.headline}</p> : <p className="mt-2 flex-1 text-sm text-muted">A High flag is raised. Open the brief for the questions to ask Karandeep.</p>}
+                {reviewer ? <p className="mt-2 flex-1 text-sm">{b.headline}</p> : <p className="mt-2 flex-1 text-sm text-muted">A “Decide before signing” flag is raised. Open the brief for the questions to ask Karandeep.</p>}
                 <div className="mt-3 flex items-center justify-between gap-2 text-xs text-muted">
-                  <span>{reviewer ? `${c.high} High · ${c.medium} Medium` : "Brief ready"}</span>
+                  <span>{reviewer ? `${c.high} to decide · ${c.medium} to negotiate` : "Brief ready"}</span>
                   <Link className="rounded border border-rule px-2.5 py-1 text-ink hover:bg-accent-bg" href={`/brief/${b.slug}`}>Open brief</Link>
                 </div>
               </li>
@@ -143,7 +143,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
               return (
                 <Link key={f} href={f === "All" ? "/" : `/?sev=${f}`} aria-current={sev === f ? "page" : undefined}
                   className={`rounded-full border px-3 py-1 text-xs font-semibold ${sev === f ? "border-accent bg-accent text-white" : "border-rule bg-card text-ink hover:bg-accent-bg"}`}>
-                  {f === "Low" ? "Low or none" : f} · {n}
+                  {f === "High" ? "Decide before signing" : f === "Medium" ? "Negotiate" : f === "Low" ? "Information only or none" : f} · {n}
                 </Link>
               );
             })}
@@ -170,13 +170,13 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
                     <td className="p-3">
                       <SeverityBadge s={h} />
                       {reviewer && (
-                        <div className="mt-1.5 flex items-center gap-1" title={`${c.high} High · ${c.medium} Medium · ${c.low} Low`}>
+                        <div className="mt-1.5 flex items-center gap-1" title={`${c.high} decide before signing · ${c.medium} negotiate · ${c.low} for your information`}>
                           {Array.from({ length: c.high }).map((_, i) => <i key={"h" + i} className={`h-2.5 w-2.5 rounded-full ${BAR.High}`} />)}
                           {Array.from({ length: c.medium }).map((_, i) => <i key={"m" + i} className={`h-2.5 w-2.5 rounded-full ${BAR.Medium}`} />)}
                           {Array.from({ length: c.low }).map((_, i) => <i key={"l" + i} className={`h-2.5 w-2.5 rounded-full ${BAR.Low} opacity-60`} />)}
                         </div>
                       )}
-                      {reviewer && <div className="mt-1 text-xs text-muted">{c.high} High · {c.medium} Medium · {c.low} Low</div>}
+                      {reviewer && <div className="mt-1 text-xs text-muted">{c.high} decide · {c.medium} negotiate · {c.low} for information</div>}
                     </td>
                     <td className="p-3">{reviewer ? <DecisionProgress slug={b.slug} ids={b.findings.filter((f) => f.severity === "High").map((f) => f.id)} /> : <span className="text-xs text-muted">Brief ready</span>}</td>
                     <td className="p-3 text-right"><Link className="rounded border border-rule px-2.5 py-1 hover:bg-accent-bg" href={`/brief/${b.slug}`}>Open</Link></td>
@@ -195,7 +195,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
                 <Link className="font-semibold text-accent hover:underline" href={`/brief/${b.slug}`}>{b.counterparty}</Link>
                 <div className="text-xs text-muted">{b.doc_type.replace(/\s*\(.*$/, "")} · {b.tracker_id}</div>
                 {reviewer && <div className="mt-1 text-xs">{b.headline}</div>}
-                <div className="mt-2 flex flex-wrap items-center gap-2"><SeverityBadge s={h} />{reviewer && <span className="text-xs text-muted">{c.high} High · {c.medium} Medium</span>}</div>
+                <div className="mt-2 flex flex-wrap items-center gap-2"><SeverityBadge s={h} />{reviewer && <span className="text-xs text-muted">{c.high} to decide · {c.medium} to negotiate</span>}</div>
                 <div className="mt-1 text-xs text-muted">Deadline: {fmt(deadlineIso(b.slug))}</div>
                 {reviewer && <div className="mt-1"><DecisionProgress slug={b.slug} ids={b.findings.filter((f) => f.severity === "High").map((f) => f.id)} /></div>}
               </li>

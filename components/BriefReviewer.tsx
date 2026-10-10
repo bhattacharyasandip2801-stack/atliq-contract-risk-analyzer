@@ -117,15 +117,15 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
       )}
 
       {highs.length > 0 && (
-        <section aria-labelledby="high"><h2 id="high" className="mb-3 text-lg font-semibold">High severity <span className="text-base font-normal text-muted">({highs.length}): each needs a recorded decision</span></h2>
+        <section aria-labelledby="high"><h2 id="high" className="mb-3 text-lg font-semibold">Decide before signing <span className="text-base font-normal text-muted">({highs.length}): each needs a recorded decision</span></h2>
           <div className="grid grid-cols-[minmax(0,1fr)] gap-4">{highs.map((f) => <FindingCard key={f.id} slug={brief.slug} f={f} />)}</div></section>
       )}
       {meds.length > 0 && (
-        <section aria-labelledby="med"><h2 id="med" className="mb-3 text-lg font-semibold">Medium severity <span className="text-base font-normal text-muted">({meds.length})</span></h2>
+        <section aria-labelledby="med"><h2 id="med" className="mb-3 text-lg font-semibold">Negotiate <span className="text-base font-normal text-muted">({meds.length})</span></h2>
           <div className="grid grid-cols-[minmax(0,1fr)] gap-4">{meds.map((f) => <FindingCard key={f.id} slug={brief.slug} f={f} />)}</div></section>
       )}
       {brief.findings.length === 0 && (
-        <section className="card rounded-lg border border-ok/30 bg-ok-bg p-5"><h2 className="text-lg font-semibold text-ok">No High or Medium findings</h2><p className="mt-1 text-sm">The checks below were run and passed. Minor points are listed under “Worth knowing”.</p></section>
+        <section className="card rounded-lg border border-ok/30 bg-ok-bg p-5"><h2 className="text-lg font-semibold text-ok">Nothing to decide or negotiate</h2><p className="mt-1 text-sm">The checks below were run and passed. Minor points are listed under “For your information”.</p></section>
       )}
 
       <section id="docs" className="card rounded-lg border border-rule bg-card p-5">
@@ -160,7 +160,7 @@ export default function BriefReviewer({ brief, quotesChecked, dropped }: { brief
       </section>
 
       {brief.low.length > 0 && (
-        <details className="card rounded-lg border border-rule bg-card p-5"><summary className="text-lg font-semibold">Worth knowing ({brief.low.length})</summary>
+        <details className="card rounded-lg border border-rule bg-card p-5"><summary className="text-lg font-semibold">For your information ({brief.low.length})</summary>
           <ul className="mt-3 grid gap-4">{brief.low.map((l, i) => (
             <li key={i}><div className="flex flex-wrap items-center gap-2"><SeverityBadge s="Low" /><span className="font-medium">{l.title}</span><span className="text-xs text-muted">{l.clause_ref}</span></div>
               <p className="mt-1 text-sm text-muted">{l.note}</p><blockquote className="quote mt-1 text-sm">“{l.quote}”<span className="block text-xs text-muted not-italic">Source: {srcName(l.file)}</span></blockquote></li>
