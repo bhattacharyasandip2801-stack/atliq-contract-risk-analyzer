@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { getRole } from "@/lib/role";
 import { KB_STATS, library } from "@/lib/knowledge";
 import KnowledgeSearch from "@/components/KnowledgeSearch";
@@ -14,7 +13,7 @@ export default async function KnowledgePage() {
     <div>
       <AuditOnMount action="view knowledge base" target="knowledge base" />
       <h1 className="text-2xl font-bold">Knowledge base</h1>
-      <p className="mt-2 max-w-3xl text-muted">Everything AtliQ has written down about contracts, in one searchable place. Ask in plain words, read the exact passage and open the full document beside it. See also the <Link className="text-accent underline" href="/playbook">Playbook</Link> for Karandeep&apos;s rules and past exceptions.</p>
+      <p className="mt-2 max-w-3xl text-muted">Everything AtliQ has written down about contracts, in one searchable place. Ask in plain words, read the exact passage and open the full document beside it.</p>
       <div className="mt-5"><KnowledgeSearch stats={KB_STATS()} library={library()} /></div>
     </div>
   );

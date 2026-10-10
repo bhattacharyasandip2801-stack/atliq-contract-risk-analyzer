@@ -40,8 +40,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             </>
           ) : (
             <>
-              <main className="mx-auto min-w-0 max-w-3xl px-4 py-10">{children}</main>
-              <Footer author className="max-w-3xl lg:px-4" />
+              <main className="mx-auto min-w-0 max-w-5xl px-4 py-10">{children}</main>
+              <Footer author className="max-w-5xl lg:px-4" />
             </>
           )}
         </RoleProvider>

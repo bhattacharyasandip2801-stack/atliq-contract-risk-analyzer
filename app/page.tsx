@@ -7,8 +7,11 @@ import { ExportLink } from "@/components/Small";
 import Gloss from "@/components/Gloss";
 import { shortHeadline } from "@/lib/short";
 import type { Metadata } from "next";
+import Home from "@/components/Home";
 
-export const metadata: Metadata = { title: "Contract Dashboard" };
+export async function generateMetadata(): Promise<Metadata> {
+  return (await getUser()) ? { title: "Contract Dashboard" } : { title: { absolute: "AtliQ Contract Risk Analyzer: know what you are signing" } };
+}
 
 export const dynamic = "force-dynamic";
 
@@ -38,7 +41,8 @@ const RANK: Record<string, number> = { High: 0, Medium: 1, Low: 2, None: 3 };
 const entityName = (e: string) => e.replace("AtliQ Technologies Private Limited (Pvt Ltd)", "AtliQ Technologies Pvt Ltd");
 
 export default async function QueuePage({ searchParams }: { searchParams: Promise<{ sev?: string; q?: string; entity?: string; sort?: string; page?: string }> }) {
-  const user = (await getUser())!;
+  const user = await getUser();
+  if (!user) return <Home signedIn={false} />;
   const role = user.role;
   const reviewer = role === "reviewer";
   const sp = await searchParams;

@@ -1,9 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { USER_COOKIE, userById } from "@/lib/users";
 
-const PUBLIC = new Set(["/signin", "/api/signin", "/api/signout", "/api/health"]);
+const PUBLIC = new Set(["/", "/about", "/signin", "/api/signin", "/api/signout", "/api/health"]);
 
-// Demo sign-in gate: send visitors without a (valid) person to the sign-in page. Pages and API routes also check the person themselves.
+// Demo sign-in gate: send visitors without a (valid) person to the sign-in page. The home page (/) and /about stay public. Pages and API routes also check the person themselves.
 export function proxy(req: NextRequest) {
   const { pathname, search } = req.nextUrl;
   if (PUBLIC.has(pathname)) return NextResponse.next();

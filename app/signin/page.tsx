@@ -13,7 +13,7 @@ export default async function SignInPage({ searchParams }: { searchParams: Promi
   if (await getUser()) redirect(safeNext(next));
   const people = USERS.map((u) => ({ ...u, drafts: briefsFor(u).length }));
   return (
-    <div>
+    <div className="max-w-3xl">
       <div className="flex items-center gap-3">
         <span className="grid h-10 w-10 place-items-center rounded-lg bg-nav text-base font-bold text-white" aria-hidden="true">Q</span>
         <div className="leading-tight"><div className="text-lg font-semibold">AtliQ Contract Risk Analyzer</div><div className="text-sm text-muted">Capstone prototype</div></div>
