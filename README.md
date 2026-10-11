@@ -4,7 +4,7 @@ A working prototype for AtliQ's contract reviewer (Karandeep) and its sellers. F
 
 **Live app:** https://atliq-contract-risk-analyzer.vercel.app/  ·  **Code:** https://github.com/bhattacharyasandip2801-stack/atliq-contract-risk-analyzer
 
-**To open the prototype:** choose a person on the sign-in page. Choose **Karandeep** to see everything. No password is needed.
+**To open the prototype:** open the live link. A first-time visitor lands on the sign-in page (`/signin`): choose **Karandeep** (Start here) to see everything, or a seller to see the limited view. No password is needed. `/demo` signs in as Karandeep in one step.
 
 Built for Codebasics AI PM Cohort, Capstone 2. Author: Sandip Gopal Bhattacharya. All data is the capstone's synthetic dataset. Nothing here is legal advice.
 
@@ -75,7 +75,7 @@ Karandeep's answer (10 Oct): each contract is judged fresh, sometimes against it
 
 ## Screens
 
-The sidebar starts with **About this product** (the home page), then groups the screens as **Work** (Contract Dashboard, Review a new contract, Findings worklist, Decisions), **Reference** (Knowledge base, Obligation register) and **Quality and Audit** (Evaluation, Audit log). Due dates show Overdue, Due today or Due in N days, counted from today in India; set `DEMO_AS_OF=YYYY-MM-DD` to pin the date for a demo. The look follows the AtliQ website (navy and violet palette, Inter Tight type).
+The sidebar starts with **About this product** (the product page), then groups the screens as **Work** (Contract Dashboard, Review a new contract, Findings worklist, Decisions), **Reference** (Knowledge base, Obligation register) and **Quality and Audit** (Evaluation, Audit log). Due dates show Overdue, Due today or Due in N days, counted from today in India; set `DEMO_AS_OF=YYYY-MM-DD` to pin the date for a demo. The look follows the AtliQ website (navy and violet palette, Inter Tight type).
 
 | Screen | What it shows |
 |---|---|
@@ -86,7 +86,7 @@ The sidebar starts with **About this product** (the home page), then groups the 
 | **Page layout** (every screen) | Each titled section is a framed panel with a ruled bold heading, a stronger edge and extra space between sections, so Karandeep can see where one section ends and the next begins. The brief reads: header, Decision checklist, Findings (tabs), Exposure, Documents this deal needs, Data type, NOT CHECKED. |
 | **Decision checklist** (top of every reviewer brief) | A **Start deciding** button under the headline jumps to the first finding. The checklist lists every finding on one screen with level, clause and decision status (“Needed” for Decide before signing, “Not required” for Negotiate). Below it, the findings are shown one at a time: tabs for **Decide before signing** and **Negotiate**, a numbered strip of findings with a tick when decided, Previous/Next buttons, and automatic move to the next undecided finding after a decision. The exposure table sits below the findings (stacked cards on phones). Once every Decide before signing finding is decided, the side panel shows **Next draft on the Dashboard**. Print shows every finding. Decision buttons are colour-coded: green Accept, amber Negotiate, red Reject, violet Override. **Print or save as PDF** is the dark button in the side panel. There is no in-app timer: the 5-minute benchmark is observed in usability testing. |
 | **Knowledge base** (`/knowledge`) | A strip of counts, a search box, 12 topic tiles (each runs a search, so what it shows always comes from the files), suggested questions, your recent searches (kept only in your browser) and a library of all 40 documents grouped by type. Results show the exact passages; **Read in context** opens the full document beside them with the passage highlighted, and **Copy citation** copies the source. A "Terms in plain English" panel gives 17 short definitions. **Those definitions are general information written for this prototype, not taken from AtliQ's files, and not legal advice**; each has a button to find the term in the files. Karandeep's view only. |
-| **Home** (`/`, before sign-in; `/about` once signed in) | A generic product page with no names, amounts or real contract examples: hero, what you can rely on, how it works in three steps, then one tabbed block (What it does, Who it helps, Trust and safety, FAQ). “Open the demo” leads to the sign-in. |
+| **Product page** (`/about`, from the sidebar once signed in) | A generic product page with no names, amounts or real contract examples: hero, what you can rely on, how it works in three steps, then one tabbed block (What it does, Who it helps, Trust and safety, FAQ). A visitor who is not signed in and opens `/` goes to the sign-in page instead. |
 | **Register** (`/register`) | Obligations from the 17 signed contracts, with the banner "17 of about 30 signed contracts", the Al Noor waiver attached to the clause it modifies, and a CSV export of every restrictive covenant, exclusivity and most-favoured-customer term for counsel. |
 | **Decisions** | Every decision with who, when and why. An override needs a reason. |
 | **Evaluation** | The metrics from PRD Section 11 against their thresholds, with expected and found for each case. |
