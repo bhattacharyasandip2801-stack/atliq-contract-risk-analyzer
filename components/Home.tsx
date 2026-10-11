@@ -35,7 +35,6 @@ export default function Home({ signedIn }: { signedIn: boolean }) {
           <nav aria-label="On this page" className="hidden items-center gap-5 text-sm text-muted md:flex">
             <a className="py-2 hover:text-ink" href="#how">How it works</a><a className="py-2 hover:text-ink" href="#features">What it does</a><a className="py-2 hover:text-ink" href="#who">Who it helps</a><a className="py-2 hover:text-ink" href="#trust">Trust</a><a className="py-2 hover:text-ink" href="#faq">FAQ</a>
           </nav>
-          <a href={href} className="rounded-md bg-accent px-4 py-2 text-sm font-semibold text-white hover:opacity-90">{label}</a>
         </header>
       )}
 
