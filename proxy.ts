@@ -6,8 +6,8 @@ const PUBLIC = new Set(["/", "/about", "/demo", "/signin", "/api/signin", "/api/
 // Demo sign-in gate: send visitors without a (valid) person to the sign-in page. The home page (/) and /about stay public. Pages and API routes also check the person themselves.
 export function proxy(req: NextRequest) {
   const { pathname, search } = req.nextUrl;
-  // Visitors with no demo sign-in who open the root link go straight to the dashboard as Karandeep (the reviewer view), so judges see the full prototype.
-  if (pathname === "/" && !userById(req.cookies.get(USER_COOKIE)?.value)) return NextResponse.redirect(new URL("/demo", req.url));
+  // Visitors with no demo sign-in who open the root link see the sign-in page, where they choose Karandeep (full view) or a seller.
+  if (pathname === "/" && !userById(req.cookies.get(USER_COOKIE)?.value)) return NextResponse.redirect(new URL("/signin", req.url));
   if (PUBLIC.has(pathname)) return NextResponse.next();
   if (userById(req.cookies.get(USER_COOKIE)?.value)) return NextResponse.next();
   if (pathname.startsWith("/api/")) {
