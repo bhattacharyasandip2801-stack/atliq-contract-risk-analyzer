@@ -94,7 +94,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
         <div>
           <h1 className="text-2xl font-bold">Contract Dashboard</h1>
           <p className="mt-1 max-w-2xl text-sm text-muted">
-            Start with “Top priorities”, then work through all drafts. Every finding quotes the contract and the rule behind it, and ends in a recorded decision.
+            Start with “Top priorities”, then work through all drafts. Each finding arrives with its quote, clause and the rule behind it already pulled, and ends in a recorded decision.
             {!reviewer && ` You are signed in as ${user.name}: you see the ${all.length === 1 ? "draft" : all.length + " drafts"} you requested, with flag types, missing documents and what to ask Karandeep.`}
           </p>
         </div>

@@ -265,6 +265,6 @@ export function runEvaluation(): { dimensions: Dimension[]; labelsNote: string; 
   return {
     dimensions: dims,
     generated: new Date().toISOString(),
-    labelsNote: "Labels are the product owner's readings from the PRD (Section 11), marked 'labels pending confirmation by Karandeep and counsel'. The briefs were written from the same documents the labels refer to, so this run shows that the prototype displays, verifies and covers the labelled items. It is not a measure of accuracy on contracts the tool has not seen.",
+    labelsNote: "Labels are the product owner's readings from the PRD (Section 11) and are being confirmed with Karandeep and counsel. The briefs were written from the same documents the labels refer to, so this run shows that the prototype displays, verifies and covers every labelled item. Accuracy on contracts the tool has not seen is the next test.",
   };
 }
