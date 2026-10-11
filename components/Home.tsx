@@ -1,4 +1,3 @@
-import Link from "next/link";
 import HomeTabs from "@/components/HomeTabs";
 
 /** Home page: what the product does, who it helps and why it can be trusted. Shown at "/" before sign-in and at /about when signed in.
@@ -23,7 +22,7 @@ const FAQ: [string, string][] = [
 ];
 
 export default function Home({ signedIn }: { signedIn: boolean }) {
-  const href = signedIn ? "/" : "/signin";
+  const href = signedIn ? "/" : "/demo";
   const label = signedIn ? "Go to the Contract Dashboard" : "Open the demo";
   return (
     <div className="-mx-4 -mt-6 sm:mx-0 sm:mt-0">
@@ -36,7 +35,7 @@ export default function Home({ signedIn }: { signedIn: boolean }) {
           <nav aria-label="On this page" className="hidden items-center gap-5 text-sm text-muted md:flex">
             <a className="py-2 hover:text-ink" href="#how">How it works</a><a className="py-2 hover:text-ink" href="#features">What it does</a><a className="py-2 hover:text-ink" href="#who">Who it helps</a><a className="py-2 hover:text-ink" href="#trust">Trust</a><a className="py-2 hover:text-ink" href="#faq">FAQ</a>
           </nav>
-          <Link href={href} className="rounded-md bg-accent px-4 py-2 text-sm font-semibold text-white hover:opacity-90">{label}</Link>
+          <a href={href} className="rounded-md bg-accent px-4 py-2 text-sm font-semibold text-white hover:opacity-90">{label}</a>
         </header>
       )}
 
@@ -50,7 +49,7 @@ export default function Home({ signedIn }: { signedIn: boolean }) {
               People stay in charge of every decision.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-3">
-              <Link href={href} className="rounded-md bg-accent px-6 py-3 text-base font-semibold text-white shadow-sm hover:opacity-90">{label} →</Link>
+              <a href={href} className="rounded-md bg-accent px-6 py-3 text-base font-semibold text-white shadow-sm hover:opacity-90">{label} →</a>
               {!signedIn && <a href="#how" className="rounded-md border border-rule bg-card px-6 py-3 text-base font-semibold hover:bg-accent-bg">See how it works</a>}
             </div>
             <p className="mt-4 text-sm text-muted">Prototype on synthetic data. Not legal advice.</p>
