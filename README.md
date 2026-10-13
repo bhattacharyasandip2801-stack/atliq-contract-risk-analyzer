@@ -1,6 +1,6 @@
 # AtliQ Contract Risk Analyzer (capstone prototype)
 
-A working prototype for AtliQ's contract reviewer (Karandeep) and its sellers. For each of the 15 incoming contract drafts in the capstone dataset it shows a **ranked brief** in which every finding quotes the contract, says which rule or earlier signed clause it relies on, and ends with a recorded decision. It also holds an **obligation register** built from the 17 signed contracts, a **knowledge base** with cited search over every dataset file (including Karandeep's checklist and the negotiation notes), a **check-a-new-draft** screen that runs live rules on pasted text, an **evaluation screen**, a **decision log** and an **audit log**.
+A working prototype for AtliQ's contract reviewer (Karandeep) and its sellers. For each of the 15 incoming contract drafts in the capstone dataset it shows a **ranked brief** in which every finding quotes the contract, says which rule or earlier signed clause it relies on, and ends with a recorded decision. It also holds an **obligation register** built from the 17 signed contracts, a **knowledge base** with cited search over every dataset file (including Karandeep's checklist and the negotiation notes), a **Review a new contract** screen that runs live rules on pasted text, an **evaluation screen**, a **decision log** and an **audit log**.
 
 **Live app:** https://atliq-contract-risk-analyzer.vercel.app/  ·  **Code:** https://github.com/bhattacharyasandip2801-stack/atliq-contract-risk-analyzer
 
